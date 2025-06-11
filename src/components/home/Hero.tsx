@@ -63,7 +63,6 @@ const Hero = () => {
       <div className="absolute inset-0 z-[1]">
         {showVideo ? <video ref={videoRef} className="w-full h-full object-cover" autoPlay muted onEnded={handleVideoEnd}>
             <source src="/GGL_demo1.mp4" type="video/mp4" />
-            <source src="/GGL_promo.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video> : <>
             {carouselImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}`}>
@@ -76,9 +75,6 @@ const Hero = () => {
             </div>
           </>}
       </div>
-
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/40 z-[2]" />
 
       {/* Content Overlay */}
       <div className="absolute inset-0 flex items-center justify-center z-[3] my-0">
