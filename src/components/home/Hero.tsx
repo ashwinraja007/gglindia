@@ -62,11 +62,11 @@ const Hero = () => {
       {/* Video or Image Background - Full Coverage */}
       <div className="absolute inset-0 z-[1]">
         {showVideo ? <video ref={videoRef} className="w-full h-full object-cover" autoPlay muted onEnded={handleVideoEnd}>
-            <source src="/earth1.mp4" type="video/mp4" />
+            <source src="/earth.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video> : <>
             {carouselImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}`}>
-                <img src={image} alt={`Global Logistics Network ${index + 1}`} loading="lazy" className="w-full h-full object-cover" />
+                <img src={image} alt={`Global Logistics Network ${index + 1}`} loading="lazy" className="w-full h-full object-none" />
               </div>)}
             
             {/* Image indicators */}
@@ -77,7 +77,7 @@ const Hero = () => {
       </div>
 
       {/* Content Overlay */}
-      <div className="absolute inset-0 flex items-center justify-center z-[3] my-0">
+      <div className="absolute inset-0 flex items-center justify-center z-[3] my-0 mx-[43px]">
         
       </div>
 
