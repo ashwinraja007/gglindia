@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Users, UserCircle, SearchCode, Ship, Calendar, Globe } from 'lucide-react';
 
@@ -5,12 +6,19 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isCustomerPortalOpen, setIsCustomerPortalOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const sliderImages = [
     '/homeimage.jpg',
     '/truck12.png',
     '/ships.png',
     '/cargoplane.png',
+  ];
+
+  // Auto-scrolling images for the new carousel
+  const carouselImages = [
+    '/lovable-uploads/ca6e9e11-5bbc-4ab6-b0c1-5de558d3c076.png',
+    '/lovable-uploads/7513e893-74ca-439e-aeb1-58f51d864eff.png'
   ];
 
   useEffect(() => {
@@ -24,6 +32,14 @@ const Hero = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, [sliderImages.length]);
+
+  // Auto-scroll for the new image carousel
+  useEffect(() => {
+    const imageInterval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+    }, 3000); // Change image every 3 seconds
+    return () => clearInterval(imageInterval);
+  }, [carouselImages.length]);
 
   const portalLinks = [
     {
@@ -87,31 +103,73 @@ const Hero = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40 z-[1]" />
 
-      {/* Main Content - Vertically Shifted Up */}
-      <div className="absolute inset-0 flex items-center justify-start z-[2]">
+      {/* Main Content */}
+      <div className="absolute inset-0 flex items-center justify-between z-[2]">
+        {/* Left side - Text content */}
         <div className="container mx-auto h-full flex items-center px-4 md:px-6 lg:px-8">
-          <div
-            className={`max-w-2xl space-y-4 md:space-y-5 text-left transition-all duration-800 transform ${
-              isVisible ? 'opacity-100 -translate-y-[3%]' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <div className="flex items-center gap-3 mb-2">
-              <div className="text-yellow-500 animate-spin-slow">
-                <Globe className="w-8 h-8 sm:w-10 sm:h-10 drop-shadow-[0_0_8px_rgba(246,177,0,0.8)]" />
+          <div className="w-full lg:w-1/2">
+            <div
+              className={`max-w-2xl space-y-4 md:space-y-5 text-left transition-all duration-800 transform ${
+                isVisible ? 'opacity-100 -translate-y-[3%]' : 'opacity-0 translate-y-10'
+              }`}
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <div className="text-yellow-500 animate-spin-slow">
+                  <Globe className="w-8 h-8 sm:w-10 sm:h-10 drop-shadow-[0_0_8px_rgba(246,177,0,0.8)]" />
+                </div>
+                <span className="inline-block bg-yellow-500/20 backdrop-blur-sm text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium border border-yellow-500/30">
+                  Beyond Logistics, a Complete Solution
+                </span>
               </div>
-              <span className="inline-block bg-yellow-500/20 backdrop-blur-sm text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium border border-yellow-500/30">
-                Beyond Logistics, a Complete Solution
-              </span>
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                Delivering Excellence in <span className="text-yellow-500">Global Logistics</span> Solutions
+              </h1>
+
+              <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-xl">
+                GGL brings over 25 years of expertise in international logistics,
+                offering comprehensive solutions tailored to your business needs.
+              </p>
             </div>
+          </div>
+        </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Delivering Excellence in <span className="text-yellow-500">Global Logistics</span> Solutions
-            </h1>
-
-            <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-xl">
-              GGL brings over 25 years of expertise in international logistics,
-              offering comprehensive solutions tailored to your business needs.
-            </p>
+        {/* Right side - Auto-scrolling Image Carousel */}
+        <div className="hidden lg:block lg:w-1/2 h-full relative">
+          <div className="absolute inset-0 flex items-center justify-center p-8">
+            <div
+              className={`relative w-full max-w-lg h-96 rounded-xl overflow-hidden shadow-2xl transition-all duration-800 ${
+                isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+              }`}
+            >
+              {carouselImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    currentImageIndex === index ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <img
+                    src={image}
+                    alt={`Global Logistics Network ${index + 1}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+              
+              {/* Image indicators */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {carouselImages.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      currentImageIndex === index ? 'bg-yellow-500' : 'bg-white/50'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
