@@ -8,7 +8,7 @@ const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Auto-scrolling images for the carousel
-  const carouselImages = ['/lovable-uploads/ef212615-b41e-47d2-bc36-9f10075f6078.png', '/lovable-uploads/6f4307de-d1d7-4246-b07d-5c6fcf822af8.png'];
+  const carouselImages = ['/import.png', '/Export.png'];
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
     return () => clearTimeout(timer);
@@ -62,7 +62,7 @@ const Hero = () => {
       {/* Video or Image Background - Full Coverage */}
       <div className="absolute inset-0 z-[1]">
         {showVideo ? <video ref={videoRef} className="w-full h-full object-cover" autoPlay muted onEnded={handleVideoEnd}>
-            <source src="/GGL_demo1.mp4" type="video/mp4" />
+            <source src="/earth.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video> : <>
             {carouselImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}`}>
