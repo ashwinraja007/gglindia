@@ -1,32 +1,37 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useRef } from 'react';
 import { Users, UserCircle, SearchCode, Ship, Calendar, Globe } from 'lucide-react';
+
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isCustomerPortalOpen, setIsCustomerPortalOpen] = useState(false);
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [showVideo, setShowVideo] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const sliderImages = ['/homeimage.jpg', '/truck12.png', '/ships.png', '/cargoplane.png'];
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Auto-scrolling images for the new carousel
-  const carouselImages = ['/lovable-uploads/ca6e9e11-5bbc-4ab6-b0c1-5de558d3c076.png', '/lovable-uploads/7513e893-74ca-439e-aeb1-58f51d864eff.png'];
+  // Auto-scrolling images for the carousel
+  const carouselImages = ['/lovable-uploads/ef212615-b41e-47d2-bc36-9f10075f6078.png', '/lovable-uploads/6f4307de-d1d7-4246-b07d-5c6fcf822af8.png'];
+
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
     return () => clearTimeout(timer);
   }, []);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveSlide(prev => (prev + 1) % sliderImages.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [sliderImages.length]);
 
-  // Auto-scroll for the new image carousel
+  // Auto-scroll for the image carousel (only when video is not showing)
   useEffect(() => {
-    const imageInterval = setInterval(() => {
-      setCurrentImageIndex(prev => (prev + 1) % carouselImages.length);
-    }, 3000); // Change image every 3 seconds
-    return () => clearInterval(imageInterval);
-  }, [carouselImages.length]);
+    if (!showVideo) {
+      const imageInterval = setInterval(() => {
+        setCurrentImageIndex(prev => (prev + 1) % carouselImages.length);
+      }, 3000); // Change image every 3 seconds
+      return () => clearInterval(imageInterval);
+    }
+  }, [showVideo, carouselImages.length]);
+
+  // Handle video end
+  const handleVideoEnd = () => {
+    setShowVideo(false);
+  };
+
   const portalLinks = [{
     icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />,
     title: 'Customer Portal',
@@ -57,15 +62,11 @@ const Hero = () => {
     url: '/contact',
     external: false
   }];
-  return <section className="relative min-h-screen overflow-hidden pt-8 md:pt-16">
-      {/* Background Slider */}
-      <div className="absolute inset-0 overflow-hidden">
-        {sliderImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1200 ease-in-out ${activeSlide === index ? 'opacity-100' : 'opacity-0'}`} style={{
-        zIndex: activeSlide === index ? 1 : 0
-      }}>
-            <img src={image} alt={`Slide ${index + 1}`} className="w-full h-full object-cover object-center" loading={index === 0 ? 'eager' : 'lazy'} />
-          </div>)}
-      </div>
+
+  return (
+    <section className="relative min-h-screen overflow-hidden pt-8 md:pt-16">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-navy to-brand-darkGray" />
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40 z-[1]" />
@@ -79,33 +80,69 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right side - Auto-scrolling Image Carousel */}
+        {/* Right side - Video or Image Carousel */}
         <div className="hidden lg:block lg:w-1/2 h-full relative">
           <div className="absolute inset-0 flex items-center justify-center p-8">
             <div className={`relative w-full max-w-lg h-96 rounded-xl overflow-hidden shadow-2xl transition-all duration-800 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              {carouselImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}`}>
-                  <img src={image} alt={`Global Logistics Network ${index + 1}`} loading="lazy" className="w-full h-full object-contain" />
-                </div>)}
-              
-              {/* Image indicators */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                {carouselImages.map((_, index) => <div key={index} className={`w-2 h-2 rounded-full transition-all duration-300 ${currentImageIndex === index ? 'bg-yellow-500' : 'bg-white/50'}`} />)}
-              </div>
+              {showVideo ? (
+                <video
+                  ref={videoRef}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  onEnded={handleVideoEnd}
+                >
+                  <source src="/GGL_demo1.mp4" type="video/mp4" />
+                  <source src="/GGL_promo.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <>
+                  {carouselImages.map((image, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                        currentImageIndex === index ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    >
+                      <img
+                        src={image}
+                        alt={`Global Logistics Network ${index + 1}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                  
+                  {/* Image indicators */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    {carouselImages.map((_, index) => (
+                      <div
+                        key={index}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          currentImageIndex === index ? 'bg-yellow-500' : 'bg-white/50'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Portal Buttons */}
-      
-
       {/* Customer Portal Modal */}
-      {isCustomerPortalOpen && <div className="fixed inset-0 bg-black/50 z-[50] flex items-center justify-center p-4">
+      {isCustomerPortalOpen && (
+        <div className="fixed inset-0 bg-black/50 z-[50] flex items-center justify-center p-4">
           <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl font-bold text-blue-900">Customer Portal</h2>
-                <button onClick={() => setIsCustomerPortalOpen(false)} className="text-gray-500 hover:text-gray-700 text-2xl">
+                <button
+                  onClick={() => setIsCustomerPortalOpen(false)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                >
                   ×
                 </button>
               </div>
@@ -114,12 +151,13 @@ const Hero = () => {
                 <h3 className="font-medium text-gray-800">Tutorial Videos</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[{
-                src: '/GGL_demo1.mp4',
-                label: 'Getting Started'
-              }, {
-                src: '/GGL_promo.mp4',
-                label: 'Advanced Features'
-              }].map((video, i) => <div key={i} className="border rounded-lg overflow-hidden">
+                    src: '/GGL_demo1.mp4',
+                    label: 'Getting Started'
+                  }, {
+                    src: '/GGL_promo.mp4',
+                    label: 'Advanced Features'
+                  }].map((video, i) => (
+                    <div key={i} className="border rounded-lg overflow-hidden">
                       <div className="aspect-video">
                         <video controls className="w-full h-full object-cover">
                           <source src={video.src} type="video/mp4" />
@@ -127,13 +165,17 @@ const Hero = () => {
                         </video>
                       </div>
                       <div className="p-2 bg-gray-50 text-sm font-medium">{video.label}</div>
-                    </div>)}
+                    </div>
+                  ))}
                 </div>
               </div>
 
               {/* Button Section */}
               <div className="mt-6 flex justify-end gap-4">
-                <button onClick={() => setIsCustomerPortalOpen(false)} className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">
+                <button
+                  onClick={() => setIsCustomerPortalOpen(false)}
+                  className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                >
                   Cancel
                 </button>
                 <a href="https://cp.onlinetracking.co/#/login/3" target="_blank" rel="noopener noreferrer">
@@ -144,7 +186,10 @@ const Hero = () => {
               </div>
             </div>
           </div>
-        </div>}
-    </section>;
+        </div>
+      )}
+    </section>
+  );
 };
+
 export default Hero;
