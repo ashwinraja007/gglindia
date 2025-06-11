@@ -62,7 +62,7 @@ const Hero = () => {
       {/* Video or Image Background - Full Coverage */}
       <div className="absolute inset-0 z-[1]">
         {showVideo ? <video ref={videoRef} className="w-full h-full object-cover" autoPlay muted onEnded={handleVideoEnd}>
-            <source src="/earth.mp4" type="video/mp4" />
+            <source src="/earth1.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video> : <>
             {carouselImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}`}>
