@@ -92,9 +92,9 @@ const About = () => {
                 </h2>
                 
                 <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
-                  <p className="text-base">GGL is a trusted global leader in LCL (Less-than-Container Load) consolidation. With a robust presence across North America, the UK, the Middle East, the Indian Subcontinent, Southeast Asia, and the Far East, we offer streamlined groupage services backed by strong customer support and competitive pricing.</p>
+                  <p className="text-base">GGL is a trusted global leader in LCL (Less-than-Container Load) consolidation. With a robust presence across <strong>North America, the UK, the Middle East, the Indian Subcontinent, Southeast Asia, and the Far East,</strong> we offer streamlined groupage services backed by strong customer support and competitive pricing.</p>
                   
-                  <p className="text-base">We are Strategically positioned in major transshipment hubs like Singapore, Malaysia, Sri Lanka, and Dubai, GGL operates direct weekly sailings to key global ports. Our expansive network ensures fast, reliable, and cost-effective consolidation options for freight forwarders and logistics providers.</p>
+                  <p className="text-base">We are Strategically positioned in major transshipment hubs like <strong>Singapore, Malaysia, Sri Lanka, and Dubai,</strong> GGL operates <strong>direct weekly sailings</strong> to key global ports. Our expansive network ensures fast, reliable, and cost-effective consolidation options for freight forwarders and logistics providers.</p>
                   
                   <p className="text-base">
                     To enhance customer experience, GGL leverages a powerful, internet-based software platform that offers real-time shipment visibility—from origin to destination. This technology ensures transparency, control, and timely updates, delivering a seamless and differentiated logistics experience.
@@ -137,31 +137,38 @@ const About = () => {
           </div>
         </section>
 
-        {/* Why Choose GGL Section */}
-      <section className="py-20 bg-white px-6">
-  <div className="max-w-7xl mx-auto">
-    <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8
-          }} viewport={{
-            once: true
-          }} className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-        Why Choose <span className="text-yellow-500">GGL?</span>
-      </h2>
-      <div className="text-xl text-gray-600 max-w-4xl mx-auto space-y-6 text-left">
-        
-        
-        <p className="text-base my-0">At GGL, we believe logistics is more than just moving goods — it’s about delivering trust. Our team combines sharp attention to detail with a service-first mindset, ensuring every shipment is handled with care, precision, and efficiency. We pride ourselves on being responsive, proactive, and fully aligned with our clients’ needs. From documentation to delivery, we go the extra mile so you don’t have to.</p>
-      </div>
-    </motion.div>
+{/* Main Content */}
+<section className="py-12 md:py-16">
+  <div className="container mx-auto px-4">
+    <p className="text-lg mb-6 leading-relaxed text-justify">
+      One of our standout services is <strong>neutral LCL consolidation</strong>, tailored specifically for freight forwarders and NVOCCs who require confidential, reliable, and cost-effective groupage solutions. As a neutral consolidator, GGL India does not compete with freight forwarders; instead, we partner with them to deliver secure and transparent services that enhance their global reach and operational efficiency.
+    </p>
+
+    <div className="text-gray-700 text-left font-normal">
+      <strong>In addition to neutral consolidation, we offer a wide portfolio of logistics services, including:</strong>
+      <ul className="list-disc ml-6 mt-2 space-y-2">
+        <li>Air & Ocean Freight (LCL & FCL)</li>
+        <li>Dangerous Goods Handling</li>
+        <li>Warehousing, Distribution & 3PL</li>
+        <li>Domestic & Cross-Border Land Transport</li>
+      </ul>
+    </div>
+
+    <p className="text-lg mb-6 mt-6 leading-relaxed text-justify">
+      Our advanced technology platform provides end-to-end shipment visibility, empowering clients to monitor and manage their cargo with precision. Backed by a team of seasoned logistics professionals and a robust global network, GGL India is a reliable partner committed to neutrality, operational excellence, and customer success.
+    </p>
+
+    <div className="text-gray-700 text-left font-normal">
+      <strong>Who is it for? (Neutral Consolidation)</strong>
+      <ul className="list-disc ml-6 mt-2 space-y-2">
+        <li>Freight Forwarders</li>
+        <li>Custom Brokers</li>
+        <li>NVOCCs</li>
+        <li>3PL Providers</li>
+      </ul>
+    </div>
   </div>
-      </section>
+</section>
 
 
         {/* LCL Consolidation Section */}
