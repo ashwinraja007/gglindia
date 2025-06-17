@@ -99,51 +99,7 @@ const Warehousing = () => {
               </ul>
             </div>
 
-            {/* Features Grid (icon with title only) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {[{
-              title: "General Cargo Storage",
-              icon: <Box className="h-5 w-5 text-brand-gold" />
-            }, {
-              title: "Temperature-Controlled Storage",
-              icon: <Thermometer className="h-5 w-5 text-brand-gold" />
-            }, {
-              title: "Bonded Warehousing",
-              icon: <Shield className="h-5 w-5 text-brand-gold" />
-            }, {
-              title: "Inventory Management",
-              icon: <Gauge className="h-5 w-5 text-brand-gold" />
-            }, {
-              title: "Pick & Pack",
-              icon: <Package className="h-5 w-5 text-brand-gold" />
-            }, {
-              title: "Consolidation & Deconsolidation",
-              icon: <Warehouse className="h-5 w-5 text-brand-gold" />
-            }, {
-              title: "Order Processing",
-              icon: <FileCheck className="h-5 w-5 text-brand-gold" />
-            }, {
-              title: "3PL Logistics Integration",
-              icon: <Truck className="h-5 w-5 text-brand-gold" />
-            }].map((feature, index) => <motion.div key={index} initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.5,
-              delay: index * 0.1
-            }} viewport={{
-              once: true
-            }} className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-                  <div className="mb-3 bg-blue-50 p-2 rounded-full inline-block">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-800">{feature.title}</h3>
-                </motion.div>)}
-            </div>
-
+           
             {/* CTA */}
             <motion.div initial={{
             opacity: 0,
