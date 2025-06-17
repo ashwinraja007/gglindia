@@ -62,56 +62,7 @@ const Careers = () => {
         </section>
 
         {/* Why Join Us */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.6
-          }} viewport={{
-            once: true
-          }} className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-brand-navy mb-4">Why Choose GGL?</h2>
-              <div className="w-24 h-1 bg-brand-gold mx-auto mb-6"></div>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                At GGL, we believe our people are our greatest asset. We foster an environment where talent thrives and careers flourish.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {benefits.map((benefit, index) => <motion.div key={index} initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.6,
-              delay: index * 0.1
-            }} viewport={{
-              once: true
-            }}>
-                  <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-brand-gold">
-                    <CardHeader>
-                      <div className="flex items-center gap-3 mb-2">
-                        {benefit.icon}
-                        <CardTitle className="text-lg">{benefit.title}</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="text-gray-600">
-                        {benefit.description}
-                      </CardDescription>
-                    </CardContent>
-                  </Card>
-                </motion.div>)}
-            </div>
-          </div>
-        </section>
+        
 
         {/* Open Positions (Updated to show Coming Soon) */}
         <section className="py-16">
