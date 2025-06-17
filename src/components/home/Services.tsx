@@ -70,52 +70,44 @@ const EnhancedServiceCard = ({
 export const Services = () => {
   const services = [
     {
-      image: "/lovable-uploads/oceanfrieght.jpg",
+      image: "/hom1.png",
       title: "Ocean Freight",
       description:
-        "GGL's dedicated ocean freight department specialize in the complete range freight management services for LCL and FCL loads, supported thru a well established and reliable partner network around the world, for efficient collection, storage & delivery from shippers door to door.",
+        "At GGL India, we specialize in providing comprehensive ocean freight solutions that cater to the diverse needs of our clients. Whether you're shipping large volumes or smaller consignments, our services are designed to ensure efficiency, reliability, and cost-effectiveness",
       icon: <Anchor />,
       link: "/services/ocean-freight"
     },
-    {
-      image: "/cargoplane.png",
-      title: "Air Freight",
-      description:
-        "At GGL, we provide a comprehensive range of air freight services designed to meet all your shipping needs. Our expert air freight teams offer seamless air import, export, and express options, all on a convenient door-to-door basis. GGL stands out with competitive rates.",
-      icon: <Plane />,
-      link: "/services/air-freight"
-    },
-    {
-      image: "/truck12.png",
+     {
+      image: "/hom3.png",
       title: "Transportation And Distribution",
       description:
-        "GGL boasts a dedicated fleet of vehicles to ensure timely domestic distribution and deliveries. Our efficient operational infrastructure provides our clients with high productivity, frequent services, and fast, reliable distribution operations. GGL is committed to delivering excellence.",
+        "At GGL India, we understand that efficient transportation and distribution are the backbone of a seamless supply chain. Our dedicated fleet and robust infrastructure ensure that your goods reach their destination on time, every time.",
       icon: <Truck />,
       link: "/services/transportation"
     },
     {
-      image: "/lovable-uploads/warehouse.jpg",
+      image: "/warehosing.png",
       title: "Warehousing",
       description:
-        "GGL is a premier supply chain solutions provider in Singapore, addressing the full spectrum of logistics needs for our clients. We facilitate the movement of goods from suppliers to manufacturers (for parts and components), from manufacturers and brand owners to resellers and distributors.",
+        "At GGL India, we offer comprehensive warehousing and third-party logistics (3PL) solutions designed to streamline your supply chain operations. Our services are tailored to meet the diverse needs of businesses, ensuring efficiency, reliability, and scalability.",
       icon: <Warehouse />,
       link: "/services/warehousing"
     },
-    {
-      image: "/lcl.png",
-      title: "LCL Consolidation",
+      {
+      image: "/hom2.png",
+      title: "Air Freight",
       description:
-        "GGL is a LCL Consolidator with global presence covering North America, UK, Middle East, Indian Sub Continent, South East Asia and Far East. Our LCL Groupage services is backed by very efficient customer support at competitive prices.",
-      icon: <Warehouse />,
-      link: "/services/lcl-consolidation"
+        "At GGL India, we offer a comprehensive range of air freight services designed to meet all your shipping needs. Our expert air freight teams provide seamless air import, export, and express options, all on a convenient door-to-door basis.",
+      icon: <Plane />,
+      link: "/services/air-freight"
     },
     {
-      image: "/projectcargo3.png",
-      title: "Project Cargo",
+      image: "/hom4.png",
+      title: "LCL Consolidation",
       description:
-        "Project cargo refers to the specialized transportation of large, heavy, high-value, or complex equipment, often associated with large-scale infrastructure or construction projects.",
-      icon: <Package />,
-      link: "/services/project-cargo"
+        "We collect your goods from your location and prepare them for consolidation. This includes proper labelling, packaging, and documentation to ensure smooth transit.",
+      icon: <Warehouse />,
+      link: "/services/lcl-consolidation"
     }
   ];
 
