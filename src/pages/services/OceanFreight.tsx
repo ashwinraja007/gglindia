@@ -84,14 +84,14 @@ const OceanFreight = () => {
               <div className="bg-blue-50 border-l-4 border-brand-gold p-6 rounded-lg mb-6 shadow-sm">
                 <h3 className="text-2xl font-bold text-brand-navy mb-2">Full Container Load (FCL)</h3>
                 <p className="text-base text-gray-700 leading-relaxed">
-                  For businesses with high-volume shipments, our <strong>FCL services</strong> offer dedicated container space. This ensures direct, secure, and uninterrupted transport from port to port — giving you full control over your shipping schedule and cargo security.
+                  For businesses with substantial cargo volumes, our FCL services offer dedicated container space, ensuring direct and secure transportation from port to port. This option is ideal for shipments that require exclusive container space, providing flexibility and control over delivery schedules
                 </p>
               </div>
 
               <div className="bg-blue-50 border-l-4 border-brand-gold p-6 rounded-lg shadow-sm">
                 <h3 className="text-2xl font-bold text-brand-navy mb-2">Less than Container Load (LCL) Consolidation</h3>
                 <p className="text-base text-gray-700 leading-relaxed">
-                  For smaller shipments, our <strong>LCL consolidation services</strong> allow you to share container space with others — significantly reducing costs without compromising safety or timelines. Thanks to our strategic presence in key transshipment hubs, we ensure smooth consolidation and on-time deliveries every step of the way.
+                  Recognizing the need for cost-effective solutions for smaller shipments, we offer LCL consolidation services. This service allows multiple shippers to share container space, reducing costs while maintaining the safety and integrity of each shipment. Our strategic presence in key transshipment hubs ensures timely and efficient consolidation services.
                 </p>
               </div>
             </div>
