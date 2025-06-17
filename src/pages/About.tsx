@@ -49,11 +49,11 @@ const About = () => {
                 </h2>
 
                 <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
-                  <p>GGL is a trusted global leader in LCL (Less-than-Container Load) consolidation. With a robust presence across North America, the UK, the Middle East, the Indian Subcontinent, Southeast Asia, and the Far East, we offer streamlined groupage services backed by strong customer support and competitive pricing.</p>
+                  <p>GGL is a trusted global leader in LCL (Less-than-Container Load) consolidation. With a robust presence across <strong>North America, the UK, the Middle East, the Indian Subcontinent, Southeast Asia, and the Far East,</strong> we offer streamlined groupage services backed by strong customer support and competitive pricing.</p>
 
-                  <p>We are strategically positioned in major transshipment hubs like Singapore, Malaysia, Sri Lanka, and Dubai, GGL operates direct weekly sailings to key global ports. Our expansive network ensures fast, reliable, and cost-effective consolidation options for freight forwarders and logistics providers.</p>
+                  <p>We are strategically positioned in major transshipment hubs like <strong>Singapore, Malaysia, Sri Lanka, and Dubai,</strong> GGL operates <strong>direct weekly sailings</strong> to key global ports. Our expansive network ensures fast, reliable, and cost-effective consolidation options for freight forwarders and logistics providers.</p>
 
-                  <p>One of our standout services is neutral LCL consolidation, designed specifically for freight forwarders and NVOCCs who require confidential, reliable, and competitive groupage solutions. As a neutral consolidator, GGL does not compete with freight forwarders but instead partners with them to provide secure, transparent services that help optimize their global reach and cost efficiency.</p>
+                  <p>One of our standout services is <strong>neutral LCL consolidation</strong>, designed specifically for freight forwarders and NVOCCs who require confidential, reliable, and competitive groupage solutions. As a neutral consolidator, GGL does not compete with freight forwarders but instead partners with them to provide secure, transparent services that help optimize their global reach and cost efficiency.</p>
 
                   <p>Our advanced technology platform offers end-to-end shipment visibility, allowing clients to track and manage their cargo with precision. With a team of logistics professionals and a trusted global network, GGL stands as a dependable partner committed to neutrality, excellence, and customer success.</p>
                 </div>
@@ -84,12 +84,7 @@ const About = () => {
 
         {/* Why Choose GGL */}
         <section className="py-20 bg-white px-6">
-          <div className="max-w-7xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-16">
-              <div className="text-xl text-gray-600 max-w-4xl mx-auto space-y-6 text-left">
-                <p>At GGL, we believe logistics is more than just moving goods — it's about delivering trust. Our team combines sharp attention to detail with a service-first mindset, ensuring every shipment is handled with care, precision, and efficiency. We pride ourselves on being responsive, proactive, and fully aligned with our clients' needs. From documentation to delivery, we go the extra mile so you don't have to.</p>
-              </div>
-
+          
               <div className="text-gray-700 text-left font-normal mt-10 space-y-6">
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Comprehensive Logistics Services:</h3>
