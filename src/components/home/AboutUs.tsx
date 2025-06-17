@@ -29,12 +29,8 @@ const AboutUs = () => {
           once: true
         }} className="order-2 md:order-1">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">About Us</h2>
-            <p className="text-gray-600 mb-4 text-base text-justify">
-              At GGL, we are proud to be one of Singapore's leading logistics companies. We offer specialized divisions in warehousing, forwarding (air and ocean), and transportation. Our mission is to deliver comprehensive end-to-end solutions in global freight forwarding, managed through a trusted network of partners who excel in all logistics segments.
-            </p>
-            <p className="text-gray-600 mb-6 text-base text-justify">
-              We are dedicated to fostering deep, collaborative relationships with our clients, and creating genuine partnerships that drive mutual growth. Our work goes beyond forwarding and logistics; it's about building trust with our customers by delivering world-class service and solutions.
-            </p>
+            <p className="text-gray-600 mb-4 text-base text-justify">At GGL, we are proud to be one of Singapore's leading logistics companies. We offer specialized divisions in warehousing, forwarding (air and ocean), and transportation. Our GGL is a trusted global leader in LCL (Less-than-Container Load) consolidation. With a robust presence across North America, the UK, the Middle East, the Indian Subcontinent, Southeast Asia, and the Far East, we offer streamlined groupage services backed by strong customer support and competitive pricing.mission is to deliver comprehensive end-to-end solutions in global freight forwarding, managed through a trusted network of partners who excel in all logistics segments.</p>
+            <p className="text-gray-600 mb-6 text-base text-justify">We are Strategically positioned in major transshipment hubs like Singapore, Malaysia, Sri Lanka, and Dubai, GGL operates direct weekly sailings to key global ports. Our expansive network ensures fast, reliable, and cost-effective consolidation options for freight forwarders and logistics providers.</p>
             <Link to="/about">
               <Button variant="outline" size="sm" className="text-sm">
                 Learn More
