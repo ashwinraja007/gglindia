@@ -36,7 +36,7 @@ const ServiceCard = ({
       case "Air Freight":
         return "/cargoplane3.png";
       case "Ocean Freight":
-        return "/ships2.png";
+        return "/oceanf.png";
       case "Customs Clearance":
         return "/lovable-uploads/cc.jpg";
       case "Liquid Transportation":
@@ -129,53 +129,45 @@ const ServiceDetailCard = ({
 const Services = () => {
   const isMobile = useIsMobile();
   const services = [
-    {
+      {
       id: 1,
-      icon: <Plane className="w-5 h-5" />,
-      title: "Air Freight",
-      image: "/cargoplane3.png",
-      description: "At GGL, we offer a comprehensive range of air freight solutions tailored to meet your time-sensitive and high-priority shipping needs.",
-      link: "/services/air-freight"
-    },
-    {
-      id: 2,
       icon: <Ship className="w-5 h-5" />,
       title: "Ocean Freight",
-      image: "/ships2.png",
+      image: "/oceanf.png",
       description: "At GGL, our dedicated Ocean Freight Department specializes in comprehensive freight management services for both Less-than-Container Load (LCL) and Full Container Load (FCL) shipments.",
       link: "/services/ocean-freight"
     },
     {
-      id: 3,
+      id: 2,
       icon: <Truck className="w-5 h-5" />,
       title: "Transportation",
-      image: "/trucks.png",
-      description: "GGL proudly operates a dedicated fleet of vehicles designed to guarantee timely and efficient domestic distribution and delivery services.",
+      image: "/hom3.png",
+      description: "At GGL India, we understand that efficient transportation and distribution are the backbone of a seamless supply chain. Our dedicated fleet and robust infrastructure ensure that your goods reach their destination on time, every time.",
       link: "/services/transportation"
     },
     {
-      id: 4,
+      id: 3,
       icon: <Warehouse className="w-5 h-5" />,
       title: "Warehousing",
-      image: "/warehouse2.png",
-      description: "GGL is a leading supply chain solutions provider in Singapore, offering end-to- end logistics services tailored to a wide range of industries.",
+      image: "/warehosing.png",
+      description: "At GGL India, we offer comprehensive warehousing and third-party logistics (3PL) solutions designed to streamline your supply chain operations. Our services are tailored to meet the diverse needs of businesses, ensuring efficiency, reliability, and scalability.",
       link: "/services/warehousing"
+    },
+     {
+      id: 2,
+      icon: <Plane className="w-5 h-5" />,
+      title: "Air Freight",
+      image: "/hom2.png",
+      description: "At GGL India, we offer a comprehensive range of air freight services designed to meet all your shipping needs. Our expert air freight teams provide seamless air import, export, and express options, all on a convenient door-to-door basis.",
+      link: "/services/air-freight"
     },
     {
       id: 5,
       icon: <Warehouse className="w-5 h-5" />,
       title: "LCL Consolidation",
-      image: "/lcl.png",
-      description: "GGL is a LCL Consolidator with global presence covering North America, UK, Middle East, Indian Sub Continent, South East Asia and Far East. Our LCL Groupage services is backed by very efficient customer support at competitive prices.",
+      image: "/hom4.png",
+      description: "We collect your goods from your location and prepare them for consolidation. This includes proper labelling, packaging, and documentation to ensure smooth transit.",
       link: "/services/lcl-consolidation"
-    },
-    {
-      id: 6,
-      icon: <Warehouse className="w-5 h-5" />,
-      title: "Project Cargo",
-      image: "/projectcargo3.png",
-      description: "We specialize in delivering end-to-end logistics solutions for complex, heavy, and oversized shipments—commonly known as project cargo.",
-      link: "/services/project-cargo"
     }
   ];
   const featuredServices = services.slice(0, 3);
