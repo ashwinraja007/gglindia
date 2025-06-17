@@ -151,16 +151,44 @@ const About = () => {
           }} viewport={{
             once: true
           }} className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-        Why Choose <span className="text-yellow-500">GGL?</span>
-      </h2>
-      <div className="text-xl text-gray-600 max-w-4xl mx-auto space-y-6 text-left">
+       <div className="text-xl text-gray-600 max-w-4xl mx-auto space-y-6 text-left">
         
         
         <p className="text-base my-0">At GGL, we believe logistics is more than just moving goods — it’s about delivering trust. Our team combines sharp attention to detail with a service-first mindset, ensuring every shipment is handled with care, precision, and efficiency. We pride ourselves on being responsive, proactive, and fully aligned with our clients’ needs. From documentation to delivery, we go the extra mile so you don’t have to.</p>
       </div>
-    </motion.div>
-  </div>
+     <div className="text-gray-700 text-left font-normal">
+                <strong>Comprehensive Air Freight Solutions:</strong>
+                <ul className="list-disc ml-6 mt-2 space-y-2">
+                  <li>
+                    <strong>Import & Export Shipments:</strong> Handling shipments to and from major international destinations.
+                  </li>
+                  <li>
+                    <strong>Express Services:</strong> Fast-track options for time-sensitive deliveries.
+                  </li>
+                  <li>
+                    <strong>Consolidation Services:</strong> Combining smaller shipments to optimize costs and efficiency.
+                  </li>
+                </ul>
+              </div>
+            <div className="text-xl text-gray-600 max-w-4xl mx-auto space-y-6 text-left">
+        
+        
+        <p className="text-base my-0">At GGL, we believe logistics is more than just moving goods — it’s about delivering trust. Our team combines sharp attention to detail with a service-first mindset, ensuring every shipment is handled with care, precision, and efficiency. We pride ourselves on being responsive, proactive, and fully aligned with our clients’ needs. From documentation to delivery, we go the extra mile so you don’t have to.</p>
+      </div>
+  <div className="text-gray-700 text-left font-normal">
+                <strong>Comprehensive Air Freight Solutions:</strong>
+                <ul className="list-disc ml-6 mt-2 space-y-2">
+                  <li>
+                    <strong>Import & Export Shipments:</strong> Handling shipments to and from major international destinations.
+                  </li>
+                  <li>
+                    <strong>Express Services:</strong> Fast-track options for time-sensitive deliveries.
+                  </li>
+                  <li>
+                    <strong>Consolidation Services:</strong> Combining smaller shipments to optimize costs and efficiency.
+                  </li>
+                </ul>
+              </div>
       </section>
 
 
