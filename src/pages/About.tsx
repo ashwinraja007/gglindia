@@ -51,9 +51,11 @@ const About = () => {
                 <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
                   <p>GGL is a trusted global leader in LCL (Less-than-Container Load) consolidation. With a robust presence across North America, the UK, the Middle East, the Indian Subcontinent, Southeast Asia, and the Far East, we offer streamlined groupage services backed by strong customer support and competitive pricing.</p>
 
-                  <p>Strategically positioned in major transshipment hubs like Singapore, Malaysia, Sri Lanka, and Dubai, GGL operates direct weekly sailings to key global ports. Our expansive network ensures fast, reliable, and cost-effective consolidation options for freight forwarders and logistics providers.</p>
+                  <p>We are strategically positioned in major transshipment hubs like Singapore, Malaysia, Sri Lanka, and Dubai, GGL operates direct weekly sailings to key global ports. Our expansive network ensures fast, reliable, and cost-effective consolidation options for freight forwarders and logistics providers.</p>
 
-                  <p>To enhance customer experience, GGL leverages a powerful internet-based software platform that offers real-time shipment visibility — from origin to destination. This technology ensures transparency, control, and timely updates, delivering a seamless and differentiated logistics experience.</p>
+                  <p>One of our standout services is neutral LCL consolidation, designed specifically for freight forwarders and NVOCCs who require confidential, reliable, and competitive groupage solutions. As a neutral consolidator, GGL does not compete with freight forwarders but instead partners with them to provide secure, transparent services that help optimize their global reach and cost efficiency.</p>
+
+                  <p>Our advanced technology platform offers end-to-end shipment visibility, allowing clients to track and manage their cargo with precision. With a team of logistics professionals and a trusted global network, GGL stands as a dependable partner committed to neutrality, excellence, and customer success.</p>
                 </div>
               </motion.div>
 
@@ -85,16 +87,29 @@ const About = () => {
           <div className="max-w-7xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-16">
               <div className="text-xl text-gray-600 max-w-4xl mx-auto space-y-6 text-left">
-                <p>At GGL, we believe logistics is more than just moving goods — it's about delivering trust. Our team combines sharp attention to detail with a service-first mindset, ensuring every shipment is handled with care, precision, and efficiency. We pride ourselves on being responsive, proactive, and fully aligned with our clients’ needs. From documentation to delivery, we go the extra mile so you don’t have to.</p>
+                <p>At GGL, we believe logistics is more than just moving goods — it's about delivering trust. Our team combines sharp attention to detail with a service-first mindset, ensuring every shipment is handled with care, precision, and efficiency. We pride ourselves on being responsive, proactive, and fully aligned with our clients' needs. From documentation to delivery, we go the extra mile so you don't have to.</p>
               </div>
 
-              <div className="text-gray-700 text-left font-normal mt-10">
-                <strong>Comprehensive Air Freight Solutions:</strong>
-                <ul className="list-disc ml-6 mt-2 space-y-2">
-                  <li><strong>Import & Export Shipments:</strong> Handling shipments to and from major international destinations.</li>
-                  <li><strong>Express Services:</strong> Fast-track options for time-sensitive deliveries.</li>
-                  <li><strong>Consolidation Services:</strong> Combining smaller shipments to optimize costs and efficiency.</li>
-                </ul>
+              <div className="text-gray-700 text-left font-normal mt-10 space-y-6">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Comprehensive Logistics Services:</h3>
+                  <ul className="list-disc ml-6 space-y-2">
+                    <li><strong>Air & Ocean Freight (LCL & FCL):</strong> Complete import and export solutions for all cargo types.</li>
+                    <li><strong>Dangerous Goods Handling:</strong> Specialized expertise in hazardous materials transportation.</li>
+                    <li><strong>Warehousing, Distribution & 3PL:</strong> Secure storage and comprehensive third-party logistics solutions.</li>
+                    <li><strong>Domestic & Cross-Border Land Transport:</strong> Efficient ground transportation across regions.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Who We Serve (Neutral Consolidation):</h3>
+                  <ul className="list-disc ml-6 space-y-2">
+                    <li><strong>Freight Forwarders:</strong> Trusted partners for global shipping solutions.</li>
+                    <li><strong>Custom Brokers:</strong> Reliable consolidation services for customs clearance.</li>
+                    <li><strong>NVOCCs:</strong> Neutral support for non-vessel operating common carriers.</li>
+                    <li><strong>3PL Providers:</strong> Comprehensive logistics partnership for third-party providers.</li>
+                  </ul>
+                </div>
               </div>
             </motion.div>
           </div>
