@@ -10,7 +10,7 @@ const About = () => {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900 text-white px-6 mt-16">
+        <section className="py-20 bg-gradient-to-r from-navy-blue to-navy-blue-50 text-white px-6 mt-16">
           <div className="max-w-7xl mx-auto">
             <motion.div initial={{
             opacity: 0,
@@ -47,7 +47,7 @@ const About = () => {
               once: true
             }}>
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                  <span className="text-blue-600">About Us</span>
+                  <span className="text-blue-600 text-[navy-blue]">About Us</span>
                 </h2>
                 <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
                   <p>
