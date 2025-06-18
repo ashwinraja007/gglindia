@@ -93,6 +93,32 @@ const Contact = () => {
                   </div>
                 </div>
 
+                {/* New Delhi Office */}
+                <div className="bg-white p-8 rounded-xl shadow-lg">
+                  <h2 className="text-xl font-semibold mb-4">New Delhi Office</h2>
+                  <div className="flex gap-4 items-start">
+                    <MapPin className="text-blue-600" />
+                    <p className="text-gray-600">JA 511,DLF Tower A,Jasola District Centre, New Delhi, 110025</p>
+                  </div>
+                  <div className="mt-4">
+                    <p className="font-medium">Phone</p>
+                    <p className="text-gray-600">+91 9999022030</p>
+                  </div>
+                </div>
+
+                  {/* Bangalore Office */}
+                <div className="bg-white p-8 rounded-xl shadow-lg">
+                  <h2 className="text-xl font-semibold mb-4">Bangalore Office</h2>
+                  <div className="flex gap-4 items-start">
+                    <MapPin className="text-blue-600" />
+                    <p className="text-gray-600">No 2M-216, First Floor, 2nd Main, East Of NGEF Layout, Kasturinagar, Bangalore-560043</p>
+                  </div>
+                  <div className="mt-4">
+                    <p className="font-medium">Phone</p>
+                    <p className="text-gray-600">+91 9986949743</p>
+                  </div>
+                </div>
+
                 {/* Kolkata Office */}
                 <div className="p-8 rounded-xl shadow-lg bg-slate-100">
                   <h2 className="text-xl font-semibold mb-4">Kolkata Office</h2>
