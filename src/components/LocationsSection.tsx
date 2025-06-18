@@ -12,27 +12,21 @@ const LocationsSection: React.FC = () => {
   const locations: {
     key: LocationKey;
     label: string;
-    caption: string;
   }[] = [{
     key: "Chennai",
-    label: "Chennai",
-    caption: "Head Office"
+    label: "Chennai"
   }, {
     key: "NaviMumbai",
-    label: "Navi Mumbai",
-    caption: "West India Hub"
+    label: "Navi Mumbai"
   }, {
     key: "Delhi",
-    label: "Delhi",
-    caption: "North India Office"
+    label: "Delhi"
   }, {
     key: "Bangalore",
-    label: "Bangalore",
-    caption: "South Tech Park"
+    label: "Bangalore"
   }, {
     key: "Kolkata",
-    label: "Kolkata",
-    caption: "East India Office"
+    label: "Kolkata"
   }];
   return <section className="py-12 bg-white relative">
       <div className="container mx-auto px-4 mb-8">
