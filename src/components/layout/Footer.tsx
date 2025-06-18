@@ -45,7 +45,7 @@ export const Footer = () => {
       title: "Mumbai Office",
       address:
         "407, Mayuresh Planet, Plot No. 42 & 43, Sector-15, CBD Belapur, Navi Mumbai, Maharashtra – 400614",
-      phone: "Export: +91 2245174102, +91 2245174109, +91 2245174118 | Import: +91 2245174113,
+      phone: "Export: +91 2245174102, +91 2245174109, +91 2245174118 | Import: +91 2245174113
     },
     {
       title: "Kolkata Office",
