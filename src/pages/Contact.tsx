@@ -190,37 +190,66 @@ const Contact = () => {
         </section>
 
         {/* Google Maps */}
-        <section className="py-10 bg-gray-50">
-          <div className="container mx-auto px-4 max-w-7xl">
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.6
-          }} viewport={{
-            once: true
-          }} className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-gray-800 flex items-center justify-center gap-3">
-                <MapPin className="text-blue-600" />
-                Our Location
-              </h2>
-              <p className="text-gray-600 mt-2 max-w-2xl mx-auto">Visit us at our Singapore office location</p>
-            </motion.div>
+<section className="py-10 bg-gray-50">
+  <div className="container mx-auto px-4 max-w-7xl">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="text-center mb-10"
+    >
+      <h2 className="text-3xl font-bold text-gray-800 flex items-center justify-center gap-3">
+        <MapPin className="text-blue-600" />
+        Our Locations
+      </h2>
+      <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
+        Visit any of our offices located across India and Singapore.
+      </p>
+    </motion.div>
 
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden relative">
-              <div className="h-[500px] w-full relative">
-                <iframe src="https://www.google.com/maps/d/embed?mid=1GorHPvFj8yMbcANzh1a6NzHSIj-fDHs&ehbc=2E312F" width="100%" height="100%" style={{
-                border: 0
-              }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="GGL Singapore Office Location"></iframe>
-                <div className="absolute top-0 left-0 right-0 h-14 bg-white z-10 pointer-events-none"></div>
-                <div className="absolute top-0 right-0 w-32 h-14 bg-white z-10 pointer-events-none"></div>
-              </div>
-            </div>
-          </div>
-        </section>
+    {/* Grid of Map Embeds */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {[
+        {
+          src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.1544442225477!2d80.22267627575678!3d13.089396612283386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52642e68adc059%3A0x44809bfe043deede!2sOrange%20Office%20Technologies%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1750245904624!5m2!1sen!2sin",
+          title: "Chennai Office",
+        },
+        {
+          src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.278191490516!2d73.0301423758366!3d19.007459354119508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c30763eef235%3A0xc2ce8f2ef45e3191!2sMayuresh%20Planet!5e0!3m2!1sen!2sin!4v1750245844656!5m2!1sen!2sin",
+          title: "Navi Mumbai Office",
+        },
+        {
+          src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.0250426721855!2d77.28670247604325!3d28.538966988322336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce59268477019%3A0x3af4293158fb0798!2sDLF%20TOWER%20A!5e0!3m2!1sen!2sin!4v1750245965280!5m2!1sen!2sin",
+          title: "Delhi Office",
+        },
+        {
+          src: "https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3887.478362374985!2d77.6573394751405!3d13.005180927261943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sNo%202M-216%2C%20First%20Floor%2C%202nd%20Main%2C%20East%20Of%20NGEF%20Layout%2C%20Kasturinagar%2C%20Bangalore-560043!5e0!3m2!1sen!2sin!4v1750246039245!5m2!1sen!2sin",
+          title: "Bangalore Office",
+        },
+        {
+          src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.4000327496638!2d88.34911947590257!3d22.564136933279343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277610a96b977%3A0x114c0a5398a69468!2sMetro%20INOX!5e0!3m2!1sen!2sin!4v1750246121480!5m2!1sen!2sin",
+          title: "Kolkata Office",
+        },
+      ].map((location, index) => (
+        <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden">
+          <iframe
+            src={location.src}
+            width="100%"
+            height="350"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title={location.title}
+          ></iframe>
+          <div className="p-4 text-center text-sm text-gray-700 font-medium">{location.title}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
       </main>
 
       <Footer />
