@@ -90,7 +90,7 @@ const Careers = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-brand-navy to-blue-700 text-white">
+        <section className="py-16 bg-gradient-to-r from-brand-navy to-blue-700 text-white bg-brand-navy">
           <div className="container mx-auto px-4">
             <motion.div initial={{
             opacity: 0,
