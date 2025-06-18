@@ -39,13 +39,13 @@ export const Footer = () => {
       title: "Chennai Office",
       address:
         "Old No. G1, New G3, KAIZEN, 2nd & 3rd Floor, Plot No. 565Q, G Block, Anna Nagar East, Chennai, Tamil Nadu – 600102",
-      phone: "",
+      phone: "Contact us for phone numbers",
     },
     {
       title: "Mumbai Office",
       address:
         "407, Mayuresh Planet, Plot No. 42 & 43, Sector-15, CBD Belapur, Navi Mumbai, Maharashtra – 400614",
-      phone: "",
+      phone: "Export: +91 2245174102, +91 2245174109, +91 2245174118 | Import: +91 2245174113, +91 2245174110, +91 2245174107, +91 2245174112",
     },
     {
       title: "Kolkata Office",
@@ -170,7 +170,7 @@ export const Footer = () => {
           >
             <h3 className="font-bold text-lg text-brand-navy mb-4">Contact Us</h3>
 
-            <div className="relative h-36 overflow-hidden w-full max-w-xs text-gray-600">
+            <div className="relative h-40 overflow-hidden w-full max-w-xs text-gray-600">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
@@ -186,9 +186,9 @@ export const Footer = () => {
                     <p>{addresses[currentIndex].address}</p>
                   </div>
                   {addresses[currentIndex].phone && (
-                    <div className="flex items-center gap-2">
-                      <Phone size={18} className="text-brand-gold flex-shrink-0" />
-                      <p>{addresses[currentIndex].phone}</p>
+                    <div className="flex items-start gap-2 mb-1">
+                      <Phone size={18} className="text-brand-gold mt-1 flex-shrink-0" />
+                      <p className="text-sm leading-relaxed">{addresses[currentIndex].phone}</p>
                     </div>
                   )}
                   {addresses[currentIndex].email && (
