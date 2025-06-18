@@ -84,7 +84,7 @@ export const Services = () => {
         "We collect your goods from your location and prepare them for consolidation. This includes proper labelling, packaging, and documentation to ensure smooth transit.",
       icon: <Warehouse />,
       link: "/services/lcl-consolidation"
-    }
+    },
      {
       image: "/hom3.png",
       title: "Transportation And Distribution",
@@ -115,7 +115,7 @@ export const Services = () => {
       description:
         "At GGL, we specialize in managing project cargo—the transportation of large, heavy, high-value, or complex pieces of equipment and materials essential to major infrastructure, engineering, or industrial projects.",
       icon: <Warehouse />,
-      link: "/services/lcl-consolidation"
+      link: "/services/project-cargo"
     }
   ];
 
