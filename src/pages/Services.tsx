@@ -137,8 +137,16 @@ const Services = () => {
       description: "At GGL, our dedicated Ocean Freight Department specializes in comprehensive freight management services for both Less-than-Container Load (LCL) and Full Container Load (FCL) shipments.",
       link: "/services/ocean-freight"
     },
-    {
+     {
       id: 2,
+      icon: <Warehouse className="w-5 h-5" />,
+      title: "LCL Consolidation",
+      image: "/hom4.png",
+      description: "We collect your goods from your location and prepare them for consolidation. This includes proper labelling, packaging, and documentation to ensure smooth transit.",
+      link: "/services/lcl-consolidation"
+    },
+    {
+      id: 3,
       icon: <Truck className="w-5 h-5" />,
       title: "Transportation",
       image: "/hom3.png",
@@ -146,7 +154,7 @@ const Services = () => {
       link: "/services/transportation"
     },
     {
-      id: 3,
+      id: 4,
       icon: <Warehouse className="w-5 h-5" />,
       title: "Warehousing",
       image: "/warehosing.png",
@@ -154,7 +162,7 @@ const Services = () => {
       link: "/services/warehousing"
     },
      {
-      id: 2,
+      id: 5,
       icon: <Plane className="w-5 h-5" />,
       title: "Air Freight",
       image: "/hom2.png",
@@ -162,11 +170,11 @@ const Services = () => {
       link: "/services/air-freight"
     },
     {
-      id: 5,
+      id: 6,
       icon: <Warehouse className="w-5 h-5" />,
-      title: "LCL Consolidation",
-      image: "/hom4.png",
-      description: "We collect your goods from your location and prepare them for consolidation. This includes proper labelling, packaging, and documentation to ensure smooth transit.",
+      title: "Project Cargo",
+      image: "/projectcargo3.png",
+      description: "We specialize in delivering end-to-end logistics solutions for complex, heavy, and oversized shipments—commonly known as project cargo.",
       link: "/services/lcl-consolidation"
     }
   ];
