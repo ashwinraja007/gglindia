@@ -10,7 +10,7 @@ const About = () => {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-brand-navy to-brand-navy-50 text-white px-6 mt-16">
+        <section className="py-20 bg-gradient-to-r from-brand-navy to-brand-navy text-white px-6 mt-16">
           <div className="max-w-7xl mx-auto">
             <motion.div initial={{
             opacity: 0,
