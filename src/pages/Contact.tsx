@@ -189,25 +189,6 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* Google Maps */}
-<section className="py-10 bg-gray-50">
-  <div className="container mx-auto px-4 max-w-7xl">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      className="text-center mb-10"
-    >
-      <h2 className="text-3xl font-bold text-gray-800 flex items-center justify-center gap-3">
-        <MapPin className="text-blue-600" />
-        Our Locations
-      </h2>
-      <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
-        Visit any of our offices located across India and Singapore.
-      </p>
-    </motion.div>
-
    <section className="py-12 bg-white relative">
         <LocationsSection />
       </section>
