@@ -48,7 +48,7 @@ const LocationsSection: React.FC = () => {
 
       <div className="flex flex-col md:flex-row gap-6 max-w-7xl mx-auto px-[24px]">
         {/* Tabs */}
-        <div className="w-full md:w-[30%] bg-gray-50 p-6 shadow rounded-lg flex flex-col gap-4 px-0 py-0">
+        <div className="w-full md:w-[30%] p-6 shadow rounded-lg flex flex-col gap-4 px-0 py-0 bg-slate-100">
           <h3 className="text-xl font-semibold mb-4 text-gray-700">Select Location</h3>
 
           {locations.map(({
