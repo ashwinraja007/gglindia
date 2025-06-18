@@ -39,7 +39,7 @@ export const Footer = () => {
       title: "Chennai Office",
       address:
         "Old No. G1, New G3, KAIZEN, 2nd & 3rd Floor, Plot No. 565Q, G Block, Anna Nagar East, Chennai, Tamil Nadu – 600102",
-      phone: "Contact us for phone numbers",
+      phone: "+91 9123523496",
     },
     {
       title: "Mumbai Office",
@@ -52,14 +52,7 @@ export const Footer = () => {
       address:
         "Room No. 29, 4th Floor, 6, Jawaharlal Nehru Road, Siddha Esplanade, Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal – 700013",
       phone: "+91 6290921534",
-    },
-    {
-      title: "Singapore Office",
-      address:
-        "GGL (Singapore) Pte Ltd. Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore - 099447",
-      phone: "+65 69080838",
-      email: "june@ggl.sg",
-    },
+    }
   ];
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
