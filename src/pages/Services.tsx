@@ -175,7 +175,7 @@ const Services = () => {
       title: "Project Cargo",
       image: "/projectcargo3.png",
       description: "We specialize in delivering end-to-end logistics solutions for complex, heavy, and oversized shipments—commonly known as project cargo.",
-      link: "/services/lcl-consolidation"
+      link: "/services/project-cargo"
     }
   ];
   const featuredServices = services.slice(0, 3);
