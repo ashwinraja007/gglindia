@@ -25,7 +25,7 @@ const Contact = () => {
       }} animate={{
         opacity: 1
       }} className="relative h-[40vh] flex items-center justify-center bg-blue-600 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/50 to-blue-800/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-navy to-brand-navy/90" />
           <motion.div initial={{
           y: 20,
           opacity: 0
