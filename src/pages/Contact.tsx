@@ -94,7 +94,7 @@ const Contact = () => {
                 </div>
 
                 {/* New Delhi Office */}
-                <div className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="p-8 rounded-xl shadow-lg bg-slate-100">
                   <h2 className="text-xl font-semibold mb-4">New Delhi Office</h2>
                   <div className="flex gap-4 items-start">
                     <MapPin className="text-blue-600" />
@@ -107,7 +107,7 @@ const Contact = () => {
                 </div>
 
                   {/* Bangalore Office */}
-                <div className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="p-8 rounded-xl shadow-lg bg-slate-100">
                   <h2 className="text-xl font-semibold mb-4">Bangalore Office</h2>
                   <div className="flex gap-4 items-start">
                     <MapPin className="text-blue-600" />
