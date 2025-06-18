@@ -36,7 +36,7 @@ const Careers = () => {
 
       <main className="flex-grow pt-20">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-brand-navy to-blue-700 text-white py-16">
+        <section className="from-brand-navy to-blue-700 text-white py-16 bg-[transbrand-navy] bg-brand-navy">
           <div className="container mx-auto px-4">
             <motion.div initial={{
             opacity: 0,
