@@ -50,27 +50,7 @@ const Contact = () => {
                 transition={{ duration: 0.8 }}
                 className="space-y-8"
               >
-                {/* Singapore Office */}
-                <div className="bg-white p-8 rounded-xl shadow-lg">
-                  <h2 className="text-xl font-semibold mb-4">Singapore Office</h2>
-                  <div className="space-y-4">
-                    <div className="flex gap-4 items-start">
-                      <Phone className="text-blue-600" />
-                      <div>
-                        <p className="font-medium">Phone</p>
-                        <p className="text-gray-600">+65 69080838</p>
-                      </div>
-                    </div>
-                    <div className="flex gap-4 items-start">
-                      <MapPin className="text-blue-600" />
-                      <div>
-                        <p className="font-medium">Address</p>
-                        <p className="text-gray-600">GGL (Singapore) Pte Ltd. Blk 511 Kampong Bahru Road #03-01 Keppel Distripark Singapore - 099447</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
+                
                 {/* Chennai Office */}
                 <div className="bg-white p-8 rounded-xl shadow-lg">
                   <h2 className="text-xl font-semibold mb-4">Chennai Office</h2>
