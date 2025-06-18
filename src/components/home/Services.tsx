@@ -78,6 +78,14 @@ export const Services = () => {
       link: "/services/ocean-freight"
     },
      {
+      image: "/hom4.png",
+      title: "LCL Consolidation",
+      description:
+        "We collect your goods from your location and prepare them for consolidation. This includes proper labelling, packaging, and documentation to ensure smooth transit.",
+      icon: <Warehouse />,
+      link: "/services/lcl-consolidation"
+    }
+     {
       image: "/hom3.png",
       title: "Transportation And Distribution",
       description:
@@ -102,10 +110,10 @@ export const Services = () => {
       link: "/services/air-freight"
     },
     {
-      image: "/hom4.png",
-      title: "LCL Consolidation",
+      image: "/projectcargo3.png",
+      title: "Project Cargo",
       description:
-        "We collect your goods from your location and prepare them for consolidation. This includes proper labelling, packaging, and documentation to ensure smooth transit.",
+        "At GGL, we specialize in managing project cargo—the transportation of large, heavy, high-value, or complex pieces of equipment and materials essential to major infrastructure, engineering, or industrial projects.",
       icon: <Warehouse />,
       link: "/services/lcl-consolidation"
     }
