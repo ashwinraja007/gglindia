@@ -39,17 +39,26 @@ export const Footer = () => {
       title: "Chennai Office",
       address:
         "Old No. G1, New G3, KAIZEN, 2nd & 3rd Floor, Plot No. 565Q, G Block, Anna Nagar East, Chennai, Tamil Nadu – 600102",
+      phone: "",
     },
     {
       title: "Mumbai Office",
       address:
         "407, Mayuresh Planet, Plot No. 42 & 43, Sector-15, CBD Belapur, Navi Mumbai, Maharashtra – 400614",
+      phone: "",
     },
     {
       title: "Kolkata Office",
       address:
         "Room No. 29, 4th Floor, 6, Jawaharlal Nehru Road, Siddha Esplanade, Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal – 700013",
       phone: "+91 6290921534",
+    },
+    {
+      title: "Singapore Office",
+      address:
+        "GGL (Singapore) Pte Ltd. Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore - 099447",
+      phone: "+65 69080838",
+      email: "june@ggl.sg",
     },
   ];
 
@@ -59,7 +68,6 @@ export const Footer = () => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % addresses.length);
     }, 4000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -67,10 +75,10 @@ export const Footer = () => {
     <footer className="pt-16 pb-8 bg-gradient-to-b from-white to-gray-100">
       <div className="container mx-auto px-4">
         {/* Decorative Line */}
-        <div className="h-1 bg-gradient-to-r from-brand-navy via-brand-gold to-brand-navy rounded-full mb-8"></div>
+        <div className="h-1 bg-gradient-to-r from-brand-navy via-brand-gold to-brand-navy rounded-full mb-8" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 lg:gap-4">
-          {/* Column 1: Logo & About Section */}
+          {/* Column 1: About */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -151,7 +159,7 @@ export const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Column 3: Contact Info with Scrollable Addresses */}
+          {/* Column 3: Scrollable Address & Phone */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -162,7 +170,7 @@ export const Footer = () => {
           >
             <h3 className="font-bold text-lg text-brand-navy mb-4">Contact Us</h3>
 
-            <div className="relative h-32 overflow-hidden w-full max-w-xs text-gray-600">
+            <div className="relative h-36 overflow-hidden w-full max-w-xs text-gray-600">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
@@ -173,18 +181,18 @@ export const Footer = () => {
                   className="absolute top-0 left-0 w-full"
                 >
                   <p className="font-semibold mb-1">{addresses[currentIndex].title}</p>
-                  <div className="flex items-start gap-2">
+                  <div className="flex items-start gap-2 mb-1">
                     <MapPin size={18} className="text-brand-gold mt-1 flex-shrink-0" />
                     <p>{addresses[currentIndex].address}</p>
                   </div>
                   {addresses[currentIndex].phone && (
-                    <div className="flex items-center gap-2 mt-1">
+                    <div className="flex items-center gap-2">
                       <Phone size={18} className="text-brand-gold flex-shrink-0" />
                       <p>{addresses[currentIndex].phone}</p>
                     </div>
                   )}
                   {addresses[currentIndex].email && (
-                    <div className="flex items-center gap-2 mt-1">
+                    <div className="flex items-center gap-2">
                       <Mail size={18} className="text-brand-gold flex-shrink-0" />
                       <p>{addresses[currentIndex].email}</p>
                     </div>
