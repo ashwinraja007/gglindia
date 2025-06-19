@@ -1,27 +1,52 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+
 const LCLConsolidation = () => {
-  const lclServices = ["Collecting smaller shipments from multiple clients", "Combining them into a single container at origin", "Managing customs clearance and documentation", "Ensuring secure and timely deconsolidation and final delivery", "Real-time tracking and shipment visibility", "Competitive pricing for cost-effective solutions"];
-  const globalHubs = ["Singapore", "Malaysia", "Sri Lanka", "Dubai", "Mumbai (India)", "Chennai (India)"];
-  const handlingSteps = [{
-    title: "1. Cargo Collection & Preparation",
-    description: "We collect your goods from your location and prepare them for consolidation, including proper labelling, packaging, and documentation."
-  }, {
-    title: "2. Consolidation at Our Facilities",
-    description: "Your cargo is consolidated with other shipments at our facilities in Mumbai, Chennai, and key cities—optimizing space and minimizing costs."
-  }, {
-    title: "3. Sea Freight Shipping",
-    description: "Once consolidated, your cargo is shipped via sea freight to major ports worldwide through regular, timely sailings."
-  }, {
-    title: "4. Deconsolidation & Final Delivery",
-    description: "Upon arrival, we deconsolidate your cargo and handle the final-mile delivery to your specified location."
-  }];
-  const whyChooseUs = ["Cost Efficiency: Share container space and reduce shipping costs.", "Flexibility: Ship smaller quantities without waiting to fill a full container.", "Global Reach: Access major ports worldwide through our extensive network.", "Expert Handling: Experienced team ensuring safe and timely delivery."];
-  return <div className="min-h-screen flex flex-col">
+  const lclServices = [
+    "Collecting smaller shipments from multiple clients",
+    "Combining them into a single container at origin",
+    "Managing customs clearance and documentation",
+    "Ensuring secure and timely deconsolidation and final delivery",
+    "Real-time tracking and shipment visibility",
+    "Competitive pricing for cost-effective solutions",
+  ];
+
+  const handlingSteps = [
+    {
+      title: "1. Cargo Collection & Preparation",
+      description:
+        "We collect your goods from your location and prepare them for consolidation, including proper labelling, packaging, and documentation.",
+    },
+    {
+      title: "2. Consolidation at Our Facilities",
+      description:
+        "Your cargo is consolidated with other shipments at our facilities in Mumbai, Chennai, and key cities—optimizing space and minimizing costs.",
+    },
+    {
+      title: "3. Sea Freight Shipping",
+      description:
+        "Once consolidated, your cargo is shipped via sea freight to major ports worldwide through regular, timely sailings.",
+    },
+    {
+      title: "4. Deconsolidation & Final Delivery",
+      description:
+        "Upon arrival, we deconsolidate your cargo and handle the final-mile delivery to your specified location.",
+    },
+  ];
+
+  const whyChooseUs = [
+    "Cost Efficiency: Share container space and reduce shipping costs.",
+    "Flexibility: Ship smaller quantities without waiting to fill a full container.",
+    "Global Reach: Access major ports worldwide through our extensive network.",
+    "Expert Handling: Experienced team ensuring safe and timely delivery.",
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-grow pt-24">
@@ -30,56 +55,48 @@ const LCLConsolidation = () => {
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="md:w-1/2">
-                <motion.h1 initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.5
-              }} className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-3xl md:text-4xl font-bold mb-4 text-gray-900"
+                >
                   LCL Consolidation Services
                 </motion.h1>
-                <motion.p initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.5,
-                delay: 0.1
-              }} className="text-lg text-gray-700 mb-6">
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-lg text-gray-700 mb-6"
+                >
                   Cost-effective consolidation solutions for your smaller shipments
                 </motion.p>
-                <motion.div initial={{
-                opacity: 0,
-                y: 20
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.5,
-                delay: 0.2
-              }}>
-                  <Link to="/contact" className="px-6 py-3 bg-brand-gold hover:bg-amber-400 text-brand-navy font-medium rounded-md shadow-md transition-all">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <Link
+                    to="/contact"
+                    className="px-6 py-3 bg-brand-gold hover:bg-amber-400 text-brand-navy font-medium rounded-md shadow-md transition-all"
+                  >
                     Get a Quote
                   </Link>
                 </motion.div>
               </div>
               <div className="md:w-1/2">
-                <motion.div initial={{
-                opacity: 0,
-                scale: 0.95
-              }} animate={{
-                opacity: 1,
-                scale: 1
-              }} transition={{
-                duration: 0.5
-              }} className="rounded-xl overflow-hidden shadow-xl">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="rounded-xl overflow-hidden shadow-xl"
+                >
                   <AspectRatio ratio={16 / 9}>
-                    <img alt="LCL Consolidation Service" className="w-full h-full object-cover" src="/lovable-uploads/lcl.png" />
+                    <img
+                      alt="LCL Consolidation Service"
+                      className="w-full h-full object-cover"
+                      src="/lovable-uploads/lcl.png"
+                    />
                   </AspectRatio>
                 </motion.div>
               </div>
@@ -87,88 +104,68 @@ const LCLConsolidation = () => {
           </div>
         </section>
 
-        {/* Overview */}
+        {/* Handling Steps */}
         <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
-            
-
-            {/* GGL's Role & Hubs */}
-            
-
-            {/* Handling Steps */}
             <div className="max-w-6xl mx-auto mb-20">
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-800">How GGL India Handles LCL Consolidation</h3>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-800">
+                How GGL India Handles LCL Consolidation
+              </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
-                {handlingSteps.map((step, index) => <motion.div key={index} initial={{
-                opacity: 0,
-                y: 30
-              }} whileInView={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                delay: index * 0.2
-              }} viewport={{
-                once: true
-              }} className="bg-white shadow-md rounded-xl p-6 border-t-4 border-brand-gold">
+                {handlingSteps.map((step, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                    className="bg-white shadow-md rounded-xl p-6 border-t-4 border-brand-gold"
+                  >
                     <h4 className="font-bold mb-2 text-brand-navy">{step.title}</h4>
                     <p className="text-gray-600 text-sm">{step.description}</p>
-                  </motion.div>)}
+                  </motion.div>
+                ))}
               </div>
             </div>
 
             {/* Why Choose Us */}
             <div className="bg-blue-50 rounded-xl p-10 mb-20">
-              <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">Why Choose GGL India for LCL Consolidation?</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
-                {whyChooseUs.map((point, idx) => <div key={idx} className="flex items-start gap-3">
+              <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
+                Why Choose GGL India for LCL Consolidation?
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {whyChooseUs.map((point, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
                     <div className="w-3 h-3 bg-brand-gold rounded-full mt-2" />
                     <p className="text-gray-700">{point}</p>
-                  </div>)}
+                  </div>
+                ))}
               </div>
             </div>
 
-    {/* Auto Scrolling Wide Banners (Before CTA Section) */}
-<div className="relative w-full overflow-hidden bg-white py-6 mb-20">
-  <motion.div
-    className="flex w-[200%]"
-    animate={{ x: ["0%", "-50%"] }}
-    transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-  >
-    {/* Image 1 */}
-    <div className="w-1/2 flex justify-center items-center px-4">
-      <img
-        src="/banner-1.jpg"
-        alt="Wide Banner 1"
-        className="h-[500px] object-contain"
-      />
-    </div>
-    {/* Image 2 (duplicate or replace with another) */}
-    <div className="w-1/2 flex justify-center items-center px-4">
-      <img
-        src="/banner-2.jpg"
-        alt="Wide Banner 2"
-        className="h-[500px] object-contain"
-      />
-    </div>
-  </motion.div>
-</div>
-
+            {/* Fade Slide Banner Section */}
+            <div className="relative w-full h-[500px] overflow-hidden bg-white py-6 mb-20 rounded-xl">
+              <AutoFadeBanner />
+            </div>
 
             {/* CTA */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5
-          }} viewport={{
-            once: true
-          }} className="bg-gradient-to-r from-brand-navy to-blue-700 rounded-xl text-white p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4 text-slate-50">Ready to Consolidate Your Shipments?</h3>
-              <p className="mb-6 text-blue-50">Contact our team today for tailored LCL consolidation solutions.</p>
-              <Link to="/contact" className="inline-block bg-white text-brand-navy px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-r from-brand-navy to-blue-700 rounded-xl text-white p-8 text-center"
+            >
+              <h3 className="text-2xl font-bold mb-4 text-slate-50">
+                Ready to Consolidate Your Shipments?
+              </h3>
+              <p className="mb-6 text-blue-50">
+                Contact our team today for tailored LCL consolidation solutions.
+              </p>
+              <Link
+                to="/contact"
+                className="inline-block bg-white text-brand-navy px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors"
+              >
                 Get a Quote
               </Link>
             </motion.div>
@@ -177,6 +174,41 @@ const LCLConsolidation = () => {
       </main>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default LCLConsolidation;
+
+// Fade-slide banner component
+const AutoFadeBanner = () => {
+  const images = [
+    "/lovable-uploads/banner-1.jpg",
+    "/lovable-uploads/banner-2.jpg", // Replace or duplicate for more
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // 5 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.img
+        key={images[index]}
+        src={images[index]}
+        alt={`Banner ${index + 1}`}
+        className="absolute inset-0 w-full h-full object-contain px-4"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -50 }}
+        transition={{ duration: 1 }}
+      />
+    </AnimatePresence>
+  );
+};
