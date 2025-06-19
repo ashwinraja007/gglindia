@@ -7,7 +7,6 @@ import {
   ArrowRight,
   Facebook,
   Linkedin,
-  ChevronLeft,
   ChevronRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -83,10 +82,6 @@ export const Footer = () => {
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + addresses.length) % addresses.length);
-  };
-
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % addresses.length);
   };
@@ -119,11 +114,7 @@ export const Footer = () => {
               />
             </div>
             <p className="text-sm md:text-base text-gray-600 max-w-xs text-left">
-              At GGL, we are proud to be one of Singapore's leading logistics companies. We offer
-              specialized divisions in warehousing, forwarding (air and ocean), and transportation.
-              Our mission is to deliver comprehensive end-to-end solutions in global freight
-              forwarding, managed through a trusted network of partners who excel in all logistics
-              segments.
+              At GGL, we are proud to be one of Singapore's leading logistics companies...
             </p>
             <div className="flex space-x-3 mt-4">
               <motion.a
@@ -178,7 +169,7 @@ export const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Column 3: Address Navigator */}
+          {/* Column 3: Contact Info with Right Arrow */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -189,7 +180,7 @@ export const Footer = () => {
           >
             <h3 className="font-bold text-lg text-brand-navy mb-4">Contact Us</h3>
 
-            <div className="w-full max-w-xs text-gray-600 min-h-[180px]">
+            <div className="w-full max-w-xs text-gray-600 min-h-[180px] relative">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
@@ -197,7 +188,7 @@ export const Footer = () => {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="w-full"
+                  className="w-full pr-8"
                 >
                   <p className="font-semibold mb-1">{addresses[currentIndex].title}</p>
                   <div className="flex items-start gap-2 mb-1">
@@ -225,26 +216,17 @@ export const Footer = () => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Arrow buttons below address */}
-              <div className="flex justify-between mt-4">
-                <button
-                  onClick={handlePrev}
-                  className="bg-brand-navy text-white p-1 rounded-full hover:bg-brand-gold transition"
-                >
-                  <ChevronLeft size={18} />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="bg-brand-navy text-white p-1 rounded-full hover:bg-brand-gold transition"
-                >
-                  <ChevronRight size={18} />
-                </button>
-              </div>
+              {/* Right-side arrow button only */}
+              <button
+                onClick={handleNext}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-brand-navy text-white p-1 rounded-full hover:bg-brand-gold transition"
+              >
+                <ChevronRight size={18} />
+              </button>
             </div>
           </motion.div>
         </div>
 
-        {/* Footer Bottom */}
         <div className="text-center text-gray-600 mt-10 text-sm">
           &copy; {new Date().getFullYear()} GGL. All Rights Reserved.
         </div>
