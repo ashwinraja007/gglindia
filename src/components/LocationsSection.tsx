@@ -83,7 +83,7 @@ Kolkata, West Bengal - 700013`,
 
       <div className="flex flex-col md:flex-row gap-6 max-w-7xl mx-auto px-4">
         {/* Location Selector */}
-        <div className="w-full md:w-[30%] p-6 shadow rounded-lg flex flex-col gap-4 bg-slate-50">
+        <div className="w-full md:w-[30%] p-6 shadow rounded-lg flex flex-col gap-4 bg-slate-100">
           <h3 className="text-xl font-semibold text-gray-700 mb-2">Select Location</h3>
           {locations.map(({
           key,
@@ -99,7 +99,7 @@ Kolkata, West Bengal - 700013`,
         {/* Address First, Then Map */}
         <div className="w-full md:w-[70%] space-y-6">
           {/* Address Section */}
-          {showDetails && <div className="transition-all duration-500 p-6 bg-gray-50 border border-gray-300 rounded-lg shadow-sm">
+          {showDetails && <div className="transition-all duration-500 p-6 border border-gray-300 rounded-lg shadow-sm bg-slate-100">
               <h4 className="text-xl font-bold text-gray-800 mb-2">Address:</h4>
               <p className="whitespace-pre-line text-gray-700 mb-4">{locationDetails[location].address}</p>
               <h4 className="text-xl font-bold text-gray-800 mb-2">Phone:</h4>
