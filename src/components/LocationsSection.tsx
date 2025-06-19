@@ -60,7 +60,7 @@ const LocationsSection: React.FC = () => {
 
           {/* Optional: your own golden header */}
           <div className="absolute top-0 left-0 w-full text-center font-semibold text-black bg-yellow-400 py-2 z-30">
-            {location} Location - Orange Office Technologies
+            GGL - {location} Location
           </div>
 
           <iframe
