@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const LCLConsolidation = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  const carouselImages = [
-    { src: "/banner-1.jpg", alt: "LCL Export Map 1" },
-    { src: "/banner-2.jpg", alt: "LCL Export Map 2" },
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % carouselImages.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   const handlingSteps = [
     {
       title: "1. Cargo Collection & Preparation",
@@ -44,6 +30,11 @@ const LCLConsolidation = () => {
     "Flexibility: Ship smaller quantities without waiting to fill a full container.",
     "Global Reach: Access major ports worldwide through our extensive network.",
     "Expert Handling: Experienced team ensuring safe and timely delivery."
+  ];
+
+  const exportImages = [
+    { src: "/banner-1.jpg", alt: "Export Map 1" },
+    { src: "/banner-2.jpg", alt: "Export Map 2" }
   ];
 
   return (
@@ -134,7 +125,7 @@ const LCLConsolidation = () => {
               <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
                 Why Choose GGL India for LCL Consolidation?
               </h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-6">
                 {whyChooseUs.map((point, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <div className="w-3 h-3 bg-brand-gold rounded-full mt-2" />
@@ -144,29 +135,25 @@ const LCLConsolidation = () => {
               </div>
             </div>
 
-           {/* Responsive & Smooth Carousel */}
-<section className="pb-16 px-4">
-  <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
-    Our Global LCL Export Coverage
-  </h3>
-  <div className="mx-auto max-w-5xl w-full rounded-xl overflow-hidden shadow-xl">
-    <div className="relative w-full pt-[56.25%] bg-gray-200">
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={carouselImages[currentImage].src}
-          src={carouselImages[currentImage].src}
-          alt={carouselImages[currentImage].alt}
-          initial={{ opacity: 0, scale: 1.03 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.97 }}
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      </AnimatePresence>
-    </div>
-  </div>
-</section>
-
+            {/* 1x2 Static Image Layout */}
+            <section className="pb-16">
+              <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
+                Our Global LCL Export Coverage
+              </h3>
+              <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
+                {exportImages.map((img, idx) => (
+                  <div key={idx} className="rounded-xl overflow-hidden shadow-lg">
+                    <AspectRatio ratio={16 / 9}>
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="w-full h-full object-cover"
+                      />
+                    </AspectRatio>
+                  </div>
+                ))}
+              </div>
+            </section>
 
             {/* CTA */}
             <motion.div
