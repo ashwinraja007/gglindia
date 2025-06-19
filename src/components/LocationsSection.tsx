@@ -1,34 +1,28 @@
 import React, { useState } from "react";
+
 type LocationKey = "Chennai" | "NaviMumbai" | "Delhi" | "Bangalore" | "Kolkata";
+
 const LocationsSection: React.FC = () => {
   const [location, setLocation] = useState<LocationKey>("Chennai");
-  const mapIframes = {
-  Chennai: "https://www.google.com/maps/d/embed?mid=12Rtb_hQeXud-j4o3tW86ldm7Pk8yLk0&ehbc=2E312F&noprof=1",
-  NaviMumbai: "https://www.google.com/maps/d/embed?mid=1S_e0QPhCx7XJpSpngt-uoCrhWZQApqw&ehbc=2E312F&noprof=1",
-  Delhi: "https://www.google.com/maps/d/embed?mid=1kvFU6arJH18wWA5qi9b2NJ-ci4ExfZA&ehbc=2E312F&noprof=1",
-  Bangalore: "https://www.google.com/maps/d/embed?mid=1BB5XPTfJLKxYbhz8G4m8LdKzN5LQi3o&ehbc=2E312F&noprof=1",
-  Kolkata: "https://www.google.com/maps/d/embed?mid=1WkGohVbKN6TZsllkoDWeEWF4TV2bQt0&ehbc=2E312F&noprof=1"
-};
-  const locations: {
-    key: LocationKey;
-    label: string;
-  }[] = [{
-    key: "Chennai",
-    label: "Chennai"
-  }, {
-    key: "NaviMumbai",
-    label: "Navi Mumbai"
-  }, {
-    key: "Delhi",
-    label: "Delhi"
-  }, {
-    key: "Bangalore",
-    label: "Bangalore"
-  }, {
-    key: "Kolkata",
-    label: "Kolkata"
-  }];
-  return <section className="py-12 bg-white relative">
+
+  const mapIframes: Record<LocationKey, string> = {
+    Chennai: "https://www.google.com/maps/d/embed?mid=12Rtb_hQeXud-j4o3tW86ldm7Pk8yLk0&ehbc=2E312F&noprof=1",
+    NaviMumbai: "https://www.google.com/maps/d/embed?mid=1S_e0QPhCx7XJpSpngt-uoCrhWZQApqw&ehbc=2E312F&noprof=1",
+    Delhi: "https://www.google.com/maps/d/embed?mid=1kvFU6arJH18wWA5qi9b2NJ-ci4ExfZA&ehbc=2E312F&noprof=1",
+    Bangalore: "https://www.google.com/maps/d/embed?mid=1BB5XPTfJLKxYbhz8G4m8LdKzN5LQi3o&ehbc=2E312F&noprof=1",
+    Kolkata: "https://www.google.com/maps/d/embed?mid=1WkGohVbKN6TZsllkoDWeEWF4TV2bQt0&ehbc=2E312F&noprof=1"
+  };
+
+  const locations: { key: LocationKey; label: string }[] = [
+    { key: "Chennai", label: "Chennai" },
+    { key: "NaviMumbai", label: "Navi Mumbai" },
+    { key: "Delhi", label: "Delhi" },
+    { key: "Bangalore", label: "Bangalore" },
+    { key: "Kolkata", label: "Kolkata" }
+  ];
+
+  return (
+    <section className="py-12 bg-white relative">
       <div className="container mx-auto px-4 mb-8">
         <div className="text-center max-w-3xl mx-auto mb-8">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-3 text-gray-800">
@@ -44,24 +38,44 @@ const LocationsSection: React.FC = () => {
         {/* Tabs */}
         <div className="w-full md:w-[30%] p-6 shadow rounded-lg flex flex-col gap-4 px-0 py-0 bg-slate-50">
           <h3 className="text-xl font-semibold mb-4 text-gray-700">Select Location</h3>
-
-          {locations.map(({
-          key,
-          label,
-          caption
-        }) => <button key={key} onClick={() => setLocation(key)} className={`p-4 m-2 border rounded text-center flex flex-col items-center transition-all duration-200 ${location === key ? "bg-blue-900 border-blue-950 text-white" : "bg-white border-gray-300 text-gray-800 hover:bg-blue-100"}`}>
+          {locations.map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => setLocation(key)}
+              className={`p-4 m-2 border rounded text-center flex flex-col items-center transition-all duration-200 ${
+                location === key
+                  ? "bg-blue-900 border-blue-950 text-white"
+                  : "bg-white border-gray-300 text-gray-800 hover:bg-blue-100"
+              }`}
+            >
               <span className="text-base font-semibold">{label}</span>
-              <span className="text-sm">{caption}</span>
-            </button>)}
+            </button>
+          ))}
         </div>
 
-        {/* Map */}
-        <div className="w-full md:w-[70%] h-[450px] relative shadow-2xl rounded-lg overflow-hidden">
-          <iframe src={mapIframes[location]} width="100%" height="100%" style={{
-          border: 0
-        }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title={`${location} Map`} className="absolute inset-0" />
+        {/* Map with Golden Header Overlay */}
+        <div className="w-full md:w-[70%] relative shadow-2xl rounded-lg overflow-hidden h-[480px]">
+          {/* Golden Header */}
+          <div className="absolute top-0 left-0 w-full bg-yellow-400 text-black text-center font-bold py-2 z-10 text-lg">
+            {location} Location - Orange Office Technologies
+          </div>
+
+          {/* Map Iframe */}
+          <iframe
+            src={mapIframes[location]}
+            width="100%"
+            height="100%"
+            style={{ border: 0, marginTop: "40px" }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title={`${location} Map`}
+            className="absolute top-[40px] left-0 w-full h-[440px]"
+          />
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default LocationsSection;
