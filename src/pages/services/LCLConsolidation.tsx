@@ -46,9 +46,8 @@ const LCLConsolidation = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
-
       <main className="flex-grow pt-24">
         {/* Hero */}
         <section className="bg-gradient-to-br from-blue-50 to-blue-100 py-12 md:py-16">
@@ -105,7 +104,7 @@ const LCLConsolidation = () => {
         </section>
 
         {/* Handling Steps */}
-        <section className="py-12 md:py-16">
+        <section className="py-12 md:py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto mb-20">
               <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-800">
@@ -143,8 +142,8 @@ const LCLConsolidation = () => {
               </div>
             </div>
 
-            {/* Fade Slide Banner Section */}
-            <div className="relative w-full h-[500px] overflow-hidden bg-white py-6 mb-20 rounded-xl">
+            {/* Auto Scroll Banner */}
+            <div className="relative w-full h-[500px] overflow-hidden mb-20 rounded-xl shadow-lg">
               <AutoFadeBanner />
             </div>
 
@@ -172,7 +171,6 @@ const LCLConsolidation = () => {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
@@ -180,35 +178,42 @@ const LCLConsolidation = () => {
 
 export default LCLConsolidation;
 
-// Fade-slide banner component
+// Updated Auto Scrollable Fade Banner
 const AutoFadeBanner = () => {
   const images = [
     "/banner-1.jpg",
-    "/banner-2.jpg", // Replace or duplicate for more
+    "/banner-2.jpg", // add more images as needed
   ];
-
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // 5 seconds
-
+    }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.img
-        key={images[index]}
-        src={images[index]}
-        alt={`Banner ${index + 1}`}
-        className="absolute inset-0 w-full h-full object-contain px-4"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -50 }}
-        transition={{ duration: 1 }}
-      />
-    </AnimatePresence>
+    <div className="absolute inset-0">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={images[index]}
+          className="absolute inset-0 w-full h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <div
+            className="w-full h-full bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${images[index]})`,
+            }}
+          >
+            <div className="w-full h-full bg-black/20" />
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 };
