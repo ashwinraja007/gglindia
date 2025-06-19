@@ -84,7 +84,7 @@ Kolkata, West Bengal - 700013`,
             <button
               key={key}
               onClick={() => {
-                setLocation(key);
+                setLocation(key as LocationKey);
                 setShowDetails(true);
               }}
               className={`p-4 text-left border rounded transition-all duration-200 ${
@@ -98,8 +98,19 @@ Kolkata, West Bengal - 700013`,
           ))}
         </div>
 
-        {/* Map and Info Section */}
+        {/* Address First, Then Map */}
         <div className="w-full md:w-[70%] space-y-6">
+          {/* Address Section */}
+          {showDetails && (
+            <div className="transition-all duration-500 p-6 bg-gray-50 border border-gray-300 rounded-lg shadow-sm">
+              <h4 className="text-xl font-bold text-gray-800 mb-2">Address:</h4>
+              <p className="whitespace-pre-line text-gray-700 mb-4">{locationDetails[location].address}</p>
+              <h4 className="text-xl font-bold text-gray-800 mb-2">Phone:</h4>
+              <p className="whitespace-pre-line text-gray-700">{locationDetails[location].phone}</p>
+            </div>
+          )}
+
+          {/* Map Section */}
           <div className="relative shadow-2xl rounded-lg overflow-hidden h-[480px]">
             <div className="absolute top-0 left-0 w-full h-[80px] bg-white z-20"></div>
             <div className="absolute top-0 left-0 w-full text-center font-semibold text-black bg-yellow-400 py-2 z-30">
@@ -117,16 +128,6 @@ Kolkata, West Bengal - 700013`,
               className="absolute top-0 left-0 w-full h-full z-10"
             />
           </div>
-
-          {/* Address Dropdown */}
-          {showDetails && (
-            <div className="transition-all duration-500 p-6 bg-gray-50 border border-gray-300 rounded-lg shadow-sm">
-              <h4 className="text-xl font-bold text-gray-800 mb-2">Address:</h4>
-              <p className="whitespace-pre-line text-gray-700 mb-4">{locationDetails[location].address}</p>
-              <h4 className="text-xl font-bold text-gray-800 mb-2">Phone:</h4>
-              <p className="whitespace-pre-line text-gray-700">{locationDetails[location].phone}</p>
-            </div>
-          )}
         </div>
       </div>
     </section>
