@@ -2,13 +2,13 @@ import React, { useState } from "react";
 type LocationKey = "Chennai" | "NaviMumbai" | "Delhi" | "Bangalore" | "Kolkata";
 const LocationsSection: React.FC = () => {
   const [location, setLocation] = useState<LocationKey>("Chennai");
-  const mapIframes: Record<LocationKey, string> = {
-    Chennai: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.1544442225477!2d80.22267627575678!3d13.089396612283386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52642e68adc059%3A0x44809bfe043deede!2sOrange%20Office%20Technologies%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1750245904624!5m2!1sen!2sin",
-    NaviMumbai: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.278191490516!2d73.0301423758366!3d19.007459354119508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c30763eef235%3A0xc2ce8f2ef45e3191!2sMayuresh%20Planet!5e0!3m2!1sen!2sin!4v1750245844656!5m2!1sen!2sin",
-    Delhi: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.0250426721855!2d77.28670247604325!3d28.538966988322336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce59268477019%3A0x3af4293158fb0798!2sDLF%20TOWER%20A!5e0!3m2!1sen!2sin!4v1750245965280!5m2!1sen!2sin",
-    Bangalore: "https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3887.478362374985!2d77.6573394751405!3d13.005180927261943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sNo%202M-216%2C%20First%20Floor%2C%202nd%20Main%2C%20East%20Of%20NGEF%20Layout%2C%20Kasturinagar%2C%20Bangalore-560043!5e0!3m2!1sen!2sin!4v1750246039245!5m2!1sen!2sin",
-    Kolkata: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.4000327496638!2d88.34911947590257!3d22.564136933279343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277610a96b977%3A0x114c0a5398a69468!2sMetro%20INOX!5e0!3m2!1sen!2sin!4v1750246121480!5m2!1sen!2sin"
-  };
+  const mapIframes = {
+  Chennai: "https://www.google.com/maps/d/embed?mid=12Rtb_hQeXud-j4o3tW86ldm7Pk8yLk0&ehbc=2E312F&noprof=1",
+  NaviMumbai: "https://www.google.com/maps/d/embed?mid=1S_e0QPhCx7XJpSpngt-uoCrhWZQApqw&ehbc=2E312F&noprof=1",
+  Delhi: "https://www.google.com/maps/d/embed?mid=1kvFU6arJH18wWA5qi9b2NJ-ci4ExfZA&ehbc=2E312F&noprof=1",
+  Bangalore: "https://www.google.com/maps/d/embed?mid=1BB5XPTfJLKxYbhz8G4m8LdKzN5LQi3o&ehbc=2E312F&noprof=1",
+  Kolkata: "https://www.google.com/maps/d/embed?mid=1WkGohVbKN6TZsllkoDWeEWF4TV2bQt0&ehbc=2E312F&noprof=1"
+};
   const locations: {
     key: LocationKey;
     label: string;
