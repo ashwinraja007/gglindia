@@ -3,7 +3,8 @@ import { useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Plane, Ship, FileText, Droplets, Truck, Warehouse } from "lucide-react";
+import { Plane, Ship, Truck, Warehouse } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 
@@ -36,51 +37,33 @@ const ServiceCard = ({ icon, title, description, image, link }) => {
         return image;
     }
   };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group h-full flex flex-col"
+      className="w-full bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group h-full flex flex-col"
     >
-      <div className="relative w-full h-48 overflow-hidden">
-        <img
-          src={getServiceImage()}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-          <div className="p-3">
-            <div className="bg-brand-gold text-brand-navy p-2 rounded-full inline-block mb-2">
-              {icon}
+      <div className="relative w-full overflow-hidden">
+        <AspectRatio ratio={16 / 9} className="w-full">
+          <img src={getServiceImage()} alt={title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+            <div className="p-4">
+              <div className="bg-brand-gold text-brand-navy p-2 rounded-full inline-block mb-2">
+                {icon}
+              </div>
+              <h3 className="text-lg font-bold text-white mb-1">{title}</h3>
             </div>
-            <h3 className="text-lg font-bold text-white">{title}</h3>
           </div>
-        </div>
+        </AspectRatio>
       </div>
-
       <div className="p-4 flex-grow">
         <p className="text-gray-600 mb-4 line-clamp-3 text-sm">{description}</p>
-        <Link
-          to={link}
-          className="text-brand-gold font-medium hover:text-amber-500 inline-flex items-center text-sm"
-        >
+        <Link to={link} className="text-brand-gold font-medium hover:text-amber-500 inline-flex items-center text-sm">
           Learn More
-          <svg
-            className="w-4 h-4 ml-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
+          <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </Link>
       </div>
@@ -96,7 +79,7 @@ const Services = () => {
       icon: <Ship className="w-5 h-5" />,
       title: "Ocean Freight",
       image: "/oceanf.png",
-      description: "Our Ocean Freight Department handles LCL and FCL shipments globally with reliability and efficiency.",
+      description: "At GGL, our dedicated Ocean Freight Department specializes in comprehensive freight management services for both Less-than-Container Load (LCL) and Full Container Load (FCL) shipments.",
       link: "/services/ocean-freight"
     },
     {
@@ -104,7 +87,7 @@ const Services = () => {
       icon: <Warehouse className="w-5 h-5" />,
       title: "LCL Consolidation",
       image: "/hom4.png",
-      description: "Goods collected, labeled, packed, and documented for seamless consolidated shipping.",
+      description: "We collect your goods from your location and prepare them for consolidation. This includes proper labelling, packaging, and documentation to ensure smooth transit.",
       link: "/services/lcl-consolidation"
     },
     {
@@ -112,7 +95,7 @@ const Services = () => {
       icon: <Truck className="w-5 h-5" />,
       title: "Transportation",
       image: "/hom3.png",
-      description: "Efficient and timely goods transport using our dedicated fleet and infrastructure.",
+      description: "Efficient transportation and distribution are the backbone of a seamless supply chain. Our fleet and infrastructure ensure on-time delivery every time.",
       link: "/services/transportation"
     },
     {
@@ -120,7 +103,7 @@ const Services = () => {
       icon: <Warehouse className="w-5 h-5" />,
       title: "Warehousing",
       image: "/warehosing.png",
-      description: "Flexible warehousing and 3PL services to streamline your supply chain operations.",
+      description: "We offer full-service warehousing and third-party logistics (3PL) to streamline your supply chain with flexible, reliable, and scalable solutions.",
       link: "/services/warehousing"
     },
     {
@@ -128,7 +111,7 @@ const Services = () => {
       icon: <Plane className="w-5 h-5" />,
       title: "Air Freight",
       image: "/hom2.png",
-      description: "Air import/export with express door-to-door services tailored to your needs.",
+      description: "Our air freight services provide fast, reliable, and flexible global shipping — including import/export, express, and door-to-door solutions.",
       link: "/services/air-freight"
     },
     {
@@ -136,7 +119,7 @@ const Services = () => {
       icon: <Warehouse className="w-5 h-5" />,
       title: "Project Cargo",
       image: "/projectcargo3.png",
-      description: "End-to-end solutions for heavy, complex, and oversized cargo shipments.",
+      description: "We specialize in delivering end-to-end logistics for heavy, oversized, and time-critical shipments, ensuring efficiency and safety.",
       link: "/services/project-cargo"
     }
   ];
@@ -145,14 +128,15 @@ const Services = () => {
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
       <Header />
-      <main className="flex-grow pt-16 md:pt-20">
 
+      <main className="flex-grow pt-16 md:pt-20">
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-gray-900 to-brand-navy text-white relative overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img src="/lovable-uploads/gp.jpg" alt="Services" className="w-full h-full object-cover opacity-20" />
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-brand-navy opacity-90"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-brand-navy opacity-90" />
           </div>
+
           <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -160,12 +144,10 @@ const Services = () => {
               transition={{ duration: 0.5 }}
               className="text-center max-w-3xl mx-auto"
             >
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 text-white">
-                Our Logistics Services
-              </h1>
+              <h1 className="text-3xl md:text-5xl font-bold mb-4">Our Logistics Services</h1>
               <div className="w-20 h-1 bg-brand-gold mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-white/90 mb-8">
-                From air and ocean freight to specialized transportation solutions, we offer end-to-end logistics expertise.
+                From air and ocean freight to specialized transportation solutions, we offer end-to-end logistics expertise to meet your global shipping needs.
               </p>
             </motion.div>
           </div>
@@ -181,24 +163,24 @@ const Services = () => {
               viewport={{ once: true }}
               className="text-center mb-8"
             >
-              <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-3">
-                All Services
-              </h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-3">All Services</h2>
               <div className="w-20 h-1 bg-brand-gold mx-auto mb-4"></div>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Explore our comprehensive range of services designed to meet all your logistics requirements.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
               {services.map(service => (
-                <ServiceCard key={service.id} {...service} />
+                <div key={service.id} className="w-full max-w-sm">
+                  <ServiceCard {...service} />
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Why Choose Us Section */}
+        {/* Why Choose Us */}
         <section className="py-12 bg-gray-50">
           <div className="container mx-auto px-4 max-w-5xl">
             <motion.div
@@ -208,11 +190,11 @@ const Services = () => {
               viewport={{ once: true }}
               className="text-center max-w-2xl mx-auto mb-8"
             >
-              <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-3">
-                Why Choose Our Logistics Services?
-              </h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-3">Why Choose Our Logistics Services?</h2>
               <div className="w-20 h-1 bg-brand-gold mx-auto mb-3"></div>
-              <p className="text-gray-700">We combine industry expertise, advanced technology, and personalized care to deliver exceptional logistics solutions.</p>
+              <p className="text-gray-700">
+                We combine industry expertise, advanced technology, and personalized care to deliver exceptional logistics solutions.
+              </p>
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -232,12 +214,8 @@ const Services = () => {
                   viewport={{ once: true }}
                   className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow border-l-4 border-brand-gold"
                 >
-                  <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 text-xs md:text-sm">
-                    {feature.description}
-                  </p>
+                  <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2">{feature.title}</h3>
+                  <p className="text-gray-600 text-xs md:text-sm">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -252,6 +230,7 @@ const Services = () => {
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   );
