@@ -4,6 +4,7 @@ type LocationKey = "Chennai" | "NaviMumbai" | "Delhi" | "Bangalore" | "Kolkata";
 
 const LocationsSection: React.FC = () => {
   const [location, setLocation] = useState<LocationKey>("Chennai");
+  const [showDetails, setShowDetails] = useState(true);
 
   const mapIframes: Record<LocationKey, string> = {
     Chennai: "https://www.google.com/maps/d/embed?mid=12Rtb_hQeXud-j4o3tW86ldm7Pk8yLk0&ehbc=2E312F&noprof=1",
@@ -13,7 +14,60 @@ const LocationsSection: React.FC = () => {
     Kolkata: "https://www.google.com/maps/d/embed?mid=1WkGohVbKN6TZsllkoDWeEWF4TV2bQt0&ehbc=2E312F&noprof=1"
   };
 
-  const locations: { key: LocationKey; label: string }[] = [
+  const locationDetails: Record<LocationKey, { address: string; phone: string }> = {
+    Chennai: {
+      address: `Old No G1, New G3, KAIZEN 2nd & 3rd Floor,
+Plot No. 565Q, G Block, Annanagar East,
+Chennai, Tamil Nadu - 600102`,
+      phone: `Export Customer Service:
++91 2245174102, +91 2245174109, +91 2245174118
+
+Export Docs Team:
++91 2245174103, +91 2245174105
+
+Import Docs Team:
++91 2245174104, +91 2245174106
+
+Import Customer Service:
++91 2245174113, +91 2245174110, +91 2245174107, +91 2245174112`
+    },
+    NaviMumbai: {
+      address: `407, MAYURESH PLANET, PLOT NO - 42 & 43,
+SECTOR-15, CBD BELAPUR,
+NAVI MUMBAI, MAHARASHTRA - 400614`,
+      phone: `Export Customer Service:
++91 2245174102, +91 2245174109, +91 2245174118
+
+Export Docs Team:
++91 2245174103, +91 2245174105
+
+Import Docs Team:
++91 2245174104, +91 2245174106
+
+Import Customer Service:
++91 2245174113, +91 2245174110, +91 2245174107, +91 2245174112`
+    },
+    Delhi: {
+      address: `JA 511, DLF Tower A,
+Jasola District Centre, New Delhi - 110025`,
+      phone: `+91 9999022030`
+    },
+    Bangalore: {
+      address: `No 2M-216, First Floor,
+2nd Main, East Of NGEF Layout,
+Kasturinagar, Bangalore - 560043`,
+      phone: `+91 9986949743`
+    },
+    Kolkata: {
+      address: `Room No - 29, 4th Floor,
+6, Jawaharlal Nehru Rd, Siddha Esplanade,
+Adjacent to Metro Central (Previously Metro Cinema),
+Kolkata, West Bengal - 700013`,
+      phone: `+91 6290921534`
+    }
+  };
+
+  const locations = [
     { key: "Chennai", label: "Chennai" },
     { key: "NaviMumbai", label: "Navi Mumbai" },
     { key: "Delhi", label: "Delhi" },
@@ -23,57 +77,66 @@ const LocationsSection: React.FC = () => {
 
   return (
     <section className="py-12 bg-white relative">
-      <div className="container mx-auto px-4 mb-8">
-        <div className="text-center max-w-3xl mx-auto mb-8">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-3 text-gray-800">
-            Visit Our Locations
-          </h2>
-          <p className="text-lg text-gray-600">
-            Find us at our convenient office locations across India
-          </p>
-        </div>
+      <div className="container mx-auto px-4 mb-8 text-center">
+        <h2 className="font-heading font-bold text-3xl md:text-4xl mb-3 text-gray-800">
+          Visit Our Locations
+        </h2>
+        <p className="text-lg text-gray-600">
+          Find us at our convenient office locations across India
+        </p>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-6 max-w-7xl mx-auto px-[24px]">
-        {/* Tabs */}
-        <div className="w-full md:w-[30%] p-6 shadow rounded-lg flex flex-col gap-4 px-0 py-0 bg-slate-50">
-          <h3 className="text-xl font-semibold mb-4 text-gray-700">Select Location</h3>
+      <div className="flex flex-col md:flex-row gap-6 max-w-7xl mx-auto px-4">
+        {/* Location Selector */}
+        <div className="w-full md:w-[30%] p-6 shadow rounded-lg flex flex-col gap-4 bg-slate-50">
+          <h3 className="text-xl font-semibold text-gray-700 mb-2">Select Location</h3>
           {locations.map(({ key, label }) => (
             <button
               key={key}
-              onClick={() => setLocation(key)}
-              className={`p-4 m-2 border rounded text-center flex flex-col items-center transition-all duration-200 ${
+              onClick={() => {
+                setLocation(key);
+                setShowDetails(true);
+              }}
+              className={`p-4 text-left border rounded transition-all duration-200 ${
                 location === key
-                  ? "bg-blue-900 border-blue-950 text-white"
-                  : "bg-white border-gray-300 text-gray-800 hover:bg-blue-100"
+                  ? "bg-blue-900 text-white border-blue-900"
+                  : "bg-white text-gray-800 border-gray-300 hover:bg-blue-100"
               }`}
             >
-              <span className="text-base font-semibold">{label}</span>
+              {label}
             </button>
           ))}
         </div>
 
-        {/* Map with overlay to hide black header */}
-        <div className="w-full md:w-[70%] relative shadow-2xl rounded-lg overflow-hidden h-[480px]">
-          {/* Overlay to cover Google My Maps black header */}
-          <div className="absolute top-0 left-0 w-full h-[80px] bg-white z-20"></div>
-
-          {/* Optional: your own golden header */}
-          <div className="absolute top-0 left-0 w-full text-center font-semibold text-black bg-yellow-400 py-2 z-30">
-            GGL - {location} Location
+        {/* Map and Info Section */}
+        <div className="w-full md:w-[70%] space-y-6">
+          <div className="relative shadow-2xl rounded-lg overflow-hidden h-[480px]">
+            <div className="absolute top-0 left-0 w-full h-[80px] bg-white z-20"></div>
+            <div className="absolute top-0 left-0 w-full text-center font-semibold text-black bg-yellow-400 py-2 z-30">
+              GGL - {location} Location
+            </div>
+            <iframe
+              src={mapIframes[location]}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title={`${location} Map`}
+              className="absolute top-0 left-0 w-full h-full z-10"
+            />
           </div>
 
-          <iframe
-            src={mapIframes[location]}
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title={`${location} Map`}
-            className="absolute top-0 left-0 w-full h-full z-10"
-          />
+          {/* Address Dropdown */}
+          {showDetails && (
+            <div className="transition-all duration-500 p-6 bg-gray-50 border border-gray-300 rounded-lg shadow-sm">
+              <h4 className="text-xl font-bold text-gray-800 mb-2">Address:</h4>
+              <p className="whitespace-pre-line text-gray-700 mb-4">{locationDetails[location].address}</p>
+              <h4 className="text-xl font-bold text-gray-800 mb-2">Phone:</h4>
+              <p className="whitespace-pre-line text-gray-700">{locationDetails[location].phone}</p>
+            </div>
+          )}
         </div>
       </div>
     </section>
