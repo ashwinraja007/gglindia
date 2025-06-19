@@ -1,202 +1,158 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
-import LocationsSection from "@/components/LocationsSection";
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaFacebookF } from 'react-icons/fa';
-import { Phone, Mail, MapPin, Send } from 'lucide-react';
+import { Phone, MapPin, Send } from 'lucide-react';
+
+type LocationKey = 'Chennai' | 'Singapore' | 'Delhi' | 'Bangalore';
+
+const locationData: Record<LocationKey, {
+  address: string;
+  phone: string;
+  map: string;
+}> = {
+  Chennai: {
+    address: "GGL India Pvt Ltd, No 123 Mount Road, Chennai - 600002",
+    phone: "+91 44 12345678",
+    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.994004587946!2d80.25184147483198!3d13.060416987256908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52664a56e43ef3%3A0x4f4eabf4c7f1c1c6!2sMount%20Road%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1686996243732!5m2!1sen!2sin"
+  },
+  Singapore: {
+    address: "GGL (Singapore) Pte Ltd. Blk 511 Kampong Bahru Road #03-01 Keppel Distripark Singapore - 099447",
+    phone: "+65 69080838",
+    map: "https://www.google.com/maps/d/embed?mid=1GorHPvFj8yMbcANzh1a6NzHSIj-fDHs&ehbc=2E312F"
+  },
+  Delhi: {
+    address: "GGL India Pvt Ltd, 4th Floor, Connaught Place, New Delhi - 110001",
+    phone: "+91 11 87654321",
+    map: "https://maps.google.com/maps?q=Connaught%20Place%2C%20New%20Delhi&t=&z=13&ie=UTF8&iwloc=&output=embed"
+  },
+  Bangalore: {
+    address: "GGL India Pvt Ltd, MG Road, Bangalore - 560001",
+    phone: "+91 80 98765432",
+    map: "https://maps.google.com/maps?q=MG%20Road%2C%20Bangalore&t=&z=13&ie=UTF8&iwloc=&output=embed"
+  }
+};
+
 const Contact = () => {
-  const {
-    register,
-    handleSubmit
-  } = useForm();
+  const [location, setLocation] = useState<LocationKey>('Chennai');
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data: any) => {
     console.log(data);
   };
-  return <div className="min-h-screen flex flex-col relative">
+
+  const currentLocation = locationData[location];
+
+  return (
+    <div className="min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-grow">
-        <motion.section initial={{
-        opacity: 0
-      }} animate={{
-        opacity: 1
-      }} className="relative h-[40vh] flex items-center justify-center bg-blue-600 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-navy to-brand-navy/90" />
-          <motion.div initial={{
-          y: 20,
-          opacity: 0
-        }} animate={{
-          y: 0,
-          opacity: 1
-        }} transition={{
-          delay: 0.2,
-          duration: 0.8
-        }} className="text-center px-4 relative z-10">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-5">Get in Touch</h1>
-            <p className="text-lg text-white/90 max-w-2xl mx-auto font-light">
-              We're here to help and answer any questions you might have.
-            </p>
-          </motion.div>
-        </motion.section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
-              {/* Contact Info Cards */}
-              <motion.div initial={{
-              opacity: 0,
-              x: -20
-            }} animate={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.8
-            }} className="space-y-8">
-                
-                {/* Chennai Office */}
-                <div className="p-8 rounded-xl shadow-lg bg-slate-100">
-                  <h2 className="text-xl font-semibold mb-4">Chennai Office</h2>
-                  <div className="flex gap-4 items-start">
-                    <MapPin className="text-blue-600" />
-                    <p className="text-gray-600">Old No G1, New G3, KAIZEN 2nd & 3rd Floor Plot No, 565Q, G Block, Annanagar East, Chennai, Tamil Nadu 600102</p>
-                  </div>
-                </div>
+        {/* Location Selector & Map */}
+        <section className="bg-gray-100 py-12">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              
+              {/* Left Side - Selector & Info */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="bg-white rounded-xl shadow-xl p-6 md:p-8"
+              >
+                <h2 className="text-2xl font-bold mb-6 text-brand-navy">Choose Office Location</h2>
 
-                {/* Mumbai Office */}
-                <div className="p-8 rounded-xl shadow-lg bg-slate-100">
-                  <h2 className="text-xl font-semibold mb-4">Mumbai Office</h2>
-                  <div className="space-y-4">
-                    <div className="flex gap-4 items-start">
-                      <MapPin className="text-blue-600" />
-                      <p className="text-gray-600">407, MAYURESH PLANET, PLOT NO - 42 & 43, SECTOR-15, CBD BELAPUR NAVI MUMBAI, MAHARASHTRA, 400614</p>
-                    </div>
+                <label className="block text-sm font-semibold mb-2">Select Location</label>
+                <select
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value as LocationKey)}
+                  className="w-full border border-gray-300 rounded-lg p-3 mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  {Object.keys(locationData).map((key) => (
+                    <option key={key} value={key}>{key}</option>
+                  ))}
+                </select>
+
+                <div className="space-y-4 text-sm text-gray-700">
+                  <div className="flex items-start gap-3">
+                    <Phone className="text-blue-600 mt-1" />
                     <div>
-                      <p className="font-medium">Export Customer Service</p>
-                      <p className="text-gray-600">+91 2245174102, +91 2245174109, +91 2245174118</p>
+                      <p className="font-semibold">Phone</p>
+                      <p>{currentLocation.phone}</p>
                     </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <MapPin className="text-blue-600 mt-1" />
                     <div>
-                      <p className="font-medium">Export Docs Team</p>
-                      <p className="text-gray-600">+91 2245174103, +91 2245174105</p>
+                      <p className="font-semibold">Address</p>
+                      <p>{currentLocation.address}</p>
                     </div>
-                    <div>
-                      <p className="font-medium">Import Docs Team</p>
-                      <p className="text-gray-600">+91 2245174104, +91 2245174106</p>
-                    </div>
-                    <div>
-                      <p className="font-medium">Import Customer Service</p>
-                      <p className="text-gray-600">+91 2245174113, +91 2245174110, +91 2245174107, +91 2245174112</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* New Delhi Office */}
-                <div className="p-8 rounded-xl shadow-lg bg-slate-100">
-                  <h2 className="text-xl font-semibold mb-4">New Delhi Office</h2>
-                  <div className="flex gap-4 items-start">
-                    <MapPin className="text-blue-600" />
-                    <p className="text-gray-600">JA 511,DLF Tower A,Jasola District Centre, New Delhi, 110025</p>
-                  </div>
-                  <div className="mt-4">
-                    <p className="font-medium">Phone</p>
-                    <p className="text-gray-600">+91 9999022030</p>
-                  </div>
-                </div>
-
-                  {/* Bangalore Office */}
-                <div className="p-8 rounded-xl shadow-lg bg-slate-100">
-                  <h2 className="text-xl font-semibold mb-4">Bangalore Office</h2>
-                  <div className="flex gap-4 items-start">
-                    <MapPin className="text-blue-600" />
-                    <p className="text-gray-600">No 2M-216, First Floor, 2nd Main, East Of NGEF Layout, Kasturinagar, Bangalore-560043</p>
-                  </div>
-                  <div className="mt-4">
-                    <p className="font-medium">Phone</p>
-                    <p className="text-gray-600">+91 9986949743</p>
-                  </div>
-                </div>
-
-                {/* Kolkata Office */}
-                <div className="p-8 rounded-xl shadow-lg bg-slate-100">
-                  <h2 className="text-xl font-semibold mb-4">Kolkata Office</h2>
-                  <div className="flex gap-4 items-start">
-                    <MapPin className="text-blue-600" />
-                    <p className="text-gray-600">Room No - 29, 4th Floor, 6, Jawaharlal Nehru Rd, Siddha Esplanade, Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal 700013</p>
-                  </div>
-                  <div className="mt-4">
-                    <p className="font-medium">Phone</p>
-                    <p className="text-gray-600">+91 6290921534</p>
-                  </div>
-                </div>
-
-                {/* Social Links */}
-                <div className="pt-6 border-t">
-                  <p className="font-medium mb-4">Connect With Us</p>
-                  <div className="flex gap-4">
-                    <motion.a href="https://www.linkedin.com/company/gglus/" target="_blank" rel="noopener noreferrer" whileHover={{
-                    y: -5
-                  }} className="bg-gray-100 p-3 rounded-full text-gray-600 hover:bg-blue-600 hover:text-white transition-colors">
-                      <FaLinkedin size={18} />
-                    </motion.a>
-                    <motion.a href="https://www.facebook.com/gglusa" target="_blank" rel="noopener noreferrer" whileHover={{
-                    y: -5
-                  }} className="bg-gray-100 p-3 rounded-full text-gray-600 hover:bg-blue-600 hover:text-white transition-colors">
-                      <FaFacebookF size={18} />
-                    </motion.a>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Contact Form */}
-              <motion.div initial={{
-              opacity: 0,
-              x: 20
-            }} animate={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.8
-            }} className="bg-white p-8 rounded-xl shadow-lg">
-                <h2 className="text-2xl font-bold mb-4">Send us a Message</h2>
-                <p className="text-gray-600 mb-6">Fill in the form below and we'll get back to you as soon as possible.</p>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Input placeholder="First Name" {...register("firstName")} className="border-gray-200 focus:ring-blue-500" />
-                    <Input placeholder="Last Name" {...register("lastName")} className="border-gray-200 focus:ring-blue-500" />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Input placeholder="Email" type="email" {...register("email")} className="border-gray-200 focus:ring-blue-500" />
-                    <Input placeholder="Phone" {...register("phone")} className="border-gray-200 focus:ring-blue-500" />
-                  </div>
-                  <Input placeholder="Organization/Company" {...register("organization")} className="border-gray-200 focus:ring-blue-500" />
-                  <Textarea placeholder="Your Message" className="min-h-[120px] border-gray-200 focus:ring-blue-500" {...register("message")} />
-                  <motion.div whileHover={{
-                  scale: 1.02
-                }} whileTap={{
-                  scale: 0.98
-                }}>
-                    <Button type="submit" className="w-full text-white py-6 flex items-center justify-center gap-2 bg-[_brand-navy] bg-brand-navy">
-                      Send Message
-                      <Send size={18} />
-                    </Button>
-                  </motion.div>
-                </form>
+              {/* Right Side - Map */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="rounded-xl shadow-xl overflow-hidden border border-gray-200"
+              >
+                <iframe
+                  src={currentLocation.map}
+                  width="100%"
+                  height="400"
+                  allowFullScreen
+                  loading="lazy"
+                  className="w-full h-full"
+                  title={`${location} Office Map`}
+                ></iframe>
               </motion.div>
             </div>
           </div>
         </section>
 
-   <section className="py-12 bg-white relative">
-        <LocationsSection />
-      </section>
+        {/* Contact Form */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <div className="bg-gray-50 p-8 rounded-xl shadow-xl">
+              <h2 className="text-3xl font-bold mb-4 text-center">Send Us a Message</h2>
+              <p className="text-gray-600 text-center mb-8">Fill in the form below and we’ll get back to you soon.</p>
 
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Input placeholder="First Name" {...register("firstName")} />
+                  <Input placeholder="Last Name" {...register("lastName")} />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Input placeholder="Email" type="email" {...register("email")} />
+                  <Input placeholder="Phone" {...register("phone")} />
+                </div>
+
+                <Input placeholder="Organization/Company" {...register("organization")} />
+                <Textarea placeholder="Your Message" className="min-h-[120px]" {...register("message")} />
+
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button type="submit" className="w-full bg-brand-navy text-white py-6 flex items-center justify-center gap-2">
+                    Send Message <Send size={18} />
+                  </Button>
+                </motion.div>
+              </form>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default Contact;
