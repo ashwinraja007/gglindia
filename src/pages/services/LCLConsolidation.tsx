@@ -50,7 +50,7 @@ const LCLConsolidation = () => {
       <Header />
 
       <main className="flex-grow pt-24">
-        {/* Hero */}
+        {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-50 to-blue-100 py-12 md:py-16">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-8">
@@ -143,7 +143,7 @@ const LCLConsolidation = () => {
               </div>
             </div>
 
-            {/* Fade Slide Banner Section */}
+            {/* Auto Fade Banner */}
             <div className="relative w-full h-[500px] overflow-hidden bg-white py-6 mb-20 rounded-xl">
               <AutoFadeBanner />
             </div>
@@ -180,11 +180,11 @@ const LCLConsolidation = () => {
 
 export default LCLConsolidation;
 
-// Fade-slide banner component
+// Smooth fade banner with no glitch
 const AutoFadeBanner = () => {
   const images = [
     "/banner-1.jpg",
-    "/banner-2.jpg", // Replace or duplicate for more
+    "/banner-2.jpg", // Add more if needed
   ];
 
   const [index, setIndex] = useState(0);
@@ -192,23 +192,24 @@ const AutoFadeBanner = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // 5 seconds
-
+    }, 5000);
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.img
-        key={images[index]}
-        src={images[index]}
-        alt={`Banner ${index + 1}`}
-        className="absolute inset-0 w-full h-full object-contain px-4"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -50 }}
-        transition={{ duration: 1 }}
-      />
-    </AnimatePresence>
+    <div className="relative w-full h-full rounded-xl overflow-hidden">
+      <AnimatePresence>
+        <motion.img
+          key={images[index]}
+          src={images[index]}
+          alt={`Banner ${index + 1}`}
+          className="absolute inset-0 w-full h-full object-cover"
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 1 }}
+        />
+      </AnimatePresence>
+    </div>
   );
 };
