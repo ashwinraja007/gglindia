@@ -53,24 +53,26 @@ const LocationsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Map with Golden Header Overlay */}
+        {/* Map with overlay to hide black header */}
         <div className="w-full md:w-[70%] relative shadow-2xl rounded-lg overflow-hidden h-[480px]">
-          {/* Golden Header */}
-          <div className="absolute top-0 left-0 w-full bg-yellow-400 text-black text-center font-bold py-2 z-10 text-lg">
+          {/* Overlay to cover Google My Maps black header */}
+          <div className="absolute top-0 left-0 w-full h-[45px] bg-white z-20"></div>
+
+          {/* Optional: your own golden header */}
+          <div className="absolute top-0 left-0 w-full text-center font-semibold text-black bg-yellow-400 py-2 z-30">
             {location} Location - Orange Office Technologies
           </div>
 
-          {/* Map Iframe */}
           <iframe
             src={mapIframes[location]}
             width="100%"
             height="100%"
-            style={{ border: 0, marginTop: "40px" }}
+            style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title={`${location} Map`}
-            className="absolute top-[40px] left-0 w-full h-[440px]"
+            className="absolute top-0 left-0 w-full h-full z-10"
           />
         </div>
       </div>
