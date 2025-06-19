@@ -126,17 +126,56 @@ const LCLConsolidation = () => {
                   </div>)}
               </div>
             </div>
-  {/* Global LCL Export Maps */}
-<div className="overflow-x-auto whitespace-nowrap py-10 mb-10">
-  <div className="inline-flex gap-6 px-4">
+
+ {/* Global LCL Export Maps */}
+<div className="relative w-full overflow-hidden py-10 mb-10">
+  <div
+    className="flex gap-6 animate-scroll-x px-4"
+    style={{
+      width: "max-content",
+      animation: "scroll-x 30s linear infinite",
+    }}
+  >
     <div className="w-[700px] md:w-[900px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
-      <img src="/banner-1.jpg" alt="LCL Export Map 1" className="w-full h-auto object-cover" />
+      <img
+        src="/banner-1.jpg"
+        alt="LCL Export Map 1"
+        className="w-full h-auto object-cover"
+      />
     </div>
     <div className="w-[700px] md:w-[900px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
-      <img src="/banner-2.jpg" alt="LCL Export Map 2" className="w-full h-auto object-cover" />
+      <img
+        src="/banner-2.jpg"
+        alt="LCL Export Map 2"
+        className="w-full h-auto object-cover"
+      />
+    </div>
+    {/* Repeat for seamless infinite scroll */}
+    <div className="w-[700px] md:w-[900px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
+      <img
+        src="/banner-1.jpg"
+        alt="LCL Export Map 1 Duplicate"
+        className="w-full h-auto object-cover"
+      />
+    </div>
+    <div className="w-[700px] md:w-[900px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
+      <img
+        src="/banner-2.jpg"
+        alt="LCL Export Map 2 Duplicate"
+        className="w-full h-auto object-cover"
+      />
     </div>
   </div>
+
+  {/* Add animation keyframes using Tailwind's custom CSS or global CSS */}
+  <style>{`
+    @keyframes scroll-x {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  `}</style>
 </div>
+
 
 
             {/* CTA */}
