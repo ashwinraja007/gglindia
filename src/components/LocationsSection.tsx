@@ -19,17 +19,7 @@ const LocationsSection: React.FC = () => {
       address: `Old No G1, New G3, KAIZEN 2nd & 3rd Floor,
 Plot No. 565Q, G Block, Annanagar East,
 Chennai, Tamil Nadu - 600102`,
-      phone: `Export Customer Service:
-+91 2245174102, +91 2245174109, +91 2245174118
-
-Export Docs Team:
-+91 2245174103, +91 2245174105
-
-Import Docs Team:
-+91 2245174104, +91 2245174106
-
-Import Customer Service:
-+91 2245174113, +91 2245174110, +91 2245174107, +91 2245174112`
+      phone: `+91 9123523496`
     },
     NaviMumbai: {
       address: `407, MAYURESH PLANET, PLOT NO - 42 & 43,
