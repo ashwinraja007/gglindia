@@ -32,7 +32,7 @@ const LCLConsolidation = () => {
     "Expert Handling: Experienced team ensuring safe and timely delivery."
   ];
 
-  const images = [
+  const carouselImages = [
     { src: "/banner-1.jpg", alt: "LCL Export Map 1" },
     { src: "/banner-2.jpg", alt: "LCL Export Map 2" }
   ];
@@ -41,7 +41,7 @@ const LCLConsolidation = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentImage((prev) => (prev + 1) % carouselImages.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -106,12 +106,12 @@ const LCLConsolidation = () => {
         </section>
 
         {/* Handling Steps */}
-        <section className="py-16">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
             <h3 className="text-2xl md:text-3xl font-bold mb-10 text-center text-gray-800">
               How GGL India Handles LCL Consolidation
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
               {handlingSteps.map((step, index) => (
                 <motion.div
                   key={index}
@@ -130,7 +130,7 @@ const LCLConsolidation = () => {
         </section>
 
         {/* Why Choose Us */}
-        <section className="bg-blue-50 rounded-xl p-10 mx-4 md:mx-20 mb-20">
+        <section className="bg-blue-50 rounded-xl p-10 mx-4 md:mx-20 mb-16">
           <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
             Why Choose GGL India for LCL Consolidation?
           </h3>
@@ -144,18 +144,18 @@ const LCLConsolidation = () => {
           </div>
         </section>
 
-        {/* Global LCL Export Maps Carousel */}
+        {/* Image Carousel - Global Export Map */}
         <section className="py-12">
-          <h3 className="text-2xl font-bold mb-8 text-center text-gray-800">
-            Global LCL Export Coverage
+          <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
+            Our Global LCL Export Coverage
           </h3>
           <div className="flex justify-center">
             <div className="w-[700px] md:w-[900px] h-[500px] rounded-xl overflow-hidden shadow-2xl relative">
               <AnimatePresence mode="wait">
                 <motion.img
-                  key={images[currentImage].src}
-                  src={images[currentImage].src}
-                  alt={images[currentImage].alt}
+                  key={carouselImages[currentImage].src}
+                  src={carouselImages[currentImage].src}
+                  alt={carouselImages[currentImage].alt}
                   className="w-full h-full object-cover"
                   initial={{ opacity: 0, x: 100 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -167,27 +167,27 @@ const LCLConsolidation = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <motion.section
+        {/* CTA */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
           className="bg-gradient-to-r from-brand-navy to-blue-700 rounded-xl text-white p-8 text-center mx-4 md:mx-20 mb-16"
         >
-          <h3 className="text-2xl font-bold mb-4 text-white">
+          <h3 className="text-2xl font-bold mb-4 text-slate-50">
             Ready to Consolidate Your Shipments?
           </h3>
-          <p className="mb-6 text-blue-100">
+          <p className="mb-6 text-blue-50">
             Contact our team today for tailored LCL consolidation solutions.
           </p>
           <Link
             to="/contact"
-            className="inline-block bg-white text-brand-navy px-6 py-3 rounded-lg font-medium hover:bg-blue-100 transition-colors"
+            className="inline-block bg-white text-brand-navy px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors"
           >
             Get a Quote
           </Link>
-        </motion.section>
+        </motion.div>
       </main>
 
       <Footer />
