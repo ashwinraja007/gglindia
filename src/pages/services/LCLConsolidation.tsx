@@ -127,6 +127,26 @@ const LCLConsolidation = () => {
               </div>
             </div>
 
+     {/* Auto Slideshow Section */}
+<div className="relative w-full max-w-6xl mx-auto mb-20 overflow-hidden rounded-xl shadow-lg">
+  <motion.div
+    className="flex w-[200%]"
+    animate={{ x: ["0%", "-50%"] }}
+    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+  >
+    <img
+      src="/banner-1.jpg"
+      alt="Slideshow 1"
+      className="w-1/2 object-cover h-64"
+    />
+    <img
+      src="/banner-2.jpg"
+      alt="Slideshow 2"
+      className="w-1/2 object-cover h-64"
+    />
+  </motion.div>
+</div>
+
             {/* CTA */}
             <motion.div initial={{
             opacity: 0,
