@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 interface AddressInfo {
   title: string;
   address: string;
-  phone?: string;
+  phone?: string | string[];
   email?: string;
 }
 
@@ -38,21 +38,38 @@ export const Footer = () => {
     {
       title: "Chennai Office",
       address:
-        "Old No. G1, New G3, KAIZEN, 2nd & 3rd Floor, Plot No. 565Q, G Block, Anna Nagar East, Chennai, Tamil Nadu – 600102",
+        "Old No G1, New G3, KAIZEN 2nd & 3rd Floor, Plot No. 565Q, G Block, Annanagar East, Chennai, Tamil Nadu 600102",
       phone: "+91 9123523496",
     },
     {
       title: "Mumbai Office",
       address:
         "407, Mayuresh Planet, Plot No. 42 & 43, Sector-15, CBD Belapur, Navi Mumbai, Maharashtra – 400614",
-      phone: "Export: +91 2245174102, +91 2245174109, +91 2245174118 | Import: +91 2245174113"
+      phone: [
+        "Export Customer Service: +91 2245174102, +91 2245174109, +91 2245174118",
+        "Export Docs Team: +91 2245174103, +91 2245174105",
+        "Import Docs Team: +91 2245174104, +91 2245174106",
+        "Import Customer Service: +91 2245174113, +91 2245174110, +91 2245174107, +91 2245174112",
+      ],
+    },
+    {
+      title: "New Delhi Office",
+      address:
+        "JA 511, DLF Tower A, Jasola District Centre, New Delhi, 110025",
+      phone: "+91 9999022030",
+    },
+    {
+      title: "Bangalore Office",
+      address:
+        "No 2M-216, First Floor, 2nd Main, East Of NGEF Layout, Kasturinagar, Bangalore-560043",
+      phone: "+91 9986949743",
     },
     {
       title: "Kolkata Office",
       address:
-        "Room No. 29, 4th Floor, 6, Jawaharlal Nehru Road, Siddha Esplanade, Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal – 700013",
+        "Room No - 29, 4th Floor, 6, Jawaharlal Nehru Rd, Siddha Esplanade, Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal 700013",
       phone: "+91 6290921534",
-    }
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -64,10 +81,13 @@ export const Footer = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollToChennai = () => {
+    setCurrentIndex(0);
+  };
+
   return (
     <footer className="pt-16 pb-8 bg-gradient-to-b from-white to-gray-100">
       <div className="container mx-auto px-4">
-        {/* Decorative Line */}
         <div className="h-1 bg-gradient-to-r from-brand-navy via-brand-gold to-brand-navy rounded-full mb-8" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 lg:gap-4">
@@ -152,7 +172,7 @@ export const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Column 3: Scrollable Address & Phone */}
+          {/* Column 3: Address Scroll + Button */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -162,8 +182,7 @@ export const Footer = () => {
             className="flex flex-col items-start md:items-end lg:items-start lg:pl-10"
           >
             <h3 className="font-bold text-lg text-brand-navy mb-4">Contact Us</h3>
-
-            <div className="relative h-40 overflow-hidden w-full max-w-xs text-gray-600">
+            <div className="relative h-44 overflow-hidden w-full max-w-xs text-gray-600 mb-2">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
@@ -179,10 +198,19 @@ export const Footer = () => {
                     <p>{addresses[currentIndex].address}</p>
                   </div>
                   {addresses[currentIndex].phone && (
-                    <div className="flex items-start gap-2 mb-1">
-                      <Phone size={18} className="text-brand-gold mt-1 flex-shrink-0" />
-                      <p className="text-sm leading-relaxed">{addresses[currentIndex].phone}</p>
-                    </div>
+                    Array.isArray(addresses[currentIndex].phone) ? (
+                      addresses[currentIndex].phone.map((line, idx) => (
+                        <div key={idx} className="flex items-start gap-2 mb-1">
+                          <Phone size={18} className="text-brand-gold mt-1 flex-shrink-0" />
+                          <p className="text-sm leading-relaxed">{line}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="flex items-start gap-2 mb-1">
+                        <Phone size={18} className="text-brand-gold mt-1 flex-shrink-0" />
+                        <p className="text-sm leading-relaxed">{addresses[currentIndex].phone}</p>
+                      </div>
+                    )
                   )}
                   {addresses[currentIndex].email && (
                     <div className="flex items-center gap-2">
@@ -193,6 +221,12 @@ export const Footer = () => {
                 </motion.div>
               </AnimatePresence>
             </div>
+            <button
+              onClick={scrollToChennai}
+              className="text-sm bg-brand-navy text-white px-3 py-1 rounded hover:bg-brand-gold transition"
+            >
+              View Chennai Office
+            </button>
           </motion.div>
         </div>
 
