@@ -26,7 +26,6 @@ const EnhancedServiceCard = ({
       className="group w-full overflow-hidden rounded-lg bg-white border border-gray-200 shadow hover:shadow-md transition-shadow"
     >
       <Link to={link} className="flex flex-col h-full" onClick={() => window.scrollTo(0, 0)}>
-        {/* Image */}
         <div className="overflow-hidden">
           <AspectRatio ratio={3 / 2}>
             <img
@@ -36,8 +35,6 @@ const EnhancedServiceCard = ({
             />
           </AspectRatio>
         </div>
-
-        {/* Content */}
         <div className="flex flex-col flex-grow p-3 gap-2">
           <div className="flex items-center gap-2 text-brand-navy">
             <div className="w-6 h-6 rounded-full bg-[#f6b100] flex items-center justify-center text-white">
@@ -45,11 +42,9 @@ const EnhancedServiceCard = ({
             </div>
             <h3 className="text-sm font-semibold">{title}</h3>
           </div>
-
           <p className="text-xs text-gray-600 line-clamp-3 leading-snug">
             {description}
           </p>
-
           <div className="text-xs text-brand-gold font-medium inline-flex items-center mt-1">
             Learn More
             <motion.span
@@ -66,7 +61,6 @@ const EnhancedServiceCard = ({
   );
 };
 
-// Services Component
 export const Services = () => {
   const services = [
     {
@@ -77,7 +71,7 @@ export const Services = () => {
       icon: <Anchor />,
       link: "/services/ocean-freight"
     },
-     {
+    {
       image: "/hom4.png",
       title: "LCL Consolidation",
       description:
@@ -85,7 +79,7 @@ export const Services = () => {
       icon: <Warehouse />,
       link: "/services/lcl-consolidation"
     },
-     {
+    {
       image: "/hom3.png",
       title: "Transportation And Distribution",
       description:
@@ -101,7 +95,7 @@ export const Services = () => {
       icon: <Warehouse />,
       link: "/services/warehousing"
     },
-      {
+    {
       image: "/hom2.png",
       title: "Air Freight",
       description:
@@ -156,7 +150,7 @@ export const Services = () => {
 
         <motion.div
           variants={containerVariants}
-          className="grid grid-cols-3 gap-3 max-w-5xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto"
         >
           {services.map((service, index) => (
             <motion.div
