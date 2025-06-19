@@ -1,6 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Phone, Mail, ArrowRight, Facebook, Linkedin } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  ArrowRight,
+  Facebook,
+  Linkedin,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface AddressInfo {
@@ -54,8 +63,7 @@ export const Footer = () => {
     },
     {
       title: "New Delhi Office",
-      address:
-        "JA 511, DLF Tower A, Jasola District Centre, New Delhi, 110025",
+      address: "JA 511, DLF Tower A, Jasola District Centre, New Delhi, 110025",
       phone: "+91 9999022030",
     },
     {
@@ -74,23 +82,23 @@ export const Footer = () => {
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % addresses.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % addresses.length);
+  };
 
-  const scrollToChennai = () => {
-    setCurrentIndex(0);
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? addresses.length - 1 : prevIndex - 1
+    );
   };
 
   return (
     <footer className="pt-16 pb-8 bg-gradient-to-b from-white to-gray-100">
       <div className="container mx-auto px-4">
+        {/* Decorative Line */}
         <div className="h-1 bg-gradient-to-r from-brand-navy via-brand-gold to-brand-navy rounded-full mb-8" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 lg:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Column 1: About */}
           <motion.div
             initial="hidden"
@@ -104,7 +112,6 @@ export const Footer = () => {
                 src="/lovable-uploads/GGL.png"
                 alt="GGL Logo"
                 className="h-14 w-auto object-contain"
-                loading="lazy"
               />
               <img
                 src="/1GlobalEnterprises.png"
@@ -112,7 +119,7 @@ export const Footer = () => {
                 className="h-10 w-auto object-contain mt-2"
               />
             </div>
-            <p className="text-sm md:text-base text-gray-600 max-w-xs text-left">
+            <p className="text-sm text-gray-600 max-w-xs text-left">
               At GGL, we are proud to be one of Singapore's leading logistics companies. We offer
               specialized divisions in warehousing, forwarding (air and ocean), and transportation.
               Our mission is to deliver comprehensive end-to-end solutions in global freight
@@ -172,17 +179,18 @@ export const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Column 3: Address Scroll + Button */}
+          {/* Column 3: Address Navigation */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={footerAnimation}
             transition={{ delay: 0.4 }}
-            className="flex flex-col items-start md:items-end lg:items-start lg:pl-10"
+            className="flex flex-col items-start md:items-end lg:items-start lg:pl-10 w-full"
           >
             <h3 className="font-bold text-lg text-brand-navy mb-4">Contact Us</h3>
-            <div className="relative h-44 overflow-hidden w-full max-w-xs text-gray-600 mb-2">
+
+            <div className="relative w-full max-w-xs text-gray-600 min-h-[180px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
@@ -190,7 +198,7 @@ export const Footer = () => {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="absolute top-0 left-0 w-full"
+                  className="absolute w-full"
                 >
                   <p className="font-semibold mb-1">{addresses[currentIndex].title}</p>
                   <div className="flex items-start gap-2 mb-1">
@@ -198,19 +206,16 @@ export const Footer = () => {
                     <p>{addresses[currentIndex].address}</p>
                   </div>
                   {addresses[currentIndex].phone && (
-                    Array.isArray(addresses[currentIndex].phone) ? (
-                      addresses[currentIndex].phone.map((line, idx) => (
-                        <div key={idx} className="flex items-start gap-2 mb-1">
-                          <Phone size={18} className="text-brand-gold mt-1 flex-shrink-0" />
-                          <p className="text-sm leading-relaxed">{line}</p>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="flex items-start gap-2 mb-1">
-                        <Phone size={18} className="text-brand-gold mt-1 flex-shrink-0" />
-                        <p className="text-sm leading-relaxed">{addresses[currentIndex].phone}</p>
+                    <div className="flex items-start gap-2 mb-1">
+                      <Phone size={18} className="text-brand-gold mt-1 flex-shrink-0" />
+                      <div className="text-sm leading-relaxed">
+                        {Array.isArray(addresses[currentIndex].phone)
+                          ? addresses[currentIndex].phone.map((line, idx) => (
+                              <p key={idx}>{line}</p>
+                            ))
+                          : <p>{addresses[currentIndex].phone}</p>}
                       </div>
-                    )
+                    </div>
                   )}
                   {addresses[currentIndex].email && (
                     <div className="flex items-center gap-2">
@@ -220,13 +225,22 @@ export const Footer = () => {
                   )}
                 </motion.div>
               </AnimatePresence>
+              {/* Navigation Arrows */}
+              <div className="flex justify-between absolute top-1/2 -translate-y-1/2 w-full px-2">
+                <button
+                  onClick={handlePrev}
+                  className="bg-brand-navy text-white p-1 rounded-full hover:bg-brand-gold transition"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="bg-brand-navy text-white p-1 rounded-full hover:bg-brand-gold transition"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
             </div>
-            <button
-              onClick={scrollToChennai}
-              className="text-sm bg-brand-navy text-white px-3 py-1 rounded hover:bg-brand-gold transition"
-            >
-              View Chennai Office
-            </button>
           </motion.div>
         </div>
 
