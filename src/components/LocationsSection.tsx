@@ -56,7 +56,7 @@ const LocationsSection: React.FC = () => {
         {/* Map with overlay to hide black header */}
         <div className="w-full md:w-[70%] relative shadow-2xl rounded-lg overflow-hidden h-[480px]">
           {/* Overlay to cover Google My Maps black header */}
-          <div className="absolute top-0 left-0 w-full h-[45px] bg-white z-20"></div>
+          <div className="absolute top-0 left-0 w-full h-[80px] bg-white z-20"></div>
 
           {/* Optional: your own golden header */}
           <div className="absolute top-0 left-0 w-full text-center font-semibold text-black bg-yellow-400 py-2 z-30">
