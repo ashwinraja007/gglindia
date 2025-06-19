@@ -135,12 +135,12 @@ const LCLConsolidation = () => {
               </div>
             </div>
 
-            {/* 1x2 Static Image Layout */}
+            {/* 2x1 Static Image Layout */}
             <section className="pb-16">
               <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
                 Our Global LCL Export Coverage
               </h3>
-              <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {exportImages.map((img, idx) => (
                   <div key={idx} className="rounded-xl overflow-hidden shadow-lg">
                     <AspectRatio ratio={16 / 9}>
