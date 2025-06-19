@@ -6,17 +6,6 @@ import { Link } from 'react-router-dom';
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const LCLConsolidation = () => {
-  const lclServices = [
-    "Collecting smaller shipments from multiple clients",
-    "Combining them into a single container at origin",
-    "Managing customs clearance and documentation",
-    "Ensuring secure and timely deconsolidation and final delivery",
-    "Real-time tracking and shipment visibility",
-    "Competitive pricing for cost-effective solutions"
-  ];
-
-  const globalHubs = ["Singapore", "Malaysia", "Sri Lanka", "Dubai", "Mumbai (India)", "Chennai (India)"];
-
   const handlingSteps = [
     {
       title: "1. Cargo Collection & Preparation",
@@ -116,16 +105,58 @@ const LCLConsolidation = () => {
           </div>
         </section>
 
-        {/* Global LCL Export Maps */}
-        <section className="py-8">
-          <div className="w-full flex justify-center overflow-hidden">
-            <div className="w-[700px] md:w-[900px] rounded-xl overflow-hidden shadow-lg relative">
+        {/* Handling Steps */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <h3 className="text-2xl md:text-3xl font-bold mb-10 text-center text-gray-800">
+              How GGL India Handles LCL Consolidation
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {handlingSteps.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="bg-white shadow-md rounded-xl p-6 border-t-4 border-brand-gold"
+                >
+                  <h4 className="font-bold mb-2 text-brand-navy">{step.title}</h4>
+                  <p className="text-gray-600 text-sm">{step.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section className="bg-blue-50 rounded-xl p-10 mx-4 md:mx-20 mb-20">
+          <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
+            Why Choose GGL India for LCL Consolidation?
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {whyChooseUs.map((point, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <div className="w-3 h-3 bg-brand-gold rounded-full mt-2" />
+                <p className="text-gray-700">{point}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Global LCL Export Maps Carousel */}
+        <section className="py-12">
+          <h3 className="text-2xl font-bold mb-8 text-center text-gray-800">
+            Global LCL Export Coverage
+          </h3>
+          <div className="flex justify-center">
+            <div className="w-[700px] md:w-[900px] h-[500px] rounded-xl overflow-hidden shadow-2xl relative">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={images[currentImage].src}
                   src={images[currentImage].src}
                   alt={images[currentImage].alt}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-full object-cover"
                   initial={{ opacity: 0, x: 100 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -100 }}
@@ -136,68 +167,27 @@ const LCLConsolidation = () => {
           </div>
         </section>
 
-        {/* Handling Steps */}
-        <section className="py-12 md:py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto mb-20">
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-800">
-                How GGL India Handles LCL Consolidation
-              </h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
-                {handlingSteps.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.2 }}
-                    viewport={{ once: true }}
-                    className="bg-white shadow-md rounded-xl p-6 border-t-4 border-brand-gold"
-                  >
-                    <h4 className="font-bold mb-2 text-brand-navy">{step.title}</h4>
-                    <p className="text-gray-600 text-sm">{step.description}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Why Choose Us */}
-            <div className="bg-blue-50 rounded-xl p-10 mb-20">
-              <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
-                Why Choose GGL India for LCL Consolidation?
-              </h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
-                {whyChooseUs.map((point, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <div className="w-3 h-3 bg-brand-gold rounded-full mt-2" />
-                    <p className="text-gray-700">{point}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-r from-brand-navy to-blue-700 rounded-xl text-white p-8 text-center"
-            >
-              <h3 className="text-2xl font-bold mb-4 text-slate-50">
-                Ready to Consolidate Your Shipments?
-              </h3>
-              <p className="mb-6 text-blue-50">
-                Contact our team today for tailored LCL consolidation solutions.
-              </p>
-              <Link
-                to="/contact"
-                className="inline-block bg-white text-brand-navy px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors"
-              >
-                Get a Quote
-              </Link>
-            </motion.div>
-          </div>
-        </section>
+        {/* CTA Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-r from-brand-navy to-blue-700 rounded-xl text-white p-8 text-center mx-4 md:mx-20 mb-16"
+        >
+          <h3 className="text-2xl font-bold mb-4 text-white">
+            Ready to Consolidate Your Shipments?
+          </h3>
+          <p className="mb-6 text-blue-100">
+            Contact our team today for tailored LCL consolidation solutions.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-block bg-white text-brand-navy px-6 py-3 rounded-lg font-medium hover:bg-blue-100 transition-colors"
+          >
+            Get a Quote
+          </Link>
+        </motion.section>
       </main>
 
       <Footer />
