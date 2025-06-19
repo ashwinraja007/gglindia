@@ -183,8 +183,8 @@ export default LCLConsolidation;
 // Fade-slide banner component
 const AutoFadeBanner = () => {
   const images = [
-    "/lovable-uploads/banner-1.jpg",
-    "/lovable-uploads/banner-2.jpg", // Replace or duplicate for more
+    "/banner-1.jpg",
+    "/banner-2.jpg", // Replace or duplicate for more
   ];
 
   const [index, setIndex] = useState(0);
