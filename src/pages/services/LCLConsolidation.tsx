@@ -144,28 +144,29 @@ const LCLConsolidation = () => {
               </div>
             </div>
 
-            {/* Smooth Carousel */}
-            <section className="pb-16">
-              <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
-                Our Global LCL Export Coverage
-              </h3>
-              <div className="flex justify-center">
-                <div className="relative w-[700px] md:w-[900px] h-[500px] bg-gray-100 overflow-hidden rounded-xl shadow-2xl">
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={carouselImages[currentImage].src}
-                      src={carouselImages[currentImage].src}
-                      alt={carouselImages[currentImage].alt}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.6 }}
-                      className="absolute top-0 left-0 w-full h-full object-cover"
-                    />
-                  </AnimatePresence>
-                </div>
-              </div>
-            </section>
+           {/* Responsive & Smooth Carousel */}
+<section className="pb-16 px-4">
+  <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
+    Our Global LCL Export Coverage
+  </h3>
+  <div className="mx-auto max-w-5xl w-full rounded-xl overflow-hidden shadow-xl">
+    <div className="relative w-full pt-[56.25%] bg-gray-200">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={carouselImages[currentImage].src}
+          src={carouselImages[currentImage].src}
+          alt={carouselImages[currentImage].alt}
+          initial={{ opacity: 0, scale: 1.03 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.97 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </AnimatePresence>
+    </div>
+  </div>
+</section>
+
 
             {/* CTA */}
             <motion.div
