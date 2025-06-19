@@ -130,10 +130,10 @@ const LCLConsolidation = () => {
 <div className="overflow-x-auto whitespace-nowrap py-10 mb-10">
   <div className="inline-flex gap-6 px-4">
     <div className="w-[700px] md:w-[900px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
-      <img src="/lovable-uploads/banner-1.jpg" alt="LCL Export Map 1" className="w-full h-auto object-cover" />
+      <img src="/banner-1.jpg" alt="LCL Export Map 1" className="w-full h-auto object-cover" />
     </div>
     <div className="w-[700px] md:w-[900px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
-      <img src="/lovable-uploads/banner-2.jpg" alt="LCL Export Map 2" className="w-full h-auto object-cover" />
+      <img src="/banner-2.jpg" alt="LCL Export Map 2" className="w-full h-auto object-cover" />
     </div>
   </div>
 </div>
