@@ -96,7 +96,7 @@ export const Services = () => {
       link: "/services/warehousing"
     },
     {
-      image: "/hom2.png",
+      image: "/aircargo1.png",
       title: "Air Freight",
       description:
         "At GGL India, we offer a comprehensive range of air freight services designed to meet all your shipping needs. Our expert air freight teams provide seamless air import, export, and express options, all on a convenient door-to-door basis.",
@@ -104,7 +104,7 @@ export const Services = () => {
       link: "/services/air-freight"
     },
     {
-      image: "/projectcargo3.png",
+      image: "/cargoh1.png",
       title: "Project Cargo",
       description:
         "At GGL, we specialize in managing project cargo—the transportation of large, heavy, high-value, or complex pieces of equipment and materials essential to major infrastructure, engineering, or industrial projects.",
