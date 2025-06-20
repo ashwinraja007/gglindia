@@ -12,37 +12,37 @@ const LCLConsolidation = () => {
     "Managing customs clearance and documentation",
     "Ensuring secure and timely deconsolidation and final delivery",
     "Real-time tracking and shipment visibility",
-    "Competitive pricing for cost-effective solutions",
+    "Competitive pricing for cost-effective solutions"
   ];
 
   const handlingSteps = [
     {
       title: "1. Cargo Collection & Preparation",
       description:
-        "We collect your goods from your location and prepare them for consolidation, including proper labelling, packaging, and documentation.",
+        "We collect your goods from your location and prepare them for consolidation, including proper labelling, packaging, and documentation."
     },
     {
       title: "2. Consolidation at Our Facilities",
       description:
-        "Your cargo is consolidated with other shipments at our facilities in Mumbai, Chennai, and key cities—optimizing space and minimizing costs.",
+        "Your cargo is consolidated with other shipments at our facilities in Mumbai, Chennai, and key cities—optimizing space and minimizing costs."
     },
     {
       title: "3. Sea Freight Shipping",
       description:
-        "Once consolidated, your cargo is shipped via sea freight to major ports worldwide through regular, timely sailings.",
+        "Once consolidated, your cargo is shipped via sea freight to major ports worldwide through regular, timely sailings."
     },
     {
       title: "4. Deconsolidation & Final Delivery",
       description:
-        "Upon arrival, we deconsolidate your cargo and handle the final-mile delivery to your specified location.",
-    },
+        "Upon arrival, we deconsolidate your cargo and handle the final-mile delivery to your specified location."
+    }
   ];
 
   const whyChooseUs = [
     "Cost Efficiency: Share container space and reduce shipping costs.",
     "Flexibility: Ship smaller quantities without waiting to fill a full container.",
     "Global Reach: Access major ports worldwide through our extensive network.",
-    "Expert Handling: Experienced team ensuring safe and timely delivery.",
+    "Expert Handling: Experienced team ensuring safe and timely delivery."
   ];
 
   return (
@@ -144,17 +144,15 @@ const LCLConsolidation = () => {
             </div>
 
             {/* Auto Fade Banner */}
-            <div className="mb-20 h-64 rounded-xl overflow-hidden shadow-lg">
-              <AutoFadeBanner />
-            </div>
+            <AutoFadeBanner />
 
-            {/* CTA Section */}
+            {/* CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-r from-brand-navy to-blue-700 rounded-xl text-white p-8 text-center"
+              className="bg-gradient-to-r from-brand-navy to-blue-700 rounded-xl text-white p-8 text-center mt-20"
             >
               <h3 className="text-2xl font-bold mb-4 text-slate-50">
                 Ready to Consolidate Your Shipments?
@@ -180,30 +178,30 @@ const LCLConsolidation = () => {
 
 export default LCLConsolidation;
 
-// 👇 Auto-fading banner with image transition
+// Image Banner Section (Below CTA or wherever appropriate)
 const AutoFadeBanner = () => {
-  const images = ["/banner-1.jpg", "/banner-2.jpg"];
+  const images = ["/banner-1.jpg"];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
+    }, 7000);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, []);
 
   return (
-    <div className="relative w-full h-full">
-      <AnimatePresence mode="wait">
+    <div className="relative w-full h-[400px] md:h-[600px] lg:h-[700px] overflow-hidden rounded-xl my-10">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.img
           key={images[index]}
           src={images[index]}
           alt={`Banner ${index + 1}`}
-          className="absolute inset-0 w-full h-full object-cover"
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.05 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
+          className="absolute inset-0 w-full h-full object-contain object-center"
         />
       </AnimatePresence>
     </div>
