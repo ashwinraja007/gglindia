@@ -80,25 +80,26 @@ const Services = () => {
       <Header />
       <main className="flex-grow pt-16 md:pt-20">
         <section className="bg-gradient-to-r from-gray-900 to-brand-navy text-white relative overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <img src="/lovable-uploads/gp.jpg" alt="Services" className="w-full h-full object-cover opacity-20" />
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-brand-navy opacity-90" />
-          </div>
-          <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center max-w-3xl mx-auto"
-            >
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 text-slate-50">Our Logistics Services</h1>
-              <div className="w-20 h-1 bg-brand-gold mx-auto mb-6"></div>
-              <p className="text-lg md:text-xl text-white/90 mb-8">
-                From air and ocean freight to specialized transportation solutions, we offer end-to-end logistics expertise to meet your global shipping needs.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+  <div className="absolute inset-0 z-0">
+    <img src="/lovable-uploads/gp.jpg" alt="Services" className="w-full h-full object-cover opacity-20" />
+    <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-brand-navy opacity-90" />
+  </div>
+
+  <div className="container mx-auto px-4 py-8 md:py-12 relative z-10"> {/* reduced padding */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="text-center max-w-3xl mx-auto"
+    >
+      <h1 className="text-2xl md:text-4xl font-bold mb-2 text-slate-50">Our Logistics Services</h1> {/* smaller heading, tighter spacing */}
+      <div className="w-16 h-1 bg-brand-gold mx-auto mb-4"></div> {/* smaller divider and margin */}
+      <p className="text-base md:text-lg text-white/90 mb-4">
+        From air and ocean freight to specialized transportation solutions, we offer end-to-end logistics expertise to meet your global shipping needs.
+      </p>
+    </motion.div>
+  </div>
+</section>
         <section className="py-12">
           <div className="container mx-auto px-4">
             <motion.div
