@@ -146,7 +146,7 @@ const LCLConsolidation = () => {
             {/* Auto Fade Banner */}
             <AutoFadeBanner />
 
-            {/* CTA */}
+            {/* CTA Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -178,16 +178,16 @@ const LCLConsolidation = () => {
 
 export default LCLConsolidation;
 
-// Image Banner Section (Below CTA or wherever appropriate)
+// 🔁 Auto Image Slider
 const AutoFadeBanner = () => {
-  const images = ["/banner-1.jpg"];
+  const images = ["/banner-1.jpg", "/banner-2.jpg"];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 7000);
-    return () => clearInterval(interval);
+    }, 2000); // 2 seconds
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -200,8 +200,8 @@ const AutoFadeBanner = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 w-full h-full object-contain object-center"
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 w-full h-full object-contain"
         />
       </AnimatePresence>
     </div>
