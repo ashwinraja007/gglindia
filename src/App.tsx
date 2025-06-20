@@ -38,7 +38,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/careers" element={<Careers />} />
-            <Route path="/Privacy-Policy" element={<PrivacyPolicy />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/services/transportation" element={<Transportation />} />
             <Route path="/global-presence" element={<GlobalPresence />} />
             {/* Service specific pages */}
