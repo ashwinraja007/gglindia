@@ -9,7 +9,7 @@ import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Transportation from "./pages/services/Transportation";
-import PrivacyPolicy "./pages/PrivacyPolicy";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Services from "./pages/Services";
 import NotFound from "./pages/NotFound";
 import LiquidTransportation from "./pages/services/LiquidTransportation";
