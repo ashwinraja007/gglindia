@@ -144,7 +144,7 @@ const LCLConsolidation = () => {
     {/* Export Destinations */}
     <div className="rounded-3xl p-6 bg-gradient-to-br from-indigo-950 via-indigo-900 to-gray-800 border border-green-400/30 shadow-2xl">
       <h3 className="text-2xl font-bold mb-5 tracking-wide text-[#f6b100]">
-        🚢 Export Destinations <span className="text-lime-400">from India</span>
+        🚢 Export Destinations <span className="text-[#f6b100]">from India</span>
       </h3>
       <div className="flex flex-wrap gap-3">
         {["Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai", "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar", "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City", "Shanghai"].map((location, i) => <span key={i} className="bg-lime-400/10 border border-lime-300/30 text-lime-100 text-sm px-3 py-1 rounded-full hover:bg-lime-400/20 transition-all shadow-sm">
