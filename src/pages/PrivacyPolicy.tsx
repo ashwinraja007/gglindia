@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 // Mock components since we don't have access to the actual components
-const Header = () => (
+const Header: React.FC = () => (
   <header className="bg-white shadow-sm border-b">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between items-center py-4">
@@ -21,7 +21,7 @@ const Header = () => (
   </header>
 );
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <footer className="bg-gray-50 border-t">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -54,7 +54,18 @@ const Footer = () => (
   </footer>
 );
 
-const PrivacyPolicyPage = () => {
+interface Section {
+  title: string;
+  content?: string;
+  subsections?: Subsection[];
+}
+
+interface Subsection {
+  title: string;
+  content: string;
+}
+
+const PrivacyPolicyPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -62,7 +73,7 @@ const PrivacyPolicyPage = () => {
     setIsLoaded(true);
   }, []);
 
-  const sections = [
+  const sections: Section[] = [
     {
       title: "Introduction",
       content: "Welcome to GGL (Singapore) Ltd [\"GGL (Singapore)\", \"we\", \"our\", \"us\"]. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services."
