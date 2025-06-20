@@ -1,61 +1,6 @@
 import React from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Globe, Ship, Truck, Package, Clock, Shield, Target, Users, Award, CheckCircle } from 'lucide-react';
-
-// Mock components since we don't have access to the actual components
-const Header: React.FC = () => (
-  <header className="bg-white shadow-sm border-b">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between items-center py-4">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-2xl font-bold text-gray-900">GGL (Singapore) Ltd</h1>
-        </div>
-        <nav className="hidden md:flex space-x-8">
-          <a href="#" className="text-gray-600 hover:text-gray-900">Home</a>
-          <a href="#" className="text-gray-600 hover:text-gray-900">Services</a>
-          <a href="#" className="text-gray-600 hover:text-gray-900">About</a>
-          <a href="#" className="text-gray-600 hover:text-gray-900">Contact</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-);
-
-const Footer: React.FC = () => (
-  <footer className="bg-gray-50 border-t">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div className="col-span-1 md:col-span-2">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">GGL (Singapore) Ltd</h3>
-          <p className="text-gray-600 mb-4">
-            We are committed to protecting your privacy and ensuring secure digital interactions.
-          </p>
-        </div>
-        <div>
-          <h4 className="font-medium text-gray-900 mb-4">Quick Links</h4>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li><a href="#" className="hover:text-gray-900">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-gray-900">Terms of Service</a></li>
-            <li><a href="#" className="hover:text-gray-900">Contact Us</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-medium text-gray-900 mb-4">Contact</h4>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li>Email: info@ggl.com.sg</li>
-            <li>Phone: +65 1234 5678</li>
-          </ul>
-        </div>
-      </div>
-      <div className="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-600">
-        <p>&copy; 2025 GGL (Singapore) Ltd. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-);
 
 interface Section {
   title: string;
