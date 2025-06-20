@@ -125,67 +125,49 @@ const LCLConsolidation = () => {
             </div>
 
             {/* Auto Fade Banner */}
-           {/* Global Trade Network Section */}
-<section className="relative my-20 z-10">
-  <div className="max-w-7xl mx-auto px-4">
-    <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-      Global LCL Trade Network
-    </h2>
-    <div className="grid md:grid-cols-2 gap-8">
-      {/* Import Origins */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="bg-white/10 backdrop-blur-lg p-6 rounded-3xl shadow-2xl border border-white/20 text-white"
-      >
-        <div className="flex items-center mb-4 gap-3">
-          <Globe className="text-yellow-400" size={28} />
-          <h3 className="text-xl font-semibold text-yellow-300">Import Origins to India</h3>
-        </div>
-        <ul className="grid grid-cols-2 gap-3 text-blue-100 text-sm">
-          {[
-            "Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore",
-            "Dubai", "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali",
-            "Saudi Arabia", "Hamad-Qatar", "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok",
-            "Jakarta", "Ho Chi Minh City"
-          ].map((location, index) => (
-            <li key={index} className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-yellow-400 rounded-full"></span> {location}
-            </li>
-          ))}
-        </ul>
-      </motion.div>
-
-      {/* Export Destinations */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: true }}
-        className="bg-white/10 backdrop-blur-lg p-6 rounded-3xl shadow-2xl border border-white/20 text-white"
-      >
-        <div className="flex items-center mb-4 gap-3">
-          <Ship className="text-green-400" size={28} />
-          <h3 className="text-xl font-semibold text-green-300">Export Destinations from India</h3>
-        </div>
-        <ul className="grid grid-cols-2 gap-3 text-blue-100 text-sm">
-          {[
-            "Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore",
-            "Dubai", "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali",
-            "Saudi Arabia", "Hamad-Qatar", "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok",
-            "Jakarta", "Ho Chi Minh City", "Shanghai"
-          ].map((location, index) => (
-            <li key={index} className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-400 rounded-full"></span> {location}
-            </li>
-          ))}
-        </ul>
-      </motion.div>
+          {/* Global Trade Network Section */}
+<section className="my-20 px-4">
+  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
+    
+    {/* Import Origins */}
+    <div className="rounded-3xl p-6 bg-gradient-to-br from-blue-900/80 to-blue-700/80 backdrop-blur-md border border-blue-300/20 shadow-xl">
+      <h3 className="text-2xl font-semibold text-white mb-4 border-b border-blue-300/20 pb-2">
+        🌍 Import Origins <span className="text-yellow-400">to India</span>
+      </h3>
+      <div className="flex flex-wrap gap-3">
+        {[
+          "Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai",
+          "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar",
+          "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City"
+        ].map((location, i) => (
+          <span key={i} className="bg-blue-100/20 text-blue-100 text-sm px-3 py-1 rounded-full hover:bg-blue-200/30 transition">
+            {location}
+          </span>
+        ))}
+      </div>
     </div>
+
+    {/* Export Destinations */}
+    <div className="rounded-3xl p-6 bg-gradient-to-br from-blue-900/80 to-blue-700/80 backdrop-blur-md border border-blue-300/20 shadow-xl">
+      <h3 className="text-2xl font-semibold text-white mb-4 border-b border-blue-300/20 pb-2">
+        🚢 Export Destinations <span className="text-yellow-400">from India</span>
+      </h3>
+      <div className="flex flex-wrap gap-3">
+        {[
+          "Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai",
+          "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar",
+          "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City", "Shanghai"
+        ].map((location, i) => (
+          <span key={i} className="bg-blue-100/20 text-blue-100 text-sm px-3 py-1 rounded-full hover:bg-blue-200/30 transition">
+            {location}
+          </span>
+        ))}
+      </div>
+    </div>
+
   </div>
 </section>
+
             
             {/* CTA */}
             <motion.div initial={{
