@@ -38,7 +38,7 @@ const ServiceCard = ({ icon, title, description, image, link }) => {
       viewport={{ once: true }}
       className="w-full bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col"
     >
-      <div className="relative w-full overflow-hidden h-48 md:h-56">
+      <div className="relative w-full aspect-square overflow-hidden">
         <img
           src={getServiceImage()}
           alt={title}
@@ -190,12 +190,30 @@ const Services = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                { title: "🌍 Global Network", description: "Leverage our extensive worldwide connections for efficient shipping." },
-                { title: "🎯 Customized Solutions", description: "Tailored logistics plans designed for your business." },
-                { title: "📡 Advanced Technology", description: "Real-time tracking & cutting-edge logistics systems." },
-                { title: "👨‍✈️ Expert Team", description: "Industry professionals with years of logistics experience." },
-                { title: "✅ Regulatory Compliance", description: "Ensure smooth operations with up-to-date knowledge." },
-                { title: "📞 24/7 Support", description: "Get help anytime with round-the-clock customer service." }
+                {
+                  title: "🌍 Global Network",
+                  description: "Leverage our extensive worldwide connections for efficient shipping."
+                },
+                {
+                  title: "🎯 Customized Solutions",
+                  description: "Tailored logistics plans designed for your business."
+                },
+                {
+                  title: "📡 Advanced Technology",
+                  description: "Real-time tracking & cutting-edge logistics systems."
+                },
+                {
+                  title: "👨‍✈️ Expert Team",
+                  description: "Industry professionals with years of logistics experience."
+                },
+                {
+                  title: "✅ Regulatory Compliance",
+                  description: "Ensure smooth operations with up-to-date knowledge."
+                },
+                {
+                  title: "📞 24/7 Support",
+                  description: "Get help anytime with round-the-clock customer service."
+                }
               ].map((feature, index) => (
                 <motion.div
                   key={index}
