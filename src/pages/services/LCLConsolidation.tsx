@@ -127,12 +127,12 @@ const LCLConsolidation = () => {
             {/* Auto Fade Banner */}
           {/* Global Trade Network Section */}
 <section className="my-20 px-4">
-  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
+  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
     
     {/* Import Origins */}
-    <div className="rounded-3xl p-6 bg-gradient-to-br from-blue-900/80 to-blue-700/80 backdrop-blur-md border border-blue-300/20 shadow-xl">
-      <h3 className="text-2xl font-semibold text-white mb-4 border-b border-blue-300/20 pb-2">
-        🌍 Import Origins <span className="text-yellow-400">to India</span>
+    <div className="rounded-3xl p-6 bg-gradient-to-br from-sky-950 via-sky-900 to-slate-800 border border-blue-400/30 shadow-2xl">
+      <h3 className="text-2xl font-bold text-white mb-5 tracking-wide">
+        🌍 Import Origins <span className="text-amber-400">to India</span>
       </h3>
       <div className="flex flex-wrap gap-3">
         {[
@@ -140,7 +140,7 @@ const LCLConsolidation = () => {
           "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar",
           "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City"
         ].map((location, i) => (
-          <span key={i} className="bg-blue-100/20 text-blue-100 text-sm px-3 py-1 rounded-full hover:bg-blue-200/30 transition">
+          <span key={i} className="bg-amber-400/10 border border-amber-300/30 text-amber-100 text-sm px-3 py-1 rounded-full hover:bg-amber-400/20 transition-all shadow-sm">
             {location}
           </span>
         ))}
@@ -148,9 +148,9 @@ const LCLConsolidation = () => {
     </div>
 
     {/* Export Destinations */}
-    <div className="rounded-3xl p-6 bg-gradient-to-br from-blue-900/80 to-blue-700/80 backdrop-blur-md border border-blue-300/20 shadow-xl">
-      <h3 className="text-2xl font-semibold text-white mb-4 border-b border-blue-300/20 pb-2">
-        🚢 Export Destinations <span className="text-yellow-400">from India</span>
+    <div className="rounded-3xl p-6 bg-gradient-to-br from-indigo-950 via-indigo-900 to-gray-800 border border-green-400/30 shadow-2xl">
+      <h3 className="text-2xl font-bold text-white mb-5 tracking-wide">
+        🚢 Export Destinations <span className="text-lime-400">from India</span>
       </h3>
       <div className="flex flex-wrap gap-3">
         {[
@@ -158,7 +158,7 @@ const LCLConsolidation = () => {
           "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar",
           "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City", "Shanghai"
         ].map((location, i) => (
-          <span key={i} className="bg-blue-100/20 text-blue-100 text-sm px-3 py-1 rounded-full hover:bg-blue-200/30 transition">
+          <span key={i} className="bg-lime-400/10 border border-lime-300/30 text-lime-100 text-sm px-3 py-1 rounded-full hover:bg-lime-400/20 transition-all shadow-sm">
             {location}
           </span>
         ))}
@@ -167,8 +167,7 @@ const LCLConsolidation = () => {
 
   </div>
 </section>
-
-            
+        
             {/* CTA */}
             <motion.div initial={{
             opacity: 0,
