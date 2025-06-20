@@ -9,6 +9,7 @@ import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Transportation from "./pages/services/Transportation";
+import PrivacyPolicy "./pages/PrivacyPolicy";
 import Services from "./pages/Services";
 import NotFound from "./pages/NotFound";
 import LiquidTransportation from "./pages/services/LiquidTransportation";
@@ -37,6 +38,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="/Privacy-Policy" element={<PrivacyPolicy />} />
             <Route path="/services/transportation" element={<Transportation />} />
             <Route path="/global-presence" element={<GlobalPresence />} />
             {/* Service specific pages */}
