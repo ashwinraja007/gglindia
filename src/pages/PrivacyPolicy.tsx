@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 
@@ -13,7 +13,7 @@ interface Subsection {
   content: string;
 }
 
-const PrivacyPolicy: React.FC = () => {
+const PrivacyPolicyPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -103,7 +103,7 @@ const PrivacyPolicy: React.FC = () => {
   return (
     <div className={`min-h-screen bg-gray-50 transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Header />
-      
+
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="bg-white rounded-lg shadow-sm border p-8">
           <div className="text-center mb-12">
@@ -120,13 +120,13 @@ const PrivacyPolicy: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-900 mb-6 border-b border-gray-200 pb-2">
                   {section.title}
                 </h2>
-                
+
                 {section.content && (
                   <p className="text-gray-700 leading-relaxed mb-6">
                     {section.content}
                   </p>
                 )}
-                
+
                 {section.subsections && (
                   <div className="space-y-6">
                     {section.subsections.map((subsection, subIndex) => (
@@ -174,4 +174,4 @@ const PrivacyPolicy: React.FC = () => {
   );
 };
 
-export default PrivacyPolicy;
+export default PrivacyPolicyPage;
