@@ -50,7 +50,7 @@ const Contact = () => {
         </section>
 
         {/* Contact Form Only */}
-        <section className="py-16 bg-gray-50">
+        <section id="contact-form" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <motion.div initial={{
             opacity: 0,
