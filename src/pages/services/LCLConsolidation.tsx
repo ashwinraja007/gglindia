@@ -132,7 +132,7 @@ const LCLConsolidation = () => {
     {/* Import Origins */}
     <div className="rounded-3xl p-6 bg-gradient-to-br from-brand-navy via-brand-navy to-slate-800 border border-blue-400/30 shadow-2xl">
       <h3 className="text-2xl font-bold mb-5 tracking-wide text-[#f6b100]">
-        🌍 Import Origins <span className="text-amber-400">to India</span>
+        Import Origins <span className="text-amber-400">to India</span>
       </h3>
       <div className="flex flex-wrap gap-3">
         {["Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai", "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar", "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City"].map((location, i) => <span key={i} className="bg-amber-400/10 border border-amber-300/30 text-sm px-3 py-1 rounded-full hover:bg-amber-400/20 transition-all shadow-sm text-white font-semibold">
@@ -144,7 +144,7 @@ const LCLConsolidation = () => {
     {/* Export Destinations */}
     <div className="rounded-3xl p-6 bg-gradient-to-br from-brand-navy via-brand-navy to-slate-800 border border-blue-400/30 shadow-2xl">
       <h3 className="text-2xl font-bold mb-5 tracking-wide text-[#f6b100]">
-        🚢 Export Destinations <span className="text-[#f6b100]">from India</span>
+        Export Destinations <span className="text-[#f6b100]">from India</span>
       </h3>
       <div className="flex flex-wrap gap-3">
         {["Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai", "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar", "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City", "Shanghai"].map((location, i) => <span key={i} className="bg-amber-400/10 border border-amber-300/30 text-sm px-3 py-1 rounded-full hover:bg-amber-400/20 transition-all shadow-sm text-white font-semibold">
