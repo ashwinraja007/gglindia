@@ -82,7 +82,7 @@ export const Header = () => {
                 
               </a>
               <a href="https://www.facebook.com/gglusa" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-brand-gold transition-colors">
-                <Facebook size={20} />
+                
               </a>
             </div>
 
