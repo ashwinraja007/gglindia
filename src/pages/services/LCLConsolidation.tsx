@@ -126,24 +126,18 @@ const LCLConsolidation = () => {
 
             {/* Auto Fade Banner */}
           {/* Global Trade Network Section */}
-<section className="my-20 px-4">
+          <section className="my-20 px-4">
   <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
     
     {/* Import Origins */}
-    <div className="rounded-3xl p-6 bg-gradient-to-br from-sky-950 via-sky-900 to-slate-800 border border-blue-400/30 shadow-2xl">
+    <div className="rounded-3xl p-6 bg-gradient-to-br from-brand-navy-950 via-brand-navy-900 to-slate-800 border border-blue-400/30 shadow-2xl">
       <h3 className="text-2xl font-bold text-white mb-5 tracking-wide">
         🌍 Import Origins <span className="text-amber-400">to India</span>
       </h3>
       <div className="flex flex-wrap gap-3">
-        {[
-          "Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai",
-          "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar",
-          "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City"
-        ].map((location, i) => (
-          <span key={i} className="bg-amber-400/10 border border-amber-300/30 text-amber-100 text-sm px-3 py-1 rounded-full hover:bg-amber-400/20 transition-all shadow-sm">
+        {["Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai", "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar", "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City"].map((location, i) => <span key={i} className="bg-amber-400/10 border border-amber-300/30 text-amber-100 text-sm px-3 py-1 rounded-full hover:bg-amber-400/20 transition-all shadow-sm">
             {location}
-          </span>
-        ))}
+          </span>)}
       </div>
     </div>
 
@@ -153,20 +147,14 @@ const LCLConsolidation = () => {
         🚢 Export Destinations <span className="text-lime-400">from India</span>
       </h3>
       <div className="flex flex-wrap gap-3">
-        {[
-          "Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai",
-          "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar",
-          "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City", "Shanghai"
-        ].map((location, i) => (
-          <span key={i} className="bg-lime-400/10 border border-lime-300/30 text-lime-100 text-sm px-3 py-1 rounded-full hover:bg-lime-400/20 transition-all shadow-sm">
+        {["Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai", "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar", "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City", "Shanghai"].map((location, i) => <span key={i} className="bg-lime-400/10 border border-lime-300/30 text-lime-100 text-sm px-3 py-1 rounded-full hover:bg-lime-400/20 transition-all shadow-sm">
             {location}
-          </span>
-        ))}
+          </span>)}
       </div>
     </div>
 
   </div>
-</section>
+          </section>
         
             {/* CTA */}
             <motion.div initial={{
