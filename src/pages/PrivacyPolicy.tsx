@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import React from 'react';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Globe, Ship, Truck, Package, Clock, Shield, Target, Users, Award, CheckCircle } from 'lucide-react';
 
 // Mock components since we don't have access to the actual components
 const Header: React.FC = () => (
