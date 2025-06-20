@@ -131,7 +131,7 @@ const LCLConsolidation = () => {
     
     {/* Import Origins */}
     <div className="rounded-3xl p-6 bg-gradient-to-br from-brand-navy via-brand-navy to-slate-800 border border-blue-400/30 shadow-2xl">
-      <h3 className="text-2xl font-bold text-white mb-5 tracking-wide">
+      <h3 className="text-2xl font-bold mb-5 tracking-wide text-[#f6b100]">
         🌍 Import Origins <span className="text-amber-400">to India</span>
       </h3>
       <div className="flex flex-wrap gap-3">
