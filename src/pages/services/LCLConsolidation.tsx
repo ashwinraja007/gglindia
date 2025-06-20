@@ -125,6 +125,40 @@ const LCLConsolidation = () => {
             </div>
 
             {/* Auto Fade Banner */}
+            {/* Global Trade Network Section */}
+<section className="my-12">
+  <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8">
+    
+    {/* Import Origins */}
+    <div className="bg-brand-navy text-white p-6 rounded-2xl shadow-md">
+      <h3 className="text-xl font-semibold mb-4 text-yellow-400">Import Origins to India</h3>
+      <ul className="space-y-2 list-disc pl-5 text-blue-100">
+        {[
+          "Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai",
+          "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar",
+          "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City"
+        ].map((location, i) => (
+          <li key={i}>{location}</li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Export Destinations */}
+    <div className="bg-brand-navy text-white p-6 rounded-2xl shadow-md">
+      <h3 className="text-xl font-semibold mb-4 text-yellow-400">Export Destinations from India</h3>
+      <ul className="space-y-2 list-disc pl-5 text-blue-100">
+        {[
+          "Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai",
+          "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar",
+          "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City", "Shanghai"
+        ].map((location, i) => (
+          <li key={i}>{location}</li>
+        ))}
+      </ul>
+    </div>
+
+  </div>
+</section>
             
 
             {/* CTA */}
