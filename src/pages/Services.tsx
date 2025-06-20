@@ -103,28 +103,28 @@ const Services = () => {
     id: 3,
     icon: <Truck className="w-5 h-5" />,
     title: "Transportation",
-    image: "/hom3.png",
+    image: "/CARGO.png",
     description: "Efficient transportation and distribution are the backbone of a seamless supply chain. Our fleet and infrastructure ensure on-time delivery every time.",
     link: "/services/transportation"
   }, {
     id: 4,
     icon: <Warehouse className="w-5 h-5" />,
     title: "Warehousing",
-    image: "/warehosing.png",
+    image: "/warhouseh1.png",
     description: "We offer full-service warehousing and third-party logistics (3PL) to streamline your supply chain with flexible, reliable, and scalable solutions.",
     link: "/services/warehousing"
   }, {
     id: 5,
     icon: <Plane className="w-5 h-5" />,
     title: "Air Freight",
-    image: "/hom2.png",
+    image: "/aircargo2.png",
     description: "Our air freight services provide fast, reliable, and flexible global shipping — including import/export, express, and door-to-door solutions.",
     link: "/services/air-freight"
   }, {
     id: 6,
     icon: <Warehouse className="w-5 h-5" />,
     title: "Project Cargo",
-    image: "/projectcargo3.png",
+    image: "/cargoh1.png",
     description: "We specialize in delivering end-to-end logistics for heavy, oversized, and time-critical shipments, ensuring efficiency and safety.",
     link: "/services/project-cargo"
   }];
