@@ -36,26 +36,28 @@ const ServiceCard = ({ icon, title, description, image, link }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="w-full bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col"
+      className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group flex flex-col md:flex-row"
     >
-      <div className="relative w-full aspect-square overflow-hidden">
+      {/* Image Section */}
+      <div className="md:w-1/2 w-full h-64 md:h-auto relative overflow-hidden">
         <img
           src={getServiceImage()}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-          <div className="p-4">
-            <div className="bg-brand-gold text-brand-navy p-2 rounded-full inline-block mb-2">
-              {icon}
-            </div>
-            <h3 className="text-lg font-bold text-white mb-1">{title}</h3>
-          </div>
-        </div>
       </div>
-      <div className="p-4 flex-grow">
-        <p className="text-gray-600 mb-4 line-clamp-3 text-sm">{description}</p>
-        <Link to={link} className="text-brand-gold font-medium hover:text-amber-500 inline-flex items-center text-sm">
+
+      {/* Content Section */}
+      <div className="md:w-1/2 w-full p-6 flex flex-col justify-center">
+        <div className="bg-brand-gold text-brand-navy p-2 rounded-full inline-block mb-2 w-fit">
+          {icon}
+        </div>
+        <h3 className="text-xl font-semibold text-brand-navy mb-3">{title}</h3>
+        <p className="text-gray-600 text-sm mb-4 line-clamp-4">{description}</p>
+        <Link
+          to={link}
+          className="text-brand-gold font-medium hover:text-amber-500 inline-flex items-center text-sm"
+        >
           Learn More
           <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -162,11 +164,9 @@ const Services = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-5">
+            <div className="space-y-6">
               {services.map(service => (
-                <div key={service.id} className="w-full h-full">
-                  <ServiceCard {...service} />
-                </div>
+                <ServiceCard key={service.id} {...service} />
               ))}
             </div>
           </div>
@@ -190,30 +190,12 @@ const Services = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                {
-                  title: "🌍 Global Network",
-                  description: "Leverage our extensive worldwide connections for efficient shipping."
-                },
-                {
-                  title: "🎯 Customized Solutions",
-                  description: "Tailored logistics plans designed for your business."
-                },
-                {
-                  title: "📡 Advanced Technology",
-                  description: "Real-time tracking & cutting-edge logistics systems."
-                },
-                {
-                  title: "👨‍✈️ Expert Team",
-                  description: "Industry professionals with years of logistics experience."
-                },
-                {
-                  title: "✅ Regulatory Compliance",
-                  description: "Ensure smooth operations with up-to-date knowledge."
-                },
-                {
-                  title: "📞 24/7 Support",
-                  description: "Get help anytime with round-the-clock customer service."
-                }
+                { title: "🌍 Global Network", description: "Leverage our extensive worldwide connections for efficient shipping." },
+                { title: "🎯 Customized Solutions", description: "Tailored logistics plans designed for your business." },
+                { title: "📡 Advanced Technology", description: "Real-time tracking & cutting-edge logistics systems." },
+                { title: "👨‍✈️ Expert Team", description: "Industry professionals with years of logistics experience." },
+                { title: "✅ Regulatory Compliance", description: "Ensure smooth operations with up-to-date knowledge." },
+                { title: "📞 24/7 Support", description: "Get help anytime with round-the-clock customer service." }
               ].map((feature, index) => (
                 <motion.div
                   key={index}
