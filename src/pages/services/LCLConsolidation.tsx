@@ -147,7 +147,7 @@ const LCLConsolidation = () => {
         🚢 Export Destinations <span className="text-[#f6b100]">from India</span>
       </h3>
       <div className="flex flex-wrap gap-3">
-        {["Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai", "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar", "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City", "Shanghai"].map((location, i) => <span key={i} className="bg-lime-400/10 border border-lime-300/30 text-sm px-3 py-1 rounded-full hover:bg-lime-400/20 transition-all shadow-sm text-slate-50">
+        {["Japan", "Taiwan", "Korea", "China", "Hong Kong", "Vietnam", "Malaysia", "Thailand", "Singapore", "Dubai", "Italy", "Germany", "Netherlands", "UK", "USA", "Slovenia/Koper", "Jebel Ali", "Saudi Arabia", "Hamad-Qatar", "Karachi", "Colombo", "Chittagong", "Port Klang", "Bangkok", "Jakarta", "Ho Chi Minh City", "Shanghai"].map((location, i) => <span key={i} className="bg-amber-400/10 border border-amber-300/30 text-sm px-3 py-1 rounded-full hover:bg-amber-400/20 transition-all shadow-sm text-white font-semibold">
             {location}
           </span>)}
       </div>
