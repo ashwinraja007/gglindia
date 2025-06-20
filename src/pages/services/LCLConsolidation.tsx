@@ -142,7 +142,7 @@ const LCLConsolidation = () => {
     </div>
 
     {/* Export Destinations */}
-    <div className="rounded-3xl p-6 bg-gradient-to-br from-brand-navy via-brand-navy to-gray-800 border border-green-400/30 shadow-2xl">
+    <div className="rounded-3xl p-6 bg-gradient-to-br from-brand-navy via-brand-navy to-slate-800 border border-blue-400/30 shadow-2xl">
       <h3 className="text-2xl font-bold mb-5 tracking-wide text-[#f6b100]">
         🚢 Export Destinations <span className="text-[#f6b100]">from India</span>
       </h3>
