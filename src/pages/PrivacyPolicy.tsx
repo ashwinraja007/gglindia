@@ -13,7 +13,7 @@ interface Subsection {
   content: string;
 }
 
-const PrivacyPolicyPage: React.FC = () => {
+const PrivacyPolicy: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -174,4 +174,4 @@ const PrivacyPolicyPage: React.FC = () => {
   );
 };
 
-export default PrivacyPolicyPage;
+export default PrivacyPolicy;
