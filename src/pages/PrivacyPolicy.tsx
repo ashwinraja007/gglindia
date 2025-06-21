@@ -56,7 +56,7 @@ const PrivacyPolicyPage: React.FC = () => {
         },
         {
           title: "Other Information",
-          content: "In contrast, "Other Information" encompasses data that does not fall within the scope of Personal Information. This includes anonymized or aggregated data that cannot be used to identify an individual and publicly available information that has not been combined with Personal Information. Examples of Other Information include statistical data on website usage, product performance metrics, and general market trends, which are used to improve our services without compromising individual privacy."
+          content: 'In contrast, "Other Information" encompasses data that does not fall within the scope of Personal Information. This includes anonymized or aggregated data that cannot be used to identify an individual and publicly available information that has not been combined with Personal Information. Examples of Other Information include statistical data on website usage, product performance metrics, and general market trends, which are used to improve our services without compromising individual privacy.'
         }
       ]
     },
