@@ -155,7 +155,9 @@ export const Footer = () => {
                 { name: "Home", path: "/" },
                 { name: "About", path: "/about" },
                 { name: "Services", path: "/services" },
-                { name: "Contact us", path: "/contact" },
+                { name: "Contact Us", path: "/contact" },
+                { name: "Privacy Policy", path: "/privacy-policy" },
+                { name: "Terms And Conditions", path: "/terms-and-conditions" },
               ].map((link, index) => (
                 <Link
                   key={index}
