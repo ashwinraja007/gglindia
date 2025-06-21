@@ -43,7 +43,7 @@ const PrivacyPolicyPage: React.FC = () => {
         },
         {
           title: "User Empowerment",
-          content: "At GGL (India), we prioritize user control over their personal information. Beyond allowing users to choose what information to share, we empower them to manage their privacy settings and preferences. This approach enables individuals to tailor their interactions with GGL (Singapore) according to their preferences, fostering trust and transparency in digital interactions."
+          content: "At GGL (India), we prioritize user control over their personal information. Beyond allowing users to choose what information to share, we empower them to manage their privacy settings and preferences. This approach enables individuals to tailor their interactions with GGL (India) according to their preferences, fostering trust and transparency in digital interactions."
         }
       ]
     },
@@ -123,7 +123,7 @@ const PrivacyPolicyPage: React.FC = () => {
     },
    {
     title: "How We Utilize the Collected Information",
-    content: "At GGL (Singapore), we are committed to ensuring that the information we collect is used responsibly and transparently. The collected information is utilized in the following ways:",
+    content: "At GGL (India), we are committed to ensuring that the information we collect is used responsibly and transparently. The collected information is utilized in the following ways:",
     subsections: [
       {
         title: "Personalizing User Experience",
@@ -165,7 +165,7 @@ const PrivacyPolicyPage: React.FC = () => {
     subsections: [
       {
         title: "Service Providers",
-        content: "We may share your information with trusted third-party service providers who perform functions on our behalf. These services include:\n\n• Payment Processing: Managing transactions and payment-related activities.\n• Shipping and Delivery: Facilitating the shipment and delivery of products.\n• Marketing Services: Conducting marketing campaigns and communications.\n• Customer Support: Providing customer service and support.\n• IT and Security Services: Ensuring the security and maintenance of our systems.\n\nThese providers are contractually obligated to use the information only for the purpose of providing services to GGL (Singapore) and are required to maintain the confidentiality and security of your information."
+        content: "We may share your information with trusted third-party service providers who perform functions on our behalf. These services include:\n\n• Payment Processing: Managing transactions and payment-related activities.\n• Shipping and Delivery: Facilitating the shipment and delivery of products.\n• Marketing Services: Conducting marketing campaigns and communications.\n• Customer Support: Providing customer service and support.\n• IT and Security Services: Ensuring the security and maintenance of our systems.\n\nThese providers are contractually obligated to use the information only for the purpose of providing services to GGL (India) and are required to maintain the confidentiality and security of your information."
       },
       {
         title: "Business Partners",
@@ -173,7 +173,7 @@ const PrivacyPolicyPage: React.FC = () => {
       },
       {
         title: "Legal Compliance",
-        content: "We may disclose your information to third parties if we believe such action is necessary to:\n\n• Comply with applicable laws, regulations, legal processes, or governmental requests.\n• Enforce our Terms of Use or other agreements and policies.\n• Protect the rights, property, or safety of GGL (Singapore), our users, or others. This includes exchanging information with other companies and organizations for fraud protection and credit risk reduction."
+        content: "We may disclose your information to third parties if we believe such action is necessary to:\n\n• Comply with applicable laws, regulations, legal processes, or governmental requests.\n• Enforce our Terms of Use or other agreements and policies.\n• Protect the rights, property, or safety of GGL (India), our users, or others. This includes exchanging information with other companies and organizations for fraud protection and credit risk reduction."
       },
       {
         title: "Corporate Transactions",
@@ -203,7 +203,7 @@ const PrivacyPolicyPage: React.FC = () => {
   },
   {
     title: "What Steps Do We Take to Protect Your Information?",
-    content: "At GGL (Singapore), the security and confidentiality of your information are our highest priorities. We implement comprehensive measures to protect your personal data from unauthorized access, disclosure, alteration, or destruction. Here are the steps we take to safeguard your information:",
+    content: "At GGL (India), the security and confidentiality of your information are our highest priorities. We implement comprehensive measures to protect your personal data from unauthorized access, disclosure, alteration, or destruction. Here are the steps we take to safeguard your information:",
     subsections: [
       {
         title: "Data Encryption",
