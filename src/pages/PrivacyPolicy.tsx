@@ -267,7 +267,7 @@ const PrivacyPolicyPage: React.FC = () => {
               If you have any questions about this Privacy Policy or our data practices, 
               please don't hesitate to contact us.
             </p>
-            <Link to="/contact" className="inline-block bg-brand-navy text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
+            <Link to="/contact" className="inline-block bg-brand-navy text-white px-6 py-3 rounded-lg font-medium  transition-colors">
                 Get a Quote
               </Link>
           </div>
