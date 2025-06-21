@@ -267,11 +267,9 @@ const PrivacyPolicyPage: React.FC = () => {
               If you have any questions about this Privacy Policy or our data practices, 
               please don't hesitate to contact us.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-  <button onClick={() => handleNavClick("/contact")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/contact' ? 'text-brand-gold' : ''}`}>
-              Contact Us
-            </button>             
-            </div>
+            <Link to="/contact" className="inline-block bg-white text-brand-navy px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
+                Get a Quote
+              </Link>
           </div>
 
           <div className="mt-8 text-sm text-gray-500 text-center">
