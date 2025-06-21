@@ -271,9 +271,7 @@ const PrivacyPolicyPage: React.FC = () => {
     <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
       Contact Us
     </button>
-  </Link>
-</div>
-              
+  </Link>              
             </div>
           </div>
 
