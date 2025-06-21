@@ -6,7 +6,7 @@ const TermsOfUsePage: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12">
         <h1 className="text-3xl font-bold mb-6 text-center">Terms of Use Agreement for the Website</h1>
 
         <p>
