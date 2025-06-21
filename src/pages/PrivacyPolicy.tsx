@@ -52,7 +52,7 @@ const PrivacyPolicyPage: React.FC = () => {
       subsections: [
         {
           title: "Personal Information",
-          content: "At GGL (India), \"Personal Information"\ refers to any data related to an identified or identifiable natural person. This includes details that can directly or indirectly identify an individual, such as their name, address, contact information (telephone number, mobile number, email address), identification numbers, location data, online identifiers, and specific characteristics related to their physical, physiological, genetic, mental, economic, cultural, or social identity. Additionally, this encompasses any information collected through our services, such as user preferences and behavioural data, that can be linked to an individual."
+          content: 'At GGL (India), "Personal Information" refers to any data related to an identified or identifiable natural person. This includes details that can directly or indirectly identify an individual, such as their name, address, contact information (telephone number, mobile number, email address), identification numbers, location data, online identifiers, and specific characteristics related to their physical, physiological, genetic, mental, economic, cultural, or social identity. Additionally, this encompasses any information collected through our services, such as user preferences and behavioural data, that can be linked to an individual.'
         },
         {
           title: "Other Information",
