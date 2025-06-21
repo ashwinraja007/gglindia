@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Helmet } from "react-helmet";
@@ -267,11 +268,9 @@ const PrivacyPolicyPage: React.FC = () => {
               please don't hesitate to contact us.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-  <Link to="/contact">
-    <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-      Contact Us
-    </button>
-  </Link>              
+  <button onClick={() => handleNavClick("/contact")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/contact' ? 'text-brand-gold' : ''}`}>
+              Contact Us
+            </button>             
             </div>
           </div>
 
