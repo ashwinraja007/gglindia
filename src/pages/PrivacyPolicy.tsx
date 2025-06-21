@@ -121,206 +121,185 @@ const PrivacyPolicyPage: React.FC = () => {
         }
       ]
     },
-  {
+   {
     title: "How We Utilize the Collected Information",
-    content:
-      "At GGL (Singapore), we are committed to ensuring that the information we collect is used responsibly and transparently. The collected information is utilized in the following ways:"
+    content: "At GGL (Singapore), we are committed to ensuring that the information we collect is used responsibly and transparently. The collected information is utilized in the following ways:",
+    subsections: [
+      {
+        title: "Personalizing User Experience",
+        content: "We use the information to personalize interactions and tailor our services to meet individual user preferences. This includes addressing users by name and providing customized content and recommendations based on their interests and past interactions."
+      },
+      {
+        title: "Enhancing Communication",
+        content: "User contact information, such as email addresses and phone numbers, is used to establish efficient communication channels. This allows us to respond promptly to inquiries, provide updates on our services, and deliver relevant information that users have opted to receive."
+      },
+      {
+        title: "Improving Our Services",
+        content: "Data about user activities, preferences, and usage patterns helps us analyze and enhance the functionality and performance of our services. This includes identifying popular features, areas for improvement, and opportunities for developing new features to enhance the user experience."
+      },
+      {
+        title: "Facilitating Transactions",
+        content: "Information such as user location, preferences, and contact details is used to process orders and transactions efficiently. This ensures accurate and timely delivery of our products and services."
+      },
+      {
+        title: "Ensuring Security",
+        content: "We monitor and enhance the security of our website and services using the collected data. This involves detecting and preventing fraudulent activities, unauthorized access, and other potential security threats."
+      },
+      {
+        title: "Marketing and Promotions",
+        content: "With user consent, we may use contact information to send promotional materials, newsletters, and marketing communications about our products and services. Users can manage their communication preferences and opt out at any time."
+      },
+      {
+        title: "Compliance with Legal Obligations",
+        content: "We may use or disclose user information when required to comply with legal obligations, such as responding to lawful requests from public authorities or adhering to applicable laws and regulations."
+      },
+      {
+        title: "Aggregated Data Analysis",
+        content: "Anonymized and aggregated data may be used for internal analysis, research, and reporting. This helps us understand trends, evaluate service effectiveness, and make informed business decisions—without identifying individual users."
+      }
+    ]
   },
   {
-    title: "Personalizing User Experience",
-    content:
-      "We use the information to personalize interactions and tailor our services to meet individual user preferences. This includes addressing users by name and providing customized content and recommendations based on their interests and past interactions."
+    title: "How We Share Information with Third Parties",
+    content: "We may share your information with third parties under specific circumstances and with appropriate safeguards to protect your privacy:",
+    subsections: [
+      {
+        title: "Service Providers",
+        content: "We may share your information with trusted third-party service providers who perform functions on our behalf. These services include:\n\n• Payment Processing: Managing transactions and payment-related activities.\n• Shipping and Delivery: Facilitating the shipment and delivery of products.\n• Marketing Services: Conducting marketing campaigns and communications.\n• Customer Support: Providing customer service and support.\n• IT and Security Services: Ensuring the security and maintenance of our systems.\n\nThese providers are contractually obligated to use the information only for the purpose of providing services to GGL (Singapore) and are required to maintain the confidentiality and security of your information."
+      },
+      {
+        title: "Business Partners",
+        content: "We may share information with our business partners to offer co-branded products, services, or promotions. These partners are required to adhere to privacy and data protection standards that are at least as stringent as our own."
+      },
+      {
+        title: "Legal Compliance",
+        content: "We may disclose your information to third parties if we believe such action is necessary to:\n\n• Comply with applicable laws, regulations, legal processes, or governmental requests.\n• Enforce our Terms of Use or other agreements and policies.\n• Protect the rights, property, or safety of GGL (Singapore), our users, or others. This includes exchanging information with other companies and organizations for fraud protection and credit risk reduction."
+      },
+      {
+        title: "Corporate Transactions",
+        content: "In the event of a merger, acquisition, reorganization, sale of assets, or bankruptcy, your information may be transferred as part of the transaction. We will ensure the acquiring entity follows this Privacy Policy or provides notice of any material changes."
+      },
+      {
+        title: "Consent",
+        content: "We may share your information with third parties when you provide your explicit consent. This includes situations where you agree to share your information with a third-party application or service."
+      },
+      {
+        title: "Aggregated and Anonymized Data",
+        content: "We may share aggregated and anonymized data that cannot be used to identify you with third parties for research, analytics, and other purposes. This helps us understand usage patterns, improve our services, and contribute to industry knowledge without compromising your privacy."
+      },
+      {
+        title: "Social Media and Online Platforms",
+        content: "If you interact with us on social media or other online platforms, information you share may be viewable by other users of these platforms and may be shared according to their privacy policies."
+      },
+      {
+        title: "Third-Party Advertising",
+        content: "We may share information with third-party advertising partners to deliver targeted advertisements. These partners may use cookies, web beacons, and similar technologies to collect information about your activities on our website and other websites to provide you with personalized advertising. You can manage your advertising preferences through your browser settings or other available tools."
+      },
+      {
+        title: "Research and Development",
+        content: "We may share information with research institutions or other entities for the purpose of research and development, provided that such sharing is done in a manner that protects your privacy and data security."
+      }
+    ]
   },
   {
-    title: "Enhancing Communication",
-    content:
-      "User contact information, such as email addresses and phone numbers, is used to establish efficient communication channels. This allows us to respond promptly to inquiries, provide updates on our services, and deliver relevant information that users have opted to receive."
-  },
-  {
-    title: "Improving Our Services",
-    content:
-      "Data about user activities, preferences, and usage patterns helps us analyze and enhance the functionality and performance of our services. This includes identifying popular features, areas for improvement, and opportunities for developing new features to enhance the user experience."
-  },
-  {
-    title: "Facilitating Transactions",
-    content:
-      "Information such as user location, preferences, and contact details is used to process orders and transactions efficiently. This ensures accurate and timely delivery of our products and services."
-  },
-  {
-    title: "Ensuring Security",
-    content:
-      "We monitor and enhance the security of our website and services using the collected data. This involves detecting and preventing fraudulent activities, unauthorized access, and other potential security threats."
-  },
-  {
-    title: "Marketing and Promotions",
-    content:
-      "With user consent, we may use contact information to send promotional materials, newsletters, and marketing communications about our products and services. Users can manage their communication preferences and opt out at any time."
-  },
-  {
-    title: "Compliance with Legal Obligations",
-    content:
-      "We may use or disclose user information when required to comply with legal obligations, such as responding to lawful requests from public authorities or adhering to applicable laws and regulations."
-  },
-  {
-    title: "Aggregated Data Analysis",
-    content:
-      "Anonymized and aggregated data may be used for internal analysis, research, and reporting. This helps us understand trends, evaluate service effectiveness, and make informed business decisions—without identifying individual users."
-  },
- {
-    title: "Service Providers",
-    content: `We may share your information with trusted third-party service providers who perform functions on our behalf. These services include:
-
-- Payment Processing: Managing transactions and payment-related activities.
-- Shipping and Delivery: Facilitating the shipment and delivery of products.
-- Marketing Services: Conducting marketing campaigns and communications.
-- Customer Support: Providing customer service and support.
-- IT and Security Services: Ensuring the security and maintenance of our systems.
-
-These providers are contractually obligated to use the information only for the purpose of providing services to GGL (Singapore) and are required to maintain the confidentiality and security of your information.`
-  },
-  {
-    title: "Business Partners",
-    content: `We may share information with our business partners to offer co-branded products, services, or promotions. These partners are required to adhere to privacy and data protection standards that are at least as stringent as our own.`
-  },
-  {
-    title: "Legal Compliance",
-    content: `We may disclose your information to third parties if we believe such action is necessary to:
-
-- Comply with applicable laws, regulations, legal processes, or governmental requests.
-- Enforce our Terms of Use or other agreements and policies.
-- Protect the rights, property, or safety of GGL (Singapore), our users, or others. This includes exchanging information with other companies and organizations for fraud protection and credit risk reduction.`
-  },
-  {
-    title: "Corporate Transactions",
-    content: `In the event of a merger, acquisition, reorganization, sale of assets, or bankruptcy, your information may be transferred as part of the transaction. We will ensure the acquiring entity follows this Privacy Policy or provides notice of any material changes.`
-  },
-  {
-    title: "Consent",
-    content: `We may share your information with third parties when you provide your explicit consent. This includes situations where you agree to share your information with a third-party application or service.`
-  },
-  {
-    title: "Aggregated and Anonymized Data",
-    content: `We may share aggregated and anonymized data that cannot be used to identify you with third parties for research, analytics, and other purposes. This helps us understand usage patterns, improve our services, and contribute to industry knowledge without compromising your privacy.`
-  },
-  {
-    title: "Social Media and Online Platforms",
-    content: `If you interact with us on social media or other online platforms, information you share may be viewable by other users of these platforms and may be shared according to their privacy policies.`
-  },
-  {
-    title: "Third-Party Advertising",
-    content: `We may share information with third-party advertising partners to deliver targeted advertisements. These partners may use cookies, web beacons, and similar technologies to collect information about your activities on our website and other websites to provide you with personalized advertising. You can manage your advertising preferences through your browser settings or other available tools.`
-  },
-  {
-    title: "Research and Development",
-    content: `We may share information with research institutions or other entities for the purpose of research and development, provided that such sharing is done in a manner that protects your privacy and data security.`
-  },
- {
     title: "What Steps Do We Take to Protect Your Information?",
-    content: `At GGL (Singapore), the security and confidentiality of your information are our highest priorities. We implement comprehensive measures to protect your personal data from unauthorized access, disclosure, alteration, or destruction. Here are the steps we take to safeguard your information:`
+    content: "At GGL (Singapore), the security and confidentiality of your information are our highest priorities. We implement comprehensive measures to protect your personal data from unauthorized access, disclosure, alteration, or destruction. Here are the steps we take to safeguard your information:",
+    subsections: [
+      {
+        title: "Data Encryption",
+        content: "We use advanced encryption technologies to protect your data during transmission and storage. This ensures that your information is secure and confidential both when it is being sent to our servers and when it is stored on our systems."
+      },
+      {
+        title: "Secure Access Controls",
+        content: "We implement strict access controls to ensure that only authorized personnel have access to your personal information. This includes using multi-factor authentication, role-based access controls, and regular access reviews to prevent unauthorized access."
+      },
+      {
+        title: "Regular Security Audits",
+        content: "We conduct regular security audits and assessments to identify and address potential vulnerabilities in our systems. These audits are performed by internal and external experts to ensure the highest level of security standards."
+      },
+      {
+        title: "Firewall and Intrusion Detection Systems",
+        content: "Our systems are protected by robust firewall and intrusion detection systems that monitor and block unauthorized access attempts. These systems are continually updated to respond to new threats."
+      },
+      {
+        title: "Data Anonymization and Minimization",
+        content: "Where possible, we anonymize or pseudonymize personal data to reduce the risk of exposure. We also follow the principle of data minimization, collecting only the information necessary for specific purposes."
+      },
+      {
+        title: "Regular Software Updates",
+        content: "We ensure that all our software and systems are up-to-date with the latest security patches and updates. This helps protect against known vulnerabilities and emerging threats."
+      },
+      {
+        title: "Employee Training and Awareness",
+        content: "Our employees receive regular training on data protection and privacy best practices. This includes training on recognizing phishing attempts, securing sensitive information, and responding to potential data breaches."
+      },
+      {
+        title: "Physical Security Measures",
+        content: "We implement physical security measures to protect our data centers and offices, including access controls, surveillance, and secure storage for sensitive documents."
+      },
+      {
+        title: "Incident Response Plan",
+        content: "We have a comprehensive incident response plan in place to quickly address and mitigate any data breaches or security incidents. This plan includes procedures for identifying, containing, and resolving incidents, as well as notifying affected users and relevant authorities as required by law."
+      },
+      {
+        title: "Vendor and Partner Security",
+        content: "We carefully vet and select third-party vendors and partners to ensure they meet our stringent security standards. We require them to implement appropriate security measures to protect any information we share with them."
+      },
+      {
+        title: "User Controls and Preferences",
+        content: "We provide users with tools to manage their privacy settings and control how their information is used and shared. This includes options to opt-out of certain data collection practices and communications."
+      },
+      {
+        title: "Continuous Monitoring and Improvement",
+        content: "We continuously monitor our security practices and implement improvements as needed to adapt to evolving threats and best practices in data protection."
+      }
+    ]
   },
   {
-    title: "Data Encryption",
-    content: `We use advanced encryption technologies to protect your data during transmission and storage. This ensures that your information is secure and confidential both when it is being sent to our servers and when it is stored on our systems.`
-  },
-  {
-    title: "Secure Access Controls",
-    content: `We implement strict access controls to ensure that only authorized personnel have access to your personal information. This includes using multi-factor authentication, role-based access controls, and regular access reviews to prevent unauthorized access.`
-  },
-  {
-    title: "Regular Security Audits",
-    content: `We conduct regular security audits and assessments to identify and address potential vulnerabilities in our systems. These audits are performed by internal and external experts to ensure the highest level of security standards.`
-  },
-  {
-    title: "Firewall and Intrusion Detection Systems",
-    content: `Our systems are protected by robust firewall and intrusion detection systems that monitor and block unauthorized access attempts. These systems are continually updated to respond to new threats.`
-  },
-  {
-    title: "Data Anonymization and Minimization",
-    content: `Where possible, we anonymize or pseudonymize personal data to reduce the risk of exposure. We also follow the principle of data minimization, collecting only the information necessary for specific purposes.`
-  },
-  {
-    title: "Regular Software Updates",
-    content: `We ensure that all our software and systems are up-to-date with the latest security patches and updates. This helps protect against known vulnerabilities and emerging threats.`
-  },
-  {
-    title: "Employee Training and Awareness",
-    content: `Our employees receive regular training on data protection and privacy best practices. This includes training on recognizing phishing attempts, securing sensitive information, and responding to potential data breaches.`
-  },
-  {
-    title: "Physical Security Measures",
-    content: `We implement physical security measures to protect our data centers and offices, including access controls, surveillance, and secure storage for sensitive documents.`
-  },
-  {
-    title: "Incident Response Plan",
-    content: `We have a comprehensive incident response plan in place to quickly address and mitigate any data breaches or security incidents. This plan includes procedures for identifying, containing, and resolving incidents, as well as notifying affected users and relevant authorities as required by law.`
-  },
-  {
-    title: "Vendor and Partner Security",
-    content: `We carefully vet and select third-party vendors and partners to ensure they meet our stringent security standards. We require them to implement appropriate security measures to protect any information we share with them.`
-  },
-  {
-    title: "User Controls and Preferences",
-    content: `We provide users with tools to manage their privacy settings and control how their information is used and shared. This includes options to opt-out of certain data collection practices and communications.`
-  },
-  {
-    title: "Continuous Monitoring and Improvement",
-    content: `We continuously monitor our security practices and implement improvements as needed to adapt to evolving threats and best practices in data protection.`
-  },
- {
-    title: "Managing Communication Preferences",
-    content: `Opt-In/Opt-Out: You have the choice to opt-in or opt-out of receiving communications from us. You can manage your preferences through your account settings or by following the instructions provided in our communications.
-
-Email Subscriptions: You can subscribe or unsubscribe from our marketing emails, newsletters, and other promotional communications at any time. Each email we send includes an unsubscribe link for your convenience.`
-  },
-  {
-    title: "Accessing and Updating Your Information",
-    content: `Account Information: You can access, review, and update your account information, such as your name, email address, and contact details, by logging into your account on our website.
-
-Correction Requests: If you believe any information we hold about you is inaccurate or incomplete, you have the right to request corrections. Please contact our support team to make such requests.`
-  },
-  {
-    title: "Data Portability",
-    content: `Exporting Data: You have the right to request a copy of your personal data in a structured, commonly used, and machine-readable format. This allows you to transfer your data to another service provider if you choose.`
-  },
-  {
-    title: "Deleting Your Information",
-    content: `Account Deletion: You can request the deletion of your account and associated personal information. Please note that certain information may be retained for legal or legitimate business purposes.
-
-Service-Specific Deletions: For specific services or features, you may have the option to delete individual pieces of information without affecting your entire account.`
-  },
-  {
-    title: "Cookie Preferences",
-    content: `Managing Cookies: You can manage your cookie preferences through your browser settings. This includes accepting, rejecting, or deleting cookies. Please note that disabling cookies may affect the functionality of our services.
-
-Opting Out of Tracking: Some browsers and third-party services offer tools to disable tracking technologies. You can use these tools to control how your information is collected and used.`
-  },
-  {
-    title: "Interest-Based Advertising",
-    content: `Ad Preferences: You can manage your preferences for interest-based advertising through your account settings or by using the opt-out mechanisms provided by advertising networks. This includes adjusting your preferences for targeted ads.
-
-Do Not Track: Some browsers offer a "Do Not Track" feature that lets you signal to websites that you do not want your online activities tracked. While we honour such signals, not all tracking technologies may be fully controlled by this feature.`
-  },
-  {
-    title: "Third-Party Data Sharing",
-    content: `Consent-Based Sharing: We will only share your information with third parties for purposes other than those outlined in our policy with your explicit consent. You have the right to withdraw this consent at any time.
-
-Review and Consent: For any new or significant changes to our data sharing practices, we will provide you with notice and obtain your consent as required.`
-  },
-  {
-    title: "Restricting Processing",
-    content: `Processing Requests: You have the right to request that we restrict the processing of your personal data under certain circumstances, such as when you contest the accuracy of the data or object to its processing.
-
-Right to Object: You can object to the processing of your personal data for direct marketing purposes or other uses based on legitimate interests. We will comply with your request unless there are compelling legitimate grounds for the processing.`
-  },
-  {
-    title: "Withdrawal of Consent",
-    content: `Changing Your Mind: If you have previously given consent for any specific use of your personal data, you can withdraw that consent at any time. This will not affect the lawfulness of processing based on consent before its withdrawal.`
-  },
-  {
-    title: "Exercising Your Rights",
-    content: `Contacting Us: To exercise any of your rights, please contact our privacy team using the contact details provided in this policy. We will respond to your requests within the timeframes required by applicable law.
-
-Verification: For security reasons, we may need to verify your identity before processing your requests. This helps us protect your information from unauthorized access.`
+    title: "What Choices Do You Have Regarding the Use of Your Information?",
+    content: "We believe in giving you control over your personal information. You have various choices and rights regarding how your information is collected, used, and shared:",
+    subsections: [
+      {
+        title: "Managing Communication Preferences",
+        content: "Opt-In/Opt-Out: You have the choice to opt-in or opt-out of receiving communications from us. You can manage your preferences through your account settings or by following the instructions provided in our communications.\n\nEmail Subscriptions: You can subscribe or unsubscribe from our marketing emails, newsletters, and other promotional communications at any time. Each email we send includes an unsubscribe link for your convenience."
+      },
+      {
+        title: "Accessing and Updating Your Information",
+        content: "Account Information: You can access, review, and update your account information, such as your name, email address, and contact details, by logging into your account on our website.\n\nCorrection Requests: If you believe any information we hold about you is inaccurate or incomplete, you have the right to request corrections. Please contact our support team to make such requests."
+      },
+      {
+        title: "Data Portability",
+        content: "Exporting Data: You have the right to request a copy of your personal data in a structured, commonly used, and machine-readable format. This allows you to transfer your data to another service provider if you choose."
+      },
+      {
+        title: "Deleting Your Information",
+        content: "Account Deletion: You can request the deletion of your account and associated personal information. Please note that certain information may be retained for legal or legitimate business purposes.\n\nService-Specific Deletions: For specific services or features, you may have the option to delete individual pieces of information without affecting your entire account."
+      },
+      {
+        title: "Cookie Preferences",
+        content: "Managing Cookies: You can manage your cookie preferences through your browser settings. This includes accepting, rejecting, or deleting cookies. Please note that disabling cookies may affect the functionality of our services.\n\nOpting Out of Tracking: Some browsers and third-party services offer tools to disable tracking technologies. You can use these tools to control how your information is collected and used."
+      },
+      {
+        title: "Interest-Based Advertising",
+        content: "Ad Preferences: You can manage your preferences for interest-based advertising through your account settings or by using the opt-out mechanisms provided by advertising networks. This includes adjusting your preferences for targeted ads.\n\nDo Not Track: Some browsers offer a \"Do Not Track\" feature that lets you signal to websites that you do not want your online activities tracked. While we honour such signals, not all tracking technologies may be fully controlled by this feature."
+      },
+      {
+        title: "Third-Party Data Sharing",
+        content: "Consent-Based Sharing: We will only share your information with third parties for purposes other than those outlined in our policy with your explicit consent. You have the right to withdraw this consent at any time.\n\nReview and Consent: For any new or significant changes to our data sharing practices, we will provide you with notice and obtain your consent as required."
+      },
+      {
+        title: "Restricting Processing",
+        content: "Processing Requests: You have the right to request that we restrict the processing of your personal data under certain circumstances, such as when you contest the accuracy of the data or object to its processing.\n\nRight to Object: You can object to the processing of your personal data for direct marketing purposes or other uses based on legitimate interests. We will comply with your request unless there are compelling legitimate grounds for the processing."
+      },
+      {
+        title: "Withdrawal of Consent",
+        content: "Changing Your Mind: If you have previously given consent for any specific use of your personal data, you can withdraw that consent at any time. This will not affect the lawfulness of processing based on consent before its withdrawal."
+      },
+      {
+        title: "Exercising Your Rights",
+        content: "Contacting Us: To exercise any of your rights, please contact our privacy team using the contact details provided in this policy. We will respond to your requests within the timeframes required by applicable law.\n\nVerification: For security reasons, we may need to verify your identity before processing your requests. This helps us protect your information from unauthorized access."
+      }
+    ]
   }
 ];
 
