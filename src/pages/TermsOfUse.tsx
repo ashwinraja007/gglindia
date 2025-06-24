@@ -50,6 +50,7 @@ const TermsOfUsePage: React.FC = () => {
 
         <h2 className="text-xl font-semibold mt-6 mb-2">Restrictions on Website Use</h2>
         <p>In addition to the limitations outlined in these Terms of Use, you agree to the following:</p>
+        <p>
         <ul className="list-disc font-semibold mt-6 mb-2">
           <li>You must not conceal the origin of information transmitted through the Website.</li>
           <li>You shall refrain from placing false or misleading information on the Website.</li>
@@ -59,6 +60,7 @@ const TermsOfUsePage: React.FC = () => {
           <li>Using or accessing the Website, GGL (India) Systems, or Services in a manner that, in GGL (India)'s judgment, adversely affects performance or function, or interferes with authorized parties' access to the GGL (India) Systems, Services, or the Website, is not allowed.</li>
           <li>Framing or employing framing techniques to enclose any portion or aspect of the Content or Information without the express written consent of GGL (India) is prohibited.</li>
         </ul>
+        </p>
 
         <h2 className="text-xl font-semibold mt-6 mb-2">Outbound Links</h2>
         <p>
