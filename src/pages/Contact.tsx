@@ -63,7 +63,7 @@ const Contact = () => {
         Fill in the form below and we'll get back to you as soon as possible.
       </p>
       <form
-        action="https://formsubmit.co/youremail@example.com"
+        action="https://formsubmit.co/karthikjungleemara@gmail.com"
         method="POST"
         className="space-y-5"
       >
