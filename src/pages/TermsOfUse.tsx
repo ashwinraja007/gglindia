@@ -51,7 +51,7 @@ const TermsOfUsePage: React.FC = () => {
         <h2 className="text-xl font-semibold mt-6 mb-2">Restrictions on Website Use</h2>
         <p>In addition to the limitations outlined in these Terms of Use, you agree to the following:</p>
         <p>
-        <ul className="list-disc font-semibold mt-6 mb-2">
+        <ul className="list-disc mt-6 mb-2">
           <li>You must not conceal the origin of information transmitted through the Website.</li>
           <li>You shall refrain from placing false or misleading information on the Website.</li>
           <li>Usage or access of any service, information, application, or software available via the Website is restricted to methods expressly permitted by GGL (India).</li>
