@@ -69,6 +69,7 @@ const TermsOfUsePage: React.FC = () => {
 
         <h2 className="text-xl font-semibold mt-6 mb-2">Inbound Links</h2>
         <p>Linking to any page of the Website other than the homepage through a plain text link is strictly prohibited without a separate linkage agreement with GGL (India). Websites or other entities linking to the homepage or any of its pages are prohibited from:</p>
+         <p>
         <ul className="list-disc font-semibold mt-6 mb-2">
           <li>Duplicating Content.</li>
           <li>Using a frame or border around the Content.</li>
@@ -77,15 +78,18 @@ const TermsOfUsePage: React.FC = () => {
           <li>Providing false information about GGL (India) products or services.</li>
           <li>Using any logo or mark of GGL (India) or its affiliates without express written permission from GGL (India).</li>
         </ul>
+        </p>
 
         <h2 className="text-xl font-semibold mt-6 mb-2">Termination</h2>
         <p>
           GGL (India) reserves the right to terminate or suspend your use of the Website, GGL (India) Systems, Information, Services, and Content at its sole discretion, without prior notice or reason. Even if access remains available to others, GGL (India) may suspend or terminate your access at any time. Upon termination or suspension, you must:
         </p>
+        <p>
         <ul className="list-disc font-semibold mt-6 mb-2">
           <li>Immediately cease using the Website.</li>
           <li>Destroy any copies of the Content you have made.</li>
         </ul>
+         </p>
         <p className="mt-2">
           Continuing to access the Website, GGL (India) Systems, Information, or Services after termination, suspension, or discontinuation will be considered trespassing.
         </p>
