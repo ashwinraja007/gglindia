@@ -50,46 +50,82 @@ const Contact = () => {
         </section>
 
         {/* Contact Form Only */}
-        <section id="contact-form" className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8
-          }} className="p-8 rounded-xl shadow-lg max-w-2xl mx-auto bg-slate-100">
-              <h2 className="text-2xl font-bold mb-4">Send us a Message</h2>
-              <p className="text-gray-600 mb-6">
-                Fill in the form below and we'll get back to you as soon as possible.
-              </p>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input placeholder="First Name" {...register("firstName")} className="border-gray-200 focus:ring-blue-500" />
-                  <Input placeholder="Last Name" {...register("lastName")} className="border-gray-200 focus:ring-blue-500" />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input placeholder="Email" type="email" {...register("email")} className="border-gray-200 focus:ring-blue-500" />
-                  <Input placeholder="Phone" {...register("phone")} className="border-gray-200 focus:ring-blue-500" />
-                </div>
-                <Input placeholder="Organization/Company" {...register("organization")} className="border-gray-200 focus:ring-blue-500" />
-                <Textarea placeholder="Your Message" className="min-h-[120px] border-gray-200 focus:ring-blue-500" {...register("message")} />
-                <motion.div whileHover={{
-                scale: 1.02
-              }} whileTap={{
-                scale: 0.98
-              }}>
-                  <Button type="submit" className="w-full text-white py-6 flex items-center justify-center gap-2 bg-brand-navy">
-                    Send Message
-                    <Send size={18} />
-                  </Button>
-                </motion.div>
-              </form>
-            </motion.div>
-          </div>
-        </section>
+<section id="contact-form" className="py-16 bg-gray-50">
+  <div className="container mx-auto px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="p-8 rounded-xl shadow-lg max-w-2xl mx-auto bg-slate-100"
+    >
+      <h2 className="text-2xl font-bold mb-4">Send us a Message</h2>
+      <p className="text-gray-600 mb-6">
+        Fill in the form below and we'll get back to you as soon as possible.
+      </p>
+      <form
+        action="https://formsubmit.co/youremail@example.com"
+        method="POST"
+        className="space-y-5"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Input
+            placeholder="First Name"
+            name="firstName"
+            required
+            className="border-gray-200 focus:ring-blue-500"
+          />
+          <Input
+            placeholder="Last Name"
+            name="lastName"
+            required
+            className="border-gray-200 focus:ring-blue-500"
+          />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Input
+            placeholder="Email"
+            type="email"
+            name="email"
+            required
+            className="border-gray-200 focus:ring-blue-500"
+          />
+          <Input
+            placeholder="Phone"
+            name="phone"
+            className="border-gray-200 focus:ring-blue-500"
+          />
+        </div>
+        <Input
+          placeholder="Organization/Company"
+          name="organization"
+          className="border-gray-200 focus:ring-blue-500"
+        />
+        <Textarea
+          placeholder="Your Message"
+          name="message"
+          required
+          className="min-h-[120px] border-gray-200 focus:ring-blue-500"
+        />
+
+        {/* Hidden Settings for FormSubmit */}
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="box" />
+        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you" />
+
+        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+          <Button
+            type="submit"
+            className="w-full text-white py-6 flex items-center justify-center gap-2 bg-brand-navy"
+          >
+            Send Message
+            <Send size={18} />
+          </Button>
+        </motion.div>
+      </form>
+    </motion.div>
+  </div>
+</section>
+
       </main>
 
       <Footer />
