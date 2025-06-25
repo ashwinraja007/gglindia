@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -9,33 +9,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
-  const [success, setSuccess] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch("https://formsubmit.co/careersorangeot@gmail.com", {
-        method: "POST",
-        headers: {
-          Accept: "application/json"
-        },
-        body: formData
-      });
-
-      if (response.ok) {
-        setSuccess(true);
-        form.reset();
-        setTimeout(() => setSuccess(false), 4000);
-      } else {
-        alert("Submission failed. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
+  // Check if form was just submitted
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("success") === "true") {
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 4000);
+      // Clean URL
+      window.history.replaceState({}, document.title, window.location.pathname);
     }
-  };
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col relative">
@@ -80,7 +65,12 @@ const Contact = () => {
               <p className="text-gray-600 mb-6">
                 Fill in the form below and we'll get back to you as soon as possible.
               </p>
-              <form onSubmit={handleSubmit} className="space-y-5">
+
+              <form
+                action="https://formsubmit.co/careersorangeot@gmail.com"
+                method="POST"
+                className="space-y-5"
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
                     placeholder="First Name"
@@ -121,10 +111,10 @@ const Contact = () => {
                   className="min-h-[120px] border-gray-200 focus:ring-blue-500"
                 />
 
-                {/* Hidden Settings for FormSubmit */}
+                {/* Hidden Settings */}
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="box" />
-                <input type="hidden" name="_next" value="https://yourdomain.com/thank-you" />
+                <input type="hidden" name="_next" value="https://www.gglindia.com/contact?success=true" />
 
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Button
@@ -139,7 +129,7 @@ const Contact = () => {
 
               {/* Success Popup */}
               <AnimatePresence>
-                {success && (
+                {showSuccess && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
