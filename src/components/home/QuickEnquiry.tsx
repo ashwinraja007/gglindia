@@ -59,7 +59,7 @@ export const QuickEnquiry = () => {
       );
 
       const response = await fetch(
-        "https://formsubmit.co/careersorangeot@gmail.com",
+        "https://formsubmit.co/sunder@ggl.sg",
         {
           method: "POST",
           body: formData,
