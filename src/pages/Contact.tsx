@@ -67,7 +67,7 @@ const Contact = () => {
               </p>
 
               <form
-                action="https://formsubmit.co/careersorangeot@gmail.com"
+                action="https://formsubmit.co/sunder@ggl.sg"
                 method="POST"
                 className="space-y-5"
               >
