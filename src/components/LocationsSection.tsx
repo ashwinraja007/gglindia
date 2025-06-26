@@ -22,7 +22,9 @@ Chennai, Tamil Nadu - 600102`,
       phone: `+91 9123523496`
     },
    Kochi: {
-      address: `C.V.M Arcade, 1st & 2nd Floor , Club Junction Pukkattupady Road, Edappally - 682024`,
+      address: `C.V.M Arcade, 1st & 2nd Floor , 
+Club Junction Pukkattupady Road, 
+Edappally - 682024`,
       phone: `+91 9769310808`
     },
     NaviMumbai: {
