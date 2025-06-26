@@ -5,6 +5,7 @@ const LocationsSection: React.FC = () => {
   const [showDetails, setShowDetails] = useState(true);
   const mapIframes: Record<LocationKey, string> = {
     Chennai: "https://www.google.com/maps/d/embed?mid=12Rtb_hQeXud-j4o3tW86ldm7Pk8yLk0&ehbc=2E312F&noprof=1",
+    Kochi: "https://www.google.com/maps/d/embed?mid=1uCC98HrDJA35-Wy1zCQRm4I6V_Fi7Gg&ehbc=2E312F&noprof=1",
     NaviMumbai: "https://www.google.com/maps/d/embed?mid=1S_e0QPhCx7XJpSpngt-uoCrhWZQApqw&ehbc=2E312F&noprof=1",
     Delhi: "https://www.google.com/maps/d/embed?mid=1BB5XPTfJLKxYbhz8G4m8LdKzN5LQi3o&ehbc=2E312F&noprof=1",
     Bangalore: "https://www.google.com/maps/d/embed?mid=1kvFU6arJH18wWA5qi9b2NJ-ci4ExfZA&ehbc=2E312F&noprof=1",
