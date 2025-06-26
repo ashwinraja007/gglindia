@@ -47,6 +47,10 @@ export const Footer = () => {
     title: "Chennai Office",
     address: "Old No. G1, New G3, KAIZEN, 2nd & 3rd Floor, Plot No. 565Q, G Block, Anna Nagar East, Chennai, Tamil Nadu – 600102",
     phone: "+91 9123523496"
+  },{
+    title: "Kochi Office",
+    address: "C.V.M Arcade, 1st & 2nd Floor ,Club Junction Pukkattupady Road,Edappally - 682024",
+    phone: "+91 9769310808"
   }, {
     title: "Mumbai Office",
     address: "407, Mayuresh Planet, Plot No. 42 & 43, Sector-15, CBD Belapur, Navi Mumbai, Maharashtra – 400614",
