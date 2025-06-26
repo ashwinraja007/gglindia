@@ -64,6 +64,9 @@ Kolkata, West Bengal - 700013`,
     key: "Chennai",
     label: "Chennai"
   }, {
+    key: "Kochi",
+    label: "Kochi"
+  },{
     key: "NaviMumbai",
     label: "Navi Mumbai"
   }, {
