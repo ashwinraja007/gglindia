@@ -21,6 +21,10 @@ Plot No. 565Q, G Block, Annanagar East,
 Chennai, Tamil Nadu - 600102`,
       phone: `+91 9123523496`
     },
+   Kochi: {
+      address: `C.V.M Arcade, 1st & 2nd Floor , Club Junction Pukkattupady Road, Edappally - 682024`,
+      phone: `+91 9769310808`
+    },
     NaviMumbai: {
       address: `407, MAYURESH PLANET, PLOT NO - 42 & 43,
 SECTOR-15, CBD BELAPUR,
