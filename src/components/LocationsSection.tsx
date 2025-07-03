@@ -64,7 +64,7 @@ Kolkata, West Bengal - 700013`,
     }
   };
 
-  const locations = [
+  const locations: { key: LocationKey; label: string }[] = [
     { key: "Chennai", label: "Chennai" },
     { key: "Kochi", label: "Kochi" },
     { key: "NaviMumbai", label: "Navi Mumbai" },
@@ -92,7 +92,7 @@ Kolkata, West Bengal - 700013`,
             <button
               key={key}
               onClick={() => {
-                setLocation(key as LocationKey);
+                setLocation(key);
                 setShowDetails(true);
               }}
               className={`p-4 text-left border rounded transition-all duration-200 ${
@@ -106,9 +106,8 @@ Kolkata, West Bengal - 700013`,
           ))}
         </div>
 
-        {/* Address + Map Section */}
+        {/* Address and Map Section */}
         <div className="w-full md:w-[70%] space-y-6">
-          {/* Address */}
           {showDetails && (
             <div className="transition-all duration-500 p-6 border border-gray-300 rounded-lg shadow-sm bg-slate-100">
               <h4 className="text-xl font-bold text-gray-800 mb-2">Address:</h4>
@@ -118,14 +117,13 @@ Kolkata, West Bengal - 700013`,
             </div>
           )}
 
-          {/* Map */}
           <div className="relative shadow-2xl rounded-lg overflow-hidden h-[480px]">
             <div className="absolute top-0 left-0 w-full h-[80px] bg-white z-20"></div>
             <div className="absolute top-0 left-0 w-full text-center font-semibold text-black py-2 z-30 bg-[#f6b100]">
               GGL - {location} Location
             </div>
             <iframe
-              src={mapIframes[location] ?? ""}
+              src={mapIframes[location]}
               width="100%"
               height="100%"
               style={{ border: 0 }}
