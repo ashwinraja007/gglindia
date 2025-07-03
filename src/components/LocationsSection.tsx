@@ -7,12 +7,12 @@ const LocationsSection: React.FC = () => {
   const [showDetails, setShowDetails] = useState(true);
 
   const mapIframes: Record<LocationKey, string> = {
-    Chennai: "https://www.google.com/maps/d/embed?mid=12Rtb_hQeXud-j4o3tW86ldm7Pk8yLk0&ehbc=2E312F&noprof=1",
+    Chennai: "https://www.google.com/maps/d/u/0/embed?mid=1QbH4Jh97GdlnhE7ctMmdmYpJW6H2jX8&ehbc=2E312F&noprof=1",
     Kochi: "https://www.google.com/maps/d/embed?mid=1uCC98HrDJA35-Wy1zCQRm4I6V_Fi7Gg&ehbc=2E312F&noprof=1",
-    NaviMumbai: "https://www.google.com/maps/d/embed?mid=1S_e0QPhCx7XJpSpngt-uoCrhWZQApqw&ehbc=2E312F&noprof=1",
-    Delhi: "https://www.google.com/maps/d/embed?mid=1BB5XPTfJLKxYbhz8G4m8LdKzN5LQi3o&ehbc=2E312F&noprof=1",
-    Bangalore: "https://www.google.com/maps/d/embed?mid=1kvFU6arJH18wWA5qi9b2NJ-ci4ExfZA&ehbc=2E312F&noprof=1",
-    Kolkata: "https://www.google.com/maps/d/embed?mid=1WkGohVbKN6TZsllkoDWeEWF4TV2bQt0&ehbc=2E312F&noprof=1"
+    NaviMumbai: "https://www.google.com/maps/d/u/0/embed?mid=1E2hQWmybKiMlJBH6iVE9U80nlqXCzx4&ehbc=2E312F&noprof=1",
+    Delhi: "https://www.google.com/maps/d/u/0/embed?mid=1DuD2MsLfqWozRrwLHldQLJg7qOVCly0&ehbc=2E312F&noprof=1",
+    Bangalore: "https://www.google.com/maps/d/u/0/embed?mid=1VgEO0RnW4UGU1xz543NUgtv01yj0vm8&ehbc=2E312F&noprof=1",
+    Kolkata: "https://www.google.com/maps/d/u/0/embed?mid=1BKt87IfJIGltaDws-ZBJ6Xaj6rN-Y74&ehbc=2E312F&noprof=1"
   };
 
   const locationDetails: Record<LocationKey, { address: string; phone: string }> = {
