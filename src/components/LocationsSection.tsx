@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-type LocationKey = "Chennai" | "Kochi" | "NaviMumbai" | "Delhi" | "Bangalore" | "Kolkata";
+type LocationKey = "Chennai" | "Kochi" | "NaviMumbai" | "Delhi" | "Bangalore" | "Kolkata (Branch Office)"| "Kolkata (Sales Office)";
 
 const LocationsSection: React.FC = () => {
   const [location, setLocation] = useState<LocationKey>("Chennai");
