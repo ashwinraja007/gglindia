@@ -63,9 +63,13 @@ export const Footer = () => {
     title: "Bangalore Office",
     address: "No 2M-216, First Floor, 2nd Main, East Of NGEF Layout, Kasturinagar, Bangalore – 560043",
     phone: "+91 9986949743"
+  },{
+    title: "Kolkata (Branch Office)",
+    address: "Imagine Techpark, Unit No. 10, 19th Floor, Block DN 6 , Sector - V, Salt Lake City, Kolkata, West Bengal, India - 700091",
+    phone: "+91 9986949743"
   }, {
-    title: "Kolkata Office",
-    address: "Room No. 29, 4th Floor, 6, Jawaharlal Nehru Road, Siddha Esplanade, Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal – 700013",
+    title: "Kolkata (Sales Office)",
+    address: "Room No - 29,  4th Floor 6, Jawaharlal Nehru Rd, Siddha Esplanade Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal 700013",
     phone: "+91 6290921534"
   }];
   const [currentIndex, setCurrentIndex] = useState<number>(0);
