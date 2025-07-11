@@ -12,7 +12,8 @@ const LocationsSection: React.FC = () => {
     NaviMumbai: "https://www.google.com/maps/d/u/0/embed?mid=1E2hQWmybKiMlJBH6iVE9U80nlqXCzx4&ehbc=2E312F&noprof=1",
     Delhi: "https://www.google.com/maps/d/u/0/embed?mid=1DuD2MsLfqWozRrwLHldQLJg7qOVCly0&ehbc=2E312F&noprof=1",
     Bangalore: "https://www.google.com/maps/d/u/0/embed?mid=1VgEO0RnW4UGU1xz543NUgtv01yj0vm8&ehbc=2E312F&noprof=1",
-    Kolkata: "https://www.google.com/maps/d/u/0/embed?mid=1BKt87IfJIGltaDws-ZBJ6Xaj6rN-Y74&ehbc=2E312F&noprof=1"
+    Kolkata (Branch Office): "https://www.google.com/maps/d/u/0/embed?mid=1BKt87IfJIGltaDws-ZBJ6Xaj6rN-Y74&ehbc=2E312F&noprof=1",
+    Kolkata (Sales Office): "https://www.google.com/maps/d/embed?mid=1bhhXHZJjRiXyNzE7ByTPJRO8xlu7KiI&ehbc=2E312F&noprof=1"
   };
 
   const locationDetails: Record<LocationKey, { address: string; phone: string }> = {
@@ -55,11 +56,12 @@ Jasola District Centre, New Delhi - 110025`,
 Kasturinagar, Bangalore - 560043`,
       phone: `+91 9986949743`
     },
-    Kolkata: {
-      address: `Room No - 29, 4th Floor,
-6, Jawaharlal Nehru Rd, Siddha Esplanade,
-Adjacent to Metro Central (Previously Metro Cinema),
-Kolkata, West Bengal - 700013`,
+    Kolkata (Branch Office):{
+      address: `Imagine Techpark, Unit No. 10, 19th Floor, Block DN 6 , Sector - V, Salt Lake City, Kolkata, West Bnegal, India - 700091`,
+      phone: `+91 6290921534`
+ },
+    Kolkata (Sales Office):{
+      address: `Room No - 29,  4th Floor 6, Jawaharlal Nehru Rd, Siddha Esplanade Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal 700013`,
       phone: `+91 6290921534`
     }
   };
@@ -70,7 +72,8 @@ Kolkata, West Bengal - 700013`,
     { key: "NaviMumbai", label: "Navi Mumbai" },
     { key: "Delhi", label: "Delhi" },
     { key: "Bangalore", label: "Bangalore" },
-    { key: "Kolkata", label: "Kolkata" }
+    { key: "Kolkata (Branch Office)", label: "Kolkata (Branch Office)" },
+    { key: "Kolkata (Sales Office)", label: "Kolkata (Sales Office)" }
   ];
 
   return (
