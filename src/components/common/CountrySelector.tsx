@@ -57,10 +57,16 @@ const CountrySelector = () => {
 
   // Handle redirect
   const handleCountrySelect = (country: CountryData) => {
-    setSelectedRedirectCountry(country);
+  setSelectedRedirectCountry(country);
+
+  // Fallback: open using setTimeout to avoid browser block
+  setTimeout(() => {
     window.open(country.website, '_blank', 'noopener,noreferrer');
-    setIsOpen(false);
-  };
+  }, 0);
+
+  setIsOpen(false);
+};
+
 
   // Close dropdown when clicking outside
   useEffect(() => {
