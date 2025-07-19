@@ -56,16 +56,23 @@ const CountrySelector = () => {
   });
 
   // Handle redirect
-  const handleCountrySelect = (country: CountryData) => {
+  let redirecting = false;
+
+const handleCountrySelect = (country: CountryData) => {
+  if (redirecting) return; // prevent duplicate calls
+  redirecting = true;
+
   setSelectedRedirectCountry(country);
 
-  // Fallback: open using setTimeout to avoid browser block
+  // Use setTimeout to allow menu to close cleanly before navigation
   setTimeout(() => {
     window.open(country.website, '_blank', 'noopener,noreferrer');
-  }, 0);
+    redirecting = false; // reset after delay
+  }, 100);
 
   setIsOpen(false);
 };
+
 
 
   // Close dropdown when clicking outside
