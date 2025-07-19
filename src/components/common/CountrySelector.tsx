@@ -19,6 +19,7 @@ interface CountryData {
   flag?: string;
 }
 
+const redirectingRef = useRef(false);
 const countries: CountryData[] = [
   { country: "MALAYSIA", company: "OECL", website: "https://www.oecl.sg/malaysia/home", priority: 3, flag: "/my.svg" },
   { country: "SINGAPORE", company: "GGL", website: "https://ggl.sg/", priority: 1, flag: "/sg.svg" },
@@ -56,24 +57,19 @@ const CountrySelector = () => {
   });
 
   // Handle redirect
-  let redirecting = false;
-
-const handleCountrySelect = (country: CountryData) => {
-  if (redirecting) return; // prevent duplicate calls
-  redirecting = true;
+  const handleCountrySelect = (country: CountryData) => {
+  if (redirectingRef.current) return;
+  redirectingRef.current = true;
 
   setSelectedRedirectCountry(country);
 
-  // Use setTimeout to allow menu to close cleanly before navigation
   setTimeout(() => {
     window.open(country.website, '_blank', 'noopener,noreferrer');
-    redirecting = false; // reset after delay
+    redirectingRef.current = false; // reset after opening
   }, 100);
 
   setIsOpen(false);
 };
-
-
 
   // Close dropdown when clicking outside
   useEffect(() => {
