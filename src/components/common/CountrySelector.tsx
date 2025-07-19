@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Globe } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -19,7 +18,6 @@ interface CountryData {
   flag?: string;
 }
 
-const redirectingRef = useRef(false);
 const countries: CountryData[] = [
   { country: "MALAYSIA", company: "OECL", website: "https://www.oecl.sg/malaysia/home", priority: 3, flag: "/my.svg" },
   { country: "SINGAPORE", company: "GGL", website: "https://ggl.sg/", priority: 1, flag: "/sg.svg" },
@@ -38,40 +36,34 @@ const countries: CountryData[] = [
   { country: "UK", company: "MOLTECH", website: "https://moltech.uk/", priority: 16, flag: "/gb.svg" }
 ];
 
-// Find Australia in the countries list
-const findAustraliaCountry = () => {
-  return countries.find(country => country.country === "AUSTRALIA") || countries[0];
-};
-
 const CountrySelector = () => {
   const [isOpen, setIsOpen] = useState(false);
-  // This state is only used for tracking the selected country for redirection
-  const [selectedRedirectCountry, setSelectedRedirectCountry] = useState<CountryData>(findAustraliaCountry());
+  const [selectedRedirectCountry, setSelectedRedirectCountry] = useState<CountryData>(
+    countries.find((c) => c.country === "AUSTRALIA") || countries[0]
+  );
   const dropdownRef = useRef<HTMLDivElement>(null);
-  
-  // Sort countries by priority, with Australia first
+  const redirectingRef = useRef(false);
+
   const sortedCountries = [...countries].sort((a, b) => {
     if (a.country === "AUSTRALIA") return -1;
     if (b.country === "AUSTRALIA") return 1;
     return a.priority - b.priority;
   });
 
-  // Handle redirect
   const handleCountrySelect = (country: CountryData) => {
-  if (redirectingRef.current) return;
-  redirectingRef.current = true;
+    if (redirectingRef.current) return;
+    redirectingRef.current = true;
 
-  setSelectedRedirectCountry(country);
+    setSelectedRedirectCountry(country);
 
-  setTimeout(() => {
-    window.open(country.website, '_blank', 'noopener,noreferrer');
-    redirectingRef.current = false; // reset after opening
-  }, 100);
+    setTimeout(() => {
+      window.open(country.website || "/", '_blank', 'noopener,noreferrer');
+      redirectingRef.current = false;
+    }, 100);
 
-  setIsOpen(false);
-};
+    setIsOpen(false);
+  };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -89,19 +81,18 @@ const CountrySelector = () => {
     <div ref={dropdownRef} className="relative z-50">
       <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
         <DropdownMenuTrigger asChild>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="border-[#F6B100] bg-white text-gray-800 hover:bg-[#F6B100]/10 px-4 py-2 rounded-full flex items-center gap-2"
           >
-              {/* Show globe icon instead of Australia flag */}
             <Globe className="w-6 h-6 text-[#F6B100]" />
             <span className="flex items-center gap-1">
               Switch Country <ChevronDown className="h-3 w-3 ml-1 text-gray-500" />
             </span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent 
-          align="center" 
+        <DropdownMenuContent
+          align="center"
           className="w-[280px] border border-amber-100 bg-white p-2 rounded-lg shadow-lg"
           onPointerDownOutside={(e) => e.preventDefault()}
         >
@@ -109,9 +100,9 @@ const CountrySelector = () => {
             <div className="grid grid-cols-1 gap-1 p-1">
               {sortedCountries.map((country) => (
                 <DropdownMenuItem
-                  key={country.country}
+                  key={`${country.country}-${country.company}`}
                   onSelect={(e) => {
-                    e.preventDefault(); // Prevent closing on select
+                    e.preventDefault();
                     handleCountrySelect(country);
                   }}
                   className="cursor-pointer hover:bg-amber-50 p-2 rounded-md flex items-center gap-2 transition-colors"
@@ -122,14 +113,14 @@ const CountrySelector = () => {
                   >
                     <div className="flex-shrink-0">
                       {country.flag ? (
-                        <img 
-                          src={country.flag} 
-                          alt={`${country.country} flag`} 
+                        <img
+                          src={country.flag}
+                          alt={`${country.country} flag`}
                           className="w-6 h-6 rounded-sm shadow-sm object-cover"
                         />
                       ) : (
                         <div className="w-6 h-6 bg-gray-200 rounded-sm flex items-center justify-center">
-                         <Globe className="w-6 h-6 text-[#F6B100]" />
+                          <Globe className="w-6 h-6 text-[#F6B100]" />
                         </div>
                       )}
                     </div>
