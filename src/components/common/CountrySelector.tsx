@@ -35,13 +35,14 @@ const countries: CountryData[] = [
   { country: "UK", company: "MOLTECH", website: "https://moltech.uk/", priority: 16, flag: "/gb.svg" }
 ];
 
+const findAustraliaCountry = () => {
+  return countries.find(country => country.country === "AUSTRALIA") || countries[0];
+};
+
 const CountrySelector = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedRedirectCountry, setSelectedRedirectCountry] = useState<CountryData>(
-    countries.find((c) => c.country === "AUSTRALIA") || countries[0]
-  );
+  const [selectedRedirectCountry, setSelectedRedirectCountry] = useState<CountryData>(findAustraliaCountry());
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const redirectingRef = useRef(false);
 
   const sortedCountries = [...countries].sort((a, b) => {
     if (a.country === "AUSTRALIA") return -1;
@@ -50,16 +51,10 @@ const CountrySelector = () => {
   });
 
   const handleCountrySelect = (country: CountryData) => {
-    if (redirectingRef.current) return;
-    redirectingRef.current = true;
-
     setSelectedRedirectCountry(country);
-
     setTimeout(() => {
-      window.open(country.website || "/", '_blank', 'noopener,noreferrer');
-      redirectingRef.current = false;
-    }, 100);
-
+      window.open(country.website, '_blank', 'noopener,noreferrer');
+    }, 100); // ensure dropdown closes before redirect
     setIsOpen(false);
   };
 
@@ -80,8 +75,8 @@ const CountrySelector = () => {
     <div ref={dropdownRef} className="relative z-50">
       <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
+          <Button 
+            variant="outline" 
             className="border-[#F6B100] bg-white text-gray-800 hover:bg-[#F6B100]/10 px-4 py-2 rounded-full flex items-center gap-2"
           >
             <Globe className="w-6 h-6 text-[#F6B100]" />
@@ -90,31 +85,28 @@ const CountrySelector = () => {
             </span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent
-          align="center"
-          className="w-[280px] border border-amber-100 bg-white p-2 rounded-lg shadow-lg"
+        <DropdownMenuContent 
+          align="center" 
+          className="w-[280px] border border-amber-100 bg-white p-2 rounded-lg shadow-lg max-h-[90vh]"
           onPointerDownOutside={(e) => e.preventDefault()}
         >
-          <ScrollArea className="h-[300px] w-full pr-2">
+          <ScrollArea className="h-[calc(100vh-120px)] w-full pr-2 overflow-y-auto scrollbar-gold">
             <div className="grid grid-cols-1 gap-1 p-1">
               {sortedCountries.map((country) => (
                 <DropdownMenuItem
-                  key={`${country.country}-${country.company}`}
+                  key={country.country}
                   onSelect={(e) => {
                     e.preventDefault();
                     handleCountrySelect(country);
                   }}
                   className="cursor-pointer hover:bg-amber-50 p-2 rounded-md flex items-center gap-2 transition-colors"
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center w-full"
-                  >
+                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center w-full">
                     <div className="flex-shrink-0">
                       {country.flag ? (
-                        <img
-                          src={country.flag}
-                          alt={`${country.country} flag`}
+                        <img 
+                          src={country.flag} 
+                          alt={`${country.country} flag`} 
                           className="w-6 h-6 rounded-sm shadow-sm object-cover"
                         />
                       ) : (
