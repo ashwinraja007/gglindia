@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -11,38 +11,56 @@ import { useForm } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact = () => {
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
-  const [captchaValid, setCaptchaValid] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("success") === "true") {
-      setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 4000);
-      window.history.replaceState({}, document.title, window.location.pathname);
-    }
-
-    // reCAPTCHA callback binding
-    window.handleCaptchaChange = () => {
-      const response = window.grecaptcha?.getResponse();
-      setCaptchaValid(response?.length > 0);
-    };
-  }, []);
-
-  const onSubmit = () => {
-    if (!captchaValid) {
+  const onSubmit = async (data: any) => {
+    if (!captchaValue) {
       alert("Please verify the reCAPTCHA.");
       return;
     }
 
-    // Submit via native HTML form
-    document.getElementById("contact-form")?.submit();
+    setSubmitting(true);
+
+    const formData = {
+      ...data,
+      _captcha: "false",
+      _template: "box",
+    };
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success === "true") {
+        setShowSuccess(true);
+        reset();
+        setCaptchaValue(null);
+        setTimeout(() => setShowSuccess(false), 4000);
+      } else {
+        alert("Failed to submit. Please try again.");
+      }
+    } catch (error) {
+      alert("Error submitting form.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -89,30 +107,27 @@ const Contact = () => {
                 Fill in the form below and we'll get back to you as soon as possible.
               </p>
 
-              <form
-                id="contact-form"
-                action="https://formsubmit.co/ajax/karthikjungleemara@gmail.com"
-                method="POST"
-                onSubmit={handleSubmit(onSubmit)}
-                className="space-y-5"
-              >
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input placeholder="First Name" name="firstName" required />
-                  <Input placeholder="Last Name" name="lastName" required />
+                  <Input placeholder="First Name" {...register("firstName", { required: true })} />
+                  <Input placeholder="Last Name" {...register("lastName", { required: true })} />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input placeholder="Email" type="email" name="email" required />
-                  <Input placeholder="Phone" name="phone" />
+                  <Input
+                    placeholder="Email"
+                    type="email"
+                    {...register("email", { required: true })}
+                  />
+                  <Input placeholder="Phone" {...register("phone")} />
                 </div>
-                <Input placeholder="Organization/Company" name="organization" />
-                <Textarea placeholder="Your Message" name="message" required />
+                <Input placeholder="Organization/Company" {...register("organization")} />
+                <Textarea placeholder="Your Message" {...register("message", { required: true })} />
 
                 {/* reCAPTCHA */}
-                <div
-                  className="g-recaptcha"
-                  data-sitekey="6LdmlJMrAAAAAISp1BfEDn90djyWcnCvOwLSCnbQ"
-                  data-callback="handleCaptchaChange"
-                ></div>
+                <ReCAPTCHA
+                  sitekey="6LdmlJMrAAAAAISp1BfEDn90djyWcnCvOwLSCnbQ"
+                  onChange={(value) => setCaptchaValue(value)}
+                />
 
                 {/* Opt-in Agreement */}
                 <div className="space-y-2 mt-4">
@@ -127,7 +142,11 @@ const Contact = () => {
                     <span>
                       I confirm that my new import adheres to these conditions:
                       <ul className="list-disc pl-5 mt-1">
-                        <li>My contacts explicitly gave me their permission to send Email (newsletter), SMS or WhatsApp campaigns within the last two years, or had been asked to within the last two years.</li>
+                        <li>
+                          My contacts explicitly gave me their permission to send Email (newsletter),
+                          SMS or WhatsApp campaigns within the last two years, or had been asked to
+                          within the last two years.
+                        </li>
                         <li>These contacts were not borrowed from a third party</li>
                         <li>These contacts were not purchased or rented</li>
                       </ul>
@@ -138,21 +157,14 @@ const Contact = () => {
                   )}
                 </div>
 
-                {/* Hidden Settings */}
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="box" />
-                <input
-                  type="hidden"
-                  name="_next"
-                  value="https://www.gglindia.com/contact?success=true"
-                />
-
+                {/* Submit Button */}
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Button
                     type="submit"
                     className="w-full text-white py-6 flex items-center justify-center gap-2 bg-brand-navy"
+                    disabled={submitting}
                   >
-                    Send Message <Send size={18} />
+                    {submitting ? "Sending..." : "Send Message"} <Send size={18} />
                   </Button>
                 </motion.div>
               </form>
