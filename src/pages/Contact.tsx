@@ -8,6 +8,7 @@ import LocationsSection from "@/components/LocationsSection";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact = () => {
   const [showSuccess, setShowSuccess] = useState(false);
