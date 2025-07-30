@@ -110,7 +110,7 @@ const Contact = () => {
                 {/* reCAPTCHA */}
                 <div
                   className="g-recaptcha"
-                  data-sitekey="YOUR_SITE_KEY_HERE"
+                  data-sitekey="6LdmlJMrAAAAAISp1BfEDn90djyWcnCvOwLSCnbQ"
                   data-callback="handleCaptchaChange"
                 ></div>
 
