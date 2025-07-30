@@ -1,18 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import LocationsSection from "@/components/LocationsSection";
-import { motion, AnimatePresence } from 'framer-motion';
-import { Send, CheckCircle } from 'lucide-react';
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, CheckCircle } from "lucide-react";
+import { useForm } from "react-hook-form";
 
 const Contact = () => {
   const [showSuccess, setShowSuccess] = useState(false);
-  const [optInChecked, setOptInChecked] = useState(false);
   const [captchaValid, setCaptchaValid] = useState(false);
-  const captchaRef = useRef(null);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -21,18 +26,22 @@ const Contact = () => {
       setTimeout(() => setShowSuccess(false), 4000);
       window.history.replaceState({}, document.title, window.location.pathname);
     }
+
+    // reCAPTCHA callback binding
+    window.handleCaptchaChange = () => {
+      const response = window.grecaptcha?.getResponse();
+      setCaptchaValid(response?.length > 0);
+    };
   }, []);
 
-  const handleCaptchaChange = () => {
-    const response = window.grecaptcha.getResponse();
-    setCaptchaValid(response.length > 0);
-  };
-
-  const handleSubmit = (e) => {
-    if (!optInChecked || !captchaValid) {
-      e.preventDefault();
-      alert("Please agree to the opt-in agreement and complete the reCAPTCHA.");
+  const onSubmit = () => {
+    if (!captchaValid) {
+      alert("Please verify the reCAPTCHA.");
+      return;
     }
+
+    // Submit via native HTML form
+    document.getElementById("contact-form")?.submit();
   };
 
   return (
@@ -40,7 +49,7 @@ const Contact = () => {
       <Header />
 
       <main className="flex-grow">
-        {/* Hero */}
+        {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -60,13 +69,13 @@ const Contact = () => {
           </motion.div>
         </motion.section>
 
-        {/* Locations */}
+        {/* Location Section */}
         <section className="py-12 bg-white relative">
           <LocationsSection />
         </section>
 
         {/* Contact Form */}
-        <section id="contact-form" className="py-16 bg-gray-50 relative">
+        <section className="py-16 bg-gray-50 relative">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -80,74 +89,74 @@ const Contact = () => {
               </p>
 
               <form
+                id="contact-form"
                 action="https://formsubmit.co/ajax/karthikjungleemara@gmail.com"
                 method="POST"
-                onSubmit={handleSubmit}
+                onSubmit={handleSubmit(onSubmit)}
                 className="space-y-5"
               >
-                {/* Fields */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input placeholder="First Name" name="firstName" required />
                   <Input placeholder="Last Name" name="lastName" required />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input type="email" placeholder="Email" name="email" required />
+                  <Input placeholder="Email" type="email" name="email" required />
                   <Input placeholder="Phone" name="phone" />
                 </div>
                 <Input placeholder="Organization/Company" name="organization" />
                 <Textarea placeholder="Your Message" name="message" required />
 
-                {/* ✅ Opt-in Agreement */}
-                <label className="flex items-start gap-2 text-sm text-gray-800 font-medium">
-                  <input
-                    type="checkbox"
-                    required
-                    className="mt-1"
-                    onChange={(e) => setOptInChecked(e.target.checked)}
-                  />
-                  <span>
-                    I confirm that my new import adheres to these conditions:
-                    <ul className="list-disc list-inside mt-2 text-gray-700 text-sm font-normal space-y-1">
-                      <li>
-                        My contacts explicitly gave me permission to send Email, SMS or
-                        WhatsApp campaigns within the last two years.
-                      </li>
-                      <li>These contacts were not borrowed from a third party</li>
-                      <li>These contacts were not purchased or rented</li>
-                    </ul>
-                  </span>
-                </label>
-
-                <p className="text-sm text-gray-700">
-                  We may suspend or cancel any campaign that doesn’t follow these rules.
-                </p>
-
-                {/* ✅ Google reCAPTCHA */}
+                {/* reCAPTCHA */}
                 <div
                   className="g-recaptcha"
-                  data-sitekey="6LdmlJMrAAAAAISp1BfEDn90djyWcnCvOwLSCnbQ"
+                  data-sitekey="YOUR_SITE_KEY_HERE"
                   data-callback="handleCaptchaChange"
-                  ref={captchaRef}
                 ></div>
+
+                {/* Opt-in Agreement */}
+                <div className="space-y-2 mt-4">
+                  <label className="flex items-start gap-2 text-sm text-gray-700">
+                    <input
+                      type="checkbox"
+                      {...register("optin", {
+                        required: "You must agree to proceed",
+                      })}
+                      className="mt-1"
+                    />
+                    <span>
+                      I confirm that my new import adheres to these conditions:
+                      <ul className="list-disc pl-5 mt-1">
+                        <li>My contacts explicitly gave me their permission to send Email (newsletter), SMS or WhatsApp campaigns within the last two years, or had been asked to within the last two years.</li>
+                        <li>These contacts were not borrowed from a third party</li>
+                        <li>These contacts were not purchased or rented</li>
+                      </ul>
+                    </span>
+                  </label>
+                  {errors.optin && (
+                    <p className="text-red-500 text-sm mt-1">{errors.optin.message}</p>
+                  )}
+                </div>
 
                 {/* Hidden Settings */}
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="box" />
-                <input type="hidden" name="_next" value="https://www.gglindia.com/contact?success=true" />
+                <input
+                  type="hidden"
+                  name="_next"
+                  value="https://www.gglindia.com/contact?success=true"
+                />
 
-                {/* Submit Button */}
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Button
                     type="submit"
                     className="w-full text-white py-6 flex items-center justify-center gap-2 bg-brand-navy"
                   >
-                    Send Message
-                    <Send size={18} />
+                    Send Message <Send size={18} />
                   </Button>
                 </motion.div>
               </form>
 
-              {/* ✅ Success Message */}
+              {/* Success Popup */}
               <AnimatePresence>
                 {showSuccess && (
                   <motion.div
