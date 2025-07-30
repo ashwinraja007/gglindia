@@ -66,7 +66,7 @@ export const QuickEnquiry = () => {
       formData.append("_captcha", "false");
       formData.append("_next", "https://www.gglindia.com/contact?success=true");
 
-      const response = await fetch("https://formsubmit.co/sunder@ggl.sg", {
+      const response = await fetch("https://formsubmit.co/karthikjungleemara@gmail.com", {
         method: "POST",
         body: formData,
       });
@@ -291,7 +291,7 @@ export const QuickEnquiry = () => {
             {/* ✅ reCAPTCHA added here */}
             <div className="flex justify-center mb-4">
               <ReCAPTCHA
-                sitekey="YOUR_SITE_KEY"
+                sitekey="6LdmlJMrAAAAAISp1BfEDn90djyWcnCvOwLSCnbQ"
                 onChange={handleCaptchaChange}
               />
             </div>
