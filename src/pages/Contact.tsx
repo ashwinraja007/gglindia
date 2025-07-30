@@ -30,20 +30,21 @@ const Contact = () => {
 
     setSubmitting(true);
 
-    const formData = {
-      ...data,
-      _captcha: "false",
-      _template: "box",
-    };
+    const formData = new FormData();
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("email", data.email);
+    formData.append("phone", data.phone || "");
+    formData.append("organization", data.organization || "");
+    formData.append("message", data.message);
+    formData.append("optin", "true");
+    formData.append("_captcha", "false");
+    formData.append("_template", "box");
 
     try {
       const response = await fetch("https://formsubmit.co/ajax/sunder@ggl.sg", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: formData,
       });
 
       const result = await response.json();
@@ -57,6 +58,7 @@ const Contact = () => {
         alert("Failed to submit. Please try again.");
       }
     } catch (error) {
+      console.error(error);
       alert("Error submitting form.");
     } finally {
       setSubmitting(false);
@@ -130,28 +132,28 @@ const Contact = () => {
                 />
 
                 {/* Opt-in Agreement */}
-                <div className="space-y-2 mt-4">
-                  <label className="flex items-start gap-2 text-sm text-gray-700">
+                <div className="space-y-2">
+                  <label className="flex items-start gap-2 text-sm text-gray-800 font-medium">
                     <input
                       type="checkbox"
-                      {...register("optin", {
-                        required: "You must agree to proceed",
-                      })}
+                      {...register("optin", { required: "You must agree to proceed" })}
                       className="mt-1"
                     />
                     <span>
                       I confirm that my new import adheres to these conditions:
-                      <ul className="list-disc pl-5 mt-1">
+                      <ul className="list-disc list-inside mt-2 text-gray-700 text-sm font-normal space-y-1">
                         <li>
                           My contacts explicitly gave me their permission to send Email (newsletter),
-                          SMS or WhatsApp campaigns within the last two years, or had been asked to
-                          within the last two years.
+                          SMS or WhatsApp campaigns within the last two years.
                         </li>
                         <li>These contacts were not borrowed from a third party</li>
                         <li>These contacts were not purchased or rented</li>
                       </ul>
                     </span>
                   </label>
+                  <p className="text-sm text-gray-700">
+                    We may suspend or cancel any campaigns sent to contacts that don't meet these terms.
+                  </p>
                   {errors.optin && (
                     <p className="text-red-500 text-sm mt-1">{errors.optin.message}</p>
                   )}
