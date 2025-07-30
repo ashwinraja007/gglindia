@@ -258,21 +258,36 @@ export const QuickEnquiry = () => {
               )}
             </div>
 
+
             <div className="space-y-2">
-              <Label className="flex items-start gap-2 text-sm text-gray-700">
-                <input
-                  type="checkbox"
-                  {...register("optin", { required: "You must agree to proceed" })}
-                  className="mt-1"
-                />
-                I confirm that my new import adheres to these conditions: My contacts gave
-                me permission to send them campaigns, and these contacts were not borrowed,
-                rented, or purchased.
-              </Label>
-              {errors.optin && (
-                <p className="text-red-500 text-sm mt-1">{errors.optin.message}</p>
-              )}
-            </div>
+  <label className="flex items-start gap-2 text-sm text-gray-800 font-medium">
+    <input
+      type="checkbox"
+      {...register("optin", { required: "You must agree to proceed" })}
+      className="mt-1"
+    />
+    <span>
+      I confirm that my new import adheres to these conditions:
+      <ul className="list-disc list-inside mt-2 text-gray-700 text-sm font-normal space-y-1">
+        <li>
+          My contacts explicitly gave me their permission to send Email (newsletter),
+          SMS or WhatsApp campaigns within the last two years, or had been asked to
+          within the last two years.
+        </li>
+        <li>These contacts were not borrowed from a third party</li>
+        <li>These contacts were not purchased or rented</li>
+      </ul>
+    </span>
+  </label>
+  <p className="text-sm text-gray-700">
+    We may suspend or cancel any email, SMS or WhatsApp campaigns sent to contacts
+    that don't adhere to these conditions at any time.
+  </p>
+  {errors.optin && (
+    <p className="text-red-500 text-sm mt-1">{errors.optin.message}</p>
+  )}
+</div>
+
 
             <div className="flex justify-center">
               <ReCAPTCHA
