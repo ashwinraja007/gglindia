@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -10,24 +10,37 @@ import { Send, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
   const [showSuccess, setShowSuccess] = useState(false);
+  const [optInChecked, setOptInChecked] = useState(false);
+  const [captchaValid, setCaptchaValid] = useState(false);
+  const captchaRef = useRef(null);
 
-  // Check if form was just submitted
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get("success") === "true") {
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 4000);
-      // Clean URL
       window.history.replaceState({}, document.title, window.location.pathname);
     }
   }, []);
+
+  const handleCaptchaChange = () => {
+    const response = window.grecaptcha.getResponse();
+    setCaptchaValid(response.length > 0);
+  };
+
+  const handleSubmit = (e) => {
+    if (!optInChecked || !captchaValid) {
+      e.preventDefault();
+      alert("Please agree to the opt-in agreement and complete the reCAPTCHA.");
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header />
 
       <main className="flex-grow">
-        {/* Hero Section */}
+        {/* Hero */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -47,12 +60,12 @@ const Contact = () => {
           </motion.div>
         </motion.section>
 
-        {/* Location Map and Selector */}
+        {/* Locations */}
         <section className="py-12 bg-white relative">
           <LocationsSection />
         </section>
 
-        {/* Contact Form Section */}
+        {/* Contact Form */}
         <section id="contact-form" className="py-16 bg-gray-50 relative">
           <div className="container mx-auto px-4">
             <motion.div
@@ -67,55 +80,62 @@ const Contact = () => {
               </p>
 
               <form
-                action="https://formsubmit.co/sunder@ggl.sg"
+                action="https://formsubmit.co/ajax/karthikjungleemara@gmail.com"
                 method="POST"
+                onSubmit={handleSubmit}
                 className="space-y-5"
               >
+                {/* Fields */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
-                    placeholder="First Name"
-                    name="firstName"
-                    required
-                    className="border-gray-200 focus:ring-blue-500"
-                  />
-                  <Input
-                    placeholder="Last Name"
-                    name="lastName"
-                    required
-                    className="border-gray-200 focus:ring-blue-500"
-                  />
+                  <Input placeholder="First Name" name="firstName" required />
+                  <Input placeholder="Last Name" name="lastName" required />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
-                    placeholder="Email"
-                    type="email"
-                    name="email"
-                    required
-                    className="border-gray-200 focus:ring-blue-500"
-                  />
-                  <Input
-                    placeholder="Phone"
-                    name="phone"
-                    className="border-gray-200 focus:ring-blue-500"
-                  />
+                  <Input type="email" placeholder="Email" name="email" required />
+                  <Input placeholder="Phone" name="phone" />
                 </div>
-                <Input
-                  placeholder="Organization/Company"
-                  name="organization"
-                  className="border-gray-200 focus:ring-blue-500"
-                />
-                <Textarea
-                  placeholder="Your Message"
-                  name="message"
-                  required
-                  className="min-h-[120px] border-gray-200 focus:ring-blue-500"
-                />
+                <Input placeholder="Organization/Company" name="organization" />
+                <Textarea placeholder="Your Message" name="message" required />
+
+                {/* ✅ Opt-in Agreement */}
+                <label className="flex items-start gap-2 text-sm text-gray-800 font-medium">
+                  <input
+                    type="checkbox"
+                    required
+                    className="mt-1"
+                    onChange={(e) => setOptInChecked(e.target.checked)}
+                  />
+                  <span>
+                    I confirm that my new import adheres to these conditions:
+                    <ul className="list-disc list-inside mt-2 text-gray-700 text-sm font-normal space-y-1">
+                      <li>
+                        My contacts explicitly gave me permission to send Email, SMS or
+                        WhatsApp campaigns within the last two years.
+                      </li>
+                      <li>These contacts were not borrowed from a third party</li>
+                      <li>These contacts were not purchased or rented</li>
+                    </ul>
+                  </span>
+                </label>
+
+                <p className="text-sm text-gray-700">
+                  We may suspend or cancel any campaign that doesn’t follow these rules.
+                </p>
+
+                {/* ✅ Google reCAPTCHA */}
+                <div
+                  className="g-recaptcha"
+                  data-sitekey="6LdmlJMrAAAAAISp1BfEDn90djyWcnCvOwLSCnbQ"
+                  data-callback="handleCaptchaChange"
+                  ref={captchaRef}
+                ></div>
 
                 {/* Hidden Settings */}
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="box" />
                 <input type="hidden" name="_next" value="https://www.gglindia.com/contact?success=true" />
 
+                {/* Submit Button */}
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Button
                     type="submit"
@@ -127,7 +147,7 @@ const Contact = () => {
                 </motion.div>
               </form>
 
-              {/* Success Popup */}
+              {/* ✅ Success Message */}
               <AnimatePresence>
                 {showSuccess && (
                   <motion.div
