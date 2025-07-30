@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { motion } from "framer-motion";
-import ReCAPTCHA from "react-google-recaptcha"; // ⬅️ Added import
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface EnquiryForm {
   fullName: string;
@@ -24,15 +24,13 @@ interface EnquiryForm {
   email: string;
   purpose: string;
   comment: string;
+  optin: boolean;
 }
 
 export const QuickEnquiry = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null); // ⬅️ Added captcha state
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
 
   const {
     register,
@@ -41,13 +39,9 @@ export const QuickEnquiry = () => {
     reset,
   } = useForm<EnquiryForm>();
 
-  const handleCaptchaChange = (token: string | null) => {
-    setCaptchaToken(token);
-  };
-
   const onSubmit = async (data: EnquiryForm) => {
-    if (!captchaToken) {
-      alert("Please complete the reCAPTCHA.");
+    if (!recaptchaValue) {
+      setSubmitStatus("error");
       return;
     }
 
@@ -66,7 +60,7 @@ export const QuickEnquiry = () => {
       formData.append("_captcha", "false");
       formData.append("_next", "https://www.gglindia.com/contact?success=true");
 
-      const response = await fetch("https://formsubmit.co/karthikjungleemara@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
         method: "POST",
         body: formData,
       });
@@ -75,7 +69,7 @@ export const QuickEnquiry = () => {
 
       setSubmitStatus("success");
       reset();
-      setCaptchaToken(null);
+      setRecaptchaValue(null);
     } catch (error) {
       console.error(error);
       setSubmitStatus("error");
@@ -95,13 +89,10 @@ export const QuickEnquiry = () => {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <h2 className="text-2xl font-bold text-gray-800 mb-3">
-            Quick Enquiry
-          </h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-3">Quick Enquiry</h2>
           <div className="w-20 h-1 bg-brand-gold mx-auto mb-4"></div>
           <p className="text-gray-600">
-            Have a question? Fill out the form below and we'll get back to you
-            shortly.
+            Have a question? Fill out the form below and we'll get back to you shortly.
           </p>
         </motion.div>
 
@@ -115,8 +106,7 @@ export const QuickEnquiry = () => {
               <CheckCircle2 className="h-4 w-4 text-green-600" />
               <AlertTitle className="text-green-800">Success!</AlertTitle>
               <AlertDescription className="text-green-700">
-                Your enquiry has been submitted successfully. We'll contact you
-                soon.
+                Your enquiry has been submitted successfully. We'll contact you soon.
               </AlertDescription>
             </Alert>
           </motion.div>
@@ -132,7 +122,7 @@ export const QuickEnquiry = () => {
               <AlertCircle className="h-4 w-4 text-red-600" />
               <AlertTitle className="text-red-800">Error</AlertTitle>
               <AlertDescription className="text-red-700">
-                Something went wrong. Please try again later.
+                Something went wrong. Please verify the reCAPTCHA and try again.
               </AlertDescription>
             </Alert>
           </motion.div>
@@ -163,16 +153,12 @@ export const QuickEnquiry = () => {
                       message: "Name must be at least 2 characters",
                     },
                   })}
-                  className={`bg-white/80 focus:ring-2 focus:ring-brand-gold/30 ${
-                    errors.fullName
-                      ? "border-red-300 focus:border-red-500"
-                      : "border-gray-300 focus:border-brand-gold"
+                  className={`bg-white/80 ${
+                    errors.fullName ? "border-red-300" : "border-gray-300"
                   }`}
                 />
                 {errors.fullName && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.fullName.message}
-                  </p>
+                  <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>
                 )}
               </div>
 
@@ -190,16 +176,12 @@ export const QuickEnquiry = () => {
                       message: "Please enter a valid phone number",
                     },
                   })}
-                  className={`bg-white/80 focus:ring-2 focus:ring-brand-gold/30 ${
-                    errors.phone
-                      ? "border-red-300 focus:border-red-500"
-                      : "border-gray-300 focus:border-brand-gold"
+                  className={`bg-white/80 ${
+                    errors.phone ? "border-red-300" : "border-gray-300"
                   }`}
                 />
                 {errors.phone && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.phone.message}
-                  </p>
+                  <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
                 )}
               </div>
             </div>
@@ -220,16 +202,12 @@ export const QuickEnquiry = () => {
                       message: "Please enter a valid email",
                     },
                   })}
-                  className={`bg-white/80 focus:ring-2 focus:ring-brand-gold/30 ${
-                    errors.email
-                      ? "border-red-300 focus:border-red-500"
-                      : "border-gray-300 focus:border-brand-gold"
+                  className={`bg-white/80 ${
+                    errors.email ? "border-red-300" : "border-gray-300"
                   }`}
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.email.message}
-                  </p>
+                  <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
                 )}
               </div>
 
@@ -247,16 +225,12 @@ export const QuickEnquiry = () => {
                       message: "Purpose must be at least 3 characters",
                     },
                   })}
-                  className={`bg-white/80 focus:ring-2 focus:ring-brand-gold/30 ${
-                    errors.purpose
-                      ? "border-red-300 focus:border-red-500"
-                      : "border-gray-300 focus:border-brand-gold"
+                  className={`bg-white/80 ${
+                    errors.purpose ? "border-red-300" : "border-gray-300"
                   }`}
                 />
                 {errors.purpose && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.purpose.message}
-                  </p>
+                  <p className="text-red-500 text-sm mt-1">{errors.purpose.message}</p>
                 )}
               </div>
             </div>
@@ -275,26 +249,42 @@ export const QuickEnquiry = () => {
                     message: "Comment must be at least 10 characters",
                   },
                 })}
-                className={`bg-white/80 focus:ring-2 focus:ring-brand-gold/30 min-h-[120px] ${
-                  errors.comment
-                    ? "border-red-300 focus:border-red-500"
-                    : "border-gray-300 focus:border-brand-gold"
+                className={`bg-white/80 min-h-[120px] ${
+                  errors.comment ? "border-red-300" : "border-gray-300"
                 }`}
               />
               {errors.comment && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.comment.message}
-                </p>
+                <p className="text-red-500 text-sm mt-1">{errors.comment.message}</p>
               )}
             </div>
 
-            {/* ✅ reCAPTCHA added here */}
-            <div className="flex justify-center mb-4">
+            <div className="space-y-2">
+              <Label className="flex items-start gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  {...register("optin", { required: "You must agree to proceed" })}
+                  className="mt-1"
+                />
+                I confirm that my new import adheres to these conditions: My contacts gave
+                me permission to send them campaigns, and these contacts were not borrowed,
+                rented, or purchased.
+              </Label>
+              {errors.optin && (
+                <p className="text-red-500 text-sm mt-1">{errors.optin.message}</p>
+              )}
+            </div>
+
+            <div className="flex justify-center">
               <ReCAPTCHA
                 sitekey="6LdmlJMrAAAAAISp1BfEDn90djyWcnCvOwLSCnbQ"
-                onChange={handleCaptchaChange}
+                onChange={(value) => setRecaptchaValue(value)}
               />
             </div>
+            {!recaptchaValue && (
+              <p className="text-red-500 text-sm text-center">
+                Please verify you're not a robot.
+              </p>
+            )}
 
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Button
