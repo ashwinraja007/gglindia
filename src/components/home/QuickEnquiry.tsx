@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { motion } from "framer-motion";
+import ReCAPTCHA from "react-google-recaptcha"; // ⬅️ Added import
 
 interface EnquiryForm {
   fullName: string;
@@ -31,6 +32,8 @@ export const QuickEnquiry = () => {
     "idle" | "success" | "error"
   >("idle");
 
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null); // ⬅️ Added captcha state
+
   const {
     register,
     handleSubmit,
@@ -38,7 +41,16 @@ export const QuickEnquiry = () => {
     reset,
   } = useForm<EnquiryForm>();
 
+  const handleCaptchaChange = (token: string | null) => {
+    setCaptchaToken(token);
+  };
+
   const onSubmit = async (data: EnquiryForm) => {
+    if (!captchaToken) {
+      alert("Please complete the reCAPTCHA.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -49,27 +61,21 @@ export const QuickEnquiry = () => {
       formData.append("subject", data.purpose);
       formData.append("message", data.comment);
 
-      // FormSubmit special fields
       formData.append("_subject", "New Quick Enquiry Submission");
       formData.append("_template", "box");
       formData.append("_captcha", "false");
-      formData.append(
-        "_next",
-        "https://www.gglindia.com/contact?success=true"
-      );
+      formData.append("_next", "https://www.gglindia.com/contact?success=true");
 
-      const response = await fetch(
-        "https://formsubmit.co/sunder@ggl.sg",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch("https://formsubmit.co/sunder@ggl.sg", {
+        method: "POST",
+        body: formData,
+      });
 
       if (!response.ok) throw new Error("Form submission failed");
 
       setSubmitStatus("success");
       reset();
+      setCaptchaToken(null);
     } catch (error) {
       console.error(error);
       setSubmitStatus("error");
@@ -280,6 +286,14 @@ export const QuickEnquiry = () => {
                   {errors.comment.message}
                 </p>
               )}
+            </div>
+
+            {/* ✅ reCAPTCHA added here */}
+            <div className="flex justify-center mb-4">
+              <ReCAPTCHA
+                sitekey="YOUR_SITE_KEY"
+                onChange={handleCaptchaChange}
+              />
             </div>
 
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
