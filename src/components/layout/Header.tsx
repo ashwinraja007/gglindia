@@ -1,23 +1,39 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, Linkedin, Facebook } from "lucide-react";
 import CountrySelector from "../common/CountrySelector";
 
 export const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const infoRef = useRef(null);
 
+  // Scroll effect for sticky header background
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close dropdown if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        infoRef.current &&
+        !(infoRef.current as any).contains(e.target)
+      ) {
+        setIsInfoOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Navigate + optional scroll to ID
   const handleNavClick = (path: string, scrollToId?: string) => {
     setIsMobileMenuOpen(false);
     if (location.pathname === path && scrollToId) {
@@ -59,7 +75,7 @@ export const Header = () => {
               onClick={handleLogoClick}
               className="h-16 w-auto cursor-pointer transition-all duration-300 object-fill"
             />
-            <div className="h-8 w-px bg-gray-200 hidden md:block"></div>
+            <div className="h-8 w-px bg-gray-200 hidden md:block" />
             <img
               src="/1GlobalEnterprises.png"
               alt="1 Global Enterprises Logo"
@@ -67,7 +83,7 @@ export const Header = () => {
             />
           </div>
 
-          {/* Mobile Toggle */}
+          {/* Hamburger for Mobile */}
           <button
             className="md:hidden text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-gold rounded-md p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -75,7 +91,7 @@ export const Header = () => {
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <nav className="hidden md:flex gap-6 items-center relative">
             <button
               onClick={() => handleNavClick("/")}
@@ -87,12 +103,9 @@ export const Header = () => {
             </button>
 
             {/* Info Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setIsInfoOpen(true)}
-              onMouseLeave={() => setIsInfoOpen(false)}
-            >
+            <div className="relative" ref={infoRef}>
               <button
+                onClick={() => setIsInfoOpen((prev) => !prev)}
                 className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${
                   ["/about", "/careers"].includes(location.pathname)
                     ? "text-brand-gold"
@@ -104,7 +117,10 @@ export const Header = () => {
               {isInfoOpen && (
                 <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md z-50 min-w-[160px]">
                   <button
-                    onClick={() => handleNavClick("/about")}
+                    onClick={() => {
+                      handleNavClick("/about");
+                      setIsInfoOpen(false);
+                    }}
                     className={`block px-4 py-2 w-full text-left text-gray-800 hover:bg-gray-100 ${
                       location.pathname === "/about" ? "text-brand-gold" : ""
                     }`}
@@ -112,7 +128,10 @@ export const Header = () => {
                     About Us
                   </button>
                   <button
-                    onClick={() => handleNavClick("/careers")}
+                    onClick={() => {
+                      handleNavClick("/careers");
+                      setIsInfoOpen(false);
+                    }}
                     className={`block px-4 py-2 w-full text-left text-gray-800 hover:bg-gray-100 ${
                       location.pathname === "/careers" ? "text-brand-gold" : ""
                     }`}
@@ -151,7 +170,7 @@ export const Header = () => {
           </nav>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Nav */}
         <div
           className={`${
             isMobileMenuOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0"
