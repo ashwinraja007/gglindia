@@ -36,7 +36,7 @@ const countries: CountryData[] = [
 ];
 
 const findAustraliaCountry = () => {
-  return countries.find(c => c.country === "AUSTRALIA") || countries[0];
+  return countries.find(country => country.country === "AUSTRALIA") || countries[0];
 };
 
 const CountrySelector = () => {
@@ -54,7 +54,7 @@ const CountrySelector = () => {
     setSelectedRedirectCountry(country);
     setTimeout(() => {
       window.open(country.website, '_blank', 'noopener,noreferrer');
-    }, 100);
+    }, 100); // ensure dropdown closes before redirect
     setIsOpen(false);
   };
 
@@ -75,23 +75,23 @@ const CountrySelector = () => {
     <div ref={dropdownRef} className="relative z-50">
       <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
         <DropdownMenuTrigger asChild>
-          <Button 
-            variant="outline" 
-            className="border-[#F6B100] bg-[#003366] text-white hover:bg-[#002244] px-4 py-2 rounded-full flex items-center gap-2"
-          >
-            <Globe className="w-6 h-6 text-white" />
-            <span className="flex items-center gap-1">
-              Switch Country <ChevronDown className="h-3 w-3 ml-1 text-white" />
-            </span>
-          </Button>
-        </DropdownMenuTrigger>
+  <Button 
+    variant="outline" 
+    className="bg-[#003366] text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-[bg-white]"
+  >
+    <Globe className="w-5 h-5 text-white" />
+    <span className="flex items-center gap-1">
+      Switch Country <ChevronDown className="h-3 w-3 ml-1 text-white" />
+    </span>
+  </Button>
+</DropdownMenuTrigger>
 
         <DropdownMenuContent 
           align="center" 
-          className="w-[280px] border border-[#004080] bg-[#003366] p-2 rounded-lg shadow-lg max-h-[90vh] text-white"
+          className="w-[280px] border border-amber-100 bg-white p-2 rounded-lg shadow-lg max-h-[90vh]"
           onPointerDownOutside={(e) => e.preventDefault()}
         >
-          <ScrollArea className="h-[calc(100vh-120px)] w-full pr-2 overflow-y-auto scrollbar-thin scrollbar-thumb-amber-500">
+          <ScrollArea className="h-[calc(100vh-120px)] w-full pr-2 overflow-y-auto scrollbar-gold">
             <div className="grid grid-cols-1 gap-1 p-1">
               {sortedCountries.map((country) => (
                 <DropdownMenuItem
@@ -100,7 +100,7 @@ const CountrySelector = () => {
                     e.preventDefault();
                     handleCountrySelect(country);
                   }}
-                  className="cursor-pointer hover:bg-[#004d80] focus:bg-[#004d80] p-2 rounded-md flex items-center gap-2 transition-colors text-white"
+                  className="cursor-pointer hover:bg-amber-50 p-2 rounded-md flex items-center gap-2 transition-colors"
                 >
                   <motion.div whileHover={{ scale: 1.05 }} className="flex items-center w-full">
                     <div className="flex-shrink-0">
@@ -112,13 +112,13 @@ const CountrySelector = () => {
                         />
                       ) : (
                         <div className="w-6 h-6 bg-gray-200 rounded-sm flex items-center justify-center">
-                          <Globe className="w-6 h-6 text-white" />
+                          <Globe className="w-6 h-6 text-[#F6B100]" />
                         </div>
                       )}
                     </div>
                     <div className="ml-3 flex-1">
                       <div className="font-medium text-sm">{country.country}</div>
-                      <div className="text-xs text-gray-200">{country.company}</div>
+                      <div className="text-xs text-gray-500">{country.company}</div>
                     </div>
                   </motion.div>
                 </DropdownMenuItem>
@@ -130,4 +130,5 @@ const CountrySelector = () => {
     </div>
   );
 };
+
 export default CountrySelector;
