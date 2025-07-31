@@ -67,18 +67,32 @@ export const Header = () => {
   </button>
 
   {/* Info Dropdown */}
-  <div className="relative group">
-    <button className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${['/about', '/careers'].includes(location.pathname) ? 'text-brand-gold' : ''}`}>
+   <div
+    className="relative"
+    onMouseEnter={() => setIsInfoOpen(true)}
+    onMouseLeave={() => setIsInfoOpen(false)}
+  >
+    <button
+      className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${['/about', '/careers'].includes(location.pathname) ? 'text-brand-gold' : ''}`}
+    >
       Info
     </button>
-    <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md hidden group-hover:block z-50 min-w-[160px]">
-      <button onClick={() => handleNavClick("/about")} className={`block px-4 py-2 w-full text-left text-gray-800 hover:bg-gray-100 ${location.pathname === '/about' ? 'text-brand-gold' : ''}`}>
-        About Us
-      </button>
-      <button onClick={() => handleNavClick("/careers")} className={`block px-4 py-2 w-full text-left text-gray-800 hover:bg-gray-100 ${location.pathname === '/careers' ? 'text-brand-gold' : ''}`}>
-        Careers
-      </button>
-    </div>
+    {isInfoOpen && (
+      <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md z-50 min-w-[160px]">
+        <button
+          onClick={() => handleNavClick("/about")}
+          className={`block px-4 py-2 w-full text-left text-gray-800 hover:bg-gray-100 ${location.pathname === '/about' ? 'text-brand-gold' : ''}`}
+        >
+          About Us
+        </button>
+        <button
+          onClick={() => handleNavClick("/careers")}
+          className={`block px-4 py-2 w-full text-left text-gray-800 hover:bg-gray-100 ${location.pathname === '/careers' ? 'text-brand-gold' : ''}`}
+        >
+          Careers
+        </button>
+      </div>
+    )}
   </div>
 
   <button onClick={() => handleNavClick("/services")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname.includes('/services') ? 'text-brand-gold' : ''}`}>
@@ -87,15 +101,6 @@ export const Header = () => {
   <button onClick={() => handleNavClick("/global-presence")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/global-presence' ? 'text-brand-gold' : ''}`}>
     Global Presence
   </button>
-
-  <div className="flex items-center gap-2">
-    <a href="https://www.linkedin.com/company/gglus/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-brand-gold transition-colors">
-      <Linkedin size={20} />
-    </a>
-    <a href="https://www.facebook.com/gglusa" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-brand-gold transition-colors">
-      <Facebook size={20} />
-    </a>
-  </div>
 
   <CountrySelector />
 
