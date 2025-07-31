@@ -1,4 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { Menu, X, Linkedin, Facebook } from "lucide-react";
 import { useState, useEffect } from "react";
 const [isInfoOpen, setIsInfoOpen] = useState(false);
