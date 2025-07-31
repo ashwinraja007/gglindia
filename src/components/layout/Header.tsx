@@ -73,9 +73,6 @@ export const Header = () => {
             <button onClick={() => handleNavClick("/careers")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/careers' ? 'text-brand-gold' : ''}`}>
               Careers
             </button>
-            <button onClick={() => handleNavClick("/contact")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/contact' ? 'text-brand-gold' : ''}`}>
-              Contact Us
-            </button>
              <button onClick={() => handleNavClick("/global-presence")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/contact' ? 'text-brand-gold' : ''}`}>
               Global Presence
             </button>
@@ -93,7 +90,7 @@ export const Header = () => {
 
             {/* ✅ Get A Quote Button - scroll to form */}
             <button onClick={() => handleNavClick("/contact", "contact-form")} className="px-5 py-2 bg-[#F6B100] text-black rounded-full hover:bg-[#FFCC33] transition font-medium">
-              Get A Quote
+              Contact/Quote
             </button>
           </nav>
         </div>
