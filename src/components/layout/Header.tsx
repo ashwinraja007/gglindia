@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Linkedin, Facebook } from "lucide-react";
 import { useState, useEffect } from "react";
+const [isInfoOpen, setIsInfoOpen] = useState(false);
 import CountrySelector from "../common/CountrySelector";
 export const Header = () => {
   const location = useLocation();
