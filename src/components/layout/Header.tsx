@@ -60,39 +60,49 @@ export const Header = () => {
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
 
-          <nav className="hidden md:flex gap-6 items-center">
-            <button onClick={() => handleNavClick("/")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/' ? 'text-brand-gold' : ''}`}>
-              Home
-            </button>
-            <button onClick={() => handleNavClick("/about")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/about' ? 'text-brand-gold' : ''}`}>
-              About Us
-            </button>
-            <button onClick={() => handleNavClick("/services")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname.includes('/services') ? 'text-brand-gold' : ''}`}>
-              Services
-            </button>
-            <button onClick={() => handleNavClick("/careers")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/careers' ? 'text-brand-gold' : ''}`}>
-              Careers
-            </button>
-             <button onClick={() => handleNavClick("/global-presence")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/contact' ? 'text-brand-gold' : ''}`}>
-              Global Presence
-            </button>
+          <nav className="hidden md:flex gap-6 items-center relative">
+  <button onClick={() => handleNavClick("/")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/' ? 'text-brand-gold' : ''}`}>
+    Home
+  </button>
 
-            <div className="flex items-center gap-2">
-              <a href="https://www.linkedin.com/company/gglus/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-brand-gold transition-colors">
-                
-              </a>
-              <a href="https://www.facebook.com/gglusa" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-brand-gold transition-colors">
-                
-              </a>
-            </div>
+  {/* Info Dropdown */}
+  <div className="relative group">
+    <button className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${['/about', '/careers'].includes(location.pathname) ? 'text-brand-gold' : ''}`}>
+      Info
+    </button>
+    <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md hidden group-hover:block z-50 min-w-[160px]">
+      <button onClick={() => handleNavClick("/about")} className={`block px-4 py-2 w-full text-left text-gray-800 hover:bg-gray-100 ${location.pathname === '/about' ? 'text-brand-gold' : ''}`}>
+        About Us
+      </button>
+      <button onClick={() => handleNavClick("/careers")} className={`block px-4 py-2 w-full text-left text-gray-800 hover:bg-gray-100 ${location.pathname === '/careers' ? 'text-brand-gold' : ''}`}>
+        Careers
+      </button>
+    </div>
+  </div>
 
-            <CountrySelector />
+  <button onClick={() => handleNavClick("/services")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname.includes('/services') ? 'text-brand-gold' : ''}`}>
+    Services
+  </button>
+  <button onClick={() => handleNavClick("/global-presence")} className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${location.pathname === '/global-presence' ? 'text-brand-gold' : ''}`}>
+    Global Presence
+  </button>
 
-            {/* ✅ Get A Quote Button - scroll to form */}
-            <button onClick={() => handleNavClick("/contact", "contact-form")} className="px-5 py-2 bg-[#F6B100] text-black rounded-full hover:bg-[#FFCC33] transition font-medium">
-              Contact/Quote
-            </button>
-          </nav>
+  <div className="flex items-center gap-2">
+    <a href="https://www.linkedin.com/company/gglus/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-brand-gold transition-colors">
+      <Linkedin size={20} />
+    </a>
+    <a href="https://www.facebook.com/gglusa" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-brand-gold transition-colors">
+      <Facebook size={20} />
+    </a>
+  </div>
+
+  <CountrySelector />
+
+  <button onClick={() => handleNavClick("/contact", "contact-form")} className="px-5 py-2 bg-[#F6B100] text-black rounded-full hover:bg-[#FFCC33] transition font-medium">
+    Contact / Quote
+  </button>
+</nav>
+
         </div>
 
         {/* Mobile Navigation */}
