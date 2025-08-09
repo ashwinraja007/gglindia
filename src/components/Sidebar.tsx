@@ -106,7 +106,8 @@ const countries = [{
     lat: 6.9271,
     lng: 79.8612,
     address: "Ceylinco House, 9th Floor, No. 69, Janadhipathi Mawatha, Colombo 01, Sri Lanka",
-    contacts: ["+94 114477499", "+94 114477494 / 98"]
+    contacts: ["+94 114477499", "+94 114477494 / 98"],
+    email: "thilanka.cmb@globalconsol.com"
   }]
 }, {
   code: "th",
@@ -130,7 +131,8 @@ const countries = [{
     lat: 16.8409,
     lng: 96.1735,
     address: "No.608, Room 8B, Bo Soon Pat Tower, Merchant Street, Pabedan Township, Yangon, Myanmar",
-    contacts: ["+951 243158", "+951 377985, 243101"]
+    contacts: ["+951 243158", "+951 377985, 243101"],
+    email: "info@globalconsol.com"
   }]
 }, {
   code: "bd",
@@ -142,9 +144,10 @@ const countries = [{
     lat: 23.8103,
     lng: 90.4125,
     address: "ID #9-N (New), 9-M(Old-N), 9th floor, Tower 1, Police Plaza Concord No.2, Road # 144, Gulshan Model Town, Dhaka 1215, Bangladesh",
-    contacts: ["+880 1716 620989"]
+    contacts: ["+880 1716 620989"],
+    email: "info@globalconsol.com"
   }]
-},  {
+},{
   code: "ae",
   name: "United Arab Emirates (UAE)",
     lat: 25.2048,
@@ -252,7 +255,8 @@ const countries = [{
     lat: -37.8136,
     lng: 144.9631,
     address: "Suite 5, 7-9 Mallet Road, Tullamarine, Victoria, 3043",
-    contacts: ["Mob: +61 432254969", "Tel: +61 388205157"]
+    contacts: ["Mob: +61 432254969", "Tel: +61 388205157"],
+    email: "info@gglaustralia.com"
   }]
 }];
 
