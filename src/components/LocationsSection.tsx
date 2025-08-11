@@ -42,19 +42,21 @@ const LocationsSection: React.FC = () => {
 
   const locationDetails: Record<
     LocationKey,
-    { address: string; phone: string }
+    { address: string; phone: string; email: string }
   > = {
     Chennai: {
       address: `Old No G1, New G3, KAIZEN 2nd & 3rd Floor,
 Plot No. 565Q, G Block, Annanagar East,
 Chennai, Tamil Nadu - 600102`,
       phone: `+91 9123523496`,
+      email: `info.india@ggl.sg`,
     },
     Kochi: {
       address: `C.V.M Arcade, 1st & 2nd Floor , 
 Club Junction Pukkattupady Road, 
 Edappally - 682024`,
       phone: `+91 9769310808`,
+      email: `info.india@ggl.sg`,
     },
     NaviMumbai: {
       address: `407, MAYURESH PLANET, PLOT NO - 42 & 43,
@@ -71,25 +73,30 @@ Import Docs Team:
 
 Import Customer Service:
 +91 2245174113, +91 2245174110, +91 2245174107, +91 2245174112`,
+      email: `info.india@ggl.sg`,
     },
     Delhi: {
       address: `JA 511, DLF Tower A,
 Jasola District Centre, New Delhi - 110025`,
       phone: `+91 9999022030`,
+      email: `info.india@ggl.sg`,
     },
     Bangalore: {
       address: `No 2M-216, First Floor,
 2nd Main, East Of NGEF Layout,
 Kasturinagar, Bangalore - 560043`,
       phone: `+91 9986949743`,
+      email: `info.india@ggl.sg`,
     },
     KolkataBranch: {
       address: `Imagine Techpark, Unit No. 10, 19th Floor, Block DN 6 , Sector - V, Salt Lake City, Kolkata, West Bengal, India - 700091`,
       phone: `+91 6290921534`,
+      email: `info.india@ggl.sg`,
     },
     KolkataSales: {
       address: `Room No - 29,  4th Floor 6, Jawaharlal Nehru Rd, Siddha Esplanade Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal 700013`,
       phone: `+91 6290921534`,
+      email: `info.india@ggl.sg`,
     },
   };
 
@@ -135,8 +142,17 @@ Kasturinagar, Bangalore - 560043`,
                 {locationDetails[location].address}
               </p>
               <h4 className="text-xl font-bold text-gray-800 mb-2">Phone:</h4>
-              <p className="whitespace-pre-line text-gray-700">
+              <p className="whitespace-pre-line text-gray-700 mb-4">
                 {locationDetails[location].phone}
+              </p>
+              <h4 className="text-xl font-bold text-gray-800 mb-2">Email:</h4>
+              <p className="text-gray-700">
+                <a
+                  href={`mailto:${locationDetails[location].email}`}
+                  className="text-blue-600 hover:underline"
+                >
+                  {locationDetails[location].email}
+                </a>
               </p>
             </div>
           )}
