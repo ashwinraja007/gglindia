@@ -62,13 +62,15 @@ const countries = [{
     lat: 1.4720,
     lng: 103.9027,
     address: "Unit 20-03A, Level 20 Menara Zurich, 15 Jalan Dato Abdullah Tahir, 80300 Johor Bahru",
-    contacts: ["+603-3319 2778 / 74 / 75, 79"]
+    contacts: ["+603-3319 2778 / 74 / 75, 79"],
+    email: "info@oecl.sg"
   }, {
     name: "PORTKLANG",
     lat: 3.0038,
     lng: 101.3929,
     address: "MTBBT 2, 3A-5, Jalan Batu Nilam 16, The Landmark (Behind AEON Mall), Bandar Bukit Tinggi 2, 41200, Klang, Selangor D.E",
-    contacts: ["+603 - 3319 2778 / 74 / 75"]
+    contacts: ["+603 - 3319 2778 / 74 / 75"],
+    email: "info@oecl.sg"
   }]
 }, {
   code: "sg",
@@ -93,13 +95,15 @@ const countries = [{
     lat: -6.2088,
     lng: 106.8456,
     address: "408, Lina Building, JL.HR Rasuna Said kav B7, Jakarta",
-    contacts: ["+62 21 529 20292, 522 4887"]
+    contacts: ["+62 21 529 20292, 522 4887"],
+    email: "logistics.jkt@oecl.sg"
   }, {
     name: "Surabaya",
     lat: -7.2575,
     lng: 112.7521,
     address: "Japfa Indoland Center, Japfa Tower 1, Lantai 4/401-A JL Jend, Basuki Rahmat 129-137, Surabaya 60271",
-    contacts: ["+62 21 529 20292, 522 4887"]
+    contacts: ["+62 21 529 20292, 522 4887"],
+    email: "logistics.jkt@oecl.sg"
   }]
 }, {
   code: "lk",
@@ -124,7 +128,8 @@ const countries = [{
     lat: 13.7563,
     lng: 100.5018,
     address: "109 CCT Building, 3rd Floor, Rm.3, Surawong Road, Suriyawongse, Bangrak, Bangkok 10500 109",
-    contacts: ["+662-634-3240", "+662-634-3942"]
+    contacts: ["+662-634-3240", "+662-634-3942"],
+    email: "info@oecl.sg"
   }]
 }, {
   code: "mm",
