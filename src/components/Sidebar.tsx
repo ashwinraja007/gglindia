@@ -21,31 +21,36 @@ const countries = [{
     lat: 19.00745,
     lng: 73.03271,
     address: "407, mayuresh planet, plot no - 42 & 43, sector-15, cbd belapur, navi mumbai, maharashtra, 400614",
-    contacts: ["Export customer service: +91 2245174102, +91 2245174109, +91 2245174118", "Export docs team: +91 2245174103, +91 2245174105", "Import docs team: +91 2245174104, +91 2245174106", "Import customer service: +91 2245174113, +91 2245174110, +91 2245174107, +91 2245174112"]
-  }, {
+    contacts: ["Export customer service: +91 2245174102, +91 2245174109, +91 2245174118", "Export docs team: +91 2245174103, +91 2245174105", "Import docs team: +91 2245174104, +91 2245174106", "Import customer service: +91 2245174113, +91 2245174110, +91 2245174107, +91 2245174112"],
+    email: "info.india@ggl.sg"
+}, {
     name: "Delhi",
     lat: 28.53837,
     lng: 77.29022,
     address: "JA 511, DLF Tower A, Jasola District Centre, New Delhi, 110025",
-    contacts: ["+91 9999022030"]
+    contacts: ["+91 9999022030"],
+    email: "info.india@ggl.sg"
   }, {
     name: "Chennai",
     lat: 13.0827,
     lng: 80.2707,
     address: "Old No G1, New G3, KAIZEN 2nd & 3rd Floor Plot No, 565Q, G Block, Annanagar East, Chennai, Tamil Nadu 600102",
-    contacts: ["+91 9123523496"]
+    contacts: ["+91 9123523496"],
+    email: "info.india@ggl.sg"
   }, {
     name: "Bangalore",
     lat: 12.9716,
     lng: 77.5946,
     address: "No 2M-216, First Floor, 2nd Main, East Of NGEF Layout, Kasturinagar, Bangalore-560043",
-    contacts: ["+91 9986949743"]
+    contacts: ["+91 9986949743"],
+    email: "info.india@ggl.sg"
   }, {
     name: "Kolkata",
     lat: 22.5726,
     lng: 88.3639,
     address: "Room No - 29, 4th Floor, 6, Jawaharlal Nehru Rd, Siddha Esplanade, Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal 700013",
-    contacts: ["+91 6290921534"]
+    contacts: ["+91 6290921534"],
+    email: "info.india@ggl.sg"
   }]
 }, {
   code: "my",
