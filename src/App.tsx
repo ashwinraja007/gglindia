@@ -51,7 +51,7 @@ function App() {
             <Route path="/services/project-cargo" element={<ProjectCargo />} />
             <Route path="/services/customs-clearance" element={<CustomsClearance />} />
             <Route path="/services/warehousing" element={<Warehousing />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<Index />} />
           </Routes>
           <Toaster />
           <Sonner />
