@@ -25,8 +25,7 @@ const Hero = () => {
       icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />,
       title: 'Consolmate',
       description: 'Access shipping dashboard',
-      // FIRST BUTTON → opens popup modal with 2 videos
-      onClick: () => setIsCustomerPortalOpen(true),
+      onClick: () => setIsCustomerPortalOpen(true), // opens popup
     },
     {
       icon: <UserCircle className="w-4 h-4 sm:w-5 sm:h-5" />,
@@ -83,7 +82,7 @@ const Hero = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40 z-[1]" />
 
-      {/* Main Content - Vertically Shifted Up */}
+      {/* Main Content */}
       <div className="absolute inset-0 flex items-center justify-start z-[2]">
         <div className="container mx-auto h-full flex items-center px-4 md:px-6 lg:px-8">
           <div
@@ -124,7 +123,6 @@ const Hero = () => {
               {portalLinks.map((link, index) => (
                 <div key={index} className="flex flex-col items-center">
                   {link.onClick ? (
-                    // First button → open modal with 2 videos
                     <button
                       onClick={link.onClick}
                       className="w-full h-12 sm:h-14 md:h-16 flex flex-col gap-1 items-center justify-center text-xs sm:text-sm bg-white/90 hover:bg-white text-gray-800 hover:text-blue-900 transition-all duration-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105"
@@ -154,13 +152,13 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Customer Portal Modal */}
+      {/* Customer Portal Modal – BIGGER */}
       {isCustomerPortalOpen && (
         <div className="fixed inset-0 bg-black/50 z-[50] flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold text-blue-900">Customer Portal</h2>
+          <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-blue-900">Customer Portal</h2>
                 <button
                   onClick={() => setIsCustomerPortalOpen(false)}
                   className="text-gray-500 hover:text-gray-700 text-2xl"
@@ -169,36 +167,42 @@ const Hero = () => {
                 </button>
               </div>
 
-              <div className="space-y-4">
-                <h3 className="font-medium text-gray-800">Tutorial Videos</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-5">
+                <h3 className="font-semibold text-gray-800 text-lg">Tutorial Videos</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {[
                     { src: '/partnerportal.mp4', label: 'Getting Started' },
                     { src: '/customerportal.mp4', label: 'Advanced Features' },
                   ].map((video, i) => (
-                    <div key={i} className="border rounded-lg overflow-hidden">
+                    <div key={i} className="border rounded-xl overflow-hidden bg-gray-50">
                       <div className="aspect-video">
-                        <video controls className="w-full h-full object-cover">
+                        <video controls className="w-full h-full object-cover bg-black">
                           <source src={video.src} type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
                       </div>
-                      <div className="p-2 bg-gray-50 text-sm font-medium">{video.label}</div>
+                      <div className="p-3 bg-gray-50 text-sm font-medium text-gray-800">
+                        {video.label}
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Button Section */}
-              <div className="mt-6 flex justify-end gap-4">
+              <div className="mt-8 flex justify-end gap-4">
                 <button
                   onClick={() => setIsCustomerPortalOpen(false)}
-                  className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                  className="px-5 py-2.5 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
                 >
                   Cancel
                 </button>
-                <a href="https://consolmate.com/auth/login/15" target="_blank" rel="noopener noreferrer">
-                  <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                <a
+                  href="https://consolmate.com/auth/login/15"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="px-6 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700">
                     Login
                   </button>
                 </a>
