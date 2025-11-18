@@ -6,9 +6,7 @@ const Hero = () => {
   const [isCustomerPortalOpen, setIsCustomerPortalOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const sliderImages = [
-    '/hom1.png'
-  ];
+  const sliderImages = ['/hom1.png'];
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
@@ -27,8 +25,8 @@ const Hero = () => {
       icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />,
       title: 'Consolmate',
       description: 'Access shipping dashboard',
-      url: 'https://consolmate.com/auth/login/15',
-      external: true,
+      // FIRST BUTTON → opens popup modal with 2 videos
+      onClick: () => setIsCustomerPortalOpen(true),
     },
     {
       icon: <UserCircle className="w-4 h-4 sm:w-5 sm:h-5" />,
@@ -125,14 +123,8 @@ const Hero = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3">
               {portalLinks.map((link, index) => (
                 <div key={index} className="flex flex-col items-center">
-                  {link.external ? (
-                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="w-full">
-                      <button className="w-full h-12 sm:h-14 md:h-16 flex flex-col gap-1 items-center justify-center text-xs sm:text-sm bg-white/90 hover:bg-white text-gray-800 hover:text-blue-900 transition-all duration-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105">
-                        {link.icon}
-                        <span className="font-medium leading-none">{link.title}</span>
-                      </button>
-                    </a>
-                  ) : link.onClick ? (
+                  {link.onClick ? (
+                    // First button → open modal with 2 videos
                     <button
                       onClick={link.onClick}
                       className="w-full h-12 sm:h-14 md:h-16 flex flex-col gap-1 items-center justify-center text-xs sm:text-sm bg-white/90 hover:bg-white text-gray-800 hover:text-blue-900 transition-all duration-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105"
@@ -140,6 +132,13 @@ const Hero = () => {
                       {link.icon}
                       <span className="font-medium leading-none">{link.title}</span>
                     </button>
+                  ) : link.external ? (
+                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="w-full">
+                      <button className="w-full h-12 sm:h-14 md:h-16 flex flex-col gap-1 items-center justify-center text-xs sm:text-sm bg-white/90 hover:bg-white text-gray-800 hover:text-blue-900 transition-all duration-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105">
+                        {link.icon}
+                        <span className="font-medium leading-none">{link.title}</span>
+                      </button>
+                    </a>
                   ) : (
                     <a href={link.url} className="w-full">
                       <button className="w-full h-12 sm:h-14 md:h-16 flex flex-col gap-1 items-center justify-center text-xs sm:text-sm bg-white/90 hover:bg-white text-gray-800 hover:text-blue-900 transition-all duration-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105">
