@@ -25,14 +25,14 @@ const Hero = () => {
       icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />,
       title: 'Consolmate',
       description: 'Access shipping dashboard',
-      onClick: () => setIsCustomerPortalOpen(true), // opens popup
+      url: 'https://consolmate.com/auth/login/15',
+      external: true,      
     },
     {
       icon: <UserCircle className="w-4 h-4 sm:w-5 sm:h-5" />,
       title: 'Partner Portal',
       description: 'Manage partnership',
-      url: 'https://pp.onlinetracking.co/auth/login/15',
-      external: true,
+      onClick: () => setIsCustomerPortalOpen(true),
     },
     {
       icon: <SearchCode className="w-4 h-4 sm:w-5 sm:h-5" />,
@@ -198,7 +198,7 @@ const Hero = () => {
                   Cancel
                 </button>
                 <a
-                  href="https://consolmate.com/auth/login/15"
+                  href="https://pp.onlinetracking.co/auth/login/15"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
