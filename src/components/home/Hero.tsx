@@ -173,8 +173,8 @@ const Hero = () => {
                 <h3 className="font-medium text-gray-800">Tutorial Videos</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
-                    { src: '/GGL_demo1.mp4', label: 'Getting Started' },
-                    { src: '/GGL_promo.mp4', label: 'Advanced Features' },
+                    { src: '/partnerportal.mp4‎', label: 'Getting Started' },
+                    { src: '/customerportal.mp4', label: 'Advanced Features' },
                   ].map((video, i) => (
                     <div key={i} className="border rounded-lg overflow-hidden">
                       <div className="aspect-video">
