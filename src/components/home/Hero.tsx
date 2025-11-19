@@ -32,7 +32,7 @@ const Hero = () => {
       icon: <UserCircle className="w-4 h-4 sm:w-5 sm:h-5" />,
       title: 'Partner Portal',
       description: 'Manage partnership',
-      onClick: () => setIsCustomerPortalOpen(true),
+      onClick: () => setIsPortalOpen(true),
     },
     {
       icon: <SearchCode className="w-4 h-4 sm:w-5 sm:h-5" />,
@@ -152,13 +152,13 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Customer Portal Modal – BIGGER */}
-      {isCustomerPortalOpen && (
+      {/*  Portal Modal – BIGGER */}
+      {isPortalOpen && (
         <div className="fixed inset-0 bg-black/50 z-[50] flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-8">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-blue-900">Customer Portal</h2>
+                <h2 className="text-2xl font-bold text-blue-900">Partner Portal</h2>
                 <button
                   onClick={() => setIsCustomerPortalOpen(false)}
                   className="text-gray-500 hover:text-gray-700 text-2xl"
