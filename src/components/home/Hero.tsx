@@ -156,42 +156,32 @@ const Hero = () => {
       {/* Partner Portal Modal */}
       {isCustomerPortalOpen && (
         <div className="fixed inset-0 bg-black/50 z-[50] flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-height-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-8">
-              <div className="flex justify-between items-center mb-6">
-                {/* UPDATED TITLE */}
-                <h2 className="text-2xl font-bold text-blue-900">Partner Portal</h2>
-
+              <div className="relative flex justify-center items-center mb-6">
+                <h2 className="text-2xl font-bold text-blue-900 text-center w-full">
+                  Partner Portal
+                </h2>
                 <button
                   onClick={() => setIsCustomerPortalOpen(false)}
-                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                  className="text-gray-500 hover:text-gray-700 text-2xl absolute right-0"
                 >
                   ×
                 </button>
               </div>
 
-              <div className="space-y-5">
-                <h3 className="font-semibold text-gray-800 text-lg">Tutorial Videos</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[
-                    { src: "/partnerportal.mp4", label: "Getting Started" },
-                    { src: "/customerportal.mp4", label: "Advanced Features" },
-                  ].map((video, i) => (
-                    <div key={i} className="border rounded-xl overflow-hidden bg-gray-50">
-                      <div className="aspect-video">
-                        <video controls className="w-full h-full object-cover bg-black">
-                          <source src={video.src} type="video/mp4" />
-                        </video>
-                      </div>
-                      <div className="p-3 bg-gray-50 text-sm font-medium text-gray-800">
-                        {video.label}
-                      </div>
-                    </div>
-                  ))}
+              <div className="space-y-5 text-center">
+                <h3 className="font-semibold text-gray-800 text-lg">Tutorial Video</h3>
+                <div className="max-w-3xl mx-auto">
+                  <div className="aspect-video rounded-xl overflow-hidden bg-black">
+                    <video controls className="w-full h-full object-cover">
+                      <source src="/partnerportal.mp4" type="video/mp4" />
+                    </video>
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-8 flex justify-end gap-4">
+              <div className="mt-8 flex justify-center gap-4">
                 <button
                   onClick={() => setIsCustomerPortalOpen(false)}
                   className="px-5 py-2.5 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
@@ -199,7 +189,11 @@ const Hero = () => {
                   Cancel
                 </button>
 
-                <a href="https://pp.onlinetracking.co/auth/login/15" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://pp.onlinetracking.co/auth/login/15"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <button className="px-6 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700">
                     Login
                   </button>
