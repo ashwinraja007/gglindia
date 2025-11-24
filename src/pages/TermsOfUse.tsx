@@ -10,7 +10,7 @@ const TermsOfUsePage: React.FC = () => {
         <h1 className="text-3xl font-bold mb-6 text-center">Terms of Use Agreement for the Website</h1>
 
         <p>
-          Welcome to the <strong>GGL (India) Pte Ltd.</strong> website (hereinafter referred to as the <strong>"Website"</strong>).
+          Welcome to the <strong>GGL LINE PVT LTD</strong> website (hereinafter referred to as the <strong>"Website"</strong>).
           Please review these terms of use carefully before engaging with the Website. Your access and utilization of the
           Website are governed by these terms of use (hereinafter referred to as the <strong>"Terms of Use"</strong>). By accessing or using
           the Website, you agree to be legally bound by these Terms of Use, representing both yourself and the entity you
@@ -126,7 +126,7 @@ const TermsOfUsePage: React.FC = () => {
         </p>
 
         <p className="mt-6">
-          We strive to respond to all inquiries promptly and provide you with the assistance you need. Thank you for choosing <strong>GGL (India) Pte Ltd</strong>.
+          We strive to respond to all inquiries promptly and provide you with the assistance you need. Thank you for choosing <strong>GGL LINE PVT LTD</strong>.
         </p>
       </main>
       <Footer />
