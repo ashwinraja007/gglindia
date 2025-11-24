@@ -20,7 +20,7 @@ const PrivacyPolicyPage: React.FC = () => {
   }, []);
   const sections: Section[] = [{
     title: "Introduction",
-    content: "Welcome to GGL (India) Ltd [“GGL (India)”, “we”, “our”, “us”]. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.We urge you to carefully read the following to comprehend how we collect, utilize, and safeguard your personal information. The policy also outlines your options concerning the use, accessibility, and correction of your personal information."
+    content: "Welcome to GGL LINE PVT LTD [“GGL (India)”, “we”, “our”, “us”]. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.We urge you to carefully read the following to comprehend how we collect, utilize, and safeguard your personal information. The policy also outlines your options concerning the use, accessibility, and correction of your personal information."
   }, {
     title: "Our Commitment to Privacy",
     subsections: [{
