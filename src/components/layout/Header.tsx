@@ -166,7 +166,7 @@ export const Header = () => {
               Global Presence
             </button>
                         <button
-              onClick={() => handleNavClick("/global-presence")}
+              onClick={() => handleNavClick("/kyc-details")}
               className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${
                 location.pathname === "/kyc-details" ? "text-brand-gold" : ""
               }`}
