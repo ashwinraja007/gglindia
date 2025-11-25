@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Users, UserCircle, SearchCode, Ship, Calendar, Globe } from "lucide-react";
 
 const Hero = () => {
@@ -7,12 +6,7 @@ const Hero = () => {
   const [isCustomerPortalOpen, setIsCustomerPortalOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const location = useLocation();
-  const isBangladesh = location.pathname.startsWith("/bangladesh");
-  const basePath = isBangladesh ? "/bangladesh" : "";
-
-  // Use different images if you want a separate Bangladesh hero background
-  const sliderImages = isBangladesh ? ["/bd-hom1.png"] : ["/hom1.png"];
+  const sliderImages = ["/hom1.png"];
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
@@ -20,7 +14,6 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    if (sliderImages.length <= 1) return;
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % sliderImages.length);
     }, 5000);
@@ -59,8 +52,7 @@ const Hero = () => {
       icon: <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />,
       title: "Online Quote",
       description: "Request a quote",
-      // IMPORTANT: stays inside /bangladesh when you are there
-      url: `${basePath}/contact`,
+      url: "/contact",
       external: false,
     },
   ];
@@ -103,39 +95,18 @@ const Hero = () => {
                 <Globe className="w-8 h-8 sm:w-10 sm:h-10 drop-shadow-[0_0_8px_rgba(246,177,0,0.8)]" />
               </div>
               <span className="inline-block bg-yellow-500/20 backdrop-blur-sm text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium border border-yellow-500/30">
-                {isBangladesh
-                  ? "Bangladesh Hub – Connected to the World"
-                  : "Beyond Logistics, a Complete Solution"}
+                Beyond Logistics, a Complete Solution
               </span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              {isBangladesh ? (
-                <>
-                  Powering{" "}
-                  <span className="text-yellow-500">Bangladesh&apos;s Global Trade</span>
-                </>
-              ) : (
-                <>
-                  Delivering Excellence in{" "}
-                  <span className="text-yellow-500">Global Logistics</span> Solutions
-                </>
-              )}
+              Delivering Excellence in{" "}
+              <span className="text-yellow-500">Global Logistics</span> Solutions
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-xl">
-              {isBangladesh ? (
-                <>
-                  GGL Bangladesh connects Dhaka and Chittagong to major global trade lanes,
-                  offering integrated sea, air, and inland logistics tailored to exporters and
-                  importers across the region.
-                </>
-              ) : (
-                <>
-                  GGL brings over 25 years of expertise in international logistics, offering
-                  comprehensive solutions tailored to your business needs.
-                </>
-              )}
+              GGL brings over 25 years of expertise in international logistics, offering
+              comprehensive solutions tailored to your business needs.
             </p>
           </div>
         </div>
