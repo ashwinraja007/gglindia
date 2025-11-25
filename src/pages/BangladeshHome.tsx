@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Loader2 } from "lucide-react";
@@ -10,6 +10,7 @@ const bangladeshNavPaths = {
   services: "/bangladesh/services",
   careers: "/bangladesh/careers",
   contact: "/bangladesh/contact",
+  globalPresence: "/bangladesh/global-presence",
 };
 
 // Lazy load other components
@@ -28,16 +29,22 @@ const LoadingComponent = () => (
 const BangladeshHome = () => {
   return (
     <div className="min-h-screen flex flex-col relative">
+      {/* Bangladesh-specific header with BD nav paths */}
       <Header navPaths={bangladeshNavPaths} />
+
       <main className="flex-grow pt-16">
+        {/* Bangladesh Hero */}
         <Hero
           sliderImages={["/oceanf.png", "/hom3.png"]}
           badgeText="Bangladesh Logistics Hub"
-          headline={'Delivering Excellence for <span class="text-yellow-500">Bangladesh</span> Supply Chains'}
+          headline={
+            'Delivering Excellence for <span class="text-yellow-500">Bangladesh</span> Supply Chains'
+          }
           subheadline="GGL Bangladesh connects Dhaka with global trade lanes through air, ocean, and land freight expertise backed by local service."
           contactPath="/bangladesh/contact"
         />
 
+        {/* About Bangladesh section */}
         <Suspense fallback={<LoadingComponent />}>
           <AboutUs
             learnMorePath="/bangladesh/about"
@@ -45,6 +52,7 @@ const BangladeshHome = () => {
           />
         </Suspense>
 
+        {/* Bangladesh services */}
         <Suspense fallback={<LoadingComponent />}>
           <Services
             servicesPath="/bangladesh/services"
@@ -53,14 +61,17 @@ const BangladeshHome = () => {
           />
         </Suspense>
 
+        {/* Bangladesh global presence block */}
         <Suspense fallback={<LoadingComponent />}>
-          <GlobalPresence linkPath="/bangladesh/about" />
+          <GlobalPresence linkPath="/bangladesh/global-presence" />
         </Suspense>
 
+        {/* Common enquiry form (can be used for BD as well) */}
         <Suspense fallback={<LoadingComponent />}>
           <QuickEnquiry />
         </Suspense>
       </main>
+
       <Footer />
     </div>
   );
