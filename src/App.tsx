@@ -1,3 +1,4 @@
+// src/App.tsx
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -51,7 +52,7 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsOfUse />} />
 
-            {/* India – service detail pages */}
+            {/* India – service details */}
             <Route path="/services/transportation" element={<Transportation />} />
             <Route
               path="/services/liquid-transportation"
@@ -75,7 +76,6 @@ function App() {
 
             {/* Bangladesh mini-site */}
             <Route path="/bangladesh" element={<BangladeshHome />} />
-            {/* Optional alias if someone types /bangladesh/home */}
             <Route path="/bangladesh/home" element={<BangladeshHome />} />
             <Route path="/bangladesh/about" element={<BangladeshAbout />} />
             <Route
@@ -88,7 +88,7 @@ function App() {
             />
             <Route path="/bangladesh/contact" element={<BangladeshContact />} />
 
-            {/* 404 – do NOT point this to <Index /> */}
+            {/* 404 — do not point this to Index */}
             <Route path="*" element={<NotFound />} />
           </Routes>
 
