@@ -32,10 +32,6 @@ import BangladeshContact from "./pages/BangladeshContact";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import KycForm from "./pages/KycForm";
 
-// OPTIONAL: if you create a layout wrapper for Bangladesh
-// import BangladeshLayout from "./layouts/BangladeshLayout";
-
-// Create a new QueryClient instance
 const queryClient = new QueryClient();
 
 function App() {
@@ -45,7 +41,7 @@ function App() {
         <BrowserRouter>
           <ScrollToTop />
           <Routes>
-            {/* Main site */}
+            {/* India / main site */}
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
@@ -55,7 +51,7 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsOfUse />} />
 
-            {/* Main site – service specific pages */}
+            {/* India – service detail pages */}
             <Route path="/services/transportation" element={<Transportation />} />
             <Route
               path="/services/liquid-transportation"
@@ -78,10 +74,8 @@ function App() {
             <Route path="/kyc-details" element={<KycForm />} />
 
             {/* Bangladesh mini-site */}
-            {/* If you have a Bangladesh layout, wrap like:
-                <Route path="/bangladesh/*" element={<BangladeshLayout />}>
-            */}
             <Route path="/bangladesh" element={<BangladeshHome />} />
+            {/* Optional alias if someone types /bangladesh/home */}
             <Route path="/bangladesh/home" element={<BangladeshHome />} />
             <Route path="/bangladesh/about" element={<BangladeshAbout />} />
             <Route
@@ -94,7 +88,7 @@ function App() {
             />
             <Route path="/bangladesh/contact" element={<BangladeshContact />} />
 
-            {/* 404 */}
+            {/* 404 – do NOT point this to <Index /> */}
             <Route path="*" element={<NotFound />} />
           </Routes>
 
