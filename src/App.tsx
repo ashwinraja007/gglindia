@@ -21,6 +21,10 @@ import Warehousing from "./pages/services/Warehousing";
 import ProjectCargo from "./pages/services/ProjectCargo";
 import CustomsClearance from "./pages/services/CustomsClearance";
 import GlobalPresence from "./pages/GlobalPresence";
+import BangladeshHome from "./pages/BangladeshHome";
+import BangladeshAbout from "./pages/BangladeshAbout";
+import BangladeshServices from "./pages/BangladeshServices";
+import BangladeshContact from "./pages/BangladeshContact";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import KycForm from "./pages/KycForm";
 
@@ -46,6 +50,14 @@ function App() {
             <Route path="/services/transportation" element={<Transportation />} />
             <Route path="/global-presence" element={<GlobalPresence />} />
             <Route path="/kyc-details" element={<KycForm />} />
+            
+            {/* Bangladesh pages */}
+            <Route path="/bangladesh" element={<BangladeshHome />} />
+            <Route path="/bangladesh/home" element={<BangladeshHome />} />
+            <Route path="/bangladesh/about" element={<BangladeshAbout />} />
+            <Route path="/bangladesh/services" element={<BangladeshServices />} />
+            <Route path="/bangladesh/contact" element={<BangladeshContact />} />
+            
             {/* Service specific pages */}
             <Route path="/services/liquid-transportation" element={<LiquidTransportation />} />
             <Route path="/services/air-freight" element={<AirFreight />} />
