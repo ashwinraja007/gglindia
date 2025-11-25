@@ -24,6 +24,7 @@ import GlobalPresence from "./pages/GlobalPresence";
 import BangladeshHome from "./pages/BangladeshHome";
 import BangladeshAbout from "./pages/BangladeshAbout";
 import BangladeshServices from "./pages/BangladeshServices";
+import BangladeshGlobalPresence from "./pages/BangladeshGlobalPresence";
 import BangladeshContact from "./pages/BangladeshContact";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import KycForm from "./pages/KycForm";
@@ -55,6 +56,7 @@ function App() {
             <Route path="/bangladesh" element={<BangladeshHome />} />
             <Route path="/bangladesh/home" element={<BangladeshHome />} />
             <Route path="/bangladesh/about" element={<BangladeshAbout />} />
+            <Route path="/bangladesh/global-presence" element={<BangladeshGlobalPresence />} />
             <Route path="/bangladesh/services" element={<BangladeshServices />} />
             <Route path="/bangladesh/contact" element={<BangladeshContact />} />
             
