@@ -105,7 +105,7 @@ const BangladeshContact = () => {
             >
               <div className="aspect-[4/3] w-full overflow-hidden rounded-xl shadow-lg">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.994781726587!2d90.42024887535292!3d23.7508764887229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7bc4ac3c841%3A0x42f02d293baff42!2sPolice%20Plaza%20Concord!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
+                  src="https://www.google.com/maps/d/embed?mid=1n4WqX2KvVrDhYom0GMJ0FxbmZsRY8aQ&ehbc=2E312F&noprof=1"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
