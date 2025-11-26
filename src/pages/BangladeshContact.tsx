@@ -23,27 +23,22 @@ const BangladeshContact = () => {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    formData.append("access_key", "ff34937d-d72f-499b-ac68-0053c5539df2"); // Web3Forms access key
-
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("https://formsubmit.co/info.bd@ggl.sg", {
         method: "POST",
         body: formData,
       });
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (response.ok) {
         setSuccess(true);
         form.reset();
         setTimeout(() => setSuccess(false), 4000);
       } else {
         alert("Submission failed. Please try again.");
-        console.error(result);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("Form Submitted Successfully.");
+      alert("Error submitting form.");
     }
   };
 
@@ -52,6 +47,7 @@ const BangladeshContact = () => {
       <Header navPaths={bangladeshNavPaths} />
 
       <main className="flex-grow">
+
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
@@ -75,6 +71,8 @@ const BangladeshContact = () => {
         {/* Bangladesh Address & Map */}
         <section className="py-12 bg-white relative">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+            
+            {/* Address */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -82,17 +80,22 @@ const BangladeshContact = () => {
               transition={{ duration: 0.6 }}
               className="space-y-4"
             >
-              <p className="text-sm uppercase tracking-wide text-brand-gold font-semibold">Bangladesh Office</p>
+              <p className="text-sm uppercase tracking-wide text-brand-gold font-semibold">
+                Bangladesh Office
+              </p>
               <h2 className="text-3xl font-bold text-brand-navy">Dhaka Headquarters</h2>
+
               <div className="space-y-3 text-gray-700">
                 <p>
-                  ID #9-N (New), 9-M(Old-N), 9th floor, Tower 1, Police Plaza Concord No.2, Road # 144,
+                  ID #9-N (New), 9-M(Old-N), 9th floor, Tower 1,
+                  Police Plaza Concord No.2, Road # 144,
                   Gulshan Model Town, Dhaka 1215, Bangladesh
                 </p>
                 <p className="font-semibold">Phone: +880 1716 620989</p>
               </div>
             </motion.div>
 
+            {/* Map */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -102,20 +105,19 @@ const BangladeshContact = () => {
             >
               <div className="aspect-[4/3] w-full overflow-hidden rounded-xl shadow-lg">
                 <iframe
-                  src="https://www.google.com/maps/d/embed?mid=1n4WqX2KvVrDhYom0GMJ0FxbmZsRY8aQ&ehbc=2E312F&noprof=1"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.994781726587!2d90.42024887535292!3d23.7508764887229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7bc4ac3c841%3A0x42f02d293baff42!2sPolice%20Plaza%20Concord!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
-                  loading="lazy"
                   allowFullScreen
-                  title="Bangladesh Office Map"
+                  loading="lazy"
                 ></iframe>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Contact Form Section */}
+        {/* Contact Form */}
         <section id="contact-form" className="py-16 bg-gray-50 relative">
           <div className="container mx-auto px-4">
             <motion.div
@@ -128,52 +130,32 @@ const BangladeshContact = () => {
               <p className="text-gray-600 mb-6">
                 Fill in the form below and we'll get back to you as soon as possible.
               </p>
+
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
-                    placeholder="First Name"
-                    name="firstName"
-                    required
-                    className="border-gray-200 focus:ring-blue-500"
-                  />
-                  <Input
-                    placeholder="Last Name"
-                    name="lastName"
-                    required
-                    className="border-gray-200 focus:ring-blue-500"
-                  />
+                  <Input name="firstName" placeholder="First Name" required />
+                  <Input name="lastName" placeholder="Last Name" required />
                 </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
-                    placeholder="Email"
-                    type="email"
-                    name="email"
-                    required
-                    className="border-gray-200 focus:ring-blue-500"
-                  />
-                  <Input
-                    placeholder="Phone"
-                    name="phone"
-                    className="border-gray-200 focus:ring-blue-500"
-                  />
+                  <Input type="email" name="email" placeholder="Email" required />
+                  <Input name="phone" placeholder="Phone" />
                 </div>
-                <Input
-                  placeholder="Organization/Company"
-                  name="organization"
-                  className="border-gray-200 focus:ring-blue-500"
-                />
+
+                <Input name="organization" placeholder="Organization/Company" />
+
                 <Textarea
-                  placeholder="Your Message"
                   name="message"
+                  placeholder="Your Message"
                   required
-                  className="min-h-[120px] border-gray-200 focus:ring-blue-500"
+                  className="min-h-[120px]"
                 />
 
-                {/* Hidden Fields for Web3Forms */}
-                <input type="hidden" name="from_name" value="Website Inquiry" />
-                <input type="hidden" name="replyto" value="karthiktrendsandtactics@gmail.com" />
-                <input type="hidden" name="subject" value="New Contact Form Message" />
-                <input type="hidden" name="redirect" value="https://yourdomain.com/thank-you" />
+                {/* FormSubmit Hidden Fields */}
+                <input type="hidden" name="_subject" value="New Bangladesh Office Inquiry" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value="https://ggl.sg/bangladesh/thank-you" />
 
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Button
@@ -186,7 +168,6 @@ const BangladeshContact = () => {
                 </motion.div>
               </form>
 
-              {/* Success Popup */}
               <AnimatePresence>
                 {success && (
                   <motion.div
