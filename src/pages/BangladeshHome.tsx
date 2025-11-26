@@ -16,7 +16,7 @@ const bangladeshNavPaths = {
 // Lazy load other components
 const AboutUs = lazy(() => import("@/components/home/AboutUs"));
 const Services = lazy(() => import("@/components/home/Services"));
-const GlobalPresence = lazy(() => import("@/components/home/GlobalPresence"));
+const BGlobalPresence = lazy(() => import("@/components/home/BGlobalPresence"));
 const QuickEnquiry = lazy(() => import("@/components/home/QuickEnquiry"));
 
 // Loading component
@@ -63,7 +63,7 @@ const BangladeshHome = () => {
 
         {/* Bangladesh global presence block */}
         <Suspense fallback={<LoadingComponent />}>
-          <GlobalPresence linkPath="/bangladesh/global-presence" />
+          <BGlobalPresence linkPath="/bangladesh/global-presence" />
         </Suspense>
 
         {/* Common enquiry form (can be used for BD as well) */}
