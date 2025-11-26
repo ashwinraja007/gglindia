@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Users, UserCircle, SearchCode, Ship, Calendar, Globe } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Users, UserCircle, SearchCode, Ship, Calendar, Globe } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 type HeroProps = {
   sliderImages?: string[];
@@ -9,13 +10,28 @@ type HeroProps = {
   contactPath?: string;
 };
 
+type PortalLink = {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  url?: string;
+  external?: boolean;
+  onClick?: () => void;
+};
+
 const Hero = ({
-  sliderImages = ['/hom1.png'],
-  badgeText = 'Beyond Logistics, a Complete Solution',
+  sliderImages = ["/hom1.png"],
+  badgeText = "Beyond Logistics, a Complete Solution",
   headline = 'Delivering Excellence in <span class="text-yellow-500">Global Logistics</span> Solutions',
   subheadline = "GGL brings over 25 years of expertise in international logistics, offering comprehensive solutions tailored to your business needs.",
-  contactPath = '/contact'
+  contactPath = "/contact",
 }: HeroProps) => {
+  const location = useLocation();
+  const isBangladesh = location.pathname.startsWith("/bangladesh");
+
+  // Online Quote path – changes automatically for Bangladesh
+  const onlineQuotePath = isBangladesh ? "/bangladesh/contact" : contactPath;
+
   const [isVisible, setIsVisible] = useState(false);
   const [isCustomerPortalOpen, setIsCustomerPortalOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -26,12 +42,14 @@ const Hero = ({
   }, []);
 
   useEffect(() => {
+    if (sliderImages.length <= 1) return;
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % sliderImages.length);
     }, 5000);
     return () => clearInterval(interval);
   }, [sliderImages.length]);
-  const portalLinks = [
+
+  const portalLinks: PortalLink[] = [
     {
       icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />,
       title: "Consolmate",
@@ -63,12 +81,12 @@ const Hero = ({
       icon: <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />,
       title: "Online Quote",
       description: "Request a quote",
-      url: "/contact",
+      url: onlineQuotePath,
       external: false,
     },
   ];
 
- return (
+  return (
     <section className="relative min-h-screen overflow-hidden pt-8 md:pt-16">
       {/* Background Slider */}
       <div className="absolute inset-0 overflow-hidden">
@@ -76,7 +94,7 @@ const Hero = ({
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-1200 ease-in-out ${
-              activeSlide === index ? 'opacity-100' : 'opacity-0'
+              activeSlide === index ? "opacity-100" : "opacity-0"
             }`}
             style={{ zIndex: activeSlide === index ? 1 : 0 }}
           >
@@ -84,7 +102,7 @@ const Hero = ({
               src={image}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover object-center"
-              loading={index === 0 ? 'eager' : 'lazy'}
+              loading={index === 0 ? "eager" : "lazy"}
             />
           </div>
         ))}
@@ -93,22 +111,28 @@ const Hero = ({
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40 z-[1]" />
 
-      {/* Main Content - Vertically Shifted Up */}
+      {/* Main Content */}
       <div className="absolute inset-0 flex items-center justify-start z-[2]">
         <div className="container mx-auto h-full flex items-center px-4 md:px-6 lg:px-8">
           <div
             className={`max-w-2xl space-y-4 md:space-y-5 text-left transition-all duration-800 transform ${
-              isVisible ? 'opacity-100 -translate-y-[3%]' : 'opacity-0 translate-y-10'
+              isVisible ? "opacity-100 -translate-y-[3%]" : "opacity-0 translate-y-10"
             }`}
           >
             <div className="flex items-center gap-3 mb-2">
               <div className="text-yellow-500 animate-spin-slow">
                 <Globe className="w-8 h-8 sm:w-10 sm:h-10 drop-shadow-[0_0_8px_rgba(246,177,0,0.8)]" />
               </div>
-              <span className="inline-block bg-yellow-500/20 backdrop-blur-sm text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium border border-yellow-500/30" dangerouslySetInnerHTML={{ __html: badgeText }} />
+              <span
+                className="inline-block bg-yellow-500/20 backdrop-blur-sm text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium border border-yellow-500/30"
+                dangerouslySetInnerHTML={{ __html: badgeText }}
+              />
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight" dangerouslySetInnerHTML={{ __html: headline }} />
+            <h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              dangerouslySetInnerHTML={{ __html: headline }}
+            />
 
             <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-xl">
               {subheadline}
@@ -121,21 +145,14 @@ const Hero = ({
       <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 z-[10] px-2 sm:px-4">
         <div
           className={`max-w-7xl mx-auto transition-all duration-800 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
           <div className="bg-white/0 p-3 sm:p-4 my-[31px]">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3">
               {portalLinks.map((link, index) => (
                 <div key={index} className="flex flex-col items-center">
-                  {link.external ? (
-                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="w-full">
-                      <button className="w-full h-12 sm:h-14 md:h-16 flex flex-col gap-1 items-center justify-center text-xs sm:text-sm bg-white/90 hover:bg-white text-gray-800 hover:text-blue-900 transition-all duration-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105">
-                        {link.icon}
-                        <span className="font-medium leading-none">{link.title}</span>
-                      </button>
-                    </a>
-                  ) : link.onClick ? (
+                  {link.onClick ? (
                     <button
                       onClick={link.onClick}
                       className="w-full h-12 sm:h-14 md:h-16 flex flex-col gap-1 items-center justify-center text-xs sm:text-sm bg-white/90 hover:bg-white text-gray-800 hover:text-blue-900 transition-all duration-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105"
@@ -143,6 +160,18 @@ const Hero = ({
                       {link.icon}
                       <span className="font-medium leading-none">{link.title}</span>
                     </button>
+                  ) : link.external ? (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full"
+                    >
+                      <button className="w-full h-12 sm:h-14 md:h-16 flex flex-col gap-1 items-center justify-center text-xs sm:text-sm bg-white/90 hover:bg-white text-gray-800 hover:text-blue-900 transition-all duration-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105">
+                        {link.icon}
+                        <span className="font-medium leading-none">{link.title}</span>
+                      </button>
+                    </a>
                   ) : (
                     <a href={link.url} className="w-full">
                       <button className="w-full h-12 sm:h-14 md:h-16 flex flex-col gap-1 items-center justify-center text-xs sm:text-sm bg-white/90 hover:bg-white text-gray-800 hover:text-blue-900 transition-all duration-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105">
@@ -177,8 +206,8 @@ const Hero = ({
                 <h3 className="font-medium text-gray-800">Tutorial Videos</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
-                    { src: '/GGL_demo1.mp4', label: 'Getting Started' },
-                    { src: '/GGL_promo.mp4', label: 'Advanced Features' },
+                    { src: "/GGL_demo1.mp4", label: "Getting Started" },
+                    { src: "/GGL_promo.mp4", label: "Advanced Features" },
                   ].map((video, i) => (
                     <div key={i} className="border rounded-lg overflow-hidden">
                       <div className="aspect-video">
@@ -187,13 +216,14 @@ const Hero = ({
                           Your browser does not support the video tag.
                         </video>
                       </div>
-                      <div className="p-2 bg-gray-50 text-sm font-medium">{video.label}</div>
+                      <div className="p-2 bg-gray-50 text-sm font-medium">
+                        {video.label}
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Button Section */}
               <div className="mt-6 flex justify-end gap-4">
                 <button
                   onClick={() => setIsCustomerPortalOpen(false)}
@@ -201,7 +231,11 @@ const Hero = ({
                 >
                   Cancel
                 </button>
-                <a href="https://cp.onlinetracking.co/#/login/3" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://cp.onlinetracking.co/#/login/3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
                     Login
                   </button>
