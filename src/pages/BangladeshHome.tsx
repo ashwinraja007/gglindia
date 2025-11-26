@@ -14,7 +14,7 @@ const bangladeshNavPaths = {
 };
 
 // Lazy load other components
-const AboutUs = lazy(() => import("@/components/home/AboutUs"));
+const BAboutUs = lazy(() => import("@/components/home/BAboutUs"));
 const Services = lazy(() => import("@/components/home/Services"));
 const BGlobalPresence = lazy(() => import("@/components/home/BGlobalPresence"));
 const QuickEnquiry = lazy(() => import("@/components/home/QuickEnquiry"));
@@ -46,7 +46,7 @@ const BangladeshHome = () => {
 
         {/* About Bangladesh section */}
         <Suspense fallback={<LoadingComponent />}>
-          <AboutUs
+          <BAboutUs
             learnMorePath="/bangladesh/about"
             imageSrc="/lovable-uploads/1c085df7-9363-40dc-a724-ff004b473cac.png"
           />
