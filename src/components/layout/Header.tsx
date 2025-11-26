@@ -1,7 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Linkedin, Facebook } from "lucide-react";
+
+// ORIGINAL COUNTRY SELECTOR (India)
 import CountrySelector from "../common/CountrySelector";
+
+// NEW BANGLADESH COUNTRY SELECTOR
+import BCountrySelector from "../common/BCountrySelector";
 
 export const Header = () => {
   const location = useLocation();
@@ -18,23 +23,20 @@ export const Header = () => {
 
   // Build target path based on base (India vs Bangladesh)
   const buildPath = (path: string) => {
-    // Home
-    if (path === "" || path === "/") {
-      return base || "/";
-    }
+    if (path === "" || path === "/") return base || "/";
     return `${base}${path}`;
   };
 
   const homePath = base || "/";
 
-  // Scroll effect for sticky header background
+  // Sticky scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close dropdown if clicked outside
+  // Close dropdown when clicked outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (infoRef.current && !infoRef.current.contains(e.target as Node)) {
@@ -45,24 +47,19 @@ export const Header = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Navigate + optional scroll to ID
   const handleNavClick = (path: string, scrollToId?: string) => {
     const targetPath = buildPath(path);
     setIsMobileMenuOpen(false);
 
     if (location.pathname === targetPath && scrollToId) {
       const el = document.getElementById(scrollToId);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      if (el) el.scrollIntoView({ behavior: "smooth" });
     } else {
       navigate(targetPath);
       setTimeout(() => {
         if (scrollToId) {
           const el = document.getElementById(scrollToId);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
+          if (el) el.scrollIntoView({ behavior: "smooth" });
         }
       }, 400);
     }
@@ -81,7 +78,8 @@ export const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          {/* Logo Section */}
+          
+          {/* LOGO */}
           <div className="flex items-center gap-4">
             <img
               src="/lovable-uploads/GGL.png"
@@ -90,6 +88,7 @@ export const Header = () => {
               className="h-16 w-auto cursor-pointer transition-all duration-300 object-fill"
             />
             <div className="h-8 w-px bg-gray-200 hidden md:block" />
+
             <a
               href="https://1ge.sg"
               target="_blank"
@@ -104,7 +103,7 @@ export const Header = () => {
             </a>
           </div>
 
-          {/* Hamburger for Mobile */}
+          {/* MOBILE MENU TOGGLE */}
           <button
             className="md:hidden text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-gold rounded-md p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -112,23 +111,24 @@ export const Header = () => {
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
 
-          {/* Desktop Nav */}
+          {/* DESKTOP NAVIGATION */}
           <nav className="hidden md:flex gap-6 items-center relative">
-            {/* Home */}
+
+            {/* HOME */}
             <button
               onClick={() => handleNavClick("")}
-              className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${
+              className={`text-gray-800 hover:text-brand-gold font-medium ${
                 location.pathname === homePath ? "text-brand-gold" : ""
               }`}
             >
               Home
             </button>
 
-            {/* Info Dropdown */}
+            {/* INFO DROPDOWN */}
             <div className="relative" ref={infoRef}>
               <button
-                onClick={() => setIsInfoOpen((prev) => !prev)}
-                className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${
+                onClick={() => setIsInfoOpen(!isInfoOpen)}
+                className={`text-gray-800 hover:text-brand-gold font-medium ${
                   [buildPath("/about"), buildPath("/careers")].includes(location.pathname)
                     ? "text-brand-gold"
                     : ""
@@ -136,6 +136,7 @@ export const Header = () => {
               >
                 Info
               </button>
+
               {isInfoOpen && (
                 <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md z-50 min-w-[160px]">
                   <button
@@ -143,20 +144,17 @@ export const Header = () => {
                       handleNavClick("/about");
                       setIsInfoOpen(false);
                     }}
-                    className={`block px-4 py-2 w-full text-left text-gray-800 hover:bg-gray-100 ${
-                      location.pathname === buildPath("/about") ? "text-brand-gold" : ""
-                    }`}
+                    className="block px-4 py-2 w-full text-left hover:bg-gray-100"
                   >
                     About Us
                   </button>
+
                   <button
                     onClick={() => {
                       handleNavClick("/careers");
                       setIsInfoOpen(false);
                     }}
-                    className={`block px-4 py-2 w-full text-left text-gray-800 hover:bg-gray-100 ${
-                      location.pathname === buildPath("/careers") ? "text-brand-gold" : ""
-                    }`}
+                    className="block px-4 py-2 w-full text-left hover:bg-gray-100"
                   >
                     Careers
                   </button>
@@ -164,10 +162,10 @@ export const Header = () => {
               )}
             </div>
 
-            {/* Services */}
+            {/* SERVICES */}
             <button
               onClick={() => handleNavClick("/services")}
-              className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${
+              className={`text-gray-800 hover:text-brand-gold font-medium ${
                 location.pathname.startsWith(buildPath("/services"))
                   ? "text-brand-gold"
                   : ""
@@ -176,10 +174,10 @@ export const Header = () => {
               Services
             </button>
 
-            {/* Global Presence */}
+            {/* GLOBAL PRESENCE */}
             <button
               onClick={() => handleNavClick("/global-presence")}
-              className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${
+              className={`text-gray-800 hover:text-brand-gold font-medium ${
                 location.pathname === buildPath("/global-presence")
                   ? "text-brand-gold"
                   : ""
@@ -188,134 +186,65 @@ export const Header = () => {
               Global Presence
             </button>
 
-            {/* e-KYC — India only */}
+            {/* INDIA ONLY – eKYC */}
             {!isBangladesh && (
               <button
                 onClick={() => handleNavClick("/kyc-details")}
-                className={`text-gray-800 hover:text-brand-gold font-medium transition-colors py-1 ${
-                  location.pathname === "/kyc-details" ? "text-brand-gold" : ""
-                }`}
+                className="text-gray-800 hover:text-brand-gold font-medium"
               >
                 e-KYC
               </button>
             )}
 
-            <CountrySelector />
+            {/* COUNTRY SELECTOR SWITCH */}
+            {isBangladesh ? <BCountrySelector /> : <CountrySelector />}
 
-            {/* Contact */}
+            {/* CONTACT BUTTON */}
             <button
               onClick={() => handleNavClick("/contact", "contact-form")}
-              className="px-5 py-2 bg-[#F6B100] text-black rounded-full hover:bg-[#FFCC33] transition font-medium"
+              className="px-5 py-2 bg-[#F6B100] text-black rounded-full hover:bg-[#FFCC33] font-medium"
             >
               Contact / Quote
             </button>
           </nav>
         </div>
 
-        {/* Mobile Nav */}
+        {/* MOBILE MENU */}
         <div
           className={`${
             isMobileMenuOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0"
-          } md:hidden overflow-hidden transition-all duration-300 ease-in-out`}
+          } md:hidden overflow-hidden transition-all duration-300`}
         >
           <nav className="flex flex-col gap-4 border-t mt-4 border-gray-100">
-            <button
-              onClick={() => handleNavClick("")}
-              className={`text-gray-800 hover:text-brand-gold font-medium ${
-                location.pathname === homePath ? "text-brand-gold" : ""
-              }`}
-            >
-              Home
-            </button>
 
-            <button
-              onClick={() => handleNavClick("/about")}
-              className={`text-gray-800 hover:text-brand-gold font-medium ${
-                location.pathname === buildPath("/about") ? "text-brand-gold" : ""
-              }`}
-            >
-              About Us
-            </button>
+            <button onClick={() => handleNavClick("")}>Home</button>
+            <button onClick={() => handleNavClick("/about")}>About Us</button>
+            <button onClick={() => handleNavClick("/services")}>Services</button>
+            <button onClick={() => handleNavClick("/careers")}>Careers</button>
+            <button onClick={() => handleNavClick("/global-presence")}>Global Presence</button>
 
-            <button
-              onClick={() => handleNavClick("/services")}
-              className={`text-gray-800 hover:text-brand-gold font-medium ${
-                location.pathname.startsWith(buildPath("/services"))
-                  ? "text-brand-gold"
-                  : ""
-              }`}
-            >
-              Services
-            </button>
-
-            <button
-              onClick={() => handleNavClick("/careers")}
-              className={`text-gray-800 hover:text-brand-gold font-medium ${
-                location.pathname === buildPath("/careers") ? "text-brand-gold" : ""
-              }`}
-            >
-              Careers
-            </button>
-
-            <button
-              onClick={() => handleNavClick("/global-presence")}
-              className={`text-gray-800 hover:text-brand-gold font-medium ${
-                location.pathname === buildPath("/global-presence")
-                  ? "text-brand-gold"
-                  : ""
-              }`}
-            >
-              Global Presence
-            </button>
-
-            {/* e-KYC — India only in mobile too */}
             {!isBangladesh && (
-              <button
-                onClick={() => handleNavClick("/kyc-details")}
-                className={`text-gray-800 hover:text-brand-gold font-medium ${
-                  location.pathname === "/kyc-details" ? "text-brand-gold" : ""
-                }`}
-              >
-                e-KYC
-              </button>
+              <button onClick={() => handleNavClick("/kyc-details")}>e-KYC</button>
             )}
+
+            {/* MOBILE COUNTRY SELECTOR */}
+            {isBangladesh ? <BCountrySelector /> : <CountrySelector />}
 
             <button
               onClick={() => handleNavClick("/contact")}
-              className={`text-gray-800 hover:text-brand-gold font-medium ${
-                location.pathname === buildPath("/contact") ? "text-brand-gold" : ""
-              }`}
-            >
-              Contact Us
-            </button>
-
-            <div className="flex items-center gap-4 py-2">
-              <a
-                href="https://www.linkedin.com/company/gglus/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-brand-gold transition-colors"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="https://www.facebook.com/gglusa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-brand-gold transition-colors"
-              >
-                <Facebook size={20} />
-              </a>
-            </div>
-
-            <CountrySelector />
-
-            <button
-              onClick={() => handleNavClick("/contact", "contact-form")}
-              className="px-4 py-2 bg-brand-gold text-brand-navy rounded-md hover:bg-amber-500 text-center font-medium w-full"
+              className="px-4 py-2 bg-brand-gold rounded-md"
             >
               Get A Quote
             </button>
+
+            <div className="flex items-center gap-4 py-3">
+              <a href="https://www.linkedin.com/company/gglus/" target="_blank">
+                <Linkedin size={20} />
+              </a>
+              <a href="https://www.facebook.com/gglusa" target="_blank">
+                <Facebook size={20} />
+              </a>
+            </div>
           </nav>
         </div>
       </div>
