@@ -21,16 +21,17 @@ interface CountryData {
 const countries: CountryData[] = [
   { country: "MALAYSIA", company: "OECL", website: "https://www.oecl.sg/malaysia/home", priority: 3, flag: "/my.svg" },
   { country: "SINGAPORE", company: "GGL", website: "https://ggl.sg/", priority: 1, flag: "/sg.svg" },
-  { country: "SINGAPORE", company: "GC", website: "https://www.globalconsol.com/", priority: 2, flag: "/sg.svg" },
   { country: "INDONESIA", company: "OECL", website: "https://www.oecl.sg/indonesia/home", priority: 6, flag: "/id.svg" },
   { country: "THAILAND", company: "OECL", website: "https://www.oecl.sg/thailand/home", priority: 4, flag: "/th.svg" },
-  { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com", priority: 5, flag: "/mm.svg" },
+  { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com/myanmar/home", priority: 5, flag: "/mm.svg" },
+  { country: "CHINA", company: "Haixun", website: "https://www.haixun.co/", priority: 8, flag: "/cn.svg", slug: "china" },
   { country: "AUSTRALIA", company: "GGL", website: "https://www.gglaustralia.com", priority: 7, flag: "/au.svg" },
-  { country: "BANGLADESH", company: "GC", website: "https://www.globalconsol.com", priority: 9, flag: "/bd.svg" },
-  { country: "SRI LANKA", company: "GC", website: "https://www.globalconsol.com", priority: 10, flag: "/lk.svg" },
+  { country: "INDIA", company: "GGL", website: "https://www.gglindia.com", priority: 5, flag: "/in.svg" },
+  { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com/pakistan/home", priority: 9, flag: "/pk.svg" },
+  { country: "SRI LANKA", company: "GC", website: "https://www.globalconsol.com/sri-lanka/home", priority: 10, flag: "/lk.svg" },
   { country: "QATAR", company: "ONE G", website: "https://oneglobalqatar.com/", priority: 12, flag: "/qa.svg" },
-  { country: "SAUDI ARABIA", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 13, flag: "/sa.svg" },
-  { country: "UAE", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 14, flag: "/ae.svg" },
+  { country: "SAUDI ARABIA", company: "AFNL", website: "https://arabianfuturenet.com/", priority: 13, flag: "/sa.svg" },
+  { country: "UAE", company: "AMASS", website: "https://futurenetlogistics.com/", priority: 14, flag: "/ae.svg" },
   { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 15, flag: "/us.svg" },
   { country: "UK", company: "MOLTECH", website: "https://moltech.uk/", priority: 16, flag: "/gb.svg" }
 ];
