@@ -60,7 +60,7 @@ export const QuickEnquiry = () => {
       formData.append("_captcha", "false");
       formData.append("_next", "https://www.gglindia.com/contact?success=true");
 
-      const response = await fetch("https://formsubmit.co/ajax/sunder@ggl.sg", {
+      const response = await fetch("https://formsubmit.co/ajax/info.bd@ggl.sg", {
         method: "POST",
         body: formData,
       });
