@@ -54,7 +54,7 @@ const BangladeshHome = () => {
 
         {/* Bangladesh services */}
         <Suspense fallback={<LoadingComponent />}>
-          <Services
+          <BServices
             servicesPath="/bangladesh/services"
             cardLinkPrefix="/bangladesh/services"
             singleDestination
