@@ -31,7 +31,7 @@ const AboutUs = () => {
             <h2 className="text-3xl font-bold text-gray-800 mb-4">About Us</h2>
             <p className="text-gray-600 mb-4 text-base text-justify">GGL is a trusted global leader in LCL (Less-than-Container Load) consolidation. With a robust presence across North America, the UK, the Middle East, the Indian Subcontinent, Southeast Asia, and the Far East, we offer streamlined groupage services backed by strong customer support and competitive pricing.</p>
             <p className="text-gray-600 mb-6 text-base text-justify">We are Strategically positioned in major transshipment hubs like Singapore, Malaysia, Sri Lanka, and Dubai, GGL operates direct weekly sailings to key global ports. Our expansive network ensures fast, reliable, and cost-effective consolidation options for freight forwarders and logistics providers.</p>
-            <Link to="/about">
+            <Link to="/bangladesh/about">
               <Button variant="outline" size="sm" className="text-sm bg-brand-gold my-0 mx-0 rounded-md font-semibold">
                 Learn More
               </Button>
