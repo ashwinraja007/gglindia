@@ -50,7 +50,7 @@ const BangladeshHome = () => {
             learnMorePath="/bangladesh/about"
             imageSrc="/lovable-uploads/1c085df7-9363-40dc-a724-ff004b473cac.png"
           />
-        </BSuspense>
+        </Suspense>
 
         {/* Bangladesh services */}
         <Suspense fallback={<LoadingComponent />}>
