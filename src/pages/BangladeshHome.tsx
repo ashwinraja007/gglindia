@@ -17,7 +17,7 @@ const bangladeshNavPaths = {
 const BAboutUs = lazy(() => import("@/components/home/BAboutUs"));
 const BServices = lazy(() => import("@/components/home/BServices"));
 const BGlobalPresence = lazy(() => import("@/components/home/BGlobalPresence"));
-const QuickEnquiry = lazy(() => import("@/components/home/QuickEnquiry"));
+const BQuickEnquiry = lazy(() => import("@/components/home/BQuickEnquiry"));
 
 // Loading component
 const LoadingComponent = () => (
@@ -68,7 +68,7 @@ const BangladeshHome = () => {
 
         {/* Common enquiry form (can be used for BD as well) */}
         <Suspense fallback={<LoadingComponent />}>
-          <QuickEnquiry />
+          <BQuickEnquiry />
         </Suspense>
       </main>
 
