@@ -75,19 +75,7 @@ function App() {
             <Route path="/kyc-details" element={<KycForm />} />
 
             {/* Bangladesh mini-site */}
-            <Route path="/bangladesh" element={<BangladeshHome />} />
-            <Route path="/bangladesh/home" element={<BangladeshHome />} />
-            <Route path="/bangladesh/about" element={<BangladeshAbout />} />
-            <Route path="/bangladesh/careers" element={<Careers />} />
-            <Route
-              path="/bangladesh/services"
-              element={<BangladeshServices />}
-            />
-            <Route
-              path="/bangladesh/global-presence"
-              element={<BangladeshGlobalPresence />}
-            />
-            <Route path="/bangladesh/contact" element={<BangladeshContact />} />
+
 
             {/* 404 — do not point this to Index */}
             <Route path="*" element={<NotFound />} />
