@@ -47,7 +47,7 @@ const countries = [{
   }, {
     name: "Kochi",
     lat: 10.0277,
-    lng: 88.3639,
+    lng: 76.3153,
     address: "C.V.M Arcade, 1st & 2nd Floor , Club Junction Pukkattupady Road, Edappally - 682024",
     contacts: ["+91 9769310808"],
     email: "info.india@ggl.sg"
