@@ -45,19 +45,18 @@ const countries = [{
     contacts: ["+91 9986949743"],
     email: "info.india@ggl.sg"
   }, {
-    name: "Kolkata",
-    lat: 22.5726,
-    lng: 88.3639,
-    address: "Room No - 29, 4th Floor, 6, Jawaharlal Nehru Rd, Siddha Esplanade, Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal 700013",
-    contacts: ["+91 6290921534"],
-    email: "info.india@ggl.sg"
-  }]
-},{
     name: "Kochi",
     lat: 10.0277,
     lng: 88.3639,
     address: "C.V.M Arcade, 1st & 2nd Floor , Club Junction Pukkattupady Road, Edappally - 682024",
     contacts: ["+91 9769310808"],
+    email: "info.india@ggl.sg"
+  }, {
+    name: "Kolkata",
+    lat: 22.5726,
+    lng: 88.3639,
+    address: "Room No - 29, 4th Floor, 6, Jawaharlal Nehru Rd, Siddha Esplanade, Adjacent to Metro Central (Previously Metro Cinema), Kolkata, West Bengal 700013",
+    contacts: ["+91 6290921534"],
     email: "info.india@ggl.sg"
   }]
 }, {
