@@ -52,6 +52,14 @@ const countries = [{
     contacts: ["+91 6290921534"],
     email: "info.india@ggl.sg"
   }]
+},{
+    name: "Kochi",
+    lat: 10.0277,
+    lng: 88.3639,
+    address: "C.V.M Arcade, 1st & 2nd Floor , Club Junction Pukkattupady Road, Edappally - 682024",
+    contacts: ["+91 9769310808"],
+    email: "info.india@ggl.sg"
+  }]
 }, {
   code: "my",
   name: "Malaysia",
