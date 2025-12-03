@@ -1,40 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Users, UserCircle, SearchCode, Ship, Calendar, Globe } from "lucide-react";
-import { useLocation } from "react-router-dom";
 
-type HeroProps = {
-  sliderImages?: string[];
-  badgeText?: string;
-  headline?: string;
-  subheadline?: string;
-  contactPath?: string;
-};
-
-type PortalLink = {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  url?: string;
-  external?: boolean;
-  onClick?: () => void;
-};
-
-const Hero = ({
-  sliderImages = ["/hom1.png"],
-  badgeText = "Beyond Logistics, a Complete Solution",
-  headline = 'Delivering Excellence in <span class="text-yellow-500">Global Logistics</span> Solutions',
-  subheadline = "GGL brings over 25 years of expertise in international logistics, offering comprehensive solutions tailored to your business needs.",
-  contactPath = "/contact",
-}: HeroProps) => {
-  const location = useLocation();
-  const isBangladesh = location.pathname.startsWith("/bangladesh");
-
-  // Online Quote path – changes automatically for Bangladesh
-  const onlineQuotePath = isBangladesh ? "/bangladesh/contact" : contactPath;
-
+const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isCustomerPortalOpen, setIsCustomerPortalOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+
+  const sliderImages = ["/hom1.png"];
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
@@ -42,14 +14,13 @@ const Hero = ({
   }, []);
 
   useEffect(() => {
-    if (sliderImages.length <= 1) return;
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % sliderImages.length);
     }, 5000);
     return () => clearInterval(interval);
   }, [sliderImages.length]);
 
-  const portalLinks: PortalLink[] = [
+  const portalLinks = [
     {
       icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />,
       title: "Consolmate",
@@ -81,7 +52,7 @@ const Hero = ({
       icon: <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />,
       title: "Online Quote",
       description: "Request a quote",
-      url: onlineQuotePath,
+      url: "/contact",
       external: false,
     },
   ];
@@ -123,19 +94,19 @@ const Hero = ({
               <div className="text-yellow-500 animate-spin-slow">
                 <Globe className="w-8 h-8 sm:w-10 sm:h-10 drop-shadow-[0_0_8px_rgba(246,177,0,0.8)]" />
               </div>
-              <span
-                className="inline-block bg-yellow-500/20 backdrop-blur-sm text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium border border-yellow-500/30"
-                dangerouslySetInnerHTML={{ __html: badgeText }}
-              />
+              <span className="inline-block bg-yellow-500/20 backdrop-blur-sm text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium border border-yellow-500/30">
+                Beyond Logistics, a Complete Solution
+              </span>
             </div>
 
-            <h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
-              dangerouslySetInnerHTML={{ __html: headline }}
-            />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              Delivering Excellence in{" "}
+              <span className="text-yellow-500">Global Logistics</span> Solutions
+            </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-xl">
-              {subheadline}
+              GGL brings over 25 years of expertise in international logistics, offering
+              comprehensive solutions tailored to your business needs.
             </p>
           </div>
         </div>
@@ -161,12 +132,7 @@ const Hero = ({
                       <span className="font-medium leading-none">{link.title}</span>
                     </button>
                   ) : link.external ? (
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full"
-                    >
+                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="w-full">
                       <button className="w-full h-12 sm:h-14 md:h-16 flex flex-col gap-1 items-center justify-center text-xs sm:text-sm bg-white/90 hover:bg-white text-gray-800 hover:text-blue-900 transition-all duration-300 rounded-lg shadow-sm hover:shadow-md hover:scale-105">
                         {link.icon}
                         <span className="font-medium leading-none">{link.title}</span>
@@ -187,56 +153,48 @@ const Hero = ({
         </div>
       </div>
 
-      {/* Customer Portal Modal */}
+      {/* Partner Portal Modal */}
       {isCustomerPortalOpen && (
         <div className="fixed inset-0 bg-black/50 z-[50] flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold text-blue-900">Customer Portal</h2>
+          <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-8">
+              <div className="relative flex justify-center items-center mb-6">
+                <h2 className="text-2xl font-bold text-blue-900 text-center w-full">
+                  Partner Portal
+                </h2>
                 <button
                   onClick={() => setIsCustomerPortalOpen(false)}
-                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                  className="text-gray-500 hover:text-gray-700 text-2xl absolute right-0"
                 >
                   ×
                 </button>
               </div>
 
-              <div className="space-y-4">
-                <h3 className="font-medium text-gray-800">Tutorial Videos</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[
-                    { src: "/GGL_demo1.mp4", label: "Getting Started" },
-                    { src: "/GGL_promo.mp4", label: "Advanced Features" },
-                  ].map((video, i) => (
-                    <div key={i} className="border rounded-lg overflow-hidden">
-                      <div className="aspect-video">
-                        <video controls className="w-full h-full object-cover">
-                          <source src={video.src} type="video/mp4" />
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                      <div className="p-2 bg-gray-50 text-sm font-medium">
-                        {video.label}
-                      </div>
-                    </div>
-                  ))}
+              <div className="space-y-5 text-center">
+                <h3 className="font-semibold text-gray-800 text-lg">Tutorial Video</h3>
+                <div className="max-w-3xl mx-auto">
+                  <div className="aspect-video rounded-xl overflow-hidden bg-black">
+                    <video controls className="w-full h-full object-cover">
+                      <source src="/partnerportal.mp4" type="video/mp4" />
+                    </video>
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-6 flex justify-end gap-4">
+              <div className="mt-8 flex justify-center gap-4">
                 <button
                   onClick={() => setIsCustomerPortalOpen(false)}
-                  className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                  className="px-5 py-2.5 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
                 >
                   Cancel
                 </button>
+
                 <a
-                  href="https://cp.onlinetracking.co/#/login/3"
+                  href="https://pp.onlinetracking.co/auth/login/15"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                  <button className="px-6 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700">
                     Login
                   </button>
                 </a>
