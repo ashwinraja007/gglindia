@@ -1,13 +1,15 @@
-export default function KycForm() {
+const KycIframe = () => {
   return (
     <iframe
-      src="https://www.tipscbse.com/shipsoft_kyc_webapp/"
+      src="http://amassdubai.com/gglindia-kyc-details/"
+      title="KYC Details"
       style={{
         width: "100%",
-        height: "1500px",
+        height: "100vh",
         border: "none"
       }}
-      title="KYC Form"
     />
   );
-}
+};
+
+export default KycIframe;
