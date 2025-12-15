@@ -1,7 +1,7 @@
 const KycIframe = () => {
   return (
     <iframe
-      src="http://amassdubai.com/gglindia-kyc-details/"
+      src="https://www.tipscbse.com/shipsoft_kyc_webapp/"
       title="KYC Details"
       style={{
         width: "100%",
