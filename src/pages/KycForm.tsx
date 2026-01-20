@@ -1,7 +1,7 @@
 const KycIframe = () => {
   return (
     <iframe
-      src="https://www.tipscbse.com/shipsoft_kyc_webapp/"
+      src="https://www.tipscbse.com/kyc-details/"
       title="KYC Details"
       style={{
         width: "100%",
