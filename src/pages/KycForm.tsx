@@ -1,7 +1,7 @@
 const KycIframe = () => {
   return (
     <iframe
-      src="https://www.tipscbse.com/kyc-details/kyc-details/"
+      src="http://www.amassdubai.com/india_kyc/"
       title="KYC Details"
       style={{
         width: "100%",
