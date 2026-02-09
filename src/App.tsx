@@ -74,6 +74,9 @@ function App() {
             {/* KYC */}
             <Route path="/kyc-details" element={<KycPage />} />
 
+            {/* Proxy Fallback Route - prevents 404 error if proxy is bypassed */}
+            <Route path="/kyc-proxy/*" element={<div className="flex items-center justify-center h-full p-10">Loading KYC Portal...</div>} />
+
             {/* Bangladesh mini-site */}
 
 
