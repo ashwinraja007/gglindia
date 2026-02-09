@@ -9,7 +9,7 @@ const KycPage = () => {
       <main className="flex-grow pt-24 container mx-auto px-4 py-8">
         <div className="w-full h-[800px] bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden relative">
           <iframe
-            src="/kyc-proxy/"
+            src="/kyc-proxy/india_kyc/"
             title="KYC Verification"
             className="w-full h-full border-0"
             allow="camera; microphone; geolocation"

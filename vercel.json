@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/kyc-proxy/:match*",
-      "destination": "http://www.amassdubai.com/india_kyc/:match*"
+      "destination": "http://www.amassdubai.com/:match*"
     },
     {
       "source": "/(.*)",
