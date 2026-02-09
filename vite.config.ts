@@ -15,6 +15,12 @@ export default defineConfig({
         target: 'http://www.amassdubai.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/kyc-proxy/, ''),
+        configure: (proxy, _options) => {
+          proxy.on('proxyRes', (proxyRes, req, _res) => {
+            delete proxyRes.headers['x-frame-options'];
+            delete proxyRes.headers['content-security-policy'];
+          });
+        },
       },
     },
   },

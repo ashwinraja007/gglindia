@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/kyc-proxy/:match*",
-      "destination": "http://www.amassdubai.com/:match*"
+      "source": "/kyc-proxy/(.*)",
+      "destination": "/api/proxy?path=$1"
     },
     {
       "source": "/(.*)",

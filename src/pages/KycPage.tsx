@@ -46,7 +46,7 @@ const KycPage = () => {
             key={key}
             src="/kyc-proxy/india_kyc/"
             title="KYC Verification"
-            className="w-full h-full border-0"
+            className="w-full h-full border-0 bg-white"
             allow="camera; microphone; geolocation"
             onLoad={() => setIsLoading(false)}
           />
