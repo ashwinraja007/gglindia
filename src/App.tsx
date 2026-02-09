@@ -31,7 +31,7 @@ import BangladeshGlobalPresence from "./pages/BangladeshGlobalPresence";
 import BangladeshContact from "./pages/BangladeshContact";
 
 import { ScrollToTop } from "./components/common/ScrollToTop";
-import KycForm from "./pages/KycForm";
+import KycPage from "./pages/KycPage";
 
 const queryClient = new QueryClient();
 
@@ -72,7 +72,7 @@ function App() {
             <Route path="/services/warehousing" element={<Warehousing />} />
 
             {/* KYC */}
-            <Route path="/kyc-details" element={<KycForm />} />
+            <Route path="/kyc-details" element={<KycPage />} />
 
             {/* Bangladesh mini-site */}
 
