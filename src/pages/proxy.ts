@@ -26,7 +26,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   // Security: Whitelist specific domains
-  const ALLOWED_DOMAINS = ['tipscbse.com', 'www.tipscbse.com'];
+  const ALLOWED_DOMAINS = ['tipscbse.com', 'www.tipscbse.com', 'amassdubai.com', 'www.amassdubai.com'];
   try {
     const targetUrl = new URL(urlParam);
     if (!ALLOWED_DOMAINS.includes(targetUrl.hostname)) {

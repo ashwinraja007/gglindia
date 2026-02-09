@@ -12,7 +12,7 @@ const KycPage = () => {
         
         <div className="h-[800px] w-full">
           <SecureFrame 
-            targetUrl="http://www.tipscbse.com/kyc-details/kyc-details/" 
+            targetUrl="http://www.amassdubai.com/india_kyc/" 
             title="KYC Verification"
           />
         </div>
