@@ -8,7 +8,7 @@ const KycPage = () => {
       <Header />
       <main className="flex-grow pt-20">
         <iframe
-          src="/kyc-proxy/"
+          src="http://www.amassdubai.com/india_kyc/"
           title="KYC Verification"
           className="w-full h-[800px] border-0"
           allow="camera; microphone; geolocation"
