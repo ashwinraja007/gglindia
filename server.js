@@ -16,6 +16,7 @@ const proxyOptions = {
   target: 'http://www.amassdubai.com/india_kyc/',
   changeOrigin: true,
   secure: false,
+  cookieDomainRewrite: "*", // Allow cookies to be set on localhost/current domain
   logLevel: 'debug',
   headers: {
     'Referer': 'http://www.amassdubai.com/india_kyc/',
@@ -27,6 +28,11 @@ const proxyOptions = {
   },
   onProxyReq: (proxyReq, req, res) => {
     console.log(`[Proxy Request] -> ${new URL(proxyReq.path, proxyOptions.target).href}`);
+    
+    // Ensure AJAX requests are marked correctly, as some PHP frameworks check this
+    if (req.headers['x-requested-with']) {
+      proxyReq.setHeader('X-Requested-With', req.headers['x-requested-with']);
+    }
   },
   onProxyRes: (proxyRes, req, res) => {
     console.log(`[Proxy Response] Status: ${proxyRes.statusCode} for ${req.url}`);
