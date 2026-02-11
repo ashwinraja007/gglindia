@@ -74,14 +74,6 @@ function App() {
             {/* KYC */}
             <Route path="/kyc-details" element={<KycPage />} />
 
-            {/* Proxy Fallback Route - prevents 404 error if proxy is bypassed */}
-            <Route path="/kyc-proxy/*" element={
-              <div className="flex flex-col items-center justify-center h-full p-10 text-center space-y-4">
-                <p className="text-lg font-medium text-gray-700">Content cannot be loaded directly.</p>
-                <p className="text-sm text-gray-500">Please use the "Open in New Window" button to view the form.</p>
-              </div>
-            } />
-
             {/* Bangladesh mini-site */}
 
 
