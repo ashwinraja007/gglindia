@@ -51,8 +51,8 @@ const proxyOptions = {
       location = location.replace('https://amassdubai.com/india_kyc', '/india_kyc');
       
       // Handle root redirects
-      if (location === '/index.php' || location === '/') {
-        location = '/india_kyc/';
+      if (location === '/index.php' || location === '/' || location === 'index.php') {
+        location = '/india_kyc/index.php';
       }
       
       console.log(`[Rewritten Redirect] ${location}`);

@@ -31,6 +31,11 @@ export default defineConfig(({ mode }) => ({
               let location = proxyRes.headers['location'];
               location = location.replace('http://www.amassdubai.com/india_kyc', '/india_kyc');
               location = location.replace('https://www.amassdubai.com/india_kyc', '/india_kyc');
+              
+              if (location === '/index.php' || location === '/' || location === 'index.php') {
+                location = '/india_kyc/index.php';
+              }
+              
               proxyRes.headers['location'] = location;
             }
           });
