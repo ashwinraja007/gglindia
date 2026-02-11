@@ -28,7 +28,7 @@ import BangladeshGlobalPresence from "./pages/BangladeshGlobalPresence";
 import BangladeshContact from "./pages/BangladeshContact";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import IndiaKycForm from "./pages/IndiaKycForm";
-import kycpage from "./pages/kycpage";
+import kycpage from "./pages/Kycpage";
 
 const queryClient = new QueryClient();
 
