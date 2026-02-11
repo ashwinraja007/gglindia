@@ -1,17 +1,17 @@
+// src/pages/KycPage.tsx
 import React from 'react';
 
-const KycForm: React.FC = () => {
+const KycPage: React.FC = () => {
   return (
     <div className="w-full h-screen">
       <iframe
         src="/india_kyc/"
         className="w-full h-full border-0"
         title="KYC Form"
-        onError={(e) => console.error('Iframe failed to load:', e)}
-        onLoad={() => console.log('Iframe loaded successfully')}
+        style={{ border: 'none' }}
       />
     </div>
   );
 };
 
-export default KycForm;
+export default KycPage;
