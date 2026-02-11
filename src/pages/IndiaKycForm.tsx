@@ -25,7 +25,7 @@ const IndiaKycForm = () => {
               title="India KYC Form"
               onLoad={() => setIsLoading(false)}
               allow="camera; microphone; geolocation"
-              sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation"
+              sandbox="allow-forms allow-scripts allow-popups allow-top-navigation"
             />
           </div>
         </div>
