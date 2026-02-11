@@ -17,12 +17,6 @@ const proxyOptions = {
   changeOrigin: true,
   secure: false,
   logLevel: 'debug',
-  cookieDomainRewrite: "",
-  pathRewrite: (path, req) => {
-    const newPath = '/india_kyc' + path;
-    console.log(`[Path Rewrite] ${path} -> ${newPath}`);
-    return newPath;
-  },
   headers: {
     'Referer': 'http://www.amassdubai.com/india_kyc/',
     'Origin': 'http://www.amassdubai.com'
