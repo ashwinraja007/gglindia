@@ -26,7 +26,6 @@ const IndiaKycForm = () => {
               src="/india_kyc/index.php" 
               className="w-full min-h-[1000px] border-0"
               title="India KYC Form"
-              sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation"
               onLoad={() => setIsLoading(false)}
             />
           </div>
