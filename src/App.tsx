@@ -28,6 +28,7 @@ import BangladeshGlobalPresence from "./pages/BangladeshGlobalPresence";
 import BangladeshContact from "./pages/BangladeshContact";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import KycPage from "./pages/KycPage";
+import IndiaKycForm from "./pages/IndiaKycForm";
 
 const queryClient = new QueryClient();
 
@@ -82,6 +83,7 @@ function App() {
             
             {/* KYC */}
             <Route path="/kyc-details" element={<KycPage />} />
+            <Route path="/india-kyc" element={<IndiaKycForm />} />
             
             {/* Bangladesh mini-site */}
             {/* Add your Bangladesh routes here if needed */}
