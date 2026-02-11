@@ -3,10 +3,6 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const path = require('path');
 const app = express();
 
-// 1. Serve static files from the Vite build output (dist folder)
-app.use(express.static(path.join(__dirname, 'dist')));
-
-// 2. Configure the Proxy (Identical to vite.config.ts)
 const proxyOptions = {
   target: 'http://www.amassdubai.com',
   changeOrigin: true,
@@ -42,7 +38,11 @@ const proxyOptions = {
   }
 };
 
+// 1. Configure the Proxy to be handled first
 app.use('/kyc-proxy', createProxyMiddleware(proxyOptions));
+
+// 2. Serve static files from the Vite build output (dist folder)
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // 3. Handle React Routing (SPA Fallback)
 app.get('*', (req, res) => {
