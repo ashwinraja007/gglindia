@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,21 +6,28 @@
     <title>GGL</title>
     <meta name="description" content="Explore GGL's global presence with our interactive map showing office locations across the world." />
     <meta name="author" content="GGL Global" />
-
     <meta property="og:title" content="GGL Global Presence Map" />
     <meta property="og:description" content="Interactive Map Explorer with Google Maps Integration" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@ggl_global" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <!-- Content Security Policy to allow iframe from HTTP source -->
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self' https:; 
+                   frame-src 'self' http://www.amassdubai.com https://www.amassdubai.com; 
+                   script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.gpteng.co https://www.google.com https://www.gstatic.com; 
+                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+                   font-src 'self' https://fonts.gstatic.com; 
+                   img-src 'self' data: https:; 
+                   connect-src 'self' https: http://www.amassdubai.com;">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
-
   <body>
     <div id="root"></div>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
