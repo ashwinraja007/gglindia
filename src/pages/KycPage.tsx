@@ -26,10 +26,7 @@ const KycDetails = () => {
                 </svg>
               </div>
               <div className="ml-3">
-                <p className="text-sm text-amber-800">
-                  <strong>Security Notice:</strong> This form is currently loaded from a non-secure connection (HTTP). 
-                  We recommend the site administrator enable SSL/HTTPS for enhanced security.
-                </p>
+           
               </div>
             </div>
           </div>
