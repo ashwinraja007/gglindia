@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => ({
         target: 'http://www.amassdubai.com',
         changeOrigin: true,
         secure: false,
+        rewrite: (path) => path, // Ensure path is passed through as-is
         headers: {
           'Referer': 'http://www.amassdubai.com/india_kyc/',
           'Origin': 'http://www.amassdubai.com'
