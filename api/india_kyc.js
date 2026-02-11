@@ -8,7 +8,7 @@ export const config = {
 };
 
 const proxy = createProxyMiddleware({
-  target: 'http://www.amassdubai.com',
+  target: 'http://www.amassdubai.com/india_kyc/',
   changeOrigin: true,
   secure: false,
   logLevel: 'debug',
@@ -32,12 +32,12 @@ const proxy = createProxyMiddleware({
       }
     });
     const queryString = queryParams.toString();
-    const rewrittenPath = `/india_kyc/${newPath}${queryString ? '?' + queryString : ''}`;
+    const rewrittenPath = `/${newPath}${queryString ? '?' + queryString : ''}`;
     console.log(`[Vercel Proxy] Rewriting path to: ${rewrittenPath}`);
     return rewrittenPath;
   },
   onProxyReq: (proxyReq, req, res) => {
-    console.log(`[Vercel Proxy] Sending request to: http://www.amassdubai.com${proxyReq.path}`);
+    console.log(`[Vercel Proxy] Sending request to: http://www.amassdubai.com/india_kyc${proxyReq.path}`);
   },
   onProxyRes: (proxyRes, req, res) => {
     // Remove security headers that block iframes
