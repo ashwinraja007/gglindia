@@ -15,7 +15,9 @@ export default defineConfig(({ mode }) => ({
         rewrite: (path) => path, // Ensure path is passed through as-is
         headers: {
           'Referer': 'http://www.amassdubai.com/india_kyc/',
-          'Origin': 'http://www.amassdubai.com'
+          'Origin': 'http://www.amassdubai.com',
+          // Mimic a real browser to avoid being blocked
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
         },
         configure: (proxy, _options) => {
           proxy.on('proxyRes', (proxyRes, req, _res) => {
