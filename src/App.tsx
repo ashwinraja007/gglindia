@@ -3,8 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
@@ -14,7 +13,6 @@ import TermsOfUse from "./pages/TermsOfUse";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Services from "./pages/Services";
 import NotFound from "./pages/NotFound";
-
 import LiquidTransportation from "./pages/services/LiquidTransportation";
 import AirFreight from "./pages/services/AirFreight";
 import OceanFreight from "./pages/services/OceanFreight";
@@ -23,17 +21,28 @@ import Warehousing from "./pages/services/Warehousing";
 import ProjectCargo from "./pages/services/ProjectCargo";
 import CustomsClearance from "./pages/services/CustomsClearance";
 import GlobalPresence from "./pages/GlobalPresence";
-
 import BangladeshHome from "./pages/BangladeshHome";
 import BangladeshAbout from "./pages/BangladeshAbout";
 import BangladeshServices from "./pages/BangladeshServices";
 import BangladeshGlobalPresence from "./pages/BangladeshGlobalPresence";
 import BangladeshContact from "./pages/BangladeshContact";
-
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import KycPage from "./pages/KycPage";
 
 const queryClient = new QueryClient();
+
+// Wrapper component to handle 404 but ignore /india_kyc paths
+function NotFoundWrapper() {
+  const location = useLocation();
+  
+  // If the path is /india_kyc or starts with /india_kyc/, 
+  // don't show 404 - let the server handle it
+  if (location.pathname === '/india_kyc' || location.pathname.startsWith('/india_kyc/')) {
+    return null;
+  }
+  
+  return <NotFound />;
+}
 
 function App() {
   return (
@@ -51,7 +60,7 @@ function App() {
             <Route path="/global-presence" element={<GlobalPresence />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsOfUse />} />
-
+            
             {/* India – service details */}
             <Route path="/services/transportation" element={<Transportation />} />
             <Route
@@ -70,17 +79,16 @@ function App() {
               element={<CustomsClearance />}
             />
             <Route path="/services/warehousing" element={<Warehousing />} />
-
+            
             {/* KYC */}
             <Route path="/kyc-details" element={<KycPage />} />
-
+            
             {/* Bangladesh mini-site */}
-
-
-            {/* 404 — do not point this to Index */}
-            <Route path="*" element={<NotFound />} />
+            {/* Add your Bangladesh routes here if needed */}
+            
+            {/* 404 — wrapped to ignore /india_kyc paths */}
+            <Route path="*" element={<NotFoundWrapper />} />
           </Routes>
-
           <Toaster />
           <Sonner />
         </BrowserRouter>
