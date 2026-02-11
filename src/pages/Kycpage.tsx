@@ -1,17 +1,14 @@
-import React from 'react';
+import { useEffect } from "react";
 
-const KycForm: React.FC = () => {
-  return (
-    <div className="w-full h-screen">
-      <iframe
-        src="/india_kyc/"
-        className="w-full h-full border-0"
-        title="KYC Form"
-        onError={(e) => console.error('Iframe failed to load:', e)}
-        onLoad={() => console.log('Iframe loaded successfully')}
-      />
-    </div>
-  );
+const KycIframe = () => {
+  useEffect(() => {
+    window.open(
+      "http://www.amassdubai.com/gglindia-kyc-details/",
+      "_blank"
+    );
+  }, []);
+
+  return null;
 };
 
-export default KycForm;
+export default KycIframe;
