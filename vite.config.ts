@@ -15,6 +15,7 @@ export default defineConfig({
         target: 'http://www.amassdubai.com',
         changeOrigin: true,
         secure: false,
+        logLevel: 'debug',
         cookieDomainRewrite: "",
         cookiePathRewrite: {
           "/india_kyc": "/kyc-proxy"

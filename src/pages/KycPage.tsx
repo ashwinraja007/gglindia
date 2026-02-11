@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { AlertCircle, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { AlertCircle, Loader2, ExternalLink } from "lucide-react";
 
 const KycPage = () => {
   const [error, setError] = useState(false);
@@ -26,6 +27,15 @@ const KycPage = () => {
             <AlertTitle>Connection Error</AlertTitle>
             <AlertDescription>
               Unable to load the KYC form. Please ensure you are connected to the internet or try again later.
+              <div className="mt-2">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => window.open("http://www.amassdubai.com/india_kyc/", "_blank")}
+                >
+                  Open Form in New Window <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
             </AlertDescription>
           </Alert>
         </div>

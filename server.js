@@ -13,12 +13,16 @@ const proxyOptions = {
   target: 'http://www.amassdubai.com',
   changeOrigin: true,
   secure: false,
+  logLevel: 'debug', // Enable debug logging to see proxy activity
   cookieDomainRewrite: "",
   cookiePathRewrite: {
     "/india_kyc": "/kyc-proxy"
   },
-  pathRewrite: {
-    '^/': '/india_kyc/'
+  pathRewrite: (path, req) => {
+    // Express strips the mount path ('/kyc-proxy').
+    // So 'path' is '/index.php' or '/'
+    // We simply prepend '/india_kyc' to the path (replacing the leading slash)
+    return path.replace(/^\//, '/india_kyc/');
   },
   headers: {
     'Referer': 'http://www.amassdubai.com/india_kyc/',
@@ -50,6 +54,12 @@ const proxyOptions = {
 
 // 1. Configure the Proxy to be handled first
 app.use('/kyc-proxy', createProxyMiddleware(proxyOptions));
+
+// 1.5. Proxy Fallback Trap
+// If the proxy middleware calls next() (skips), catch it here to prevent React from loading.
+app.use('/kyc-proxy', (req, res) => {
+  res.status(502).send('Proxy Error: The request was not handled by the proxy.');
+});
 
 // 2. Serve static files from the Vite build output (dist folder)
 app.use(express.static(path.join(__dirname, 'dist')));
