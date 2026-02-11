@@ -3,6 +3,12 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const path = require('path');
 const app = express();
 
+// Debug logging to verify incoming request path from Nginx
+app.use((req, res, next) => {
+  console.log(`[Incoming Request] ${req.method} ${req.url}`);
+  next();
+});
+
 const proxyOptions = {
   target: 'http://www.amassdubai.com',
   changeOrigin: true,
