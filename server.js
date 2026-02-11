@@ -21,7 +21,7 @@ const proxyOptions = {
     'Referer': 'http://www.amassdubai.com/india_kyc/',
     'Origin': 'http://www.amassdubai.com',
     // Mimic a real browser to avoid being blocked
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
   },
   pathRewrite: (path, req) => {
     // The default behavior strips the '/india_kyc' context.
