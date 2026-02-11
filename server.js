@@ -37,7 +37,7 @@ const proxyOptions = {
     delete proxyRes.headers['x-content-type-options'];
     
     // Set permissive CSP
-    proxyRes.headers['content-security-policy'] = "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;";
+    proxyRes.headers['content-security-policy'] = "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; font-src * data:;";
 
     // Rewrite redirects
     if (proxyRes.headers['location']) {
