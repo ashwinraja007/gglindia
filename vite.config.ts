@@ -12,8 +12,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/kyc-proxy': {
-        target: 'http://www.amassdubai.com/india_kyc/',
+        target: 'http://www.amassdubai.com',
         changeOrigin: true,
+        secure: false,
         rewrite: (path) => path.replace(/^\/kyc-proxy/, '/india_kyc'),
         configure: (proxy, _options) => {
           proxy.on('proxyRes', (proxyRes, req, _res) => {
