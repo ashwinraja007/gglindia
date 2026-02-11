@@ -11,12 +11,18 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/india_kyc': {
+      '/kyc-proxy': {
         target: 'http://www.amassdubai.com',
         changeOrigin: true,
         secure: false,
         logLevel: 'debug',
         cookieDomainRewrite: "",
+        rewrite: (path) => {
+          // Rewrite /kyc-proxy/* to /india_kyc/*
+          const newPath = path.replace(/^\/kyc-proxy/, '/india_kyc');
+          console.log(`[Vite Proxy] ${path} -> ${newPath}`);
+          return newPath;
+        },
         headers: {
           'Referer': 'http://www.amassdubai.com/india_kyc/',
           'Origin': 'http://www.amassdubai.com'
@@ -31,13 +37,19 @@ export default defineConfig({
             // Rewrite redirects to keep them inside the proxy
             if (proxyRes.headers['location']) {
               let location = proxyRes.headers['location'];
-              // Handle absolute URLs by stripping the domain
-              location = location.replace('http://www.amassdubai.com', '');
-              location = location.replace('http://amassdubai.com', '');
-
-              // Fix root redirects: if server redirects to /index.php, force it back to /india_kyc/index.php
-              if (location === '/index.php') {
-                location = '/india_kyc/index.php';
+              
+              // Handle absolute URLs
+              location = location.replace('http://www.amassdubai.com/india_kyc', '/kyc-proxy');
+              location = location.replace('http://amassdubai.com/india_kyc', '/kyc-proxy');
+              location = location.replace('https://www.amassdubai.com/india_kyc', '/kyc-proxy');
+              location = location.replace('https://amassdubai.com/india_kyc', '/kyc-proxy');
+              
+              // Handle relative paths
+              location = location.replace(/^\/india_kyc/, '/kyc-proxy');
+              
+              // Handle root redirects
+              if (location === '/index.php' || location === '/') {
+                location = '/kyc-proxy/';
               }
 
               proxyRes.headers['location'] = location;
