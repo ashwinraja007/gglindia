@@ -40,7 +40,6 @@ const KycIframe = () => {
           setLoading(false);
         }}
         allow="camera; microphone; geolocation"
-        sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation"
       />
     </div>
   );

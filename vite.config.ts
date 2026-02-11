@@ -20,6 +20,8 @@ export default defineConfig({
           proxy.on('proxyRes', (proxyRes, req, _res) => {
             delete proxyRes.headers['x-frame-options'];
             delete proxyRes.headers['content-security-policy'];
+            delete proxyRes.headers['content-security-policy-report-only'];
+            proxyRes.headers['content-security-policy'] = "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;";
           });
         },
       },
