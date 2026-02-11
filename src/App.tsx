@@ -84,7 +84,7 @@ function App() {
             {/* KYC */}
             
             <Route path="/india-kyc" element={<IndiaKycForm />} />
-             <Route path="/e-kyc" element={<kycpage/>} />
+             <Route path="/kyc-details" element={<kycpage/>} />
             
             {/* Bangladesh mini-site */}
             {/* Add your Bangladesh routes here if needed */}
