@@ -34,6 +34,12 @@ export default defineConfig({
               // Handle absolute URLs by stripping the domain
               location = location.replace('http://www.amassdubai.com', '');
               location = location.replace('http://amassdubai.com', '');
+
+              // Fix root redirects: if server redirects to /index.php, force it back to /india_kyc/index.php
+              if (location === '/index.php') {
+                location = '/india_kyc/index.php';
+              }
+
               proxyRes.headers['location'] = location;
             }
           });
