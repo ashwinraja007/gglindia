@@ -7,7 +7,7 @@ const KycForm: React.FC = () => {
         src="/kyc-proxy/"
         className="w-full h-full border-0"
         title="KYC Form"
-        sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation allow-top-navigation-by-user-activation"
+        // No sandbox - your proxied content needs full access to function
       />
     </div>
   );
