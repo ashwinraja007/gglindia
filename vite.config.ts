@@ -22,9 +22,11 @@ export default defineConfig(({ mode }) => ({
             // Remove security headers that block iframes
             delete proxyRes.headers['x-frame-options'];
             delete proxyRes.headers['content-security-policy'];
+            delete proxyRes.headers['content-security-policy-report-only'];
+            delete proxyRes.headers['x-content-type-options'];
             
             // Set permissive CSP to allow scripts and eval
-            proxyRes.headers['content-security-policy'] = "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; font-src * data:;";
+            proxyRes.headers['content-security-policy'] = "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; font-src * data:; frame-ancestors *;";
 
             // Handle redirects
             if (proxyRes.headers['location']) {
