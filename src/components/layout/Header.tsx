@@ -188,12 +188,14 @@ export const Header = () => {
 
             {/* INDIA ONLY – eKYC */}
             {!isBangladesh && (
-              <button
-                onClick={() => handleNavClick("/kyc-details")}
-                className="text-gray-800 hover:text-brand-gold font-medium"
+              <Link
+                to="/kyc-details"
+                className={`text-gray-800 hover:text-brand-gold font-medium ${
+                  location.pathname === "/kyc-details" ? "text-brand-gold" : ""
+                }`}
               >
                 e-KYC
-              </button>
+              </Link>
             )}
 
             {/* COUNTRY SELECTOR SWITCH */}
@@ -224,7 +226,9 @@ export const Header = () => {
             <button onClick={() => handleNavClick("/global-presence")}>Global Presence</button>
 
             {!isBangladesh && (
-              <button onClick={() => handleNavClick("/kyc-details")}>e-KYC</button>
+              <Link to="/kyc-details" onClick={() => setIsMobileMenuOpen(false)} className="text-left">
+                e-KYC
+              </Link>
             )}
 
             {/* MOBILE COUNTRY SELECTOR */}

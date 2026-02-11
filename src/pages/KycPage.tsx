@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle, Loader2 } from "lucide-react";
 
-const KycIframe = () => {
+const KycPage = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -45,4 +45,4 @@ const KycIframe = () => {
   );
 };
 
-export default KycIframe;
+export default KycPage;
