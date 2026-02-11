@@ -12,7 +12,7 @@ const proxyOptions = {
     "/india_kyc": "/kyc-proxy"
   },
   pathRewrite: {
-    '^/kyc-proxy': '/india_kyc'
+    '^/': '/india_kyc/'
   },
   headers: {
     'Referer': 'http://www.amassdubai.com/india_kyc/',
@@ -35,6 +35,10 @@ const proxyOptions = {
       location = location.replace('/india_kyc', '/kyc-proxy');
       proxyRes.headers['location'] = location;
     }
+  },
+  onError: (err, req, res) => {
+    console.error('Proxy Error:', err);
+    res.status(500).send('Proxy Error');
   }
 };
 
