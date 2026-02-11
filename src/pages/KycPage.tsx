@@ -9,7 +9,7 @@ const KycIframe = () => {
   // Use the proxy path. 
   // In production, this points to your Node.js proxy (e.g., via Nginx routing /kyc-proxy to localhost:3001)
   // In development, Vite proxies this to the target.
-  const iframeSrc = "/kyc-proxy/index.php";
+  const iframeSrc = "/kyc-proxy/";
 
   return (
     <div className="flex flex-col w-full h-[calc(100vh-80px)] relative bg-gray-50">
