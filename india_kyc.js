@@ -14,15 +14,24 @@ const proxy = createProxyMiddleware({
   changeOrigin: true,
   secure: false,
   logLevel: 'debug', // For Vercel logs
+  headers: {
+    'Referer': 'http://www.amassdubai.com/india_kyc/',
+    'Origin': 'http://www.amassdubai.com'
+  },
   pathRewrite: (path, req) => {
     // Vercel rewrites /india_kyc/abc to /api/india_kyc?path=abc
     // We need to reconstruct the original path for the target.
     const queryPath = req.query.path || '';
     const newPath = Array.isArray(queryPath) ? queryPath.join('/') : queryPath;
     const rewrittenPath = `/india_kyc/${newPath}`;
+    console.log(`[Vercel Proxy] Rewriting path to: ${rewrittenPath}`);
     return rewrittenPath;
   },
+  onProxyReq: (proxyReq, req, res) => {
+    console.log(`[Vercel Proxy] Sending request to: http://www.amassdubai.com${proxyReq.path}`);
+  },
   onProxyRes: (proxyRes, req, res) => {
+    console.log(`[Vercel Proxy] Received response: ${proxyRes.statusCode} for ${req.url}`);
     // Remove security headers that block iframes
     delete proxyRes.headers['x-frame-options'];
     delete proxyRes.headers['content-security-policy'];
@@ -33,12 +42,14 @@ const proxy = createProxyMiddleware({
     // Rewrite redirects to point back to our domain
     if (proxyRes.headers['location']) {
       let location = proxyRes.headers['location'];
+      console.log(`[Vercel Proxy] Original redirect: ${location}`);
       location = location.replace('http://www.amassdubai.com/india_kyc', '/india_kyc');
       location = location.replace('https://www.amassdubai.com/india_kyc', '/india_kyc');
       if (location === '/index.php' || location === '/' || location === 'index.php') {
         location = '/india_kyc/index.php';
       }
       proxyRes.headers['location'] = location;
+      console.log(`[Vercel Proxy] Rewritten redirect: ${location}`);
     }
   },
   onError: (err, req, res) => {
