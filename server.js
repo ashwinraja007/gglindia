@@ -13,18 +13,18 @@ app.use((req, res, next) => {
 });
 
 const proxyOptions = {
-  target: 'http://www.amassdubai.com/india_kyc/',
+  target: 'http://www.amassdubai.com/india_kyc', // Remove trailing slash to prevent double slashes
   changeOrigin: true,
   secure: false,
   cookieDomainRewrite: "*", // Allow cookies to be set on localhost/current domain
+  cookiePathRewrite: {
+    "*": "/" // Ensure cookies are valid for the entire site
+  },
   logLevel: 'debug',
   headers: {
     'Referer': 'http://www.amassdubai.com/india_kyc/',
     'Origin': 'http://www.amassdubai.com',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-  },
-  pathRewrite: {
-    '^/india_kyc': '', // remove base path so we can proxy to the subdirectory
   },
   onProxyReq: (proxyReq, req, res) => {
     console.log(`[Proxy Request] -> ${new URL(proxyReq.path, proxyOptions.target).href}`);

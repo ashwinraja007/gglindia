@@ -21,7 +21,7 @@ const IndiaKycForm = () => {
 
             <iframe 
               src="/india_kyc/" 
-              className="w-full min-h-[1000px] border-0"
+              className="w-full min-h-[1000px] border-0 bg-white"
               title="India KYC Form"
               onLoad={() => setIsLoading(false)}
               allow="camera; microphone; geolocation"
