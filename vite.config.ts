@@ -11,16 +11,12 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/kyc-proxy': {
+      '/india_kyc': {
         target: 'http://www.amassdubai.com',
         changeOrigin: true,
         secure: false,
         logLevel: 'debug',
         cookieDomainRewrite: "",
-        cookiePathRewrite: {
-          "/india_kyc": "/kyc-proxy"
-        },
-        rewrite: (path) => path.replace(/^\/kyc-proxy/, '/india_kyc'),
         headers: {
           'Referer': 'http://www.amassdubai.com/india_kyc/',
           'Origin': 'http://www.amassdubai.com'
@@ -36,10 +32,8 @@ export default defineConfig({
             if (proxyRes.headers['location']) {
               let location = proxyRes.headers['location'];
               // Handle absolute URLs by stripping the domain
-              location = location.replace('http://www.amassdubai.com/india_kyc', '/kyc-proxy');
-              location = location.replace('http://amassdubai.com/india_kyc', '/kyc-proxy');
-              // Handle relative paths
-              location = location.replace('/india_kyc', '/kyc-proxy');
+              location = location.replace('http://www.amassdubai.com', '');
+              location = location.replace('http://amassdubai.com', '');
               proxyRes.headers['location'] = location;
             }
           });
