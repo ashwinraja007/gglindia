@@ -38,7 +38,7 @@ function NotFoundWrapper() {
   
   // If the path is /india_kyc or starts with /india_kyc/, 
   // don't show 404 - let the server handle it
-  if (location.pathname === '/india_kyc' || location.pathname.startsWith('/india_kyc/') || location.pathname.startsWith('/kyc-proxy')) {
+  if (location.pathname === '/india_kyc' || location.pathname.startsWith('/india_kyc/')) {
     return null;
   }
   

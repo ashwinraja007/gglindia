@@ -45,15 +45,14 @@ const proxyOptions = {
       console.log(`[Original Redirect] ${location}`);
       
       // Replace all variations of the target URL
-      location = location.replace('http://www.amassdubai.com/india_kyc', '/kyc-proxy');
-      location = location.replace('http://amassdubai.com/india_kyc', '/kyc-proxy');
-      location = location.replace('https://www.amassdubai.com/india_kyc', '/kyc-proxy');
-      location = location.replace('https://amassdubai.com/india_kyc', '/kyc-proxy');
-      location = location.replace(/^\/india_kyc/, '/kyc-proxy');
+      location = location.replace('http://www.amassdubai.com/india_kyc', '/india_kyc');
+      location = location.replace('http://amassdubai.com/india_kyc', '/india_kyc');
+      location = location.replace('https://www.amassdubai.com/india_kyc', '/india_kyc');
+      location = location.replace('https://amassdubai.com/india_kyc', '/india_kyc');
       
       // Handle root redirects
       if (location === '/index.php' || location === '/') {
-        location = '/kyc-proxy/';
+        location = '/india_kyc/';
       }
       
       console.log(`[Rewritten Redirect] ${location}`);
@@ -71,7 +70,7 @@ const proxyOptions = {
 };
 
 // **CRITICAL: Proxy must be FIRST**
-app.use('/kyc-proxy', createProxyMiddleware(proxyOptions));
+app.use('/india_kyc', createProxyMiddleware(proxyOptions));
 
 // Serve static files (React build)
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -79,7 +78,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // SPA fallback - MUST exclude proxy paths
 app.get('*', (req, res, next) => {
   // Skip SPA fallback for proxy paths
-  if (req.path.startsWith('/kyc-proxy')) {
+  if (req.path.startsWith('/india_kyc')) {
     console.log(`[Skipping SPA] ${req.path} is a proxy path`);
     return res.status(404).send('Proxy path not found');
   }
@@ -91,5 +90,5 @@ app.get('*', (req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on http://0.0.0.0:${PORT}`);
-  console.log(`Proxy endpoint: http://0.0.0.0:${PORT}/kyc-proxy/`);
+  console.log(`Proxy endpoint: http://0.0.0.0:${PORT}/india_kyc/`);
 });

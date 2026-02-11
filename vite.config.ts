@@ -8,11 +8,14 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     proxy: {
-      '/kyc-proxy': {
+      '/india_kyc': {
         target: 'http://www.amassdubai.com',
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/kyc-proxy/, '/india_kyc'),
+        headers: {
+          'Referer': 'http://www.amassdubai.com/india_kyc/',
+          'Origin': 'http://www.amassdubai.com'
+        },
         configure: (proxy, _options) => {
           proxy.on('proxyRes', (proxyRes, req, _res) => {
             // Remove security headers that block iframes
@@ -25,8 +28,8 @@ export default defineConfig(({ mode }) => ({
             // Handle redirects
             if (proxyRes.headers['location']) {
               let location = proxyRes.headers['location'];
-              location = location.replace('http://www.amassdubai.com/india_kyc', '/kyc-proxy');
-              location = location.replace('https://www.amassdubai.com/india_kyc', '/kyc-proxy');
+              location = location.replace('http://www.amassdubai.com/india_kyc', '/india_kyc');
+              location = location.replace('https://www.amassdubai.com/india_kyc', '/india_kyc');
               proxyRes.headers['location'] = location;
             }
           });
