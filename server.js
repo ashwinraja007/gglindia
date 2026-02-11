@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 });
 
 const proxyOptions = {
-  target: 'http://www.amassdubai.com/india_kyc', // Remove trailing slash to prevent double slashes
+  target: 'http://www.amassdubai.com', // Target the root domain to ensure paths map 1:1
   changeOrigin: true,
   secure: false,
   cookieDomainRewrite: "*", // Allow cookies to be set on localhost/current domain
