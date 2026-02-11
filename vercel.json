@@ -5,6 +5,10 @@
       "destination": "http://www.amassdubai.com/india_kyc/"
     },
     {
+      "source": "/india_kyc/",
+      "destination": "http://www.amassdubai.com/india_kyc/"
+    },
+    {
       "source": "/india_kyc/:path*",
       "destination": "http://www.amassdubai.com/india_kyc/:path*"
     },
