@@ -33,18 +33,7 @@ const IndiaKycForm = () => {
               </div>
             )}
 
-            {showFallback && (
-               <div className="absolute top-0 left-0 right-0 bg-yellow-50 p-4 border-b border-yellow-200 flex flex-col sm:flex-row items-center justify-between gap-4 z-20">
-                 <p className="text-yellow-800 text-sm text-center sm:text-left">
-                   If the form below is not loading correctly, you can open it directly in a new tab.
-                 </p>
-                 <Button variant="outline" size="sm" asChild className="gap-2 whitespace-nowrap">
-                   <a href="http://www.amassdubai.com/india_kyc/" target="_blank" rel="noopener noreferrer">
-                     Open Form Directly <ExternalLink size={14} />
-                   </a>
-                 </Button>
-               </div>
-            )}
+           
 
             <iframe 
               src="/india_kyc/" 
