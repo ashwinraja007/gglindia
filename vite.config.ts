@@ -14,7 +14,7 @@ export default defineConfig({
       '/kyc-proxy': {
         target: 'http://www.amassdubai.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/kyc-proxy/, ''),
+        rewrite: (path) => path.replace(/^\/kyc-proxy/, '/india_kyc'),
         configure: (proxy, _options) => {
           proxy.on('proxyRes', (proxyRes, req, _res) => {
             delete proxyRes.headers['x-frame-options'];
