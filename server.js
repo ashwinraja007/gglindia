@@ -13,23 +13,20 @@ app.use((req, res, next) => {
 });
 
 const proxyOptions = {
-  target: 'http://www.amassdubai.com',
+  target: 'http://www.amassdubai.com/india_kyc/',
   changeOrigin: true,
   secure: false,
   logLevel: 'debug',
   headers: {
     'Referer': 'http://www.amassdubai.com/india_kyc/',
     'Origin': 'http://www.amassdubai.com',
-    // Mimic a real browser to avoid being blocked
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
   },
-  pathRewrite: (path, req) => {
-    // The default behavior strips the '/india_kyc' context.
-    // We need to send the full original path to the target.
-    return req.originalUrl;
+  pathRewrite: {
+    '^/india_kyc': '', // remove base path so we can proxy to the subdirectory
   },
   onProxyReq: (proxyReq, req, res) => {
-    console.log(`[Proxy Request] -> http://www.amassdubai.com${proxyReq.path}`);
+    console.log(`[Proxy Request] -> ${new URL(proxyReq.path, proxyOptions.target).href}`);
   },
   onProxyRes: (proxyRes, req, res) => {
     console.log(`[Proxy Response] Status: ${proxyRes.statusCode} for ${req.url}`);

@@ -20,7 +20,7 @@ const IndiaKycForm = () => {
             )}
 
             <iframe 
-              src="/india_kyc/index.php" 
+              src="/india_kyc/" 
               className="w-full min-h-[1000px] border-0"
               title="India KYC Form"
               onLoad={() => setIsLoading(false)}
