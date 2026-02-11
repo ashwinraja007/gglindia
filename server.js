@@ -76,17 +76,21 @@ const proxyOptions = {
   }
 };
 
-// **CRITICAL: Proxy must be FIRST**
-app.use('/india_kyc', createProxyMiddleware(proxyOptions));
-
-// Serve static files (React build)
+// Serve static files (React build) FIRST
+// This ensures local assets (like /assets/index.css) are served correctly.
+// If a file is not found here, it falls through to the proxy or SPA fallback.
 app.use(express.static(path.join(__dirname, 'dist')));
+
+// Proxy middleware for form and common asset paths
+// We include common folders like /js, /css, /img because the external form likely references them at the root level.
+const proxyPaths = ['/india_kyc', '/js', '/css', '/img', '/images', '/fonts', '/assets', '/vendor', '/lib'];
+app.use(proxyPaths, createProxyMiddleware(proxyOptions));
 
 // SPA fallback - MUST exclude proxy paths
 app.get('*', (req, res, next) => {
   // Skip SPA fallback for proxy paths
-  if (req.path.startsWith('/india_kyc')) {
-    console.log(`[Skipping SPA] ${req.path} is a proxy path`);
+  if (proxyPaths.some(path => req.path.startsWith(path))) {
+    console.log(`[Skipping SPA] ${req.path} is a proxy path (but failed to proxy?)`);
     return res.status(404).send('Proxy path not found');
   }
   
