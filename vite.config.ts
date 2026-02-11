@@ -10,6 +10,8 @@ export default defineConfig({
     },
   },
   server: {
+    port: 5173,
+    host: true, // Listen on all addresses
     proxy: {
       '/kyc-proxy': {
         target: 'http://www.amassdubai.com',
@@ -18,7 +20,6 @@ export default defineConfig({
         logLevel: 'debug',
         cookieDomainRewrite: "",
         rewrite: (path) => {
-          // Rewrite /kyc-proxy/* to /india_kyc/*
           const newPath = path.replace(/^\/kyc-proxy/, '/india_kyc');
           console.log(`[Vite Proxy] ${path} -> ${newPath}`);
           return newPath;
@@ -34,20 +35,12 @@ export default defineConfig({
             delete proxyRes.headers['content-security-policy-report-only'];
             proxyRes.headers['content-security-policy'] = "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;";
 
-            // Rewrite redirects to keep them inside the proxy
             if (proxyRes.headers['location']) {
               let location = proxyRes.headers['location'];
-              
-              // Handle absolute URLs
               location = location.replace('http://www.amassdubai.com/india_kyc', '/kyc-proxy');
               location = location.replace('http://amassdubai.com/india_kyc', '/kyc-proxy');
-              location = location.replace('https://www.amassdubai.com/india_kyc', '/kyc-proxy');
-              location = location.replace('https://amassdubai.com/india_kyc', '/kyc-proxy');
-              
-              // Handle relative paths
               location = location.replace(/^\/india_kyc/, '/kyc-proxy');
               
-              // Handle root redirects
               if (location === '/index.php' || location === '/') {
                 location = '/kyc-proxy/';
               }
