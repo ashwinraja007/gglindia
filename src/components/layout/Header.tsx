@@ -226,7 +226,7 @@ export const Header = () => {
             <button onClick={() => handleNavClick("/global-presence")}>Global Presence</button>
 
             {!isBangladesh && (
-              <Link to="/kyc-details" onClick={() => setIsMobileMenuOpen(false)} className="text-left">
+              <Link to="/e-kyc" onClick={() => setIsMobileMenuOpen(false)} className="text-left">
                 e-KYC
               </Link>
             )}
