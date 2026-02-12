@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const KycIframe = () => {
   useEffect(() => {
     window.open(
-      "http://www.amassdubai.com/gglindia-kyc-details/",
+      "https://www.gglindia.com/e-kyc",
       "_blank"
     );
   }, []);
