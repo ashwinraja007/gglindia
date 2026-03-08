@@ -27,6 +27,7 @@ import BangladeshServices from "./pages/BangladeshServices";
 import BangladeshGlobalPresence from "./pages/BangladeshGlobalPresence";
 import BangladeshContact from "./pages/BangladeshContact";
 import { ScrollToTop } from "./components/common/ScrollToTop";
+import Popup from "./components/popup";
 import IndiaKycForm from "./pages/IndiaKycForm";
 import Kycpage from "./pages/Kycpage";
 import Kycpage1 from "./pages/Kycpage1";
@@ -51,6 +52,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <BrowserRouter>
+          <Popup />
           <ScrollToTop />
           <Routes>
             {/* India / main site */}
