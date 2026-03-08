@@ -33,7 +33,7 @@ export const AdmissionPopup = () => {
           {/* Scrollable PDF Viewer */}
           <div className="w-full h-full overflow-y-scroll">
             <iframe
-              src="/admission.pdf"
+              src="/gglindia.pdf"
               title="Admission PDF"
               className="w-full h-full"
             />
