@@ -5,11 +5,12 @@ import jwt from 'jsonwebtoken';
 let dbPool;
 function getPool() {
   if (!dbPool) {
+    // Hardcoded credentials directly in code so you don't need Vercel UI configuration
     dbPool = mysql.createPool({
-      host: process.env.DB_HOST || '68.178.157.109',
-      user: process.env.DB_USER || 'Karthik',
-      password: process.env.DB_PASSWORD || 'Karthik@2001',
-      database: process.env.DB_NAME || 'gglindia_New',
+      host: '68.178.157.109',
+      user: 'Karthik',
+      password: 'Karthik@2001',
+      database: 'gglindia_New',
       waitForConnections: true,
       connectionLimit: 5,
       queueLimit: 0
@@ -38,8 +39,8 @@ export default async function handler(req, res) {
     const token = authHeader && authHeader.split(' ')[1];
     
     try {
-      // Verify token (replaces authenticateToken middleware)
-      jwt.verify(token, process.env.JWT_SECRET || 'a_very_long_random_string_for_jwt_signing');
+      // Hardcoded secret
+      jwt.verify(token, 'a_very_long_random_string_for_jwt_signing');
       const contentData = JSON.stringify(req.body);
       await pool.query(
         'INSERT INTO page_content (page_key, content_data) VALUES (?, ?) ON DUPLICATE KEY UPDATE content_data = ?',

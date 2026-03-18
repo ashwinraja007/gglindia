@@ -34,6 +34,7 @@ import Kycpage1 from "./pages/Kycpage1";
 import AdminLogin from "./pages/AdminLogin";
 import AdminPrivacyPolicy from "./pages/AdminPrivacyPolicy";
 import AdminTermsOfUse from "./pages/AdminTermsOfUse";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -95,6 +96,7 @@ function App() {
             
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/privacy-policy" element={<AdminPrivacyPolicy />} />
             <Route path="/admin/terms-of-use" element={<AdminTermsOfUse />} />
             

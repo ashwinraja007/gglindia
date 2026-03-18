@@ -31,7 +31,7 @@ const AdminLogin: React.FC = () => {
         const data = await response.json();
         if (response.ok && data.token) {
           localStorage.setItem('adminToken', data.token);
-          navigate('/admin/privacy-policy');
+          navigate('/admin/dashboard');
         } else {
           setError(data.error || 'Login failed');
         }
