@@ -25,16 +25,23 @@ const AdminLogin: React.FC = () => {
         body: JSON.stringify({ email, password })
       });
 
-      const data = await response.json();
-
-      if (response.ok && data.token) {
-        localStorage.setItem('adminToken', data.token);
-        navigate('/admin/privacy-policy');
+      // Check if response is JSON (in case Vite serves index.html instead of proxying)
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const data = await response.json();
+        if (response.ok && data.token) {
+          localStorage.setItem('adminToken', data.token);
+          navigate('/admin/privacy-policy');
+        } else {
+          setError(data.error || 'Login failed');
+        }
       } else {
-        setError(data.error || 'Login failed');
+        console.error('Expected JSON, got:', await response.text());
+        setError('Server returned an invalid response. Is the API running?');
       }
     } catch (err) {
-      setError('Could not connect to the server');
+      console.error('Login request failed:', err);
+      setError('Could not connect to the server. Make sure the backend is running.');
     } finally {
       setIsLoading(false);
     }
