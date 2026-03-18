@@ -1,23 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { motion } from "framer-motion";
-import {
-  Truck,
-  PackageCheck,
-  Warehouse,
-  Droplet,
-  Boxes
-} from "lucide-react";
+import * as Icons from "lucide-react";
+import { client, urlFor } from '../lib/sanity';
 
 const About = () => {
-  const services = [
-    { title: "Freight Management", icon: Truck },
-    { title: "Warehouse Management", icon: Warehouse },
-    { title: "Transport Management", icon: PackageCheck },
-    { title: "Liquid Logistics", icon: Droplet },
-    { title: "Oversized Shipments & Project Cargo", icon: Boxes }
+  const [content, setContent] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const defaultServices = [
+    { title: "Freight Management", icon: "Truck" },
+    { title: "Warehouse Management", icon: "Warehouse" },
+    { title: "Transport Management", icon: "PackageCheck" },
+    { title: "Liquid Logistics", icon: "Droplet" },
+    { title: "Oversized Shipments & Project Cargo", icon: "Boxes" }
   ];
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        // Fetch the document with the type "aboutPage"
+        // The query uses GROQ (Sanity's query language)
+        const query = `*[_type == "aboutPage"][0]`;
+        const data = await client.fetch(query);
+        
+        if (data) {
+          setContent(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch from Sanity:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchContent();
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -34,18 +53,20 @@ const About = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                About <span className="text-yellow-500">GGL</span>
+                {content?.heading || "About"} <span className="text-yellow-500">{content?.highlightedHeading || "GGL"}</span>
               </h2>
               <div className="space-y-6 text-gray-700 text-base leading-relaxed">
-                <p>
-                  GGL is a proud subsidiary of 1 Global Enterprises, a Singapore-based investment group with a robust and diverse portfolio spanning freight forwarding, supply chain management, and logistics technology. As part of this global network, GGL leverages strategic investments across multiple brands specializing in transportation, warehousing, and integrated supply chain solutions.
-                </p>
-                <p>
-                  With a strong foundation backed by 1 Global Enterprises’ industry expertise and innovation-driven approach, GGL delivers seamless, technology-enabled logistics solutions. This affiliation ensures operational excellence, financial stability, and access to world-class infrastructure—positioning GGL as a leading provider of end-to-end global logistics services.
-                </p>
-                <p>
-                  The 1 Global Group operates in 16 countries with a dedicated team of over 700 professionals. Its business verticals include Supply Chain Solutions, Renewable Energy, Information Technology, and Business Process Outsourcing, each managed by domain experts committed to delivering impactful results.
-                </p>
+                {content?.paragraphs ? (
+                  content.paragraphs.map((para: string, idx: number) => (
+                    <p key={idx}>{para}</p>
+                  ))
+                ) : (
+                  <>
+                    <p>GGL is a proud subsidiary of 1 Global Enterprises, a Singapore-based investment group with a robust and diverse portfolio spanning freight forwarding, supply chain management, and logistics technology. As part of this global network, GGL leverages strategic investments across multiple brands specializing in transportation, warehousing, and integrated supply chain solutions.</p>
+                    <p>With a strong foundation backed by 1 Global Enterprises’ industry expertise and innovation-driven approach, GGL delivers seamless, technology-enabled logistics solutions. This affiliation ensures operational excellence, financial stability, and access to world-class infrastructure—positioning GGL as a leading provider of end-to-end global logistics services.</p>
+                    <p>The 1 Global Group operates in 16 countries with a dedicated team of over 700 professionals. Its business verticals include Supply Chain Solutions, Renewable Energy, Information Technology, and Business Process Outsourcing, each managed by domain experts committed to delivering impactful results.</p>
+                  </>
+                )}
               </div>
             </motion.div>
 
@@ -60,7 +81,7 @@ const About = () => {
                 <img
                   alt="GGL Global Logistics"
                   className="w-full h-[500px] object-cover"
-                  src="/lovable-uploads/41795fb5-562d-45d1-a8d3-f26724bc079b.png"
+                  src={content?.heroImage ? urlFor(content.heroImage).url() : "/lovable-uploads/41795fb5-562d-45d1-a8d3-f26724bc079b.png"}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
@@ -75,8 +96,14 @@ const About = () => {
               Our Comprehensive Logistics Services
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-              {services.map((service, index) => {
-                const Icon = service.icon;
+              {/* Use Sanity services if they exist, otherwise use default */}
+              {(content?.services || defaultServices).map((service: any, index: number) => {
+                // Grab the string name from Sanity or fallback, then look it up in the Icons object
+                const iconName = typeof service.icon === 'string' ? service.icon : "Truck";
+                
+                // @ts-ignore - Indexing dynamically
+                const DynamicIcon = Icons[iconName] || Icons.Truck;
+                
                 return (
                   <div
                     key={index}
@@ -84,7 +111,7 @@ const About = () => {
                   >
                     <div className="flex flex-col items-center gap-3">
                       <div className="p-3 bg-yellow-100 rounded-full">
-                        <Icon className="w-6 h-6 text-yellow-600" />
+                        <DynamicIcon className="w-6 h-6 text-yellow-600" />
                       </div>
                       <p className="text-base font-medium text-gray-700 text-center">{service.title}</p>
                     </div>
@@ -99,7 +126,7 @@ const About = () => {
         <section className="pb-20 px-6 bg-white">
           <div className="max-w-4xl mx-auto text-gray-700 text-base leading-relaxed">
             <p>
-              With the support of our in-house IT company, we are making significant investments in cutting-edge technologies—including Artificial Intelligence, Automation, and Data Analytics—to optimize operations and enhance transparency, efficiency, and client satisfaction.
+              {content?.footerText || "With the support of our in-house IT company, we are making significant investments in cutting-edge technologies—including Artificial Intelligence, Automation, and Data Analytics—to optimize operations and enhance transparency, efficiency, and client satisfaction."}
             </p>
           </div>
         </section>

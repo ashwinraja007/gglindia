@@ -21,6 +21,7 @@ import Warehousing from "./pages/services/Warehousing";
 import ProjectCargo from "./pages/services/ProjectCargo";
 import CustomsClearance from "./pages/services/CustomsClearance";
 import GlobalPresence from "./pages/GlobalPresence";
+import ServiceDetail from "./pages/services/ServiceDetail";
 import BangladeshHome from "./pages/BangladeshHome";
 import BangladeshAbout from "./pages/BangladeshAbout";
 import BangladeshServices from "./pages/BangladeshServices";
@@ -87,6 +88,9 @@ function App() {
               element={<CustomsClearance />}
             />
             <Route path="/services/warehousing" element={<Warehousing />} />
+            
+            {/* Catch-all dynamic route for new Sanity-powered services */}
+            <Route path="/services/:serviceSlug" element={<ServiceDetail />} />
             
             {/* KYC */}
             

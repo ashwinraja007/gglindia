@@ -3,9 +3,10 @@ import { useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Plane, Ship, Truck, Warehouse } from "lucide-react";
+import * as Icons from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
+import { client, urlFor } from '../lib/sanity';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -15,8 +16,16 @@ const ScrollToTop = () => {
   return null;
 };
 
-const ServiceCard = ({ icon, title, description, image, link }) => {
+const ServiceCard = ({ icon, iconName, title, description, image, link }: any) => {
+  // Dynamically render icon if a string name is provided from Sanity
+  // @ts-ignore
+  const DynamicIcon = iconName && Icons[iconName] ? Icons[iconName] : null;
+  const renderedIcon = DynamicIcon ? <DynamicIcon className="w-5 h-5" /> : icon;
+
   const getServiceImage = () => {
+    // If it's a Sanity URL (starts with http), use it directly
+    if (image && image.startsWith('http')) return image;
+
     switch (title) {
       case "Air Freight": return "/aircargo2.png";
       case "Ocean Freight": return "/oceanf.png";
@@ -45,7 +54,7 @@ const ServiceCard = ({ icon, title, description, image, link }) => {
       </div>
       <div className="p-6 flex flex-col justify-center">
         <div className="bg-brand-gold text-brand-navy p-2 rounded-full inline-block mb-2 w-fit">
-          {icon}
+          {renderedIcon}
         </div>
         <h3 className="text-xl font-semibold text-brand-navy mb-3">{title}</h3>
         <p className="text-gray-600 text-sm mb-4 line-clamp-4">{description}</p>
@@ -65,14 +74,53 @@ const ServiceCard = ({ icon, title, description, image, link }) => {
 
 const Services = () => {
   const isMobile = useIsMobile();
-  const services = [
-    { id: 1, icon: <Ship className="w-5 h-5" />, title: "Ocean Freight", image: "/oceanf.png", description: "At GGL, our dedicated Ocean Freight Department specializes in comprehensive freight management services for both Less-than-Container Load (LCL) and Full Container Load (FCL) shipments.", link: "/services/ocean-freight" },
-    { id: 2, icon: <Warehouse className="w-5 h-5" />, title: "LCL Consolidation", image: "/hom4.png", description: "We collect your goods from your location and prepare them for consolidation. This includes proper labelling, packaging, and documentation to ensure smooth transit.", link: "/services/lcl-consolidation" },
-    { id: 3, icon: <Truck className="w-5 h-5" />, title: "Transportation", image: "/CARGO.png", description: "Efficient transportation and distribution are the backbone of a seamless supply chain. Our fleet and infrastructure ensure on-time delivery every time.", link: "/services/transportation" },
-    { id: 4, icon: <Warehouse className="w-5 h-5" />, title: "Warehousing", image: "/warhouseh1.png", description: "We offer full-service warehousing and third-party logistics (3PL) to streamline your supply chain with flexible, reliable, and scalable solutions.", link: "/services/warehousing" },
-    { id: 5, icon: <Plane className="w-5 h-5" />, title: "Air Freight", image: "/aircargo2.png", description: "Our air freight services provide fast, reliable, and flexible global shipping — including import/export, express, and door-to-door solutions.", link: "/services/air-freight" },
-    { id: 6, icon: <Warehouse className="w-5 h-5" />, title: "Project Cargo", image: "/cargoh1.png", description: "We specialize in delivering end-to-end logistics for heavy, oversized, and time-critical shipments, ensuring efficiency and safety.", link: "/services/project-cargo" }
+  const [sanityServices, setSanityServices] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const defaultServices = [
+    { id: 1, icon: <Icons.Ship className="w-5 h-5" />, title: "Ocean Freight", image: "/oceanf.png", description: "At GGL, our dedicated Ocean Freight Department specializes in comprehensive freight management services for both Less-than-Container Load (LCL) and Full Container Load (FCL) shipments.", link: "/services/ocean-freight" },
+    { id: 2, icon: <Icons.Warehouse className="w-5 h-5" />, title: "LCL Consolidation", image: "/hom4.png", description: "We collect your goods from your location and prepare them for consolidation. This includes proper labelling, packaging, and documentation to ensure smooth transit.", link: "/services/lcl-consolidation" },
+    { id: 3, icon: <Icons.Truck className="w-5 h-5" />, title: "Transportation", image: "/CARGO.png", description: "Efficient transportation and distribution are the backbone of a seamless supply chain. Our fleet and infrastructure ensure on-time delivery every time.", link: "/services/transportation" },
+    { id: 4, icon: <Icons.Warehouse className="w-5 h-5" />, title: "Warehousing", image: "/warhouseh1.png", description: "We offer full-service warehousing and third-party logistics (3PL) to streamline your supply chain with flexible, reliable, and scalable solutions.", link: "/services/warehousing" },
+    { id: 5, icon: <Icons.Plane className="w-5 h-5" />, title: "Air Freight", image: "/aircargo2.png", description: "Our air freight services provide fast, reliable, and flexible global shipping — including import/export, express, and door-to-door solutions.", link: "/services/air-freight" },
+    { id: 6, icon: <Icons.Warehouse className="w-5 h-5" />, title: "Project Cargo", image: "/cargoh1.png", description: "We specialize in delivering end-to-end logistics for heavy, oversized, and time-critical shipments, ensuring efficiency and safety.", link: "/services/project-cargo" }
   ];
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        // Fetch all documents of type "servicePage"
+        const query = `*[_type == "servicePage"]{
+          _id,
+          title,
+          "slug": slug.current,
+          subtitle,
+          heroImage,
+          iconName
+        }`;
+        const data = await client.fetch(query);
+        setSanityServices(data);
+      } catch (error) {
+        console.error("Failed to fetch services from Sanity:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  // Use Sanity data if available, otherwise use defaults
+  const displayServices = sanityServices.length > 0 
+    ? sanityServices.map((service, index) => ({
+        id: service._id || index,
+        iconName: service.iconName || "Ship", // Default to Ship if they didn't enter an icon
+        title: service.title,
+        description: service.subtitle || "",
+        image: service.heroImage ? urlFor(service.heroImage).url() : "",
+        link: `/services/${service.slug}`
+      }))
+    : defaultServices;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -116,7 +164,7 @@ const Services = () => {
               </p>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {services.map(service => (
+              {displayServices.map(service => (
                 <ServiceCard key={service.id} {...service} />
               ))}
             </div>
