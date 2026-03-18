@@ -14,11 +14,9 @@ interface Subsection {
 }
 const PrivacyPolicyPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    // Simulate page loading effect
-    setIsLoaded(true);
-  }, []);
-  const sections: Section[] = [{
+  const [sections, setSections] = useState<Section[]>([]);
+
+  const defaultSections: Section[] = [{
     title: "Introduction",
     content: "Welcome to GGL LINE PVT LTD [“GGL (India)”, “we”, “our”, “us”]. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.We urge you to carefully read the following to comprehend how we collect, utilize, and safeguard your personal information. The policy also outlines your options concerning the use, accessibility, and correction of your personal information."
   }, {
@@ -223,6 +221,29 @@ const PrivacyPolicyPage: React.FC = () => {
       content: "Contacting Us: To exercise any of your rights, please contact our privacy team using the contact details provided in this policy. We will respond to your requests within the timeframes required by applicable law.\n\nVerification: For security reasons, we may need to verify your identity before processing your requests. This helps us protect your information from unauthorized access."
     }]
   }];
+
+  useEffect(() => {
+    // Fetch dynamic content from backend
+    fetch('/api/content/privacy-policy')
+      .then(res => {
+        if (!res.ok) throw new Error('Content not found');
+        return res.json();
+      })
+      .then(data => {
+        if (data && Array.isArray(data) && data.length > 0) {
+          setSections(data);
+        } else {
+          setSections(defaultSections);
+        }
+        setIsLoaded(true);
+      })
+      .catch(err => {
+        console.error('Error fetching privacy policy:', err);
+        setSections(defaultSections); // Fallback to default sections
+        setIsLoaded(true);
+      });
+  }, []);
+
   return <div className={`min-h-screen bg-gray-50 transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Header />
 

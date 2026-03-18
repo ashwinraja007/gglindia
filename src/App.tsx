@@ -31,6 +31,9 @@ import Popup from "./components/popup";
 import IndiaKycForm from "./pages/IndiaKycForm";
 import Kycpage from "./pages/Kycpage";
 import Kycpage1 from "./pages/Kycpage1";
+import AdminLogin from "./pages/AdminLogin";
+import AdminPrivacyPolicy from "./pages/AdminPrivacyPolicy";
+import AdminTermsOfUse from "./pages/AdminTermsOfUse";
 
 const queryClient = new QueryClient();
 
@@ -89,6 +92,11 @@ function App() {
             <Route path="/india-kyc" element={<IndiaKycForm />} />
              <Route path="/kyc-details" element={<Kycpage/>} />
             <Route path="/e-kyc" element={<Kycpage1/>} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/privacy-policy" element={<AdminPrivacyPolicy />} />
+            <Route path="/admin/terms-of-use" element={<AdminTermsOfUse />} />
             
             {/* Bangladesh mini-site */}
             {/* Add your Bangladesh routes here if needed */}
