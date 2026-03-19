@@ -8,7 +8,7 @@ export const config = {
 };
 
 const proxy = createProxyMiddleware({
-  target: 'http://www.amassdubai.com/india_kyc/',
+  target: 'http://www.amassdubai.com/india_kyc',
   changeOrigin: true,
   secure: false,
   logLevel: 'debug',
@@ -67,12 +67,16 @@ const proxy = createProxyMiddleware({
 });
 
 export default function handler(req, res) {
-  // http-proxy-middleware will handle the response stream directly.
-  // The `await new Promise` wrapper was causing the function to time out.
-  proxy(req, res, (err) => {
-    if (err) {
-      console.error('Proxy error after headers sent:', err);
-      // We can't send a response here because the proxy has already tried.
-    }
+  return new Promise((resolve, reject) => {
+    res.on('finish', resolve);
+    res.on('error', reject);
+
+    proxy(req, res, (err) => {
+      if (err) {
+        console.error('Proxy error after headers sent:', err);
+        return reject(err);
+      }
+      resolve();
+    });
   });
 }
