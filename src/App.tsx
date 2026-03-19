@@ -39,6 +39,18 @@ import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
+// Wrapper component to conditionally render the global popup
+function ConditionalPopup() {
+  const location = useLocation();
+  
+  // Hide the global website popup on KYC related pages
+  if (location.pathname === '/e-kyc' || location.pathname === '/india-kyc' || location.pathname === '/kyc-details') {
+    return null;
+  }
+  
+  return <Popup />;
+}
+
 // Wrapper component to handle 404 but ignore /india_kyc paths
 function NotFoundWrapper() {
   const location = useLocation();
@@ -57,7 +69,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <BrowserRouter>
-          <Popup />
+          <ConditionalPopup />
           <ScrollToTop />
           <Routes>
             {/* India / main site */}
