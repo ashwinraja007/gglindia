@@ -1,10 +1,14 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const KycIframe = () => {
-  // Safely redirect to the e-KYC route in the same tab, 
-  // removing the popup / new window behavior.
-  return <Navigate to="/e-kyc" replace />;
+  useEffect(() => {
+    window.open(
+      "https://www.gglindia.com/e-kyc",
+      "_blank"
+    );
+  }, []);
+
+  return null;
 };
 
 export default KycIframe;
