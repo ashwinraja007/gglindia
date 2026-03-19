@@ -1,8 +1,20 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "source": "/india_kyc",
+      "destination": "/api/india_kyc?path="
+    },
+    {
+      "source": "/india_kyc/",
+      "destination": "/api/india_kyc?path="
+    },
+    {
+      "source": "/india_kyc/index.php",
+      "destination": "/api/india_kyc?path=index.php"
+    },
+    {
+      "source": "/india_kyc/:path*",
+      "destination": "/api/india_kyc?path=:path*"
     },
     {
       "source": "/(.*)",
